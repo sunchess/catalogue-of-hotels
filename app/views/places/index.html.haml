@@ -1,0 +1,18 @@
+%h1= t('.title')
+%p= link_to t('.new_place'), new_place_path
+
+%table
+  %thead
+    %tr
+      %th= Place.human_attribute_name :title
+      %th= Place.human_attribute_name :draft
+      %th{:colspan => 3}= t 'actions'
+  
+  %tbody
+    - for place in @places
+      %tr{ :class => cycle(:odd, :even) }
+        %td= place.title
+        %td= place.draft
+        %td.action= link_to t('show'), place
+        %td.action= link_to t('edit'), edit_place_path(place)
+        %td.action= link_to t('destroy'), place, :confirm => t('are_you_sure'), :method => :delete

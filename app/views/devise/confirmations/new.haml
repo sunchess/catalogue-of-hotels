@@ -1,0 +1,13 @@
+%h2 
+  = t('users.titles.confirmation')
+= render( :partial=>"layouts/errors_messages", :locals => { :target=>resource })  
+#main_content
+  = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
+    
+    %p
+      = f.label :email
+      %br/
+      = f.text_field :email
+    %p= f.submit t('users.send_confirmation_instructions')
+#navigation    
+  = render :partial => "devise/shared/links"

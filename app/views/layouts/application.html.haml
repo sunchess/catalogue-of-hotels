@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title Catalogue Of Hotels
+    = stylesheet_link_tag "application", "master"
+    = javascript_include_tag :defaults
+    = csrf_meta_tag
+  #body
+    = render :partial=>"layouts/users_login_register"
+    #logo Catalog Of Hotels
+    = render :partial=>"shared/navigation_tab"
+    #content
+      = flashes
+      = yield

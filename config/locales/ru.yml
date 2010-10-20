@@ -1,0 +1,48 @@
+ru:
+  back: "Назад"
+  
+  users:
+    hello: "Здравствуйте"
+    send_password_instructions: "Выслать письмо"
+    send_confirmation_instructions: "Выслать подтверждение еще раз"
+    leave_blank: "оставьте пустым если не хотите менять"
+    password_to_confirm: "введите текущий пароль для подтверждения"
+    links:        
+      new: "Регистрация" 
+      edit: "Изменить"
+      sign_up: 'Зарегистрироваться'
+      forgot_your_password: "Забыли пароль?"
+      didnt_receive_confirmation_instructions: "Не получили письмо с подтверждением?"
+    titles:
+      edit: 'Редактировать данные пользователя'      
+      sign_up: "Регистрация пользователей"
+      confirmation: "Не пришло письмо с подтверждением?"
+  
+  sessions:
+    login: 'Войти'
+    logout: 'Выйти'
+    sign_in: "Вход для пользователей"
+        
+        
+  activerecord:
+    attributes:
+      user:
+        email: "Email" #Exeple for not en locale
+        password: "Пароль"
+        password_confirmation: "Пароль еще раз"
+        current_password: "Текущий пароль"
+        remember_me: "Запомнить меня"
+        
+  helpers:
+    label:
+      #post:
+        # body: "Write your entire text here"
+    submit:
+      create: "Создать"
+      update: "Редактировать"     
+  
+  errors:      
+    messages: 
+      activerecord:
+        title: "Допущены ошибки"
+      

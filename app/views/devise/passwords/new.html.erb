@@ -1,0 +1,14 @@
+<h2> <%= t('users.links.forgot_your_password') %></h2>
+<%= render( :partial=>"layouts/errors_messages", :locals => { :target=>resource }) %>
+<div id="main_content">
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+
+  <p><%= f.label :email %><br />
+  <%= f.text_field :email %></p>
+
+  <p><%= f.submit t("users.send_password_instructions") %></p>
+<% end %>
+</div>
+<div id="navigation">
+<%= render :partial => "devise/shared/links" %>
+</div>

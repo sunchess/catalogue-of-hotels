@@ -1,0 +1,13 @@
+#user_nav
+  - if current_user
+    =# render :partial => "layouts/admin_section"
+    = t("users.hello")
+    , #{current_user.email}!
+    \#{link_to t('users.links.edit'), edit_user_registration_path(:current)} 
+    |  
+    \#{link_to t('sessions.logout'), destroy_user_session_path}
+  - else
+    = link_to t('users.links.new'), new_user_registration_path
+    |
+    \#{link_to t('sessions.login'), new_user_session_path}
+  

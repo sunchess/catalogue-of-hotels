@@ -1,0 +1,113 @@
+
+
+#body{
+	width: 80%;
+	margin: 0 auto 10px auto;
+}
+
+#content{background-color:#fff;  border:1px solid #9d9d9d; padding: 10px; overflow:hidden;}
+#main_content{
+ border-right: 1px solid  #4d4d4d;
+ padding-right:  10px;width:  70%;	
+ float: left;
+ 
+}
+
+#navigation{
+	float: right;
+	width: 27%;
+}
+
+#logo{
+    font-size: 28px ;
+	color: #b91515;
+	padding: 10px;
+	
+}
+.notice{
+	background-color: #edffb2;
+	border:1px solid #d0ff56;
+	padding: 5px;
+	text-align: center;
+	width:  40%;
+	margin: 0 auto 0 auto;
+	
+}
+
+.error{
+	background-color: #ffd53d;
+	border:1px solid #3e0c0c;
+	padding: 5px;
+	text-align: center;
+	width:  40%;
+	margin: 0 auto 0 auto;
+	
+}
+
+
+.field_with_errors {
+  padding: 2px;
+  background-color: #ffd53d;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid #ffd53d;
+  padding: 0px;
+  background-color: #fff;
+  margin: 0 auto 10px auto;
+}
+
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: 0;
+  margin-bottom: 0px;
+  background-color: #ffd53d;
+  color: #676767;
+}
+
+#error_explanation ul li {
+  font-size: 12px;list-style: disc inside;
+  
+}
+
+#user_nav {
+  text-align: right;
+  font-size: 12px;
+  margin: 0 auto 0 auto;
+  margin-top: 5px;
+  margin-bottom: 10px;
+	
+}
+
+.right_line{
+	border-right: 1px solid  #7f7f7f;
+	
+}
+
+.even{
+	background-color: #e6e6fa;
+	
+	
+}
+.even:hover{
+	background-color: #d6e9ff;
+	
+}
+
+.odd{
+	background-color: #f7f7ff;
+	
+}
+
+.odd:hover{
+	background-color: #d6e9ff;
+	
+}
+
+
+

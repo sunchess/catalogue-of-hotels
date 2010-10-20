@@ -1,0 +1,38 @@
+ru:
+  errors:
+    messages:
+      not_found: 'запись не найдена'
+      already_confirmed: 'уже подтвержден'
+      not_locked: 'разблокирован'
+  devise:
+    failure:
+      unauthenticated: 'Для продолжения вам необходимо войти в пользовательский аккаунта или зарегистрироваться.'
+      unconfirmed: 'Для продолжения вам необходимо пройти процесс подтверждения пользовательского аккаунта.'
+      locked: 'Ваш пользовательский аккаунта заблокирован.'
+      invalid: 'Не верный email или пароль.'
+      invalid_token: 'Invalid authentication token.'
+      timeout: 'Ваша сессия истекла, войдите для продолжения.'
+      inactive: 'Ваш аккаунт не активирован.'
+    sessions:
+      signed_in: 'Вы вошли.'
+      signed_out: 'Вы вышли.'
+    passwords:
+      send_instructions: 'Через несколько минут вы получите инструкцию по восстоновлению пароля.'
+      updated: 'Пароль изменен. Вы находитесь в своем пользовательском аккаунте.'
+    confirmations:
+      send_instructions: 'Через несколько минут вы получите интрукцию по подтверждению пользовательского аккаунта.'
+      confirmed: 'Ваш аккаунт подтвержден.  Вы находитесь в своем пользовательском аккаунте.'
+    registrations:
+      signed_up: 'Вы успешно зарегистрировались. На ваш e-mail выслано письмо с подтверждением.'
+      updated: 'Вы успешно отредактировали свой аккаунт'
+      destroyed: 'Досвидания! Вашь аккаунт удален. Мы надеемся увидеть вас в скором будущем'
+    unlocks:
+      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
+      unlocked: 'Your account was successfully unlocked. You are now signed in.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Инструкция для подтверждения пользовательского аккаунта'
+      reset_password_instructions:
+        subject: 'Инструкция восстановления пароля'
+      unlock_instructions:
+        subject: 'Unlock Instructions'

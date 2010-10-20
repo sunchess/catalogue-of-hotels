@@ -1,0 +1,14 @@
+= form_for(@place) do |f|
+  = render( :partial=>"layouts/errors_messages", :locals => { :target=>@place })
+  
+  .field
+    = f.label :title
+    %br
+    = f.text_field :title
+  .field
+    = f.label :draft
+    %br
+    = f.check_box :draft
+
+  .actions
+    = f.submit

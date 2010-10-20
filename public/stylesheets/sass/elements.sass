@@ -1,0 +1,49 @@
+body
+  :margin 0
+  :padding 0
+  :background-color White
+  @extend table
+
+table
+  :font-family Arial
+  :font-size 10pt
+  :color #333333
+
+
+input
+  :border 1px solid #555555
+  :background-color #eeeeee
+  :padding 2px
+  :margin 2px
+
+select
+  @extend input
+
+textarea
+  @extend input
+
+pre
+  background:
+    color: #eee
+  padding: 10px
+  font:
+    size: 11px
+
+
+div
+  .field
+    .actions
+      margin:
+        bottom: 10px
+
+
+td
+  vertical-align: top
+
+a
+  :text-decoration underline
+  :color blue
+  &:hover
+    :text-decoration none
+  img
+    :border 0px

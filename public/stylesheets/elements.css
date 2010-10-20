@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white; }
+
+table, body {
+  font-family: Arial;
+  font-size: 10pt;
+  color: #333333; }
+
+input, select, textarea {
+  border: 1px solid #555555;
+  background-color: #eeeeee;
+  padding: 2px;
+  margin: 2px; }
+
+pre {
+  background-color: #eeeeee;
+  padding: 10px;
+  font-size: 11px; }
+
+div .field .actions {
+  margin-bottom: 10px; }
+
+td {
+  vertical-align: top; }
+
+a {
+  text-decoration: underline;
+  color: blue; }
+  a:hover {
+    text-decoration: none; }
+  a img {
+    border: 0px; }

@@ -1,0 +1,10 @@
+%h1= t '.title'
+%p
+  = link_to t('back'), places_path
+  = link_to t('edit'), edit_place_path(@place)
+
+%dl
+  %dt= Place.human_attribute_name :title
+  %dd= @place.title
+  %dt= Place.human_attribute_name :draft
+  %dd= @place.draft
