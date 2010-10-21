@@ -144,7 +144,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_girl_rails
-  haml (~> 3.0.4)
+  haml (= 3.0.21)
   hpricot
   jquery-rails
   launchy
@@ -152,4 +152,4 @@ DEPENDENCIES
   rails (= 3.0.0)
   rspec-rails
   spork
-  will_paginate (~> 3.0.beta)
+  will_paginate (= 3.0.pre2)

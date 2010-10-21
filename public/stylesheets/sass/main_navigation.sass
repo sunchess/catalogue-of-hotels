@@ -1,0 +1,51 @@
+$acolor: #000222
+$current_color: #fff
+$bgcolor: $maincolor
+$border: 1px solid #555555
+
+#navigation_tab
+  border-bottom: 1px solid
+  margin: 0 -10px
+  padding: 0 10px
+
+  ul
+    list-style: none
+    display: block
+    margin: 0 0 -1px
+    padding: 0
+    overflow: hidden
+  li
+    float: left
+    display: inline
+    font-weight: bold
+    margin: 0 5px -1px 0
+    background-color: $bgcolor
+    border: $border
+    &:hover
+      background-color: $current_color
+      border-bottom-color: $current_color
+      border: $border
+
+
+    a
+      color: $acolor
+      padding: .3em .4em
+      text-decoration: none
+      display: block
+      color: #fff
+      &:hover
+        color: #000
+
+    .current
+      a
+        color: #000
+        background-color: $current_color
+        border-bottom-color: $current_color
+        &:hover
+          color: #000
+          background-color: $current_color
+          border-bottom-color: $current_color
+
+
+
+

@@ -1,7 +1,10 @@
 ru:
   places:
+    index:
+      title: "Места"
+      new_place: "Новое место"
     navigation: "Места"
-    title: "Места"
-    new_place: "Новое место"
+
+
     
       

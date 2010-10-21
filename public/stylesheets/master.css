@@ -27,8 +27,46 @@ td {
 
 a {
   text-decoration: underline;
-  color: blue; }
+  color: #006699; }
   a:hover {
     text-decoration: none; }
   a img {
     border: 0px; }
+
+#navigation_tab {
+  border-bottom: 1px solid;
+  margin: 0 -10px;
+  padding: 0 10px; }
+  #navigation_tab ul {
+    list-style: none;
+    display: block;
+    margin: 0 0 -1px;
+    padding: 0;
+    overflow: hidden; }
+  #navigation_tab li {
+    float: left;
+    display: inline;
+    font-weight: bold;
+    margin: 0 5px -1px 0;
+    background-color: #006699;
+    border: 1px solid #555555; }
+    #navigation_tab li:hover {
+      background-color: white;
+      border-bottom-color: white;
+      border: 1px solid #555555; }
+    #navigation_tab li a {
+      color: #000222;
+      padding: 0.3em 0.4em;
+      text-decoration: none;
+      display: block;
+      color: white; }
+      #navigation_tab li a:hover {
+        color: black; }
+    #navigation_tab li .current a {
+      color: black;
+      background-color: white;
+      border-bottom-color: white; }
+      #navigation_tab li .current a:hover {
+        color: black;
+        background-color: white;
+        border-bottom-color: white; }

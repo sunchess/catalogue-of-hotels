@@ -1,13 +1,14 @@
 ru:
   back: "Назад"
-  
+  access_denied: "Доступ запрещен"
+  actions: "Управление"
   users:
     hello: "Здравствуйте"
     send_password_instructions: "Выслать письмо"
     send_confirmation_instructions: "Выслать подтверждение еще раз"
     leave_blank: "оставьте пустым если не хотите менять"
     password_to_confirm: "введите текущий пароль для подтверждения"
-    links:        
+    links:
       new: "Регистрация" 
       edit: "Изменить"
       sign_up: 'Зарегистрироваться'
