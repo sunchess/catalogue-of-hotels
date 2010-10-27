@@ -9,6 +9,20 @@ table
   :font-size 10pt
   :color #333333
 
+@mixin tr-hover
+  background-color: #d6e9ff
+
+tr
+  .even
+    background-color: #e6e6fa
+    &:hover
+      @include tr-hover
+
+  .odd
+    background-color: #f7f7ff
+    &:hover
+      @include tr-hover
+
 
 input
   :border 1px solid #555555

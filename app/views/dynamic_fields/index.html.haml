@@ -1,0 +1,35 @@
+%h1= t('.title')
+#main_content
+  %p
+    = t(".fields_for")
+    \"
+    = @model.title
+    \"
+  -if @dynamic_fields.any?
+    %table{:cellspacing=>"1", :cellpadding=>"3", :id=>"dynamic-fields-table", :width=>"100%"}
+      %tr
+        %th= t("activerecord.attributes.dynamic_field.title")
+        %th= t(".draft")
+        %th= t("actions")
+        -for field in @dynamic_fields
+          %tr{:class=>cycle("even", "odd"), :id=>"field-#{field.id}" }
+            %td{:width=>"40%"}
+              = field.title
+            %td{:align=>"center"}
+              =  show_draft(field)
+            %td
+              = link_to t("edit"), edit_dynamic_model_dynamic_field_url(@model, field)
+              \|
+              = link_to t("destroy"), dynamic_model_dynamic_field_path(@model, field), :confirm => t("confirm"), :method=>:delete
+
+  -else
+    %p= t("no_records")
+
+#navigation
+  = link_to t('.new_fields'),   new_dynamic_model_dynamic_field_path(params[:dynamic_model_id])
+  %br
+  = link_to t('.change_order'), edit_order_dynamic_model_dynamic_fields_path(params[:dynamic_model_id])
+  %br
+  = link_to t('back'), :back
+  
+

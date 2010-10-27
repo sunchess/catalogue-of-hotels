@@ -1,0 +1,10 @@
+= form_for(@dynamic_model) do |f|
+  = render( :partial=>"layouts/errors_messages", :locals => { :target=>@dynamic_model})
+
+  .field
+    = f.label :title
+    %br
+    = f.text_field :title
+  %br
+  .actions
+    = f.submit

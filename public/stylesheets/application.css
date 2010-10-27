@@ -1,7 +1,7 @@
 
 
 #body{
-	width: 80%;
+	width: 60%;
 	margin: 0 auto 10px auto;
 }
 
@@ -24,35 +24,7 @@
 	padding: 10px;
 	
 }
-.notice{
-	background-color: #edffb2;
-	border:1px solid #d0ff56;
-	padding: 5px;
-	text-align: center;
-	width:  40%;
-	margin: 0 auto 0 auto;
-	
-}
 
-.error{
-	background-color: #ffd53d;
-	border:1px solid #3e0c0c;
-	padding: 5px;
-	text-align: center;
-	width:  40%;
-	margin: 0 auto 0 auto;
-	
-}
-
-.alert{
-	background-color: #ffd53d;
-	border:1px solid #3e0c0c;
-	padding: 5px;
-	text-align: center;
-	width:  40%;
-	margin: 0 auto 0 auto;
-
-}
 
 
 .field_with_errors {

@@ -3,6 +3,8 @@ class AddParentAndPositionToPlaces < ActiveRecord::Migration
     #act_as_tree and act_as_list
     add_column(:places, :parent_id,  :integer)
     add_column(:places, :position,  :integer, :null => false)
+    add_index(:places, :parent_id)
+    add_index(:places, :position)
   end
 
   def self.down

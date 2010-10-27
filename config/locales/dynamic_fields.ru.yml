@@ -1,0 +1,25 @@
+ru:
+  dynamic_fields:
+    successfully_create: "Поле создано"
+    successfully_update: "Поле отредактировано"
+    successfully_destroy: "Поле удалено"
+    draft: "Нет"
+    not_draft: "Да"
+    navigation: "Дин. поля"
+    index:
+      title: "Динамические поля"
+      new_dynamic_field: "Добавить поле"
+      new_model: "Добавить модель"
+      fields_for: "Поля для модели:"
+      new_fields: "Новое поле"
+      draft: "Показывать?"
+      change_order: "Поменять порядок"
+    new:
+      title: "Добавить поле для модели:"
+    edit:
+      title: "Редактировать поле для модели:"
+  activerecord:
+    attributes:
+      dynamic_field:
+        title: "Название поля"
+        draft: "Черновик(не выводить в форме)"

@@ -1,7 +1,6 @@
 class CreatePlaces < ActiveRecord::Migration
   def self.up
-    create_table :places do |t|
-      t.integer :region_id
+    create_table :models do |t|
       t.string :title
       t.boolean :draft
 
@@ -10,6 +9,6 @@ class CreatePlaces < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :places
+    drop_table :models
   end
 end

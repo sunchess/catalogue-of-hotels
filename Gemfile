@@ -11,6 +11,8 @@ gem "devise"
 gem "hpricot"
 gem "haml", "3.0.21"
 gem 'will_paginate', '3.0.pre2'
+gem "acts_as_list"
+gem "acts_as_tree"
 
 
 
@@ -37,9 +39,8 @@ group :development, :test do
   
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'cucumber-rails'
-  gem 'cucumber'
-  gem 'rspec-rails'
+  gem 'steak', '>= 1.0.0.rc.1'
+  gem 'rspec-rails', '2.0.1'
   gem 'spork'
   gem 'launchy'
   gem 'factory_girl_rails'

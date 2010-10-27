@@ -2,6 +2,12 @@ ru:
   back: "Назад"
   access_denied: "Доступ запрещен"
   actions: "Управление"
+  no_records: "Нет записей"
+  error: "Не известная ошибка"
+  confirm: "Уверенны?"
+  edit: "Редактировать"
+  destroy: "Удалить"
+
   users:
     hello: "Здравствуйте"
     send_password_instructions: "Выслать письмо"

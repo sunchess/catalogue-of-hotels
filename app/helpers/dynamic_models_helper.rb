@@ -1,0 +1,2 @@
+module DynamicModelsHelper
+end

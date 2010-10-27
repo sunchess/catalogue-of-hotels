@@ -8,6 +8,15 @@ table, body {
   font-size: 10pt;
   color: #333333; }
 
+tr .even {
+  background-color: #e6e6fa; }
+  tr .even:hover {
+    background-color: #d6e9ff; }
+tr .odd {
+  background-color: #f7f7ff; }
+  tr .odd:hover {
+    background-color: #d6e9ff; }
+
 input, select, textarea {
   border: 1px solid #555555;
   background-color: #eeeeee;
@@ -62,11 +71,27 @@ a {
       color: white; }
       #navigation_tab li a:hover {
         color: black; }
-    #navigation_tab li .current a {
+  #navigation_tab .current a {
+    color: black;
+    background-color: white;
+    border-bottom-color: white; }
+    #navigation_tab .current a:hover {
       color: black;
       background-color: white;
       border-bottom-color: white; }
-      #navigation_tab li .current a:hover {
-        color: black;
-        background-color: white;
-        border-bottom-color: white; }
+
+.notice {
+  background-color: #edffb2;
+  border: 1px solid #d0ff56;
+  padding: 5px;
+  text-align: center;
+  width: 40%;
+  margin: 0 auto 0 auto; }
+
+.error, .alert {
+  background-color: #ffd53d;
+  border: 1px solid #3e0c0c;
+  padding: 5px;
+  text-align: center;
+  width: 40%;
+  margin: 0 auto 0 auto; }

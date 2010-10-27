@@ -1,0 +1,22 @@
+%h1= t('.title')
+#main_content
+  - if @dynamic_models.any?
+    %table{:cellspacing=>"1", :cellpadding=>"3", :id=>"dynamic-models-table"}
+      %tr
+        %th= t("activerecord.attributes.dynamic_model.title")
+        %th= t("actions")
+      - for model in @dynamic_models
+        %tr{:class=>cycle("even", "odd"), :id=>"model-#{model.id}" }
+          %td= model.title
+          %td
+            = link_to t(".dynamic_fields"), dynamic_model_dynamic_fields_path(model)
+            \|
+            = link_to t("edit"), edit_dynamic_model_url(model)
+            \|
+            = link_to t("destroy"), dynamic_model_path(model), :confirm => t("confirm"), :method=>:delete
+
+  - else
+    %p= t("no_records")
+  
+#navigation
+  = link_to t('.new_model'),   new_dynamic_model_path

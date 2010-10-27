@@ -1,6 +1,23 @@
 CatalogueOfHotels::Application.routes.draw do
-  #get "home/index"
+  get "dynamic_models/index"
 
+  get "dynamic_models/new"
+
+  get "dynamic_models/edit"
+
+  get "dynamic_fields/index"
+
+  get "dynamic_fields/new"
+
+  #get "home/index"
+  resources :dynamic_models do
+    resources :dynamic_fields do
+       collection do
+         get 'edit_order'
+       end
+    end
+
+  end
   resources :places
 
   devise_for :users

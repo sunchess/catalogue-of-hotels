@@ -1,20 +1,20 @@
 /*
 Syntax error: Undefined variable: "$maincolor".
-        on line 45 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/elements.sass
+        on line 59 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/elements.sass
 
-40: td
-41:   vertical-align: top
-42: 
-43: a
-44:   :text-decoration underline
-45:   :color $maincolor
-46:   &:hover
-47:     :text-decoration none
-48:   img
-49:     :border 0px
+54: td
+55:   vertical-align: top
+56: 
+57: a
+58:   :text-decoration underline
+59:   :color $maincolor
+60:   &:hover
+61:     :text-decoration none
+62:   img
+63:     :border 0px
 
 Backtrace:
-/home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/elements.sass:45
+/home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/elements.sass:59
 /usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/script/variable.rb:39:in `_perform'
 /usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/script/node.rb:61:in `perform'
 /usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/prop_node.rb:132:in `perform!'
@@ -102,4 +102,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$maincolor\".\A         on line 45 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/elements.sass\A \A 40: td\A 41:   vertical-align: top\A 42: \A 43: a\A 44:   :text-decoration underline\A 45:   :color $maincolor\A 46:   &:hover\A 47:     :text-decoration none\A 48:   img\A 49:     :border 0px"; }
+  content: "Syntax error: Undefined variable: \"$maincolor\".\A         on line 59 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/elements.sass\A \A 54: td\A 55:   vertical-align: top\A 56: \A 57: a\A 58:   :text-decoration underline\A 59:   :color $maincolor\A 60:   &:hover\A 61:     :text-decoration none\A 62:   img\A 63:     :border 0px"; }

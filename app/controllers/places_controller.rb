@@ -41,7 +41,7 @@ class PlacesController < ApplicationController
   # POST /places
   # POST /places.xml
   def create
-    @place = Place.new(params[:place])
+    @place = Place.new(params[:model])
 
     respond_to do |format|
       if @place.save
@@ -60,7 +60,7 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
 
     respond_to do |format|
-      if @place.update_attributes(params[:place])
+      if @place.update_attributes(params[:model])
         format.html { redirect_to(@place, :notice => 'Place was successfully updated.') }
         format.xml  { head :ok }
       else

@@ -7,6 +7,9 @@
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path(File.dirname(__FILE__) + '/../../config/environment')
 
+require "factory_girl/step_definitions"
+Dir[Rails.root.join("spec/support/factories/**/*.rb")].each {|f| require f}
+
 require 'cucumber/formatter/unicode' # Remove this line if you don't want Cucumber Unicode support
 require 'cucumber/rails/rspec'
 require 'cucumber/rails/world'
@@ -55,4 +58,8 @@ if defined?(ActiveRecord::Base)
     DatabaseCleaner.strategy = :truncation
   rescue LoadError => ignore_if_database_cleaner_not_present
   end
+end
+
+def t(text)
+  I18n.t(text)
 end

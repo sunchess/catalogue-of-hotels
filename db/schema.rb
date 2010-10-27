@@ -10,17 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101018163543) do
+ActiveRecord::Schema.define(:version => 20101022162358) do
 
   create_table "dynamic_fields", :force => true do |t|
+    t.integer "dynamic_model_id"
     t.string  "title"
     t.string  "permalink"
-    t.integer "fieldship_id"
-    t.string  "fieldship_type"
+    t.integer "position"
+    t.boolean "draft"
   end
 
-  add_index "dynamic_fields", ["fieldship_id"], :name => "index_dynamic_fields_on_fieldship_id"
-  add_index "dynamic_fields", ["fieldship_type"], :name => "index_dynamic_fields_on_fieldship_type"
+  add_index "dynamic_fields", ["dynamic_model_id"], :name => "index_dynamic_fields_on_dynamic_model_id"
+
+  create_table "dynamic_models", :force => true do |t|
+    t.string "title"
+  end
 
   create_table "fields_dynamic_fields", :force => true do |t|
     t.integer "dynamic_field_id"
@@ -33,18 +37,16 @@ ActiveRecord::Schema.define(:version => 20101018163543) do
   add_index "fields_dynamic_fields", ["dynamic_type"], :name => "index_fields_dynamic_fields_on_dynamic_type"
 
   create_table "places", :force => true do |t|
-    t.integer  "region_id"
     t.string   "title"
     t.boolean  "draft"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
+    t.integer  "position",   :null => false
   end
 
-  create_table "regions", :force => true do |t|
-    t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+  add_index "places", ["parent_id"], :name => "index_places_on_parent_id"
+  add_index "places", ["position"], :name => "index_places_on_position"
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false

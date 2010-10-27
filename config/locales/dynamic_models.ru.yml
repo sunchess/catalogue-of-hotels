@@ -1,0 +1,25 @@
+ru:
+  dynamic_models:
+    successfully_create: "Модель создана"
+    successfully_update: "Модель отредактрована"
+    successfully_destroy: "Модель удалена"
+    index:
+      title: "Динамические модели"
+      new_model: "Новая модель"
+      new_dynamic_field: "Добавить поля"
+      dynamic_fields: "Динамические поля"
+
+
+    new:
+      title: "Добавить модель"
+
+    edit:
+      title: "Редактировать модель"
+
+  activerecord:
+    errors:
+      not_model_name: "должно быть имя модели"
+    attributes:
+      dynamic_model:
+        title: "Название"
+      

@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe PlacesController do
+  login_admin
 
   def mock_place(stubs={})
     @mock_place ||= mock_model(Place, stubs).as_null_object

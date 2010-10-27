@@ -1,0 +1,7 @@
+%h1
+  = t '.title'
+  = @model.title
+#main_content
+  = render 'form'
+#navigation
+  = link_to t('back'), :back
