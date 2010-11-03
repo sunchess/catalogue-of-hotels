@@ -13,6 +13,7 @@ gem "haml", "3.0.21"
 gem 'will_paginate', '3.0.pre2'
 gem "acts_as_list"
 gem "acts_as_tree"
+gem "geokit"
 
 
 

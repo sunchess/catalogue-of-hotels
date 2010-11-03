@@ -18,6 +18,9 @@ ru:
       title: "Добавить поле для модели:"
     edit:
       title: "Редактировать поле для модели:"
+    edit_order:
+      title: "Поменять порядок полей в форме"
+
   activerecord:
     attributes:
       dynamic_field:

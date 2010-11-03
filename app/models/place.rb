@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101022162358
+# Schema version: 20101101133212
 #
 # Table name: places
 #
@@ -13,11 +13,15 @@
 #
 
 class Place < ActiveRecord::Base
-  belongs_to :region
-  has_many :dfields, :as=>:relationship, :class_name=>"DynamicField"
-  has_many :fields_dynamic_fields, :as=>:dynamic
+  acts_as_tree
+  acts_as_list
+
+  has_many :fields_dynamic_fields, :as=>:dynamic, :dependent => :destroy
   has_many :dynamic_fields, :through=>:fields_dynamic_fields
-  
-  attr_accessible :title, :draft
+  has_one  :coordinate, :as=>:mapable, :class_name=>"Map"
+  validates_uniqueness_of :title, :scope => :parent_id
+  validates_presence_of :title
+
+  attr_accessible :title, :parent_id, :draft, :position
   
 end

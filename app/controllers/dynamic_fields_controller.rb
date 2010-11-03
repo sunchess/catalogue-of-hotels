@@ -1,11 +1,12 @@
 class DynamicFieldsController < ApplicationController
   load_and_authorize_resource
   before_filter :find_model
-  caches_action :index
+  caches_action :index, :edit_order
   before_filter :delete_cache, :only=>[:create, :update, :destroy]
+  before_filter :delete_cache_order, :only => [:update_order]
   
   def index
-    @dynamic_fields = DynamicField.where({:dynamic_model_id=>params[:dynamic_model_id]}).paginate(:page=>params[:page])
+    @dynamic_fields = DynamicField.where({:dynamic_model_id=>params[:dynamic_model_id]}).order("position").paginate(:page=>params[:page])
   end
 
   def new
@@ -44,11 +45,25 @@ class DynamicFieldsController < ApplicationController
   end
 
   def edit_order
-    #render edit_order 
+    if can? :update, DynamicField
+      @dynamic_fields = DynamicField.where({:dynamic_model_id=>params[:dynamic_model_id]}).order("position")
+    else
+      raise CanCan::AccessDenied
+    end
+
   end
 
   def update_order
-
+    if can? :update, DynamicField
+      @dynamic_fields = DynamicField.where({:dynamic_model_id=>params[:dynamic_model_id]}).order("position")
+      order = params[:field]
+      order.each_with_index do |id, idx|
+       DynamicField.list_order(idx, id, @model.id)
+      end
+    else
+      raise CanCan::AccessDenied
+    end
+    render :text => ""
   end
 
   private
@@ -58,6 +73,10 @@ class DynamicFieldsController < ApplicationController
 
   def delete_cache
     expire_action :index
+  end
+
+  def delete_cache_order
+    expire_action :edit_order
   end
 
 end

@@ -1,0 +1,9 @@
+notice = if @map.new_record?
+            t('places.maps.marker.errors')
+         else
+            t('places.maps.marker.successfully_create')
+         end
+page << "$('#notice').show();"
+page << "$('#notice').text(\"#{escape_javascript(notice)}\")"
+
+

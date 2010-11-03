@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101022162358
+# Schema version: 20101101133212
 #
 # Table name: dynamic_models
 #
@@ -9,7 +9,7 @@
 
 class DynamicModel < ActiveRecord::Base
 
-  has_many :dynamic_fields, :dependent => :destroy
+  has_many :dynamic_fields, :dependent => :destroy, :order=>"position", :conditions=>{:draft=>false}
 
   validates :title, :length=>{:minimum=>3}, :uniqueness=>true
   validate :must_be_model_name

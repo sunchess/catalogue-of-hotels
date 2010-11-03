@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101022162358) do
+ActiveRecord::Schema.define(:version => 20101101133212) do
 
   create_table "dynamic_fields", :force => true do |t|
     t.integer "dynamic_model_id"
@@ -36,13 +36,26 @@ ActiveRecord::Schema.define(:version => 20101022162358) do
   add_index "fields_dynamic_fields", ["dynamic_id"], :name => "index_fields_dynamic_fields_on_dynamic_id"
   add_index "fields_dynamic_fields", ["dynamic_type"], :name => "index_fields_dynamic_fields_on_dynamic_type"
 
+  create_table "maps", :force => true do |t|
+    t.float    "lat"
+    t.float    "lng"
+    t.integer  "zoom"
+    t.integer  "mapable_id"
+    t.string   "mapable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "maps", ["mapable_id"], :name => "index_maps_on_mapable_id"
+  add_index "maps", ["mapable_type"], :name => "index_maps_on_mapable_type"
+
   create_table "places", :force => true do |t|
     t.string   "title"
     t.boolean  "draft"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_id"
-    t.integer  "position",   :null => false
+    t.integer  "position"
   end
 
   add_index "places", ["parent_id"], :name => "index_places_on_parent_id"

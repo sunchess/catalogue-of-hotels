@@ -1,0 +1,134 @@
+
+<script type="text/javascript">
+
+
+var map = null;
+var geocoder = null;
+var curlat=0, curlng=0;
+var curlatlng=null;
+var curZoom=0;
+function modesimg(){
+    if (GBrowserIsCompatible()){
+    curlatlng=map.getCenter();
+    curlat=curlatlng.lat();
+    curlng=curlatlng.lng();
+    curZoom=map.getZoom();
+    /*map = new GMap2(document.getElementById("map"),{draggableCursor:"default"});*/
+    map.setCenter(new GLatLng(curlat, curlng),curZoom, G_SATELLITE_MAP);
+    geocoder = new GClientGeocoder();
+    var map_ctrl=new GLargeMapControl();
+    /*var map_type_ctrl=new GMapTypeControl();*/
+    var map_scale_ctrl=new GScaleControl();
+    /* var map_over_ctrl=new GOverviewMapControl(); */
+    map.addControl(map_ctrl);
+    /*map.addControl(map_type_ctrl);*/
+    map.addControl(map_scale_ctrl);
+    /* map.addControl(map_over_ctrl); GEvent.addListener(map, "click", getAddress);*/
+    GEvent.addListener(map, "mousemove", mousemv);
+    GEvent.addListener(map, "click", mouseclck);
+    }
+}
+function modemaps(){
+    if (GBrowserIsCompatible()){
+        curlatlng=map.getCenter();
+        curlat=curlatlng.lat();
+        curlng=curlatlng.lng();
+        curZoom=map.getZoom();
+        /* map = new GMap2(document.getElementById("map"),{draggableCursor:"default"});*/
+        map.setCenter(new GLatLng(curlat, curlng),curZoom, G_NORMAL_MAP);
+        geocoder = new GClientGeocoder();
+        var map_ctrl=new GLargeMapControl();
+        /*var map_type_ctrl=new GMapTypeControl();*/
+        var map_scale_ctrl=new GScaleControl();
+        /* var map_over_ctrl=new GOverviewMapControl(); */
+        map.addControl(map_ctrl);
+        /*map.addControl(map_type_ctrl);*/
+        map.addControl(map_scale_ctrl);
+        /* map.addControl(map_over_ctrl); */
+        GEvent.addListener(map, "mousemove", mousemv);
+        GEvent.addListener(map, "click", mouseclck);}
+}
+function modecombine(){
+    if (GBrowserIsCompatible()){
+        if (curlat==0&&curlng==0){
+            curlat=40.77721353196131; curlng=-80.00244140625; curZoom=8;
+        }else{
+            curlatlng=map.getCenter();
+            curlat=curlatlng.lat();
+            curlng=curlatlng.lng();
+            curZoom=map.getZoom();
+        }
+        map = new GMap2(document.getElementById("map"),{draggableCursor:"default"});
+        map.setCenter(new GLatLng(curlat,curlng),curZoom, G_HYBRID_MAP);
+        geocoder = new GClientGeocoder();
+        var map_ctrl=new GLargeMapControl();
+        /*var map_type_ctrl=new GMapTypeControl();*/
+        var map_scale_ctrl=new GScaleControl();
+        /* var map_over_ctrl=new GOverviewMapControl(); */
+        map.addControl(map_ctrl);
+        /*map.addControl(map_type_ctrl);*/
+        map.addControl(map_scale_ctrl);
+        /* map.addControl(map_over_ctrl); */
+        GEvent.addListener(map, "mousemove", mousemv);
+        GEvent.addListener(map, "click", mouseclck);}
+}
+function mousemv(latlng){
+    if (latlng!=null){
+        lt=latlng.lat();
+        lg=latlng.lng();
+        document.cpform.lat.value=lt;
+        document.cpform.lng.value=lg;}
+}
+
+function mouseclck(overlay,latlng){
+    var zm=0;
+    if (latlng!=null){
+        document.cpform.addr.value="wait ...";
+        lt=latlng.lat();
+        lg=latlng.lng();
+        zm=map.getZoom();
+        document.cpform.rmblat.value=lt;
+        document.cpform.rmblng.value=lg;
+        document.cpform.czoom.value=zm;
+        address=latlng;geocoder.getLocations(latlng,addrview);}
+}
+
+function showAddress(address) {
+    if (geocoder) {geocoder.getLatLng(address,function(point){
+        if (!point){
+            alert("To increase a scale or map is yet loaded (wait a few seconds)");
+        }else{
+            map.setCenter(point,15);
+            curZoom=map.getZoom();
+            var marker = new GMarker(point);
+            map.addOverlay(marker);
+            marker.openInfoWindowHtml(address);}
+    });}
+}
+
+function showAddress2(address,marktext,distance){
+    if (geocoder){
+        geocoder.getLatLng(address,function(point){
+            if (!point){
+                alert("To increase a scale or map is yet loaded (wait a few seconds)");
+            }else{
+                map.setCenter(point, distance);
+                var marker = new GMarker(point);
+                map.addOverlay(marker);
+                marker.openInfoWindowHtml(marktext);}
+        });
+    }
+}
+
+function addrview(response){
+    place=response.Placemark[0];
+    document.cpform.addr.value=place.address;
+}
+
+function fulltime(){
+    var time=new Date();
+    document.clock.full.value=time.toLocaleString();
+    setTimeout('fulltime()',500)
+}
+
+</script>

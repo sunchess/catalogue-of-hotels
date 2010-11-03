@@ -1,10 +1,26 @@
-%h1= t '.title'
-%p
-  = link_to t('back'), places_path
-  = link_to t('edit'), edit_place_path(@place)
+- content_for :maps do
+  = render :partial => "maps_header"
+%h1
+  = t '.title'
+  = @place.title
 
-%dl
-  %dt= Place.human_attribute_name :title
-  %dd= @place.title
-  %dt= Place.human_attribute_name :draft
-  %dd= @place.draft
+#main_content
+  - if !@gg_locate.success
+    .error
+      = t('.not_found_place')
+  %br
+  = render :partial => "maps_div"
+  %br
+  - if can?(:edit, Place)
+    = render :partial => "places/maps/form"
+
+  %br
+  Гостиницы по месту
+  %br
+  статьи итп
+
+#navigation
+  = link_to t('back'), places_path
+  - if can?(:edit, Place)
+    %br
+    = link_to t('edit'), edit_place_path(@place)

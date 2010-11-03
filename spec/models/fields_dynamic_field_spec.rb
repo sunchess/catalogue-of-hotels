@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101022162358
+# Schema version: 20101101133212
 #
 # Table name: fields_dynamic_fields
 #
@@ -12,5 +12,10 @@
 require 'spec_helper'
 
 describe FieldsDynamicField do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should have a record" do
+    @field = Factory.build(:dynamic_field)
+    @place = Factory(:place)
+    @place.dynamic_fields << @field
+    FieldsDynamicField.should have(1).record
+  end
 end

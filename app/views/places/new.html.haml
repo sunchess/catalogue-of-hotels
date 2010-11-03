@@ -1,3 +1,6 @@
 %h1= t '.title'
-%p= link_to t('back'), places_path
-= render 'form'
+#main_content
+  = render 'form'
+#navigation
+  %p= link_to t('back'), :back
+

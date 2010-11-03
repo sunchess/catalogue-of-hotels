@@ -1,18 +1,43 @@
 %h1= t('.title')
-%p= link_to t('.new_place'), new_place_path
 
-%table
-  %thead
-    %tr
-      %th= Place.human_attribute_name :title
-      %th= Place.human_attribute_name :draft
-      %th{:colspan => 3}= t 'actions'
-  
-  %tbody
-    - for place in @places
-      %tr{ :class => cycle(:odd, :even) }
-        %td= place.title
-        %td= place.draft
-        %td.action= link_to t('show'), place
-        %td.action= link_to t('edit'), edit_place_path(place)
-        %td.action= link_to t('destroy'), place, :confirm => t('are_you_sure'), :method => :delete
+#places
+  -@places.in_groups_of(3, false) do |group|
+    %div
+      -group.each do |place|
+        %ul{:style=>"float:left"}
+          %li{:class=>draft_record?(place), :title=>place.draft ? t('.draft') : nil}
+            = link_to place.title, place_path(place), :class=>"title"
+            %br
+            -if can?(:edit, Place)
+              = link_to t('edit'), edit_place_path(place)
+
+            -if can?(:delete, Place)
+              = link_to t('destroy'), place, :confirm => t('confirm'), :method => :delete
+            -if place.children
+              %ul
+                - place.children.each do |child|
+                  %li{:class=>"child"}
+                    = link_to child.title, place_path(child)
+                    %br
+                    -if can?(:edit, Place)
+                      = link_to t('edit'), edit_place_path(child)
+
+                    -if can?(:delete, Place)
+                      = link_to t('destroy'), child, :confirm => t('confirm'), :method => :delete
+    %br{:style=>"clear:both"}
+
+
+
+
+-if can?(:create, Place)
+  %div{:style=>"clear:both"}
+    %p= t('.new_place_info')
+    %p= link_to t('.new_place'), new_place_path
+
+%script
+  //<![CDATA[
+  $(function(){
+  $(".tooltips").tipTip({defaultPosition: 'top'});
+  });
+  //]]>
+

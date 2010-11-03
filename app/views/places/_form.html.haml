@@ -1,14 +1,28 @@
 = form_for(@place) do |f|
   = render( :partial=>"layouts/errors_messages", :locals => { :target=>@place })
-  
+
+  .field
+    = f.label :parent_id
+    %br
+    = f.select(:parent_id, @parents.collect{|p| [ p.title, p.id ] }, {:include_blank => '---'})
   .field
     = f.label :title
     %br
     = f.text_field :title
+  - if can?(:manage, Place)
+    .field
+      = f.check_box :draft
+      = f.label :draft
+  %br
   .field
-    = f.label :draft
+    %b
+      = t('.dynamic_fields')
     %br
-    = f.check_box :draft
+    -for field in @dynamic_fields
+      = check_box_tag("fields[#{field.permalink}]", "1", (!@place.new_record? and @place.dynamic_fields.include?(field)) ? true : false)
+      = label_tag "fields[#{field.permalink}]", field.title
 
+      %br
+  %br
   .actions
     = f.submit

@@ -1,84 +1,103 @@
+include Geokit::Geocoders
+
 class PlacesController < ApplicationController
    load_and_authorize_resource
-  # GET /places
-  # GET /places.xml
+   caches_action :index
+   before_filter :delete_cache, :only=>[:update, :create, :destroy]
+   before_filter :find_parents_and_fields, :only=>[:new, :edit, :create, :update]
+
+
   def index
-    @places = Place.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @places }
+    if can?(:manage, Place)
+      @places = Place.where(:parent_id=>nil).includes([:children]).order(:position)
+    else
+      @places = Place.where(:parent_id=>nil, :draft=>false).includes([:children]).order(:position)
     end
   end
 
-  # GET /places/1
-  # GET /places/1.xml
   def show
-    @place = Place.find(params[:id])
+    geo_place =  if @place.parent
+                  "#{@place.title}, #{@place.parent.title}"
+                else
+                  @place.title
+                end
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @place }
+    @gg_locate = GoogleGeocoder.geocode(geo_place)
+    @place_map = GMap.new("map")
+    @place_map.control_init(:large_map => true, :map_type => true)
+    @map = Map.new
+
+    if @place.coordinate
+      coordinates = [@place.coordinate.lat, @place.coordinate.lng]
+      @place_map.center_zoom_init(coordinates, @place.coordinate.zoom)
+      @place_map.overlay_init(GMarker.new(coordinates, :title => geo_place, :info_window => geo_place))
+    elsif @gg_locate.success
+      coordinates = [@gg_locate.lat, @gg_locate.lng]
+      @place_map.center_zoom_init(coordinates, 7)
+      @place_map.overlay_init(GMarker.new(coordinates, :title => geo_place, :info_window => geo_place))
+    else
+      @place_map.center_zoom_init([44.465151,40.935547], 6)
     end
+
   end
 
-  # GET /places/new
-  # GET /places/new.xml
+
   def new
     @place = Place.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @place }
-    end
   end
 
-  # GET /places/1/edit
+
   def edit
     @place = Place.find(params[:id])
   end
 
-  # POST /places
-  # POST /places.xml
   def create
-    @place = Place.new(params[:model])
+    @place = Place.new(params[:place])
+    @place.draft = true
 
-    respond_to do |format|
-      if @place.save
-        format.html { redirect_to(@place, :notice => 'Place was successfully created.') }
-        format.xml  { render :xml => @place, :status => :created, :location => @place }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @place.errors, :status => :unprocessable_entity }
-      end
+    if @place.save
+      params[:fields].each do |field|
+        @place.dynamic_fields << DynamicField.find_by_permalink(field)
+      end if params[:fields]
+
+      redirect_to place_path(@place), :notice=>t('places.successfully_create')
+    else
+      render :action => "new"
     end
   end
 
-  # PUT /places/1
-  # PUT /places/1.xml
   def update
-    @place = Place.find(params[:id])
-
-    respond_to do |format|
-      if @place.update_attributes(params[:model])
-        format.html { redirect_to(@place, :notice => 'Place was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @place.errors, :status => :unprocessable_entity }
-      end
+    if @place.update_attributes(params[:place])
+      params[:fields].each do |field|
+        @place.dynamic_fields << DynamicField.find_by_permalink(field)
+      end if params[:fields]
+      redirect_to(@place, :notice => t('places.successfully_update'))
+    else
+      render :action => "edit"
     end
   end
 
-  # DELETE /places/1
-  # DELETE /places/1.xml
+
   def destroy
-    @place = Place.find(params[:id])
     @place.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(places_url) }
-      format.xml  { head :ok }
-    end
+    redirect_to(places_url, :notice => t('places.successfully_destroy'))
   end
+
+private
+  def find_parents_and_fields
+    @parents = Place.where({:draft=>false}).order("parent_id, position").all
+
+    model = DynamicModel.where(:title=>"Place").first
+    @dynamic_fields = if model.dynamic_fields.any?
+                        model.dynamic_fields
+                      else
+                        Array.new
+                      end
+   end
+
+   def delete_cache
+     expire_action :index
+   end
+
+
 end

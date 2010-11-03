@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101022162358
+# Schema version: 20101101133212
 #
 # Table name: dynamic_fields
 #
@@ -8,6 +8,7 @@
 #  title            :string(255)
 #  permalink        :string(255)
 #  position         :integer
+#  draft            :boolean
 #
 
 require 'spec_helper'
@@ -19,7 +20,7 @@ describe DynamicField do
 
   it "should be valid and access on title" do
     @field.should be_valid
-    @field.should accessible_attributes(:title, :position)
+    @field.should accessible_attributes(:title, :position, :draft)
   end
 
   it "should have dynamic model" do
@@ -35,7 +36,6 @@ describe DynamicField do
 
   it "should have permalink" do
     @field.save!
-    p @field
     @field.permalink.should eq("has_one_room")
   end
 end

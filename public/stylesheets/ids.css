@@ -1,0 +1,9 @@
+#places a.title {
+  font-weight: bold; }
+#places li.child {
+  display: block;
+  margin: 3px -4px 0px -30px;
+  padding: 0;
+  overflow: hidden; }
+#places .draft {
+  color: red; }

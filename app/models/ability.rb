@@ -7,6 +7,9 @@ class Ability
     if user.role? :admin
       can :manage, :all
     else
+      if user.confirmed_at #is real user
+        can :create, Place
+      end
       can :read, :all
       #can :create, Comment
       #can :update, Comment do |comment|

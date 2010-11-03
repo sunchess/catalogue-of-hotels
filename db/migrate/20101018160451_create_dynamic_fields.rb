@@ -10,6 +10,7 @@ class CreateDynamicFields < ActiveRecord::Migration
     end
 
     add_index(:dynamic_fields, :dynamic_model_id)
+    add_index(:dynamic_fields, :permalink)
   end
 
   def self.down

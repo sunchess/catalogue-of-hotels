@@ -1,11 +1,41 @@
 ru:
   places:
+    successfully_create: "Место создано. После модерации оно появиться в списке"
+    successfully_update: "Место отредактировано"
+    successfully_destroy: "Место удалено"
     navigation: "Места"
+
     index:
       title: "Места"
       new_place: "Новое место"
+      new_place_info: "Если вы не нашли город или населенный пункт где рассположена гостиница, то вы можете его добавить"
+      draft: "Не отображается у пользователей"
     new:
       title: "Новое место"
+    form:
+      dynamic_fields: "Параметры для географических мест:"
+    edit:
+      title: "Редактировать место"
+    show:
+      title: "Место:"
+      not_found_place: "Место не найдено"
+    maps:
+      form:
+        create_marker: "Создать маркер для этого места <br> (кликните по карте чтобы координаты появились в форме)"
+      marker:
+        successfully_create: "Маркер создан"
+        errors: "Допущены ошибки при заполнении, проверьте правильность данных"
+
+  activerecord:
+    attributes:
+      place:
+        title: "Название поля"
+        draft: "Черновик"
+        parent_id: "Входит в"
+      map:
+        lat: "Широта"
+        lng: "Долгота"
+        zoom: "Приближение"
 
 
 

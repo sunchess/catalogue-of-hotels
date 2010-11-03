@@ -6,10 +6,10 @@ Syntax error: Undefined variable: "$maincolor".
 2: $current_color: #fff
 3: $bgcolor: $maincolor
 4: $border: 1px solid #555555
-5: 
-6: #navigation_tab
-7:   border-bottom: 1px solid
-8:   margin: 0 -10px
+5: $border_navigation: 1px solid #fff555
+6: 
+7: #navigation_tab
+8:   border-bottom: 1px solid
 
 Backtrace:
 /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/main_navigation.sass:3
@@ -90,4 +90,4 @@ script/rails:6
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$maincolor\".\A         on line 3 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/main_navigation.sass\A \A 1: $acolor: #000222\A 2: $current_color: #fff\A 3: $bgcolor: $maincolor\A 4: $border: 1px solid #555555\A 5: \A 6: #navigation_tab\A 7:   border-bottom: 1px solid\A 8:   margin: 0 -10px"; }
+  content: "Syntax error: Undefined variable: \"$maincolor\".\A         on line 3 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/main_navigation.sass\A \A 1: $acolor: #000222\A 2: $current_color: #fff\A 3: $bgcolor: $maincolor\A 4: $border: 1px solid #555555\A 5: $border_navigation: 1px solid #fff555\A 6: \A 7: #navigation_tab\A 8:   border-bottom: 1px solid"; }

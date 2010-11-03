@@ -1,3 +1,11 @@
+#field-list li {
+  list-style-type: none; }
+  #field-list li .handle {
+    cursor: move; }
+#field-list div {
+  margin-top: 10px;
+  padding-left: 7px; }
+
 body {
   margin: 0;
   padding: 0;
@@ -95,3 +103,13 @@ a {
   text-align: center;
   width: 40%;
   margin: 0 auto 0 auto; }
+
+#places a.title {
+  font-weight: bold; }
+#places li.child {
+  display: block;
+  margin: 3px -4px 0px -30px;
+  padding: 0;
+  overflow: hidden; }
+#places .draft {
+  color: red; }
