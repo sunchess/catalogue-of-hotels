@@ -6,7 +6,7 @@ class DynamicFieldsController < ApplicationController
   before_filter :delete_cache_order, :only => [:update_order]
   
   def index
-    @dynamic_fields = DynamicField.where({:dynamic_model_id=>params[:dynamic_model_id]}).order("position").paginate(:page=>params[:page])
+    @dynamic_fields = DynamicField.where({:dynamic_model_id=>@model.id}).order("position").paginate(:page=>params[:page])
   end
 
   def new
@@ -40,7 +40,7 @@ class DynamicFieldsController < ApplicationController
       redirect_to dynamic_model_dynamic_fields_path(@model), :notice => t('dynamic_fields.successfully_destroy')
     else
       flash[:error] = t("error")
-      redirect_to dynamic_model_dynamic_fields_path(@model), :notice => t('dynamic_fields.successfully_destroy')
+      redirect_to dynamic_model_dynamic_fields_path(@model)
     end
   end
 

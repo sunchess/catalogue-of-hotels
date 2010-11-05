@@ -28,8 +28,9 @@ RSpec.configure do |config|
   config.include RspecAttributesAccessible # lib/rspec_attributes_accessible.rb
   config.include Devise::TestHelpers, :type => :controller
   config.extend ControllerMacros, :type => :controller
-
 end
+
+
 
 
 

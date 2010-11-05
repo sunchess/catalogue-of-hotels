@@ -11,10 +11,6 @@ describe "Places" do
     it "works!" do
       get dynamic_models_path
     end
-
-    it "dynamic_models_dynamic_fields_path" do
-      #get dynamic_models_dynamic_fields_path
-    end
   end
 
 end

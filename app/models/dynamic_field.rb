@@ -31,10 +31,10 @@ class DynamicField < ActiveRecord::Base
   end
 
   def self.list_order(idx, id, model_id)
-  update_all(
-    ['position=?', idx+1],
-    {:dynamic_model_id=>model_id, :id => id }
-  )
-end
+    update_all(
+      ['position=?', idx+1],
+      {:dynamic_model_id=>model_id, :id => id }
+    )
+  end
 
 end

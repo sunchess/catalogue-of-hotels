@@ -1,41 +1,73 @@
 require 'spec_helper'
+require 'controllers_helper'
 
 describe PlacesController do
+  render_views
   login_admin
 
-  def mock_place(stubs={})
-    @mock_place ||= mock_model(Place, stubs).as_null_object
+  def main_model
+    Place
+  end
+
+  def valid_params
+    {"title"=>"Сочи", "draft"=>"1"}
+  end
+
+  def update_valid_params
+    {"title"=>"Туапсе", "draft"=>"0"}
+  end
+
+  def not_valid_params
+    {"title"=>"", "draft"=>"0"}
+  end
+
+
+  def mock_store(stubs={})
+    @mock_store ||= mock_model(main_model, stubs.update(:title=>"Краснодарский край", :draft=>false, :parent=>nil, :parent_id=>nil ))
+  end
+
+  before do
+    @model = mock_model(DynamicModel, :title=>"Place")
+    DynamicModel.stub(:find_by_title){@model}
+    @model.stub(:id){1}
+    @field = mock_model(DynamicField, :title=>"Трансфер до места", :draft=>false, :permalink=>"transfer_do_mesta")
+    @model.stub(:dynamic_fields){[@field]}
+    @map = mock_model(Map, :lat=>34.345675, :lng=>32.4355654, :zoom=>4)
   end
 
   describe "GET index" do
     it "assigns all places as @places" do
-      Place.stub(:all) { [mock_place] }
+      place = mock_store
+      place.stub(:draft?){false}
+      place.stub(:children){[mock_store]}
+      main_model.should_receive(:where).with(:parent_id=>nil).and_return(place)
+      place.should_receive(:includes).with([:children]).and_return(place)
+      place.should_receive(:order).with(:position).and_return([place])
+
       get :index
-      assigns(:places).should eq([mock_place])
+      assigns(:places).should eq([place])
     end
   end
 
   describe "GET show" do
     it "assigns the requested place as @place" do
-      Place.stub(:find).with("37") { mock_place }
-      get :show, :id => "37"
-      assigns(:place).should be(mock_place)
+      mock_store.stub(:coordinate){@map}
+      mock_store.stub(:dynamic_fields){[@field]}
+      get_show(main_model, mock_store, :place)
     end
   end
 
   describe "GET new" do
     it "assigns a new place as @place" do
-      Place.stub(:new) { mock_place }
-      get :new
-      assigns(:place).should be(mock_place)
+      mock_store.stub(:dynamic_fields){[@field]}
+      get_new(main_model, mock_store, :place)
     end
   end
 
   describe "GET edit" do
     it "assigns the requested place as @place" do
-      Place.stub(:find).with("37") { mock_place }
-      get :edit, :id => "37"
-      assigns(:place).should be(mock_place)
+      mock_store.stub(:dynamic_fields){[@field]}
+      get_edit(main_model, mock_store, :place)
     end
   end
 
@@ -43,28 +75,38 @@ describe PlacesController do
 
     describe "with valid params" do
       it "assigns a newly created place as @place" do
-        Place.stub(:new).with({'these' => 'params'}) { mock_place(:save => true) }
-        post :create, :place => {'these' => 'params'}
-        assigns(:place).should be(mock_place)
+        main_model.stub(:new).with(valid_params){mock_store}
+        mock_store.stub(:draft=){true}
+        mock_store.stub(:save){true}
+        post :create, :place => valid_params
+        assigns(:place).should be(mock_store)
       end
 
       it "redirects to the created place" do
-        Place.stub(:new) { mock_place(:save => true) }
-        post :create, :place => {}
-        response.should redirect_to(place_url(mock_place))
+        main_model.stub(:new){ mock_store}
+        mock_store.stub(:draft=){true}
+        mock_store.stub(:save){true}
+        post :create, :place => valid_params
+        response.should redirect_to(places_url)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved place as @place" do
-        Place.stub(:new).with({'these' => 'params'}) { mock_place(:save => false) }
-        post :create, :place => {'these' => 'params'}
-        assigns(:place).should be(mock_place)
+        Place.stub(:new).with(not_valid_params){ mock_store }
+        mock_store.stub(:draft=){true}
+        mock_store.stub(:save){false}
+        mock_store.stub(:dynamic_fields){[@field]}
+        post :create, :place => not_valid_params
+        assigns(:place).should be(mock_store)
       end
 
       it "re-renders the 'new' template" do
-        Place.stub(:new) { mock_place(:save => false) }
-        post :create, :place => {}
+        main_model.stub(:new) { mock_store }
+        mock_store.stub(:draft=){true}
+        mock_store.stub(:save){false}
+        mock_store.stub(:dynamic_fields){[@field]}
+        post :create, :place => not_valid_params
         response.should render_template("new")
       end
     end
@@ -75,33 +117,40 @@ describe PlacesController do
 
     describe "with valid params" do
       it "updates the requested place" do
-        Place.should_receive(:find).with("37") { mock_place }
-        mock_place.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :place => {'these' => 'params'}
+        main_model.should_receive(:find).with("37") { mock_store }
+        mock_store.should_receive(:update_attributes).with(update_valid_params)
+        mock_store.stub(:dynamic_fields){[@field]}
+        put :update, :id => "37", :place => update_valid_params
       end
 
       it "assigns the requested place as @place" do
-        Place.stub(:find) { mock_place(:update_attributes => true) }
+        main_model.stub(:find) { mock_store }
+        mock_store.stub(:update_attributes){true}
         put :update, :id => "1"
-        assigns(:place).should be(mock_place)
+        assigns(:place).should be(mock_store)
       end
 
       it "redirects to the place" do
-        Place.stub(:find) { mock_place(:update_attributes => true) }
+        main_model.stub(:find) { mock_store }
+        mock_store.stub(:update_attributes){true}
         put :update, :id => "1"
-        response.should redirect_to(place_url(mock_place))
+        response.should redirect_to(place_url(mock_store))
       end
     end
 
     describe "with invalid params" do
       it "assigns the place as @place" do
-        Place.stub(:find) { mock_place(:update_attributes => false) }
+        main_model.stub(:find) { mock_store }
+        mock_store.stub(:update_attributes){false}
+        mock_store.stub(:dynamic_fields){[@field]}
         put :update, :id => "1"
-        assigns(:place).should be(mock_place)
+        assigns(:place).should be(mock_store)
       end
 
       it "re-renders the 'edit' template" do
-        Place.stub(:find) { mock_place(:update_attributes => false) }
+        main_model.stub(:find) { mock_store }
+        mock_store.stub(:update_attributes){false}
+        mock_store.stub(:dynamic_fields){[@field]}
         put :update, :id => "1"
         response.should render_template("edit")
       end
@@ -111,13 +160,13 @@ describe PlacesController do
 
   describe "DELETE destroy" do
     it "destroys the requested place" do
-      Place.should_receive(:find).with("37") { mock_place }
-      mock_place.should_receive(:destroy)
+      main_model.should_receive(:find).with("37") { mock_store }
+      mock_store.should_receive(:destroy)
       delete :destroy, :id => "37"
     end
 
     it "redirects to the places list" do
-      Place.stub(:find) { mock_place }
+      main_model.stub(:find) { mock_store }
       delete :destroy, :id => "1"
       response.should redirect_to(places_url)
     end

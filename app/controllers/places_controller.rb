@@ -48,7 +48,7 @@ class PlacesController < ApplicationController
 
 
   def edit
-    @place = Place.find(params[:id])
+    #render edit
   end
 
   def create
@@ -60,7 +60,7 @@ class PlacesController < ApplicationController
         @place.dynamic_fields << DynamicField.find_by_permalink(field)
       end if params[:fields]
 
-      redirect_to place_path(@place), :notice=>t('places.successfully_create')
+      redirect_to places_path, :notice=>t('places.successfully_create')
     else
       render :action => "new"
     end
@@ -87,17 +87,19 @@ private
   def find_parents_and_fields
     @parents = Place.where({:draft=>false}).order("parent_id, position").all
 
-    model = DynamicModel.where(:title=>"Place").first
-    @dynamic_fields = if model.dynamic_fields.any?
-                        model.dynamic_fields
-                      else
-                        Array.new
-                      end
-   end
+    model = DynamicModel.find_by_title("Place")
+    if model
+      @dynamic_fields = if model.dynamic_fields.any?
+                          model.dynamic_fields
+                        else
+                          Array.new
+                        end
+    end
+  end
 
-   def delete_cache
-     expire_action :index
-   end
+  def delete_cache
+    expire_action :index
+  end
 
 
 end
