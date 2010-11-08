@@ -1,5 +1,7 @@
 CatalogueOfHotels::Application.routes.draw do
 
+  get "home/index"
+
   #get "home/index"
   resources :dynamic_models do
     resources :dynamic_fields do
