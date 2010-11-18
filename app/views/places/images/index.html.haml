@@ -1,0 +1,70 @@
+%h1
+  = t('.title')
+#main_content
+  %p
+    .text1
+      =t('places.show.images')
+      = @place.title
+
+
+  -if can? :create, Image
+    %div
+      %span.ele_notice
+        = t('places.images.form.notice')
+      = render :partial => "places/images/form"
+
+
+  -if @images.any?
+
+    %p
+      %b
+        =t('places.show.total_images')
+      = @place.images_count
+
+
+    #images_area
+      -if can?(:manage, Image)
+        %p= t('.update_draft')
+        = form_tag(place_images_path(@place), :method=>:put) do
+          = render :partial => "places/images/image", :collection => @images
+          %p
+            .actions
+              = submit_tag(t('helpers.submit.publish'), :name=>"publish", :confirm => t('confirm'))
+              \|
+              = submit_tag(t('helpers.submit.destroy'), :name=>"destroy", :confirm => t('confirm'))
+
+      -else
+        = render :partial => "places/images/image", :collection => @images
+
+  -else
+    %p
+      =t('places.show.no_images')
+
+
+
+
+#navigation
+  = link_to t('back'), place_path(@place)
+
+%script
+  //<![CDATA[
+  $("a[rel=img_group]").fancybox({
+  'transitionIn'	:	'elastic',
+  'transitionOut'	:	'elastic',
+  'speedIn'		:	600,
+  'speedOut'		:	200,
+  'overlayShow'	:	false
+  });
+
+  //]]>
+
+
+
+%script
+  //<![CDATA[
+  $(function(){
+  $(".tooltips").tipTip({defaultPosition: 'top'});
+  });
+  //]]>
+
+

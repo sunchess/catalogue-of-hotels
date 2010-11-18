@@ -1,15 +1,16 @@
 # == Schema Information
-# Schema version: 20101101133212
+# Schema version: 20101115183243
 #
 # Table name: places
 #
-#  id         :integer         not null, primary key
-#  title      :string(255)
-#  draft      :boolean
-#  created_at :datetime
-#  updated_at :datetime
-#  parent_id  :integer
-#  position   :integer         not null
+#  id           :integer         not null, primary key
+#  title        :string(255)
+#  draft        :boolean
+#  created_at   :datetime
+#  updated_at   :datetime
+#  parent_id    :integer
+#  position     :integer
+#  images_count :integer         default(0), not null
 #
 
 require 'spec_helper'

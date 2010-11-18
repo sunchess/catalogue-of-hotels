@@ -1,5 +1,7 @@
 CatalogueOfHotels::Application.routes.draw do
 
+  resources :hotels
+
   get "home/index"
 
   #get "home/index"
@@ -13,13 +15,16 @@ CatalogueOfHotels::Application.routes.draw do
 
   end
 
-  resources :places do
-    resources :maps, :controller=>"places/maps"
-    resources :photos
+  resources :places, :shallow => true do
+    resources :maps, :controller=>"places/maps", :only=>[:create]
+    resources :images, :controller=>"places/images", :only=>[:create, :destroy, :index, :update] do
+      collection do
+        put "update"
+      end
+    end
+    resources :hotels
   end
-
-
-
+  
 
   devise_for :users
 

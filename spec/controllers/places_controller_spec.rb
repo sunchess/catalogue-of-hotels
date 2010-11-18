@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'controllers_helper'
 
 describe PlacesController do
-  render_views
+  #render_views
   login_admin
 
   def main_model
@@ -23,7 +23,7 @@ describe PlacesController do
 
 
   def mock_store(stubs={})
-    @mock_store ||= mock_model(main_model, stubs.update(:title=>"Краснодарский край", :draft=>false, :parent=>nil, :parent_id=>nil ))
+    @mock_store ||= mock_model(main_model, stubs.update(:title=>"Краснодарский край", :draft=>false, :parent=>nil, :parent_id=>nil, :images_count=>1 ))
   end
 
   before do
@@ -33,6 +33,11 @@ describe PlacesController do
     @field = mock_model(DynamicField, :title=>"Трансфер до места", :draft=>false, :permalink=>"transfer_do_mesta")
     @model.stub(:dynamic_fields){[@field]}
     @map = mock_model(Map, :lat=>34.345675, :lng=>32.4355654, :zoom=>4)
+    @image = mock_model(Image, :image=>"DSCN3194.JPG", "draft?"=>false)
+    
+    @image.image.stub(:url){"/system/1/large/DSCN3194.JPG"}
+    @images = [@image]
+    @images.stub(:limited){@images}
   end
 
   describe "GET index" do
@@ -40,11 +45,12 @@ describe PlacesController do
       place = mock_store
       place.stub(:draft?){false}
       place.stub(:children){[mock_store]}
-      main_model.should_receive(:where).with(:parent_id=>nil).and_return(place)
+      Place.should_receive(:where).with(:parent_id=>nil).and_return(place)
       place.should_receive(:includes).with([:children]).and_return(place)
       place.should_receive(:order).with(:position).and_return([place])
 
       get :index
+      response.should be_success
       assigns(:places).should eq([place])
     end
   end
@@ -53,6 +59,8 @@ describe PlacesController do
     it "assigns the requested place as @place" do
       mock_store.stub(:coordinate){@map}
       mock_store.stub(:dynamic_fields){[@field]}
+      mock_store.stub(:images){@images}
+      Image.stub(:new){@image}
       get_show(main_model, mock_store, :place)
     end
   end
@@ -86,6 +94,7 @@ describe PlacesController do
         main_model.stub(:new){ mock_store}
         mock_store.stub(:draft=){true}
         mock_store.stub(:save){true}
+        mock_store.stub(:dynamic_fields){[@field]}
         post :create, :place => valid_params
         response.should redirect_to(places_url)
       end

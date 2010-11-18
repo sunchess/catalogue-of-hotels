@@ -94,10 +94,8 @@ Backtrace:
 /usr/lib/ruby/gems/1.8/gems/railties-3.0.0/lib/rails/commands.rb:30
 /usr/lib/ruby/gems/1.8/gems/railties-3.0.0/lib/rails/commands.rb:27:in `tap'
 /usr/lib/ruby/gems/1.8/gems/railties-3.0.0/lib/rails/commands.rb:27
-/home/sun/rails/myprojects/catalogue-of-hotels/git/script/rails:6:in `require'
-/home/sun/rails/myprojects/catalogue-of-hotels/git/script/rails:6
--e:1:in `load'
--e:1
+script/rails:6:in `require'
+script/rails:6
 */
 body:before {
   white-space: pre;

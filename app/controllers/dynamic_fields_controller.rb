@@ -21,7 +21,7 @@ class DynamicFieldsController < ApplicationController
     @dynamic_field = DynamicField.new(params[:dynamic_field])
     if @dynamic_field.valid?
       @model.dynamic_fields << @dynamic_field
-      redirect_to dynamic_model_dynamic_fields_path(@model), :notice=>t('dynamic_fields.successfully_create')
+      redirect_to new_dynamic_model_dynamic_field_path(@model), :notice=>t('dynamic_fields.successfully_create')
     else
       render :action=>"new"
     end

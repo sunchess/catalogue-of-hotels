@@ -38,6 +38,15 @@ class PlacesController < ApplicationController
     else
       @place_map.center_zoom_init([44.465151,40.935547], 6)
     end
+    #for form
+    @image = Image.new
+
+    @images = if can? :manage, Image
+                @place.images.limited
+              else
+                @place.images.not_draft.limited
+              end
+
 
   end
 
@@ -52,7 +61,10 @@ class PlacesController < ApplicationController
   end
 
   def create
-    @place = Place.new(params[:place])
+    @place = Place.new
+    @place.accessible = [ :draft, :paid_placement ] if admin?
+    @place.attributes = params[:place]
+
     @place.draft = true
 
     if @place.save
@@ -67,10 +79,15 @@ class PlacesController < ApplicationController
   end
 
   def update
+    @place.accessible = [ :draft, :paid_placement ] if admin?
     if @place.update_attributes(params[:place])
-      params[:fields].each do |field|
-        @place.dynamic_fields << DynamicField.find_by_permalink(field)
-      end if params[:fields]
+      if params[:fields]
+        params[:fields].each do |field|
+          @place.dynamic_fields << DynamicField.find_by_permalink(field)
+        end 
+      else
+        @place.dynamic_fields.clear
+      end 
       redirect_to(@place, :notice => t('places.successfully_update'))
     else
       render :action => "edit"
@@ -86,15 +103,7 @@ class PlacesController < ApplicationController
 private
   def find_parents_and_fields
     @parents = Place.where({:draft=>false}).order("parent_id, position").all
-
-    model = DynamicModel.find_by_title("Place")
-    if model
-      @dynamic_fields = if model.dynamic_fields.any?
-                          model.dynamic_fields
-                        else
-                          Array.new
-                        end
-    end
+    @dynamic_fields = DynamicModel.return_dynamic_fields("Place")
   end
 
   def delete_cache

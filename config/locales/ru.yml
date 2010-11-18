@@ -8,6 +8,7 @@ ru:
   edit: "Редактировать"
   destroy: "Удалить"
   show: "Просмотреть"
+  draft: "Не отображается у пользователя"
 
   users:
     hello: "Здравствуйте"
@@ -47,7 +48,10 @@ ru:
         # body: "Write your entire text here"
     submit:
       create: "Создать"
-      update: "Редактировать"     
+      update: "Редактировать"
+      submit: "Загрузить"
+      destroy: "Удалить"
+      publish: "Опубликовать"
   
   errors:      
     messages: 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101101133212) do
+ActiveRecord::Schema.define(:version => 20101115183243) do
 
   create_table "dynamic_fields", :force => true do |t|
     t.integer "dynamic_model_id"
@@ -36,6 +36,39 @@ ActiveRecord::Schema.define(:version => 20101101133212) do
   add_index "fields_dynamic_fields", ["dynamic_id"], :name => "index_fields_dynamic_fields_on_dynamic_id"
   add_index "fields_dynamic_fields", ["dynamic_type"], :name => "index_fields_dynamic_fields_on_dynamic_type"
 
+  create_table "hotels", :force => true do |t|
+    t.integer  "place_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.text     "description"
+    t.string   "street"
+    t.string   "house_number"
+    t.text     "telephone"
+    t.string   "fax"
+    t.integer  "distance"
+    t.boolean  "draft",           :default => true,  :null => false
+    t.boolean  "paid_placement",  :default => false, :null => false
+    t.text     "banking_details"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "hotels", ["place_id"], :name => "index_hotels_on_place_id"
+  add_index "hotels", ["user_id"], :name => "index_hotels_on_user_id"
+
+  create_table "images", :force => true do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.string   "imageable_type"
+    t.integer  "imageable_id"
+    t.boolean  "draft",              :default => true, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "images", ["imageable_id", "imageable_type"], :name => "index_images_on_imageable_id_and_imageable_type"
+
   create_table "maps", :force => true do |t|
     t.float    "lat"
     t.float    "lng"
@@ -56,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20101101133212) do
     t.datetime "updated_at"
     t.integer  "parent_id"
     t.integer  "position"
+    t.integer  "images_count", :default => 0, :null => false
   end
 
   add_index "places", ["parent_id"], :name => "index_places_on_parent_id"

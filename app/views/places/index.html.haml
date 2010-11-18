@@ -16,7 +16,7 @@
             -if place.children
               %ul
                 - place.children.each do |child|
-                  %li{:class=>"child"}
+                  %li{:class=>"child #{draft_record?(child)}", :title=>child.draft ? t('.draft') : nil}
                     = link_to child.title, place_path(child)
                     %br
                     -if can?(:edit, Place)

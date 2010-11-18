@@ -5,5 +5,16 @@
   margin: 3px -4px 0px -30px;
   padding: 0;
   overflow: hidden; }
-#places .draft {
+#places .draft a {
   color: red; }
+
+#images_area img {
+  border: 1px solid #555555;
+  padding: 3px 3px 3px 3px; }
+  #images_area img:hover {
+    border: 1px solid #777777; }
+#images_area .draft {
+  border: 1px solid red; }
+
+#hide_ele {
+  display: none; }

@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
       authenticate_user!
     end
   end
+
+private
+  def admin?
+    current_user.admin?
+  end
 end

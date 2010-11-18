@@ -6,7 +6,7 @@ Factory.define(:user) do |u|
 end
 
 
-Factory.define(:admin, :class=>:user) do |a|
+Factory.define(:admin, :parent=>:user) do |a|
   a.email "admin@email.ru"
   a.password "123123"
   a.confirmed_at 3.days.ago

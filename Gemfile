@@ -1,12 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
+gem 'rails', '3.0.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem "cancan"
+gem "cancan", "1.3.4"
 gem "devise"
 gem "hpricot"
 gem "haml", "3.0.21"
@@ -14,6 +14,7 @@ gem 'will_paginate', '3.0.pre2'
 gem "acts_as_list"
 gem "acts_as_tree"
 gem "geokit"
+gem "paperclip", ">=2.3.5"
 
 
 
@@ -41,7 +42,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'steak', '>= 1.0.0.rc.1'
-  gem 'rspec-rails', '2.0.1'
+  gem 'rspec-rails', '2.0.0'
   gem 'spork'
   gem 'launchy'
   gem 'factory_girl_rails'

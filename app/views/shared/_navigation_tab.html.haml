@@ -1,7 +1,12 @@
 #navigation_tab
   %ul
-    %li{:class=>set_current_style("places")}
+    %li{:class=>set_current_style("places", "places/images")}
       = link_to t("places.navigation"), places_path
+    %li{:class=>set_current_style("hotels")}
+      = link_to t("hotels.navigation"), hotels_path
+    %li{:class=>set_current_style("rooms")}
+      = link_to t("rooms.navigation"), hotels_path
+
     -if current_user
       -if current_user.admin?
         %li{:class=>set_current_style("dynamic_models", "dynamic_fields")}

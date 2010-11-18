@@ -1,0 +1,12 @@
+%h1= t '.title'
+%p
+  = link_to t('back'), hotels_path
+  = link_to t('edit'), edit_hotel_path(@hotel)
+
+%dl
+  %dt= Hotel.human_attribute_name :name
+  %dd= @hotel.name
+  %dt= Hotel.human_attribute_name :description
+  %dd= @hotel.description
+  %dt= Hotel.human_attribute_name :distance
+  %dd= @hotel.distance

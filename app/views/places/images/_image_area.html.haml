@@ -1,0 +1,6 @@
+
+= render :partial => "places/images/image", :collection => @images
+
+-if @place.images_count > 6 or can?(:manage, Image)
+  %div
+    = link_to t('places.show.all_images'), place_images_path(@place)

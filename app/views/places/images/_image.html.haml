@@ -1,0 +1,2 @@
+= check_box_tag("images[]", image.id) if can?(:manage, Image) and params[:controller] == "places/images"
+= link_to image_tag(image.image.url(:small), :class=>draft?(image), :title=>image.draft? ? t('draft') : nil), image.image.url(:large), :rel=>"img_group"

@@ -1,9 +1,7 @@
 %h1= t('.title')
 %div
   = t("dynamic_fields.index.fields_for")
-  \"
-  = @model.title
-  \"
+  = "\"#{ @model.title }\""
 #main_content
   %ul{:id=>"field-list"}
     -for field in  @dynamic_fields

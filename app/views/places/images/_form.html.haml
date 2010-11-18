@@ -1,0 +1,11 @@
+%p
+  =form_tag(place_images_path(@place), :multipart=>true) do
+    = render( :partial=>"layouts/errors_messages", :locals => { :target=>@image })
+    %label{:for=>"image"}
+      = t('places.images.form.image')
+    %br
+    = file_field_tag 'image'
+
+    %p
+      .actions
+        = submit_tag(t('helpers.submit.submit'))

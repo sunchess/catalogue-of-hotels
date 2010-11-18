@@ -1,0 +1,40 @@
+ru:
+  hotels:
+    successfully_create: "Гостиница добавлена." 
+    successfully_update: "Гостиница отредактирована"
+    successfully_destroy: "Гостиница удалена"
+    navigation: "Гостиницы"
+
+    index:
+      title: "Список гостиниц"
+      new_hotel: "Добавить гостиницу"
+    new:
+      title: "Добавить гостиницу в каталог"
+    form:
+     dynamic_fields: "Параметры для гостиниц:" 
+    
+    distance_options:
+     less_five: "Меньше пяти минуты"
+     five_ten:  "Пять-десять минут"
+     ten_twenty: "Десять-двадцать минут"
+     twenty_thirty: "Двадцать-дридцать минуть"
+     half_hour: "Пол часа" 
+
+
+
+
+
+  activerecord:
+    attributes:
+      hotel:
+        place_id: "Адрес:"
+        name: "Название гостиницы"
+        draft: "Черновик"
+        description: "Описание"
+        distance: "До моря:"
+        street: "Ул.:"
+        house_number: "Дом №:"
+        telephone: "Телефоны(каждый с новой строки)"
+        fax: "Факс"
+        paid_placement: "Работает по агентскому договору"
+        banking_details: "Банковские реквизиты"

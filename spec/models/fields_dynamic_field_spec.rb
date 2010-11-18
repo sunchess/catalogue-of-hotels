@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101101133212
+# Schema version: 20101115183243
 #
 # Table name: fields_dynamic_fields
 #

@@ -2,9 +2,8 @@
 #main_content
   %p
     = t(".fields_for")
-    \"
-    = @model.title
-    \"
+    = "\"#{ @model.title }\""
+    
   -if @dynamic_fields.any?
     %table{:cellspacing=>"1", :cellpadding=>"3", :id=>"dynamic-fields-table", :width=>"100%"}
       %tr

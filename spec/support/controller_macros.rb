@@ -1,8 +1,8 @@
 module ControllerMacros
   def login_admin
     before do
-      @admin = Factory.create(:admin)
-      sign_in @admin
+      @current_user = Factory.create(:admin)
+      sign_in @current_user
     end
   end
 end

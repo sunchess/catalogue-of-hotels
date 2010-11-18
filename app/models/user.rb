@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101101133212
+# Schema version: 20101115183243
 #
 # Table name: users
 #
@@ -31,6 +31,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  has_many :hotels
 
 
   def role

@@ -9,6 +9,9 @@ class Ability
     else
       if user.confirmed_at #is real user
         can :create, Place
+        can :create, Image
+        can :create, Hotel
+        can :create, Room
       end
       can :read, :all
       #can :create, Comment

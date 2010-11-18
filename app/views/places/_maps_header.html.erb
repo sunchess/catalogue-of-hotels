@@ -1,20 +1,24 @@
 <%
    @place_map.event_init(@place_map, :click, 'mouseclck')
 
-   @place_map.record_global_init("
-      function mouseclck(overlay,latlng){
-        var zm=0;
-        if (latlng!=null){
-            lt=latlng.lat();
-            lg=latlng.lng();
-            zm=map.getZoom();
-            $(\"#map_lat\").val(lt);
-            $(\"#map_lng\").val(lg);
-            $(\"#map_zoom\").val(zm);
-            map.clearOverlays();
-            map.addOverlay(addInfoWindowToMarker(new GMarker(new GLatLng(lt,lg),{title : \"#{@place.title}\"}),\"#{@place.title}\",{}));
-        }
-      }") %>
+   if can? :update, Place
+     @place_map.record_global_init("
+        function mouseclck(overlay,latlng){
+          var zm=0;
+          if (latlng!=null){
+              lt=latlng.lat();
+              lg=latlng.lng();
+              zm=map.getZoom();
+              $(\"#map_lat\").val(lt);
+              $(\"#map_lng\").val(lg);
+              $(\"#map_zoom\").val(zm);
+              map.clearOverlays();
+              map.addOverlay(addInfoWindowToMarker(new GMarker(new GLatLng(lt,lg),{title : \"#{@place.title}\"}),\"#{@place.title}\",{}));
+          }
+        }") 
+  end        
+ %>
+       
 <%= GMap.header({:hl=>I18n.default_locale, :sensor => false}).html_safe %>
 
 <%= @place_map.to_html.html_safe %>

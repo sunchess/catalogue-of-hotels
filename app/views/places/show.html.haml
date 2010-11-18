@@ -5,7 +5,7 @@
   = @place.title
 
 #main_content
-  - if !@gg_locate.success
+  - if !@gg_locate.success and !@place.coordinate
     .error
       = t('.not_found_place')
   %br
@@ -18,9 +18,53 @@
   Гостиницы по месту
   %br
   статьи итп
+  %br
+
+  %p
+    .text1
+      =t('.images')
+      = @place.title
+
+
+  -if can? :create, Image
+    %div
+      %span.ele_notice
+        = t('places.images.form.notice')
+      = render :partial => "places/images/form"
+
+
+  -if @images.any?
+
+    %p
+      %b
+        =t('.total_images')
+      = @place.images_count
+
+
+    #images_area
+      = render :partial => "places/images/image_area"
+  -else
+    %p
+      =t('.no_images')
+
+
+
 
 #navigation
   = link_to t('back'), places_path
   - if can?(:edit, Place)
     %br
     = link_to t('edit'), edit_place_path(@place)
+
+%script
+  //<![CDATA[
+  $("a[rel=img_group]").fancybox({
+  'transitionIn'	:	'elastic',
+  'transitionOut'	:	'elastic',
+  'speedIn'		:	600,
+  'speedOut'		:	200,
+  'overlayShow'	:	false
+  });
+
+  //]]>
+

@@ -1,0 +1,60 @@
+= form_for(@hotel) do |f|
+  = render( :partial=>"layouts/errors_messages", :locals => { :target=>@hotel})
+
+  - if can? :manage, Hotel
+    .field
+      = f.check_box :draft
+      = f.label :draft
+    .field
+      = f.check_box :paid_placement
+      = f.label :paid_placement
+    %br
+  .field
+    = f.label :name
+    %br
+    = f.text_field :name
+  .field
+    = f.label :description
+    %br
+    = f.text_area :description, :size=>"60x10"
+  .field
+    = f.label :distance
+    %br
+    = f.select :distance, Hotel.distance_options,  { :include_blank => true }
+  .field
+    = f.label :place_id
+    %br
+    = f.select :place_id, Place.for_select
+  %br
+  .field
+    = f.label :street
+    = f.text_field :street
+    = f.label :house_number
+    = f.text_field :house_number, :size=>5
+  %br
+  .field
+    = f.label :telephone
+    %br
+    = f.text_area :telephone, :size=>"40x5"
+  .field
+    = f.label :fax
+    %br
+    = f.text_field :fax
+  .field
+    = f.label :banking_details
+    %br
+    = f.text_area :banking_details, :size=>"40x8"
+  %br
+  .field
+    %b
+      = t('.dynamic_fields')
+    %br
+    -for field in @dynamic_fields
+      = check_box_tag("fields[#{field.permalink}]", "1", (!@hotel.new_record? and @hotel.dynamic_fields.include?(field)) ? true : false)
+      = label_tag "fields[#{field.permalink}]", field.title
+
+      %br
+      %br
+
+  .actions
+    = f.submit
