@@ -46,25 +46,23 @@
 #navigation
   = link_to t('back'), place_path(@place)
 
-%script
-  //<![CDATA[
+:javascript
   $("a[rel=img_group]").fancybox({
-  'transitionIn'	:	'elastic',
-  'transitionOut'	:	'elastic',
-  'speedIn'		:	600,
-  'speedOut'		:	200,
-  'overlayShow'	:	false
+    'transitionIn'	:	'elastic',
+    'transitionOut'	:	'elastic',
+    'speedIn'		:	600,
+    'speedOut'		:	200,
+    'overlayShow'	:	false
   });
 
-  //]]>
 
 
 
-%script
-  //<![CDATA[
+
+:javascript
   $(function(){
-  $(".tooltips").tipTip({defaultPosition: 'top'});
+   $(".tooltips").tipTip({defaultPosition: 'top'});
   });
-  //]]>
+
 
 

@@ -11,4 +11,13 @@ module ApplicationHelper
     html.html_safe
   end
   
+  def mark_required(object, attribute)
+    "*" if object.class.validators_on(attribute).map(&:class).include? ActiveModel::Validations::PresenceValidator
+  end
+
+  def editable?
+    return true if @editable_flag
+    false
+  end
+   
 end

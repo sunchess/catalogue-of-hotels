@@ -21,9 +21,14 @@
 #
 
 class Hotel < ActiveRecord::Base
-  scope :public, where(:draft=>false)
+  scope :public, lambda{|can_manage|
+    where(:draft=>can_manage)
+  }
+
   belongs_to :user
   attr_accessible :name, :description, :distance, :place_id, :street, :house_number, :telephone, :fax, :banking_details
+
+  validates_presence_of :name, :description, :distance, :street, :house_number, :telephone, :place_id
 
   has_many :images, :as=>:imageable, :dependent => :destroy
   has_many :fields_dynamic_fields, :as=>:dynamic, :dependent => :destroy

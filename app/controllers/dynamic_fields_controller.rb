@@ -45,23 +45,18 @@ class DynamicFieldsController < ApplicationController
   end
 
   def edit_order
-    if can? :update, DynamicField
       @dynamic_fields = DynamicField.where({:dynamic_model_id=>params[:dynamic_model_id]}).order("position")
-    else
-      raise CanCan::AccessDenied
-    end
-
+      authorize! :update, @dynamic_fields
   end
 
   def update_order
-    if can? :update, DynamicField
-      @dynamic_fields = DynamicField.where({:dynamic_model_id=>params[:dynamic_model_id]}).order("position")
-      order = params[:field]
-      order.each_with_index do |id, idx|
-       DynamicField.list_order(idx, id, @model.id)
-      end
-    else
-      raise CanCan::AccessDenied
+    @dynamic_fields = DynamicField.where({:dynamic_model_id=>params[:dynamic_model_id]}).order("position")
+    
+    authorize! :update, @dynamic_fields
+
+    order = params[:field]
+    order.each_with_index do |id, idx|
+     DynamicField.list_order(idx, id, @model.id)
     end
     render :text => ""
   end

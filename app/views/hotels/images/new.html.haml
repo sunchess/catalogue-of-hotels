@@ -1,0 +1,23 @@
+%h1= "#{t('.title')} \"#{@hotel.name}\""
+#main_content
+  = form_tag hotel_images_path(@hotel), :multipart=>true do
+    - 5.times do |time|
+      = file_field_tag "images[]"
+      %br
+    %br
+    = submit_tag t('.save')
+  %br
+  #images
+    - if @images.any? 
+      = t('hotels.images.exist_images')
+      - if editable?
+        = form_tag do
+          = render :partial => "shared/images_area"
+          %br
+          = submit_tag t('.delete')
+      - else
+        = render :partial => "shred/images_area"
+        
+#navigation
+  %p= link_to t('back'), :back
+  = wizzard_steps

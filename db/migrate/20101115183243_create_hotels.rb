@@ -13,6 +13,8 @@ class CreateHotels < ActiveRecord::Migration
       t.boolean :draft, :null=>false, :default=>true
       t.boolean :paid_placement, :null=>false, :default=>false #for hotel wich not contract with us
       t.text :banking_details
+      t.integer :images_count
+      t.integer :rooms_count
 
       t.timestamps
     end

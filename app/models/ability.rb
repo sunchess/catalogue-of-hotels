@@ -12,7 +12,17 @@ class Ability
         can :create, Image
         can :create, Hotel
         can :create, Room
+
+        can :update, Hotel do |hotel|
+          hotel.try(:user) == user
+        end
+
+        can :uplate, Room do |room|
+          room.try(:hotel).try(:user) == user
+        end
+
       end
+
       can :read, :all
       #can :create, Comment
       #can :update, Comment do |comment|

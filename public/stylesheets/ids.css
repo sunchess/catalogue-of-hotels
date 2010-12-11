@@ -18,3 +18,10 @@
 
 #hide_ele {
   display: none; }
+
+#wizzard div {
+  border: 1px solid #777777;
+  margin-top: 5px;
+  padding-left: 5px; }
+#wizzard .current {
+  background-color: #ffeb8d; }

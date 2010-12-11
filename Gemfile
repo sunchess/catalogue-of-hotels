@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.1'
+gem 'rails', '3.0.3'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -14,7 +14,7 @@ gem 'will_paginate', '3.0.pre2'
 gem "acts_as_list"
 gem "acts_as_tree"
 gem "geokit"
-gem "paperclip", ">=2.3.5"
+gem "paperclip", ">=2.3.6", :git=>'git://github.com/thoughtbot/paperclip.git'
 
 
 

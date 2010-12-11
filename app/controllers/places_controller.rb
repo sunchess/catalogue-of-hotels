@@ -68,6 +68,7 @@ class PlacesController < ApplicationController
     @place.draft = true
 
     if @place.save
+      #TODO add it to model
       params[:fields].each do |field|
         @place.dynamic_fields << DynamicField.find_by_permalink(field)
       end if params[:fields]
@@ -81,7 +82,9 @@ class PlacesController < ApplicationController
   def update
     @place.accessible = [ :draft, :paid_placement ] if admin?
     if @place.update_attributes(params[:place])
+      #TODO: add it to model
       if params[:fields]
+        @place.dynamic_fields.clear
         params[:fields].each do |field|
           @place.dynamic_fields << DynamicField.find_by_permalink(field)
         end 
@@ -102,7 +105,7 @@ class PlacesController < ApplicationController
 
 private
   def find_parents_and_fields
-    @parents = Place.where({:draft=>false}).order("parent_id, position").all
+    @parents = Place.where({:draft=>false, :parent_id=>nil}).order("parent_id, position").all
     @dynamic_fields = DynamicModel.return_dynamic_fields("Place")
   end
 

@@ -52,6 +52,7 @@ ru:
       submit: "Загрузить"
       destroy: "Удалить"
       publish: "Опубликовать"
+      next: "Далее"
   
   errors:      
     messages: 

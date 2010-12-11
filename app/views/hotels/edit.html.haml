@@ -1,5 +1,10 @@
-%h1= t '.title'
-%p
+%h1
+  = t '.title'
+  = @hotel.name
+#main_content
+  = render 'form'
+#navigation
   = link_to t('back'), hotels_path
+  %br
   = link_to t('show'), @hotel
-= render 'form'
+  = wizzard_steps

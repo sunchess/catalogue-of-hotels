@@ -1,6 +1,9 @@
 CatalogueOfHotels::Application.routes.draw do
 
-  resources :hotels
+  get "images/index"
+
+  get "images/new"
+
 
   get "home/index"
 
@@ -15,6 +18,10 @@ CatalogueOfHotels::Application.routes.draw do
 
   end
 
+  resources :hotels do
+    resources :images, :controller=>"hotels/images", :only=>[:new, :create, :destroy, :index, :update] 
+  end
+
   resources :places, :shallow => true do
     resources :maps, :controller=>"places/maps", :only=>[:create]
     resources :images, :controller=>"places/images", :only=>[:create, :destroy, :index, :update] do
@@ -22,7 +29,9 @@ CatalogueOfHotels::Application.routes.draw do
         put "update"
       end
     end
-    resources :hotels
+    resources :hotels do
+      resources :images, :controller=>"hotels/images", :only=>[:new, :create, :destroy, :index, :update] 
+    end
   end
   
 

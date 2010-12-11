@@ -11,50 +11,59 @@
     %br
   .field
     = f.label :name
+    = mark_required(@hotel, :name)
     %br
     = f.text_field :name
   .field
     = f.label :description
+    = mark_required(@hotel, :description)
     %br
     = f.text_area :description, :size=>"60x10"
   .field
     = f.label :distance
+    = mark_required(@hotel, :distance)
     %br
     = f.select :distance, Hotel.distance_options,  { :include_blank => true }
   .field
     = f.label :place_id
+    = mark_required(@hotel, :place_id)
     %br
     = f.select :place_id, Place.for_select
+    %br
+    = link_to t('.not_find_place'), new_place_path
   %br
   .field
     = f.label :street
+    = mark_required(@hotel, :street)
     = f.text_field :street
     = f.label :house_number
+    = mark_required(@hotel, :house_number)
     = f.text_field :house_number, :size=>5
   %br
   .field
     = f.label :telephone
+    = mark_required(@hotel, :telephone)
     %br
     = f.text_area :telephone, :size=>"40x5"
   .field
     = f.label :fax
+    = mark_required(@hotel, :fax)
     %br
     = f.text_field :fax
   .field
     = f.label :banking_details
+    = mark_required(@hotel, :banking_details)
     %br
     = f.text_area :banking_details, :size=>"40x8"
   %br
-  .field
     %b
       = t('.dynamic_fields')
     %br
     -for field in @dynamic_fields
-      = check_box_tag("fields[#{field.permalink}]", "1", (!@hotel.new_record? and @hotel.dynamic_fields.include?(field)) ? true : false)
-      = label_tag "fields[#{field.permalink}]", field.title
-
+      = check_box_tag("fields[#{field.permalink}]", "1", ( (!@hotel.new_record? and @hotel.dynamic_fields.include?(field)) or (params[:fields] and params[:fields][field.permalink])) ? true : false)
+      = field.title
       %br
       %br
 
   .actions
-    = f.submit
+    = f.submit t('helpers.submit.next')

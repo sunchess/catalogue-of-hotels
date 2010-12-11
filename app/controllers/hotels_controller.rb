@@ -1,16 +1,16 @@
 include Geokit::Geocoders
 
 class HotelsController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource
   before_filter :find_place
   #caches_action :index #Thinking how to delete cache with deferent params
   before_filter :find_dynamic_fields, :only=>[:new, :create, :edit, :update]
 
   def index
     @hotels =if @place
-               Hotel.public.paginate(:page=>params[:page])
+               @place.hotels.public(can?(:manage, Hotel)).paginate(:page=>params[:page])
              else
-               Hotel.public.paginate(:page=>params[:page])
+               Hotel.public(can?(:manage, Hotel)).paginate(:page=>params[:page])
              end
   end
 
@@ -28,19 +28,20 @@ class HotelsController < ApplicationController
 
   def create
     @hotel = Hotel.new
-    @hotel.accessible = :draft if admin?
-    @hotel.attributes = params[:place]
-    if @hotel.save
+    @hotel.accessible = [ :draft, :paid_placement ] if admin?
+    @hotel.attributes = params[:hotel]
+    if current_user.hotels << @hotel
       params[:fields].each do |field|
         @hotel.dynamic_fields << DynamicField.find_by_permalink(field)
       end if params[:fields]
-      redirect_to(@hotel, :notice =>t('hotels.sea')) 
+      redirect_to(new_hotel_image_path(@hotel), :notice =>t('hotels.successfully_create')) 
     else
       render :action => "new" 
     end
   end
 
   def update
+    @hotel.accessible = [ :draft, :paid_placement ] if admin?
     if @hotel.update_attributes(params[:hotel])
       if params[:fields]
         params[:fields].each do |field|
@@ -49,7 +50,7 @@ class HotelsController < ApplicationController
       else
         @hotel.dynamic_fields.clear
       end 
-      redirect_to(@hotel, :notice => 'Hotel was successfully updated.')
+      redirect_to(@hotel, :notice => t('hotels.successfully_update'))
     else
       render :action => "edit" 
     end
