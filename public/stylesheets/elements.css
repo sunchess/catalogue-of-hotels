@@ -12,6 +12,7 @@ Syntax error: Undefined variable: "$maincolor".
 61:     :text-decoration none
 62:   img
 63:     :border 0px
+64: 
 
 Backtrace:
 /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/elements.sass:59
@@ -47,35 +48,35 @@ Backtrace:
 /usr/lib/ruby/gems/1.8/gems/warden-0.10.7/lib/warden/manager.rb:35:in `call'
 /usr/lib/ruby/gems/1.8/gems/warden-0.10.7/lib/warden/manager.rb:34:in `catch'
 /usr/lib/ruby/gems/1.8/gems/warden-0.10.7/lib/warden/manager.rb:34:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.0/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.0/lib/action_dispatch/middleware/head.rb:14:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/head.rb:14:in `call'
 /usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.0/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.0/lib/action_dispatch/middleware/flash.rb:182:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.0/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.0/lib/action_dispatch/middleware/cookies.rb:287:in `call'
-/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.0/lib/active_record/query_cache.rb:32:in `call'
-/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.0/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
-/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.0/lib/active_record/query_cache.rb:12:in `cache'
-/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.0/lib/active_record/query_cache.rb:31:in `call'
-/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.0/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
-/usr/lib/ruby/gems/1.8/gems/activesupport-3.0.0/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.0/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/cookies.rb:295:in `call'
+/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:32:in `call'
+/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:12:in `cache'
+/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:31:in `call'
+/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:353:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+/usr/lib/ruby/gems/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
 /usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.0/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.0/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.0/lib/rails/rack/logger.rb:13:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/rack/logger.rb:13:in `call'
 /usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
-/usr/lib/ruby/gems/1.8/gems/activesupport-3.0.0/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/usr/lib/ruby/gems/1.8/gems/activesupport-3.0.3/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
 /usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
 /usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `synchronize'
 /usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.0/lib/action_dispatch/middleware/static.rb:30:in `call'
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.0/lib/rails/application.rb:168:in `call'
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.0/lib/rails/application.rb:77:in `send'
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.0/lib/rails/application.rb:77:in `method_missing'
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.0/lib/rails/rack/log_tailer.rb:14:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/static.rb:30:in `call'
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:168:in `call'
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:77:in `send'
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:77:in `method_missing'
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/rack/log_tailer.rb:14:in `call'
 /usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
 /usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/handler/webrick.rb:52:in `service'
 /usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
@@ -90,14 +91,14 @@ Backtrace:
 /usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
 /usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/handler/webrick.rb:13:in `run'
 /usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/server.rb:213:in `start'
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.0/lib/rails/commands/server.rb:65:in `start'
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.0/lib/rails/commands.rb:30
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.0/lib/rails/commands.rb:27:in `tap'
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.0/lib/rails/commands.rb:27
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/commands/server.rb:65:in `start'
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:30
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:27:in `tap'
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:27
 script/rails:6:in `require'
 script/rails:6
 */
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$maincolor\".\A         on line 59 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/elements.sass\A \A 54: td\A 55:   vertical-align: top\A 56: \A 57: a\A 58:   :text-decoration underline\A 59:   :color $maincolor\A 60:   &:hover\A 61:     :text-decoration none\A 62:   img\A 63:     :border 0px"; }
+  content: "Syntax error: Undefined variable: \"$maincolor\".\A         on line 59 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/elements.sass\A \A 54: td\A 55:   vertical-align: top\A 56: \A 57: a\A 58:   :text-decoration underline\A 59:   :color $maincolor\A 60:   &:hover\A 61:     :text-decoration none\A 62:   img\A 63:     :border 0px\A 64: "; }

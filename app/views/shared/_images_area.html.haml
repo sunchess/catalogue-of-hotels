@@ -1,4 +1,6 @@
-= render :partial=>"shared/image", :collection=>@images
+// TODO: add js checked for images
+#images_area
+  = render :partial=>"shared/image", :collection=>@images
 
 :javascript
   $("a[rel=img_group]").fancybox({

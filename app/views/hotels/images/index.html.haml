@@ -1,2 +1,14 @@
-%h1 Hotels::Images#index
-%p Find me in app/views/hotels/images/index.html.haml
+%h1= "#{t('.title')} \"#{@hotel.name}\""
+#main_content
+  -if can? :update, @hotel
+    = link_to t(".edit"), new_hotel_image_path(@hotel)
+  #images
+    - if @images.any? 
+      = t('hotels.images.exist_images')
+      = @hotel.images_count
+      %p= render :partial => "shared/images_area"
+    -else
+      = t('hotels.images.no_exist')
+#navigation
+  %p= link_to t('back'), :back
+  = clear_wizzard_steps

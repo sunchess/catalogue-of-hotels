@@ -2,7 +2,7 @@
   %ul
     %li{:class=>set_current_style("places", "places/images")}
       = link_to t("places.navigation"), places_path
-    %li{:class=>set_current_style("hotels")}
+    %li{:class=>set_current_style("hotels", "hotels/images", "hotels/maps", "hotels/rooms")}
       = link_to t("hotels.navigation"), hotels_path
     %li{:class=>set_current_style("rooms")}
       = link_to t("rooms.navigation"), hotels_path

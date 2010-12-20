@@ -6,3 +6,4 @@ config/database.yml
 run.sh
 .idea
 *.swp
+public/system/images*

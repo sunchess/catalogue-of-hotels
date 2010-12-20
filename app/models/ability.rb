@@ -17,7 +17,7 @@ class Ability
           hotel.try(:user) == user
         end
 
-        can :uplate, Room do |room|
+        can :update, Room do |room|
           room.try(:hotel).try(:user) == user
         end
 

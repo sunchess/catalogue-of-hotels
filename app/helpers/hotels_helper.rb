@@ -3,10 +3,23 @@ module HotelsHelper
     capture_haml do
       haml_tag :div, {:id=>"wizzard"} do 
         haml_tag :div, link_to(t('hotels.add.hotel'), ( @hotel and !@hotel.new_record? ) ? edit_hotel_path(@hotel) : new_hotel_path ), {:class=>has_current("hotels") }
-        haml_tag :div, link_to(t('hotels.add.images'), ( @hotel and !@hotel.new_record? ) ? hotel_images_path(@hotel) : nil), {:class=>has_current("hotels/images")}
-        haml_tag :div, link_to(t('hotels.add.map') ), {:class=>has_current("hotels/map")}
-        haml_tag :div, link_to(t('hotels.add.rooms') ), {:class=>has_current("hotels/rooms")}
-        haml_tag :div, link_to(t('hotels.add.contract') ), {:class=>has_current("hotels/contract")}
+        if @hotel and can?(:update, @hotel)
+          haml_tag :div, link_to(t('hotels.add.images'), new_hotel_image_path(@hotel)), {:class=>has_current("hotels/images")}
+          haml_tag :div, link_to(t('hotels.add.map') , new_hotel_map_path(@hotel)), {:class=>has_current("hotels/maps")}
+          haml_tag :div, link_to(t('hotels.add.rooms'), hotel_rooms_path(@hotel)), {:class=>has_current("rooms")}
+          haml_tag :div, link_to(t('hotels.add.contract') ), {:class=>has_current("hotels/contract")}
+        end
+      end
+    end
+  end
+
+  def clear_wizzard_steps
+    capture_haml do
+      haml_tag :div, :id=>"wizzard" do
+        haml_tag :div, link_to(t("hotels.show.hotel"), hotel_path(@hotel)), :class=>has_current("hotels")
+        haml_tag :div, link_to(t("hotels.show.images"), hotel_images_path(@hotel)), :class=>has_current("hotels/images")
+        haml_tag :div, link_to(t("hotels.show.rooms"), hotel_path(@hotel)), :class=>has_current("hotels/rooms")
+        haml_tag :div, link_to(t("hotels.show.maps"), hotel_maps_path(@hotel)), :class=>has_current("hotels/maps")
       end
     end
   end

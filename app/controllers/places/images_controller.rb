@@ -20,7 +20,7 @@ class Places::ImagesController < ApplicationController
   end
 
   def update
-    images_ids = params[:images].map{|id| id.to_i}
+    images_ids = params[:images].map(&:to_i)
     if params[:publish]
       Image.update_all({:draft=>false}, ["id IN(?)", images_ids])
       flash[:notice] = t('places.images.form.successfully_update')

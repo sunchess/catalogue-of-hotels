@@ -6,16 +6,17 @@
 }
 
 #content{background-color:#fff; padding: 10px; overflow:hidden;}
+
 #main_content{
- border-right: 1px solid  #4d4d4d;
- padding-right:  10px;width:  70%;	
- float: left;
- 
+   border-right: 1px solid  #4d4d4d;
+   padding-right:  10px;
+   width:  70%;	
+   float: left;
 }
 
 #navigation{
-	float: right;
-	width: 27%;
+    float: right;
+    width: 27%;
 }
 
 #logo{

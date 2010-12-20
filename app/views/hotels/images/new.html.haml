@@ -5,18 +5,24 @@
       = file_field_tag "images[]"
       %br
     %br
-    = submit_tag t('.save')
+    .left
+      = submit_tag t('.save')
+  .right
+    = button_to t('helpers.submit.next'), new_hotel_map_path(@hotel), :method=>:get
   %br
-  #images
-    - if @images.any? 
-      = t('hotels.images.exist_images')
-      - if editable?
-        = form_tag do
-          = render :partial => "shared/images_area"
-          %br
-          = submit_tag t('.delete')
-      - else
-        = render :partial => "shred/images_area"
+  %p
+    #images
+      - if @images.any? 
+        = t('hotels.images.exist_images')
+        = @hotel.images_count
+        %p
+          - if can? :update, @hotel
+            = form_tag hotel_images_path(@hotel), :method=>:delete do
+              = render :partial => "shared/images_area"
+              %br
+              = submit_tag t('.delete')
+          - else
+            = render :partial => "shared/images_area"
         
 #navigation
   %p= link_to t('back'), :back

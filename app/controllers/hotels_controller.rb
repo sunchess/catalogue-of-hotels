@@ -1,10 +1,11 @@
 include Geokit::Geocoders
 
 class HotelsController < ApplicationController
-  authorize_resource
+  before_filter :find_hotel, :only=>[:show, :edit, :update, :destroy]
   before_filter :find_place
   #caches_action :index #Thinking how to delete cache with deferent params
   before_filter :find_dynamic_fields, :only=>[:new, :create, :edit, :update]
+  authorize_resource
 
   def index
     @hotels =if @place
@@ -70,6 +71,10 @@ private
     if params[:place_id]
       @place = Place.find(params[:place_id])
     end
+  end
+
+  def find_hotel
+    @hotel = Hotel.find(params[:id])
   end
   
   def find_dynamic_fields
