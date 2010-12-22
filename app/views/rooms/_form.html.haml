@@ -1,0 +1,43 @@
+= form_for [@hotel, @room], :html=>{:multipart=>true} do |f|
+  %ul.form_fields 
+    %li
+      = f.label :places
+      = f.select :places, Room.places
+    %li
+      = f.label :room_number
+      = f.select :room_number, Room.rooms, { :include_blank => true }
+    %li
+      = f.label :shower
+      = f.select :shower, Room.shower, { :include_blank => true }
+    %li
+      = f.label :toilet
+      = f.select :toilet, Room.toilet, { :include_blank => true }
+    %li
+      = f.label :fridge
+      = f.select :fridge, Room.fridge, { :include_blank => true }
+    %li
+      = f.label :tv
+      = f.select :tv, Room.tv, { :include_blank => true }
+  %ul.form_params
+    %li
+      %br
+      %b
+        = t('.dynamic_fields')
+      -for field in @dynamic_fields
+        %li  
+          = check_box_tag("fields[#{field.permalink}]", "1", (!@room.new_record? and @room.dynamic_fields.include?(field)) ? true : false)
+          = label_tag "fields[#{field.permalink}]", field.title
+
+
+
+  %ul.form_params
+    %li.title
+      = t('.photos')
+    - 5.times do |time|
+      %li
+        = file_field_tag "images[]"
+
+
+  %ul.form_params
+    %li
+      = f.submit

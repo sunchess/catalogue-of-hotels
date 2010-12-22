@@ -1,5 +1,6 @@
 ru:
   rooms:
+    successfully_create: "Номер добавлен"
     navigation: "Комнаты"
     form:
       dynamic_fields: "Параметры для комнат: "
