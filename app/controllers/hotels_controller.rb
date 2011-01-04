@@ -9,9 +9,9 @@ class HotelsController < ApplicationController
 
   def index
     @hotels =if @place
-               @place.hotels.public(can?(:manage, Hotel)).paginate(:page=>params[:page])
+               @place.hotels.public(can?(:manage, Hotel)).order("id").paginate(:page=>params[:page])
              else
-               Hotel.public(can?(:manage, Hotel)).paginate(:page=>params[:page])
+               Hotel.public(can?(:manage, Hotel)).order("id").paginate(:page=>params[:page])
              end
   end
 

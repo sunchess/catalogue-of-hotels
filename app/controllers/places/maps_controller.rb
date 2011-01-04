@@ -3,7 +3,6 @@ class Places::MapsController < ApplicationController
   before_filter :find_place
 
   def create
-
     if @place.coordinate
       @place.coordinate.destroy
     end

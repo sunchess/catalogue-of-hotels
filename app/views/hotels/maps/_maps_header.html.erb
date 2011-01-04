@@ -1,6 +1,7 @@
-<% @hotel_map.event_init(@hotel_map, :click, 'mouseclck')
+<%
+ if can? :update, @hotel
+    @hotel_map.event_init(@hotel_map, :click, 'mouseclck')
 
-   if can? :update, @hotel
      @hotel_map.record_global_init("
         function mouseclck(overlay,latlng){
           var zm=0;

@@ -1,24 +1,8 @@
 %h1= t('.title')
 #main_content
+  = render :partial => "hotel", :collection=>@hotels
 
-  %table
-    %thead
-      %tr
-        %th= Hotel.human_attribute_name :name
-        %th= Hotel.human_attribute_name :description
-        %th= Hotel.human_attribute_name :distance
-        %th{:colspan => 3}= t 'actions'
-    
-    %tbody
-      - for hotel in @hotels
-        %tr{ :class => cycle(:odd, :even) }
-          %td= hotel.name
-          %td= hotel.description
-          %td= hotel.distance
-          %td.action= link_to t('show'), hotel
-          %td.action= link_to t('edit'), edit_hotel_path(hotel)
-          %td.action= link_to t('destroy'), hotel, :confirm => t('are_you_sure'), :method => :delete
-
+ 
 #navigation
   %p= link_to t('.new_hotel'), new_hotel_path
 

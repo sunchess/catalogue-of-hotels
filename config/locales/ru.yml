@@ -9,7 +9,10 @@ ru:
   destroy: "Удалить"
   show: "Просмотреть"
   draft: "Не отображается у пользователя"
-
+  further: "Подробно"
+  rur: "руб."
+  total_images: "Всего изображений"
+  no_images: "Изображения отсутствуют"
   users:
     hello: "Здравствуйте"
     send_password_instructions: "Выслать письмо"

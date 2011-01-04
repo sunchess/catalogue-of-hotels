@@ -19,7 +19,7 @@ tr
       @include tr-hover
 
   .odd
-    background-color: #f7f7ff
+    background-color: #bdbdbd
     &:hover
       @include tr-hover
 
@@ -88,6 +88,35 @@ ul.form_params li
 li.title
   font-weight: bold
 
+li.info
+  font-style: italic
+  font-size: 10px
+
+.double
+  .first
+    float: left
+
+  .second
+    float: right
+    padding-left: 10px
+
+  .even
+    background-color: #e6e6fa
+    &:hover
+      @include tr-hover
+
+  .odd
+    background-color: #f7f7ff
+    &:hover
+      @include tr-hover
 
 
+.reset
+  clear: both
 
+a.edit
+  :text-decoration underline
+  :color $color_grey
+  &:hover
+    :color $color_dark_grey
+    :text-decoration none

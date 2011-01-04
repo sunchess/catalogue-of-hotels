@@ -1,0 +1,25 @@
+.item
+  .left
+    = room_thumb(room)
+  .left.padding_5
+    %span.title= t(".options")
+    %br
+    = human_room_data(room.places, Room.places)
+    = human_room_data(room.room_number, Room.rooms)
+    = human_room_data(room.shower, Room.shower)
+    = human_room_data(room.toilet, Room.toilet)
+    = human_room_data(room.fridge, Room.fridge)
+    = human_room_data(room.tv, Room.tv)
+  .left.padding_5
+    %span.title{:style=>"padding-left: 2px; "}= t(".price")
+    %table{:cellpadding=>"1", :cellspacing=>"1"}
+      - room.prices_for_list.each do |price|
+        %tr
+          = show_price_list(price)
+  .right.padding_5{:style=>"width: 100px"}
+    = link_to t("further"), hotel_room_path(room.hotel.id, room.id)
+    %br
+    = link_to t(".reserve")
+    - if can?(:update, room)
+      = link_to t("rooms.edit"), edit_hotel_room_path(room.hotel.id, room.id), :class=>"edit"
+.reset

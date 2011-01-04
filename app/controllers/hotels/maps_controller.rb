@@ -2,11 +2,9 @@ include Geokit::Geocoders
 
 class Hotels::MapsController < ApplicationController
   before_filter :find_hotel
-  before_filter :authorize_hotel, :exept=>[:index]
+  before_filter :authorize_hotel, :except=>[:index]
 
   def new
-    p @hotel.geo_place
-    @gg_locate = GoogleGeocoder.geocode(@hotel.geo_place)
     @hotel_map = GMap.new("map")
     @hotel_map.control_init(:large_map => true, :map_type => true)
     @map = Map.new
@@ -14,17 +12,32 @@ class Hotels::MapsController < ApplicationController
     if @hotel.coordinate
       coordinates = [@hotel.coordinate.lat, @hotel.coordinate.lng]
       @hotel_map.center_zoom_init(coordinates, @hotel.coordinate.zoom)
-      @hotel_map.overlay_init(GMarker.new(coordinates, :title => geo_hotel, :info_window => geo_place))
-    elsif @gg_locate.success
-      coordinates = [@gg_locate.lat, @gg_locate.lng]
-      @hotel_map.center_zoom_init(coordinates, 7)
-      @hotel_map.overlay_init(GMarker.new(coordinates, :title => geo_hotel, :info_window => geo_place))
+      @hotel_map.overlay_init(GMarker.new(coordinates, :title => @hotel.name, :info_window => @hotel.name))
     else
       @hotel_map.center_zoom_init([44.465151,40.935547], 6)
     end
   end
 
+  def create
+    if @hotel.coordinate
+      @hotel.coordinate.destroy
+    end
+    @map = Map.new(params[:map])
+    @hotel.coordinate = @map
+  end
+
   def index
+    @hotel_map = GMap.new("map")
+    @hotel_map.control_init(:large_map => true, :map_type => true)
+    @map = Map.new
+
+    if @hotel.coordinate
+      coordinates = [@hotel.coordinate.lat, @hotel.coordinate.lng]
+      @hotel_map.center_zoom_init(coordinates, @hotel.coordinate.zoom)
+      @hotel_map.overlay_init(GMarker.new(coordinates, :title => @hotel.name, :info_window => @hotel.name))
+    else
+      @hotel_map.center_zoom_init([44.465151,40.935547], 6)
+    end
   end
 
 private

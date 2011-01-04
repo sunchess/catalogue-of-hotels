@@ -1,2 +1,16 @@
-%h1 Rooms#index
-%p Find me in app/views/rooms/index.html.haml
+%h1
+  = t(".title")
+  = "\"#{@hotel.name}\""
+#main_content
+  - if can?(:update, @hotel)
+    .right_side
+      = link_to t(".new"), new_hotel_room_path(@hotel)
+      %br
+      %br
+  #room_area
+    = render :partial=>"room", :collection=>@rooms
+#navigation
+  - if @hotel and can?(:update, @hotel)
+    = wizzard_steps 
+  - else
+    = hotel_items

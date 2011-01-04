@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101211090533) do
+ActiveRecord::Schema.define(:version => 20101222101120) do
 
   create_table "dynamic_fields", :force => true do |t|
     t.integer "dynamic_model_id"
@@ -95,6 +95,16 @@ ActiveRecord::Schema.define(:version => 20101211090533) do
 
   add_index "places", ["parent_id"], :name => "index_places_on_parent_id"
   add_index "places", ["position"], :name => "index_places_on_position"
+
+  create_table "prices", :force => true do |t|
+    t.integer  "room_id"
+    t.integer  "month"
+    t.integer  "cost"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "prices", ["room_id"], :name => "index_prices_on_room_id"
 
   create_table "rooms", :force => true do |t|
     t.integer  "hotel_id"

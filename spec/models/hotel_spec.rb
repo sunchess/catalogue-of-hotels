@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101115183243
+# Schema version: 20101222101120
 #
 # Table name: hotels
 #
@@ -18,6 +18,7 @@
 #  banking_details :text
 #  created_at      :datetime
 #  updated_at      :datetime
+#  images_count    :integer         default(0), not null
 #
 
 require 'spec_helper'

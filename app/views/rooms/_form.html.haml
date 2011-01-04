@@ -1,4 +1,5 @@
 = form_for [@hotel, @room], :html=>{:multipart=>true} do |f|
+  = render( :partial=>"layouts/errors_messages", :locals => { :target=>@room})
   %ul.form_fields 
     %li
       = f.label :places
@@ -33,10 +34,31 @@
   %ul.form_params
     %li.title
       = t('.photos')
-    - 5.times do |time|
+    - ( 5 - @room.images.count).times do |time|
       %li
         = file_field_tag "images[]"
+    %li
+      = render :partial => "form_images"
 
+  %ul.form_fields
+    %li.title
+      = t(".price")
+    %li.info
+      = t(".price_info").html_safe
+      - i=1
+      = f.fields_for :prices  do |price|
+        %li.double
+          %div{:class=>cycle("even", "odd"), :style=>"overflow: hidden; width: 50%; padding-left: 5px;"}
+            .first
+              = price.hidden_field :month
+              = "#{ I18n.t("date.standalone_month_names")[i] }:"
+            .second{:style=>"width: 70%"}
+              = price.text_field :cost, :size=>10
+              = t("rur")
+              - i += 1
+
+
+  .reset
 
   %ul.form_params
     %li

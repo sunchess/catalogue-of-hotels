@@ -1,22 +1,5 @@
 CatalogueOfHotels::Application.routes.draw do
 
-  get "rooms/index"
-
-  get "rooms/new"
-
-  get "rooms/edit"
-
-  get "maps/new"
-
-  get "maps/index"
-
-  get "images/index"
-
-  get "images/new"
-
-
-  get "home/index"
-
   #get "home/index"
   resources :dynamic_models do
     resources :dynamic_fields do
@@ -25,18 +8,22 @@ CatalogueOfHotels::Application.routes.draw do
          put 'update_order'
        end
     end
-
   end
 
-  resources :hotels, :shallow => true do
+  resources :hotels  do
     resources :images, :controller=>"hotels/images", :only=>[:new, :create, :destroy, :index, :update] do
       collection do
         delete 'destroy'
       end
     end
-    resources :maps, :controller=>"hotels/maps", :only=>[:new, :index]
-    resources :rooms
+    resources :maps, :controller=>"hotels/maps", :only=>[:new, :index, :create]
+    resources :rooms do
+      member do
+        delete 'delete_image'
+      end
+    end
   end
+  resources :rooms, :only=>[:index]
 
   resources :places, :shallow => true do
     resources :maps, :controller=>"places/maps", :only=>[:create]

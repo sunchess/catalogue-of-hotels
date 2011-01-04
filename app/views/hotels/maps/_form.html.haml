@@ -1,0 +1,24 @@
+= form_for([@hotel, @map], :remote => true) do |f|
+  #notice{:class=>"notice", :style=>"display:none"}
+
+  .field
+    = f.label :lat
+    %br
+    = f.text_field :lat
+
+  .field
+    = f.label :lng
+    %br
+    = f.text_field :lng
+
+  .field
+    = f.label :zoom
+    %br
+    = f.text_field :zoom, :size=>"4"
+
+  %br
+  .actions
+    = f.submit
+
+
+

@@ -1,2 +1,8 @@
-%h1 Rooms#edit
-%p Find me in app/views/rooms/edit.html.haml
+%h1
+  = t(".title") 
+  = "\"#{ @hotel.name }\""
+#main_content
+  = render "form"
+
+#navigation
+  = wizzard_steps

@@ -1,2 +1,12 @@
-%h1 Hotels::Maps#index
-%p Find me in app/views/hotels/maps/index.html.haml
+- content_for :maps do
+  = render :partial => "maps_header"
+
+%h1
+  = t(".title") 
+  = "\"#{@hotel.name}\""
+#main_content
+  %br
+  = @hotel_map.div(:width => 500, :height => 400).html_safe
+
+#navigation
+  = hotel_items

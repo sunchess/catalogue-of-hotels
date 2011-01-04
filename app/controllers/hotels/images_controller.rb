@@ -1,6 +1,6 @@
 class Hotels::ImagesController < ApplicationController
   before_filter :find_hotel
-  before_filter :authorize_hotel, :exept=>[:index]
+  before_filter :authorize_hotel, :except=>[:index]
   before_filter :check_count_images, :only=>:create
 
   def index

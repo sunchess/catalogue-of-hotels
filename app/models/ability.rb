@@ -12,6 +12,8 @@ class Ability
         can :create, Image
         can :create, Hotel
         can :create, Room
+        can :create, Price
+        
 
         can :update, Hotel do |hotel|
           hotel.try(:user) == user

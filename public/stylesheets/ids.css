@@ -24,4 +24,9 @@
   margin-top: 5px;
   padding-left: 5px; }
 #wizzard .current {
-  background-color: #ffeb8d; }
+  background-color: #e6e6fa; }
+
+#room_area .current {
+  color: #179b3f; }
+#room_area td {
+  font-size: 12px; }

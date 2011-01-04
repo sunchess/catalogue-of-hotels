@@ -4,6 +4,7 @@ ru:
     successfully_update: "Гостиница отредактирована"
     successfully_destroy: "Гостиница удалена"
     navigation: "Гостиницы"
+    add_params: "Доп. параметры:"
 
     index:
       title: "Список гостиниц"
@@ -45,6 +46,14 @@ ru:
         edit: "Редактировать изображения"
       exist_images: "Доступные изображения"  
       no_exist: "Изображений нет для данной гостиницы"
+    maps:
+      new:
+        not_found_hotel_address: "Не удалось найти адрес на карте"
+        title: "Добавить маркер на карте для гостиницы"
+      index:
+        title: "Расположение на карте гостиницы"
+    hotel:
+      rooms: "Номера:"
 
 
 

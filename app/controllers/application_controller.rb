@@ -1,3 +1,9 @@
+class Time
+  def get_month
+    self.strftime("%m").to_s.delete("0").to_i 
+  end
+end
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper NavigationHelper

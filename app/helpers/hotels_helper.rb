@@ -13,12 +13,12 @@ module HotelsHelper
     end
   end
 
-  def clear_wizzard_steps
+  def hotel_items
     capture_haml do
       haml_tag :div, :id=>"wizzard" do
         haml_tag :div, link_to(t("hotels.show.hotel"), hotel_path(@hotel)), :class=>has_current("hotels")
         haml_tag :div, link_to(t("hotels.show.images"), hotel_images_path(@hotel)), :class=>has_current("hotels/images")
-        haml_tag :div, link_to(t("hotels.show.rooms"), hotel_path(@hotel)), :class=>has_current("hotels/rooms")
+        haml_tag :div, link_to(t("hotels.show.rooms"), hotel_rooms_path(@hotel)), :class=>has_current("rooms")
         haml_tag :div, link_to(t("hotels.show.maps"), hotel_maps_path(@hotel)), :class=>has_current("hotels/maps")
       end
     end
@@ -31,4 +31,13 @@ module HotelsHelper
       nil
     end
   end
+
+  def hotel_thumb(record)
+    if record.images.any? 
+     link_to image_tag(record.images.order("id").first.image.url(:thumb) ), hotel_path(record.id)
+    else
+      image_tag("thumb_no_photo.png")
+    end
+  end
+
 end

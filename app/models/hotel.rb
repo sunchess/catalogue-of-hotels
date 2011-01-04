@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101115183243
+# Schema version: 20101222101120
 #
 # Table name: hotels
 #
@@ -18,11 +18,12 @@
 #  banking_details :text
 #  created_at      :datetime
 #  updated_at      :datetime
+#  images_count    :integer         default(0), not null
 #
 
 class Hotel < ActiveRecord::Base
   scope :public, lambda{|can_manage|
-    where(:draft=>can_manage)
+    where(:draft=>false) unless can_manage 
   }
 
   belongs_to :user
@@ -36,6 +37,10 @@ class Hotel < ActiveRecord::Base
   has_many :dynamic_fields, :through=>:fields_dynamic_fields
   has_one  :coordinate, :as=>:mapable, :class_name=>"Map"
   has_many :rooms
+
+  def rooms_exept(room)
+    self.rooms.delete_if{|r| r.id == room.id }
+  end
 
   def self.distance_options
     {I18n.t('hotels.distance_options.less_five')=>5,

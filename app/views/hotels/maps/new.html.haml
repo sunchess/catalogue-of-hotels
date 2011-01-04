@@ -1,13 +1,14 @@
 - content_for :maps do
   = render :partial => "maps_header"
 
-%h1= t(".title") 
+%h1
+  = t(".title") 
+  = "\"#{@hotel.name}\""
 #main_content
-  - if !@gg_locate.success and !@hotel.coordinate
-    .error
-      = t('.not_found_hotel_address')
   %br
   = @hotel_map.div(:width => 500, :height => 400).html_safe
 
+  %br
+  = render :partial => "form"
 #navigation
   = wizzard_steps

@@ -1,0 +1,20 @@
+.item
+  .left
+    = hotel.name
+    = "(#{ t("activerecord.attributes.hotel.distance") } #{ Hotel.distance_options.select{|k,v| v==hotel.distance }.first.first } )"
+  .right
+    - if can?(:update, hotel)
+      = link_to t("edit"), edit_hotel_path(hotel)
+  .reset
+  .left
+    = hotel_thumb( hotel )
+  .left.padding_left_5
+    %span.title
+      = t(".rooms")
+      %br
+    - hotel.rooms.limit(5).order("id").each do |room|
+      = link_to human_room_data( room.places, Room.places ), hotel_room_path(hotel.id, room.id)
+ 
+      
+
+    

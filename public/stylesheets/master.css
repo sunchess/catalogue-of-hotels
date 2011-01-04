@@ -17,6 +17,30 @@
   float: right;
   width: 27%; }
 
+.padding_5 {
+  padding: 5px 5px 5px 5px; }
+
+.right_side {
+  text-align: right; }
+
+.item {
+  font-size: 12px;
+  border: 1px solid #dae2e8;
+  padding: 3px 3px 3px 3px;
+  overflow: hidden;
+  margin-bottom: 8px; }
+  .item .title {
+    color: gray; }
+
+.header {
+  background-color: #d6e9ff; }
+
+.padding_left_5 {
+  padding-left: 5px; }
+
+.space {
+  margin-top: 10px; }
+
 body {
   margin: 0;
   padding: 0;
@@ -32,7 +56,7 @@ tr .even {
   tr .even:hover {
     background-color: #d6e9ff; }
 tr .odd {
-  background-color: #f7f7ff; }
+  background-color: #bdbdbd; }
   tr .odd:hover {
     background-color: #d6e9ff; }
 
@@ -83,10 +107,39 @@ ul.form_params li {
 li.title {
   font-weight: bold; }
 
+li.info {
+  font-style: italic;
+  font-size: 10px; }
+
+.double .first {
+  float: left; }
+.double .second {
+  float: right;
+  padding-left: 10px; }
+.double .even {
+  background-color: #e6e6fa; }
+  .double .even:hover {
+    background-color: #d6e9ff; }
+.double .odd {
+  background-color: #f7f7ff; }
+  .double .odd:hover {
+    background-color: #d6e9ff; }
+
+.reset {
+  clear: both; }
+
+a.edit {
+  text-decoration: underline;
+  color: gray; }
+  a.edit:hover {
+    color: #363636;
+    text-decoration: none; }
+
 #navigation_tab {
   border-bottom: 1px solid;
   margin: 0 -10px;
-  padding: 0 10px; }
+  padding: 0 10px;
+  width: 800px; }
   #navigation_tab ul {
     list-style: none;
     display: block;
@@ -163,7 +216,12 @@ li.title {
   margin-top: 5px;
   padding-left: 5px; }
 #wizzard .current {
-  background-color: #ffeb8d; }
+  background-color: #e6e6fa; }
+
+#room_area .current {
+  color: #179b3f; }
+#room_area td {
+  font-size: 12px; }
 
 .text1 {
   font-size: 14px;
