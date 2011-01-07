@@ -1,0 +1,30 @@
+.item
+  .left
+    = link_to hotel.name, hotel_path(hotel.id) 
+    = "(#{  link_to( hotel.place.title, place_path(hotel.place), :class=>"edit" )})".html_safe
+    .title
+      = "#{ t("activerecord.attributes.hotel.distance") } #{ Hotel.distance_options.select{|k,v| v==hotel.distance }.first.first } "
+  .right{:style=>"width: 120px"}
+    = link_to t("edit"), edit_hotel_path(hotel), :class=>"edit"
+    %br
+    = hotel.confirmed? ? t("hotels.confirmed") : link_to( t("hotels.not_confirmed"), edit_hotel_confirm_path(hotel) )
+    %br
+    = hotel.draft? ? t("hotels.not_public") : t("hotels.public")
+  .reset
+  .left
+    = hotel_thumb( hotel )
+  .left{:style=>"width: 300px; padding-left: 10px;"}
+    .title= t("activerecord.attributes.hotel.description")
+    = truncate(hotel.description, :length=>300)
+  .right{:style=>"width: 115px; padding-top: 10px; padding-left: 10px;"}
+    = link_to t("hotels.add.rooms"), hotel_rooms_path(hotel)
+    %br
+    = link_to t("hotels.add.images"), hotel_images_path(hotel)
+    %br
+    = link_to t("hotels.map"), hotel_maps_path(hotel)
+    %br
+    = link_to t("further"), hotel_path(hotel)
+ 
+      
+
+    

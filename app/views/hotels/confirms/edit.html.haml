@@ -1,0 +1,23 @@
+%h1
+  = "#{ t(".title") } \"#{@hotel.name}\""
+#main_content
+  .item
+    = t(".contract1")
+    %br
+    = t(".contract2")
+    = link_to "dogovor.doc" 
+    %br
+    = t(".contract3")
+    .reset
+      %br
+      = form_tag(hotel_confirm_path(@hotel), :method=>:put, :multipart=>true) do
+        .left
+          = file_field_tag :contract
+        .right
+          = submit_tag t("upload")
+    .reset
+          
+          
+  
+#navigation
+  = wizzard_steps

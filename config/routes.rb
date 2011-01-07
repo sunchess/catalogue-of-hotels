@@ -1,5 +1,7 @@
 CatalogueOfHotels::Application.routes.draw do
 
+  get "hotels/index"
+
   #get "home/index"
   resources :dynamic_models do
     resources :dynamic_fields do
@@ -16,13 +18,17 @@ CatalogueOfHotels::Application.routes.draw do
         delete 'destroy'
       end
     end
+
     resources :maps, :controller=>"hotels/maps", :only=>[:new, :index, :create]
     resources :rooms do
       member do
         delete 'delete_image'
       end
     end
+
+    resource :confirm, :controller=>"hotels/confirms", :only=>[:edit, :update]
   end
+
   resources :rooms, :only=>[:index]
 
   resources :places, :shallow => true do
@@ -32,11 +38,18 @@ CatalogueOfHotels::Application.routes.draw do
         put "update"
       end
     end
-    resources :hotels do
-      resources :images, :controller=>"hotels/images", :only=>[:new, :create, :destroy, :index, :update] 
-    end
   end
-  
+
+  namespace :admin do
+    resources :hotels, :only=>[:index]
+    resource  :dashboard, :only=>[:show]
+  end
+
+  namespace :my do
+    resources :hotels, :only=>[:index]
+  end
+
+  root :to => "home#index"
 
   devise_for :users
 
@@ -89,7 +102,6 @@ CatalogueOfHotels::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-   root :to => "home#index"
 
   # See how all your routes lay out with "rake routes"
 

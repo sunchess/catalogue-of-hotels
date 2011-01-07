@@ -61,8 +61,9 @@
       -else
         .title=t('no_images')
   
-    = t(".another_rooms")
-    = render :partial => "room", :collection=>@hotel.rooms_exept(@room)
+    - if @hotel.rooms_exept(@room).any?
+      = t(".another_rooms")
+      = render :partial => "room", :collection=>@hotel.rooms_exept(@room)
 #navigation
   = link_to t("back"), hotel_rooms_path(@hotel)
   %br

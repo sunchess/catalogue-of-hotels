@@ -4,7 +4,7 @@ class Hotels::ImagesController < ApplicationController
   before_filter :check_count_images, :only=>:create
 
   def index
-    @images = @hotel.images
+    @images = @hotel.images.ordered
     @editable_flag = false #app helper method editable?
   end
 

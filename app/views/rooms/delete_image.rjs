@@ -1,0 +1,1 @@
+page << "$('#room_images_id').html('#{ escape_javascript(render(:partial=>"form_images")) }')"

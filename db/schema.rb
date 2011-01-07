@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101222101120) do
+ActiveRecord::Schema.define(:version => 20110106154347) do
 
   create_table "dynamic_fields", :force => true do |t|
     t.integer "dynamic_model_id"
@@ -46,12 +46,16 @@ ActiveRecord::Schema.define(:version => 20101222101120) do
     t.text     "telephone"
     t.string   "fax"
     t.integer  "distance"
-    t.boolean  "draft",           :default => true,  :null => false
-    t.boolean  "paid_placement",  :default => false, :null => false
+    t.boolean  "draft",                 :default => true,  :null => false
+    t.boolean  "paid_placement",        :default => false, :null => false
     t.text     "banking_details"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "images_count",    :default => 0,     :null => false
+    t.integer  "images_count",          :default => 0,     :null => false
+    t.boolean  "confirmed",             :default => false, :null => false
+    t.string   "contract_file_name"
+    t.string   "contract_content_type"
+    t.integer  "contract_file_size"
   end
 
   add_index "hotels", ["place_id"], :name => "index_hotels_on_place_id"

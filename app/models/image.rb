@@ -20,6 +20,7 @@ class Image < ActiveRecord::Base
   scope(:limited, :limit=>6, :order=>"created_at DESC")
   scope(:not_draft, where(:draft=>false))
   scope(:draft, where(:draft=>true))
+  scope(:ordered, order("id DESC"))
 
   attr_accessible :image, :draft
 

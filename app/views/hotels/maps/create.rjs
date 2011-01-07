@@ -1,0 +1,2 @@
+page << "$('#notice').html('#{t("hotels.maps.saved")}');"
+page << "$('#notice').show('slow');"

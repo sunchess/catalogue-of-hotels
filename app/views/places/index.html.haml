@@ -16,15 +16,19 @@
             -if place.children
               %ul
                 - place.children.each do |child|
-                  %li{:class=>"child #{draft_record?(child)}", :title=>child.draft ? t('.draft') : nil}
-                    = link_to child.title, place_path(child)
-                    %br
-                    -if can?(:edit, Place)
-                      = link_to t('edit'), edit_place_path(child)
+                  - if can?(:manage, Place)
+                    %li{:class=>"child #{draft_record?(child)}", :title=>child.draft ? t('.draft') : nil}
+                      = link_to child.title, place_path(child)
+                      %br
+                      -if can?(:edit, Place)
+                        = link_to t('edit'), edit_place_path(child)
 
-                    -if can?(:delete, Place)
-                      = link_to t('destroy'), child, :confirm => t('confirm'), :method => :delete
-    %br{:style=>"clear:both"}
+                      -if can?(:delete, Place)
+                        = link_to t('destroy'), child, :confirm => t('confirm'), :method => :delete
+                  - elsif not child.draft?
+                    %li{:class=>"child"}
+                      = link_to child.title, place_path(child)
+    .reset
 
 
 
@@ -36,8 +40,5 @@
 
 %script
   //<![CDATA[
-  $(function(){
-  $(".tooltips").tipTip({defaultPosition: 'top'});
-  });
   //]]>
 

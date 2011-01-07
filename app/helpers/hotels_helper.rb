@@ -7,7 +7,7 @@ module HotelsHelper
           haml_tag :div, link_to(t('hotels.add.images'), new_hotel_image_path(@hotel)), {:class=>has_current("hotels/images")}
           haml_tag :div, link_to(t('hotels.add.map') , new_hotel_map_path(@hotel)), {:class=>has_current("hotels/maps")}
           haml_tag :div, link_to(t('hotels.add.rooms'), hotel_rooms_path(@hotel)), {:class=>has_current("rooms")}
-          haml_tag :div, link_to(t('hotels.add.contract') ), {:class=>has_current("hotels/contract")}
+          haml_tag :div, link_to(t('hotels.add.confirm'), edit_hotel_confirm_path(@hotel)), {:class=>has_current("hotels/confirms")}
         end
       end
     end
@@ -36,7 +36,7 @@ module HotelsHelper
     if record.images.any? 
      link_to image_tag(record.images.order("id").first.image.url(:thumb) ), hotel_path(record.id)
     else
-      image_tag("thumb_no_photo.png")
+      link_to image_tag("thumb_no_photo.png"), hotel_path(record.id)
     end
   end
 

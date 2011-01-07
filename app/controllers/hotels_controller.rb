@@ -2,17 +2,13 @@ include Geokit::Geocoders
 
 class HotelsController < ApplicationController
   before_filter :find_hotel, :only=>[:show, :edit, :update, :destroy]
-  before_filter :find_place
-  #caches_action :index #Thinking how to delete cache with deferent params
+  caches_action :index
+  after_filter  :delete_cache, :only=>[:create, :update]
   before_filter :find_dynamic_fields, :only=>[:new, :create, :edit, :update]
   authorize_resource
 
   def index
-    @hotels =if @place
-               @place.hotels.public(can?(:manage, Hotel)).order("id").paginate(:page=>params[:page])
-             else
-               Hotel.public(can?(:manage, Hotel)).order("id").paginate(:page=>params[:page])
-             end
+    @hotels = Hotel.confirmed.paginate(:page=>params[:page])
   end
 
   def show
@@ -51,7 +47,7 @@ class HotelsController < ApplicationController
       else
         @hotel.dynamic_fields.clear
       end 
-      redirect_to(@hotel, :notice => t('hotels.successfully_update'))
+      redirect_to(edit_hotel_path(@hotel), :notice => t('hotels.successfully_update'))
     else
       render :action => "edit" 
     end
@@ -67,17 +63,15 @@ class HotelsController < ApplicationController
   end
 
 private
-  def find_place
-    if params[:place_id]
-      @place = Place.find(params[:place_id])
-    end
-  end
-
   def find_hotel
     @hotel = Hotel.find(params[:id])
   end
   
   def find_dynamic_fields
     @dynamic_fields = DynamicModel.return_dynamic_fields("Hotel")
+  end
+
+  def delete_cache
+    expire_action :index
   end
 end

@@ -2,13 +2,17 @@
   %ul
     %li{:class=>set_current_style("places", "places/images")}
       = link_to t("places.navigation"), places_path
-    %li{:class=>set_current_style("hotels", "hotels/images", "hotels/maps", "hotels/rooms")}
+    %li{:class=>set_current_style("hotels", "hotels/images", "hotels/maps", "hotels/rooms", "hotels/confirms")}
       = link_to t("hotels.navigation"), hotels_path
     %li{:class=>set_current_style("rooms")}
-      = link_to t("rooms.navigation"), hotels_path
+      = link_to t("rooms.navigation"), rooms_path
 
     -if current_user
+      - if current_user.hotels.any?
+        %li{:class=>set_current_style("my/hotels")}
+          = link_to t("my.hotels.navigation"), my_hotels_path
       -if current_user.admin?
         %li{:class=>set_current_style("dynamic_models", "dynamic_fields")}
-          = link_to t("dynamic_fields.navigation"), dynamic_models_path if can?(:create, DynamicModel)
-
+          = link_to t("dynamic_fields.navigation"), dynamic_models_path 
+        %li{:class=>set_current_style("admin/dashboards")}
+          = link_to t("admin.dashboard.navigation"), admin_dashboard_path 

@@ -21,5 +21,5 @@
     %br
     = link_to t(".reserve")
     - if can?(:update, room)
-      = link_to t("rooms.edit"), edit_hotel_room_path(room.hotel.id, room.id), :class=>"edit"
+      = link_to t("edit"), edit_hotel_room_path(room.hotel.id, room.id), :class=>"edit"
 .reset

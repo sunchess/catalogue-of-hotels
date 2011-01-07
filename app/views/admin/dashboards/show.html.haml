@@ -1,0 +1,6 @@
+%h1 Admin::Dashboard
+#main_navigation
+
+#navigation
+  = link_to t("hotels.navigation"), admin_hotels_path
+  = "(#{Hotel.draft})"

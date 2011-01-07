@@ -1,13 +1,12 @@
 ru:
   rooms:
     hotel_closed: "Не работает"
-    edit: "Редактировать"
     successfully_create: "Номер добавлен"
     successfully_update: "Номер отредактирован"
     navigation: "Номера"
     prices_empty: "заполните не менее одной цены за месяц"
     index: 
-      title: "Номера гостиницы"
+      title: "Номера"
       new: "Добавить номер"
     form:
       dynamic_fields: "Параметры для комнат: "
@@ -23,6 +22,8 @@ ru:
       reserve: "Забронировать"
     new:
       title: "Новый номер для гостиницы "
+    edit:
+      title: "Редактирование номеров для гостиницы"
     show:
       photos: "Фотографии номера:"
       min: "Мин. цена:"

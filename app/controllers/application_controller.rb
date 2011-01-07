@@ -21,4 +21,8 @@ private
   def admin?
     current_user.admin?
   end
+
+  def logged_in
+    authenticate_user!
+  end
 end

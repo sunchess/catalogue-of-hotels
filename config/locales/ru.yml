@@ -13,6 +13,9 @@ ru:
   rur: "руб."
   total_images: "Всего изображений"
   no_images: "Изображения отсутствуют"
+  next: "Далее"
+  upload: "Загрузить"
+
   users:
     hello: "Здравствуйте"
     send_password_instructions: "Выслать письмо"

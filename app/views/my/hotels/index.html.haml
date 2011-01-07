@@ -1,0 +1,7 @@
+%h1= t('.title')
+#main_content
+  = render :partial => "hotel", :collection=>@hotels
+
+ 
+#navigation
+  %p= link_to t('hotels.index.new_hotel'), new_hotel_path

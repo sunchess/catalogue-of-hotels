@@ -1,0 +1,2 @@
+module My::HotelsHelper
+end

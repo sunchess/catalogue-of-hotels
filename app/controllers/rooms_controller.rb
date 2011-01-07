@@ -3,13 +3,13 @@ class RoomsController < ApplicationController
   before_filter :authorize_hotel, :except=>[:index, :show]
   before_filter :check_new, :only=>:index
   before_filter :find_dynamic_fields, :only=>[:new, :edit, :create, :update]
-  before_filter :find_room, :only=>[:edit, :update]
+  before_filter :find_room, :only=>[:edit, :update, :delete_image]
   
   def index
     if @hotel
       @rooms = @hotel.rooms
     else
-      @rooms = Room.joins("LEFT JOIN hotels ON hotels.id = rooms.hotel_id")
+      @rooms = Room.joins("LEFT JOIN hotels ON hotels.id = rooms.hotel_id").where("hotels.draft"=>false)
     end
   end
 
@@ -49,6 +49,19 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     @images = @room.images
+  end
+
+  def delete_image
+    @image = @room.images.find(params[:image])
+    if @image
+      @image.destroy
+      respond_to do |format|
+        format.html {redirect_to edit_hotel_room_path(@hotel, @room)}
+        format.js 
+      end
+    else
+      render :nothing=>true
+    end
   end
 
   private
