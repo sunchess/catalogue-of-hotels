@@ -41,6 +41,9 @@
 .space {
   margin-top: 10px; }
 
+.pagination {
+  text-align: center; }
+
 body {
   margin: 0;
   padding: 0;

@@ -25,4 +25,12 @@ private
   def logged_in
     authenticate_user!
   end
+
+  def as_admin
+    unless admin?
+      flash[:alert] = t("access_denied")
+      redirect_to root_path
+      return false
+    end
+  end
 end

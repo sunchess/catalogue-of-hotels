@@ -8,6 +8,10 @@
     = link_to "dogovor.doc" 
     %br
     = t(".contract3")
+    %br
+    %br
+    = t(".contract")
+    = link_to t(".file") , @hotel.contract.url
     .reset
       %br
       = form_tag(hotel_confirm_path(@hotel), :method=>:put, :multipart=>true) do

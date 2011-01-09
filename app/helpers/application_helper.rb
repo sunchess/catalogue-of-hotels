@@ -1,5 +1,11 @@
 module ApplicationHelper
-  
+
+  def t_will_paginate(collection, options = {})
+    options.update({:previous_label=>t("paginate.previous")})
+    options.update({:next_label=>t("paginate.next")})
+    will_paginate(collection, options)
+  end
+
   def flashes
     return nil if flash.empty?
     html = String.new

@@ -22,7 +22,8 @@
 #
 
 class Hotel < ActiveRecord::Base
-  scope :confirmed, where(:draft=>false, :confirmed=>true).order("id")
+  scope :confirmed, where(:draft=>true, :confirmed=>true).order("id")
+  scope :public_items, where(:draft=>false, :confirmed=>true).order("id")
 
   belongs_to :user
   belongs_to :place

@@ -14,5 +14,5 @@
       -if current_user.admin?
         %li{:class=>set_current_style("dynamic_models", "dynamic_fields")}
           = link_to t("dynamic_fields.navigation"), dynamic_models_path 
-        %li{:class=>set_current_style("admin/dashboards")}
+        %li{:class=>set_current_style("admin/dashboards", "admin/hotels")}
           = link_to t("admin.dashboard.navigation"), admin_dashboard_path 

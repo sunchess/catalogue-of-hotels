@@ -2,7 +2,7 @@
 #main_content
   = render :partial => "hotel", :collection=>@hotels
 
- 
+  = t_will_paginate @hotels
 #navigation
   %p= link_to t('.new_hotel'), new_hotel_path
 

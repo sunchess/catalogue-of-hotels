@@ -1,2 +1,5 @@
-%h1 Admin::Hotels#index
-%p Find me in app/views/admin/hotels/index.html.haml
+%h1= t(".title") 
+#main_content
+  = render :partial => "my/hotels/hotel", :collection=>@hotels
+#navigation
+  = link_to t("back"), :back

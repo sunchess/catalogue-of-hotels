@@ -8,7 +8,7 @@ class HotelsController < ApplicationController
   authorize_resource
 
   def index
-    @hotels = Hotel.confirmed.paginate(:page=>params[:page])
+    @hotels = Hotel.public_items.paginate(:page=>params[:page], :per_page=>10)
   end
 
   def show
@@ -53,14 +53,6 @@ class HotelsController < ApplicationController
     end
   end
 
-  def destroy
-    @hotel.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(hotels_url) }
-      format.xml  { head :ok }
-    end
-  end
 
 private
   def find_hotel

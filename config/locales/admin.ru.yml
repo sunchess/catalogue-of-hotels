@@ -2,3 +2,6 @@ ru:
   admin:
     dashboard:
       navigation: "Администраторская"
+    hotels:
+      index:
+        title: "Администратормкая::Гостиницы"
