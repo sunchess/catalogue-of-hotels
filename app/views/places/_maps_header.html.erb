@@ -1,7 +1,7 @@
 <%
-   @place_map.event_init(@place_map, :click, 'mouseclck')
-
    if can? :update, Place
+     @place_map.event_init(@place_map, :click, 'mouseclck')
+
      @place_map.record_global_init("
         function mouseclck(overlay,latlng){
           var zm=0;

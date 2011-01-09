@@ -29,8 +29,14 @@
   padding: 3px 3px 3px 3px;
   overflow: hidden;
   margin-bottom: 8px; }
-  .item .title {
-    color: gray; }
+  .item td {
+    font-size: 12px; }
+  .item p {
+    padding: 3px 3px 3px 3px;
+    margin: 0px 0px 0px 0px; }
+
+.title {
+  color: gray; }
 
 .header {
   background-color: #d6e9ff; }

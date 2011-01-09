@@ -40,6 +40,17 @@ class Hotel < ActiveRecord::Base
   # Paperclip
   has_attached_file :contract
 
+  def save_dynamic_fields(fields)
+    if fields
+      self.dynamic_fields.clear
+      fields.each do |field|
+        self.dynamic_fields << DynamicField.find_by_permalink(field)
+      end 
+    else
+      self.dynamic_fields.clear
+    end 
+  end
+
   def has_all_params
     self.images.any? and self.coordinate and self.rooms.any?
   end

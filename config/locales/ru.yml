@@ -15,6 +15,7 @@ ru:
   no_images: "Изображения отсутствуют"
   next: "Далее"
   upload: "Загрузить"
+  add_params: "Доп. параметры"
   
   paginate:
     previous: "← Предыдущая"

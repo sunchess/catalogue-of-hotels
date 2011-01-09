@@ -41,4 +41,11 @@ module HotelsHelper
     end
   end
 
+  def show_hotel_thumb(record)
+    if record.images.any? 
+     link_to image_tag(record.images.order("id").first.image.url(:thumb), :align=>"left", :style=>"padding: 5px 5px 5px 5px" ), hotel_path(record.id)
+    else
+      link_to image_tag("thumb_no_photo.png"), hotel_path(record.id)
+    end
+  end
 end

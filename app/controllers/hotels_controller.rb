@@ -13,6 +13,7 @@ class HotelsController < ApplicationController
 
   def show
     #render show
+    @images = @hotel.images.limit(3)
   end
 
   def new
@@ -28,9 +29,7 @@ class HotelsController < ApplicationController
     @hotel.accessible = [ :draft, :paid_placement ] if admin?
     @hotel.attributes = params[:hotel]
     if current_user.hotels << @hotel
-      params[:fields].each do |field|
-        @hotel.dynamic_fields << DynamicField.find_by_permalink(field)
-      end if params[:fields]
+      @hotel.save_dynamic_fields( params[:fields] )
       redirect_to(new_hotel_image_path(@hotel), :notice =>t('hotels.successfully_create')) 
     else
       render :action => "new" 
@@ -40,13 +39,7 @@ class HotelsController < ApplicationController
   def update
     @hotel.accessible = [ :draft, :paid_placement ] if admin?
     if @hotel.update_attributes(params[:hotel])
-      if params[:fields]
-        params[:fields].each do |field|
-          @hotel.dynamic_fields << DynamicField.find_by_permalink(field)
-        end 
-      else
-        @hotel.dynamic_fields.clear
-      end 
+      @hotel.save_dynamic_fields( params[:fields] )
       redirect_to(edit_hotel_path(@hotel), :notice => t('hotels.successfully_update'))
     else
       render :action => "edit" 

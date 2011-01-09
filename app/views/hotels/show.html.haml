@@ -1,12 +1,33 @@
-%h1= t '.title'
-%p
-  = link_to t('back'), hotels_path
-  = link_to t('edit'), edit_hotel_path(@hotel)
-
-%dl
-  %dt= Hotel.human_attribute_name :name
-  %dd= @hotel.name
-  %dt= Hotel.human_attribute_name :description
-  %dd= @hotel.description
-  %dt= Hotel.human_attribute_name :distance
-  %dd= @hotel.distance
+%h1
+  = t '.title'
+  = "\"#{@hotel.name}\""
+#main_content
+  .item
+    .left
+      = link_to @hotel.name, hotel_path(@hotel.id) 
+      = "(#{  link_to( @hotel.place.title, place_path(@hotel.place), :class=>"edit" )})".html_safe
+    .right{:style=>"width: 200px"}
+      .title
+        = "#{ t("activerecord.attributes.hotel.distance") } #{ Hotel.distance_options.select{|k,v| v==@hotel.distance }.first.first } "
+    .reset{:style=>"padding-top: 3px;"}
+    .left{:style=>"padding-left: 5px;"}
+      = show_hotel_thumb( @hotel )
+      .title= t("activerecord.attributes.hotel.description")
+      = simple_format @hotel.description
+  .title= t("rooms.navigation")
+  = render :partial => "rooms/room", :collection=>@hotel.rooms
+  .item
+    .reset
+      -if @images.any?
+        .title= t(".photos")
+        = render :partial => "shared/images_area"
+      -else
+        .title=t('no_images')
+    .reset
+      .title
+        = t("add_params")
+      - @hotel.dynamic_fields.each do |field|
+        = field.title
+        %br
+#navigation
+  = hotel_items
