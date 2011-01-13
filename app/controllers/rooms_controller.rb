@@ -1,13 +1,18 @@
 class RoomsController < ApplicationController
   before_filter :find_hotel
+  add_breadcrumb I18n.t("rooms.navigation"), :hotel_room_path, :only=>"show"
+  add_breadcrumb I18n.t("rooms.new.title"), :hotel_room_path, :only=>%w{new create}
+  add_breadcrumb I18n.t("rooms.edit.title"), :edit_hotel_room_path, :only=>%w{edit update}
+
   before_filter :authorize_hotel, :except=>[:index, :show]
   before_filter :check_new, :only=>:index
   before_filter :find_dynamic_fields, :only=>[:new, :edit, :create, :update]
-  before_filter :find_room, :only=>[:edit, :update, :delete_image]
+  before_filter :find_room, :only=>[:edit, :update, :delete_image, :destroy]
   
   def index
     if @hotel
       @rooms = @hotel.rooms
+      add_breadcrumb I18n.t("rooms.navigation"), :hotel_rooms_path
     else
       @rooms = Room.joins("LEFT JOIN hotels ON hotels.id = rooms.hotel_id").where("hotels.draft"=>false)
     end
@@ -64,9 +69,18 @@ class RoomsController < ApplicationController
     end
   end
 
+  def destroy
+    @room.destroy
+    redirect_to hotel_rooms_path(@hotel), :notice=>t("rooms.successfully_destroy")
+  end
+
   private
   def find_hotel
-    @hotel = Hotel.find(params[:hotel_id]) if params[:hotel_id]
+    if params[:hotel_id]
+      @hotel = Hotel.find(params[:hotel_id]) 
+      add_breadcrumb I18n.t("hotels.navigation"), hotels_path
+      add_breadcrumb @hotel.name, hotel_path(@hotel)
+    end
   end
 
   def authorize_hotel

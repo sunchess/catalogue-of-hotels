@@ -3,6 +3,7 @@ ru:
     hotel_closed: "Не работает"
     successfully_create: "Номер добавлен"
     successfully_update: "Номер отредактирован"
+    successfully_destroy: "Номер удален"
     navigation: "Номера"
     prices_empty: "заполните не менее одной цены за месяц"
     index: 

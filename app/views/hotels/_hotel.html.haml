@@ -10,7 +10,7 @@
     = hotel_thumb( hotel )
   .left{:style=>"width: 300px; padding-left: 10px;"}
     .title= t("activerecord.attributes.hotel.description")
-    = truncate(hotel.description, :length=>300)
+    = truncate(hotel.description, :length=>250)
   .right{:style=>"width: 115px; padding-top: 10px; padding-left: 10px;"}
     = link_to t("hotels.add.rooms"), hotel_rooms_path(hotel)
     %br

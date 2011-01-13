@@ -1,5 +1,10 @@
 class Hotels::ImagesController < ApplicationController
+  add_breadcrumb I18n.t("hotels.navigation"), :hotels_path
+
   before_filter :find_hotel
+  add_breadcrumb I18n.t("hotels.add.images"), :hotel_images_path
+  add_breadcrumb I18n.t("hotels.images.new.title"), :new_hotel_image_path, :only=>%w{new create}
+
   before_filter :authorize_hotel, :except=>[:index]
   before_filter :check_count_images, :only=>:create
 
@@ -38,6 +43,7 @@ class Hotels::ImagesController < ApplicationController
 private
   def find_hotel
     @hotel = Hotel.find(params[:hotel_id]) 
+    add_breadcrumb @hotel.name, hotel_path(@hotel)
     if can? :update, @hotel
       @editable_flag = true #app helper method editable?
     end  

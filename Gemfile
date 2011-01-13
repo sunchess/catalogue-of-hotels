@@ -17,7 +17,6 @@ gem "geokit"
 gem "paperclip", ">=2.3.6", :git=>'git://github.com/thoughtbot/paperclip.git'
 
 
-
 # Use unicorn as the web server
 # gem 'unicorn'
 

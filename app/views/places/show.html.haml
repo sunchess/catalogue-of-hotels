@@ -8,33 +8,38 @@
   - if !@gg_locate.success and !@place.coordinate
     .error
       = t('.not_found_place')
-  %br
-  = render :partial => "maps_div"
-  %br
+  .item.padding_3
+    = @place_map.div(:width => 538, :height => 400).html_safe
   - if can?(:edit, Place)
     = render :partial => "places/maps/form"
+    %br
+  - if @place.hotels.public_items.any?
+    .title
+      = t("hotels.navigation")
+    = render :partial => "hotels/hotel", :collection=>@place.hotels.public_items
 
   %br
-  Гостиницы по месту
-  %br
-  статьи итп
-  %br
-
-  Параметры динамических полей
-  %p
-    .text1
-      =t('.images')
-      = @place.title
+  -#статьи итп
+  - if @place.dynamic_fields.any?
+    .title
+      = t("add_params")
+    .item.padding_5
+      - @place.dynamic_fields.each do |field|
+        = field.title
+        %br
 
 
-  -if can? :create, Image
+  -#if can? :create, Image
     %div
       %span.ele_notice
         = t('places.images.form.notice')
       = render :partial => "places/images/form"
 
 
-  -if @images.any?
+  -#if @images.any?
+    .text1
+      =t('.images')
+      = @place.title
 
     %p
       %b
@@ -44,7 +49,7 @@
 
     #images_area
       = render :partial => "places/images/image_area"
-  -else
+  -#else
     %p
       =t('.no_images')
 
@@ -57,7 +62,7 @@
     %br
     = link_to t('edit'), edit_place_path(@place)
 
-%script
+-#%script
   //<![CDATA[
   $("a[rel=img_group]").fancybox({
   'transitionIn'	:	'elastic',

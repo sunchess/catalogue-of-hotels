@@ -20,6 +20,7 @@ class Place < ActiveRecord::Base
   scope :public, where(:draft=>false, :parent_id=>nil).includes([ :children ])
 
   has_many :images, :as=>:imageable, :dependent => :destroy
+  has_many :hotels
   has_many :fields_dynamic_fields, :as=>:dynamic, :dependent => :destroy
   has_many :dynamic_fields, :through=>:fields_dynamic_fields
   has_one  :coordinate, :as=>:mapable, :class_name=>"Map"

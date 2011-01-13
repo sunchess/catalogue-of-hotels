@@ -5,8 +5,10 @@ class Time
 end
 
 class ApplicationController < ActionController::Base
+  include BreadcrumbsOnRails::ControllerMixin
   protect_from_forgery
   helper NavigationHelper
+
 
   rescue_from CanCan::AccessDenied do |exception|
     if user_signed_in?

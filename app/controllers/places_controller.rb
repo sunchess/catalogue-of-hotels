@@ -1,11 +1,18 @@
 include Geokit::Geocoders
 
 class PlacesController < ApplicationController
-   load_and_authorize_resource
-   caches_action :index
-   before_filter :delete_cache, :only=>[:update, :create, :destroy]
-   before_filter :find_parents_and_fields, :only=>[:new, :edit, :create, :update]
+  before_filter :find_place, :only=>[:edit, :update, :destroy, :show]
+  authorize_resource
+  add_breadcrumb I18n.t("places.navigation"), :places_path#, :only=>%w{show new edit create update}
+  add_breadcrumb I18n.t("places.new.title"), :new_place_path, :only=>%w{new create}
+  add_breadcrumb I18n.t("places.edit.title"), :edit_place_path, :only=>%w{edit update}
 
+  #caches_action :index, :show, :layout=>false :unless=>proc do |c|
+   # c.can?(:manage, Place)
+  #end
+  
+  #after_filter :delete_cache, :only=>[:update, :create, :destroy]
+  before_filter :find_parents_and_fields, :only=>[:new, :edit, :create, :update]
 
   def index
     if can?(:manage, Place)
@@ -16,11 +23,14 @@ class PlacesController < ApplicationController
   end
 
   def show
-    geo_place =  if @place.parent
-                  "#{@place.title}, #{@place.parent.title}"
-                else
-                  @place.title
-                end
+    if @place.parent
+      geo_place = "#{@place.title}, #{@place.parent.title}"
+      add_breadcrumb @place.parent.title, place_path(@place.parent)
+      add_breadcrumb @place.title, place_path(@place)
+    else
+      geo_place = @place.title
+      add_breadcrumb @place.title, place_path(@place)
+    end
 
     @gg_locate = GoogleGeocoder.geocode(geo_place)
     @place_map = GMap.new("map")
@@ -46,8 +56,6 @@ class PlacesController < ApplicationController
               else
                 @place.images.not_draft.limited
               end
-
-
   end
 
 
@@ -111,7 +119,11 @@ private
 
   def delete_cache
     expire_action :index
+    expire_action :show
   end
 
+  def find_place
+    @place = Place.find(params[:id]) 
+  end
 
 end

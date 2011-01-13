@@ -1,7 +1,12 @@
 include Geokit::Geocoders
 
 class Hotels::MapsController < ApplicationController
+  add_breadcrumb I18n.t("hotels.navigation"), :hotels_path
+
   before_filter :find_hotel
+  add_breadcrumb I18n.t("hotels.add.map"), :hotel_maps_path
+  add_breadcrumb I18n.t("hotels.maps.new.title"), :new_hotel_map_path, :only=>%w{new create}
+
   before_filter :authorize_hotel, :except=>[:index]
 
   def new

@@ -1,8 +1,13 @@
 include Geokit::Geocoders
 
 class HotelsController < ApplicationController
+  add_breadcrumb I18n.t("hotels.navigation"), :hotels_path
+
   before_filter :find_hotel, :only=>[:show, :edit, :update, :destroy]
-  caches_action :index
+  add_breadcrumb I18n.t("hotels.edit.title"), :edit_hotel_path, :only=>%w{edit update}
+  add_breadcrumb I18n.t("hotels.new.title"), :new_hotel_path, :only=>%w{new create}
+
+  #caches_action :index, :layout=>false
   after_filter  :delete_cache, :only=>[:create, :update]
   before_filter :find_dynamic_fields, :only=>[:new, :create, :edit, :update]
   authorize_resource
@@ -50,6 +55,7 @@ class HotelsController < ApplicationController
 private
   def find_hotel
     @hotel = Hotel.find(params[:id])
+    add_breadcrumb @hotel.name, hotel_path(@hotel)
   end
   
   def find_dynamic_fields
