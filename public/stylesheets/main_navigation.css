@@ -1,93 +1,85 @@
-/*
-Syntax error: Undefined variable: "$maincolor".
-        on line 3 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/main_navigation.sass
+#navigation_tab {
+  border-bottom: 1px solid #42668c;
+  margin: 0 -10px;
+  padding: 0 10px;
+  width: 800px; }
+  #navigation_tab ul {
+    list-style: none;
+    display: block;
+    margin: 0 0 -1px;
+    padding: 0;
+    overflow: hidden; }
+  #navigation_tab li {
+    float: left;
+    display: inline;
+    margin: 0 5px -1px 0;
+    background-color: #42668c;
+    border: 1px solid #42668c; }
+    #navigation_tab li:hover {
+      background-color: white;
+      border-bottom-color: white;
+      border: 1px solid #42668c; }
+    #navigation_tab li a {
+      color: #000222;
+      padding: 0.3em 0.4em;
+      text-decoration: none;
+      display: block;
+      color: white; }
+      #navigation_tab li a:hover {
+        color: black; }
+  #navigation_tab .current a {
+    color: black;
+    background-color: white;
+    border-bottom-color: white; }
+    #navigation_tab .current a:hover {
+      color: black;
+      background-color: white;
+      border-bottom-color: white; }
 
-1: $acolor: #000222
-2: $current_color: #fff
-3: $bgcolor: $maincolor
-4: $border: 1px solid #555555
-5: $border_navigation: 1px solid #fff555
-6: 
-7: #navigation_tab
-8:   border-bottom: 1px solid
+#footer {
+  text-align: center;
+  margin: 0 -10px;
+  padding: 0 10px;
+  width: 800px;
+  border-top: 1px solid #dae2e8; }
+  #footer .content {
+    margin: 0 -35px; }
+  #footer a {
+    color: #42668c;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 1px 5px 2px 7px; }
+    #footer a:hover {
+      color: #42668c; }
+    #footer a:visited {
+      color: #42668c; }
+  #footer ul {
+    text-align: center;
+    list-style: none;
+    display: block;
+    overflow: hidden; }
+  #footer li {
+    float: left;
+    display: inline;
+    margin: 0 10px 1px 0;
+    border-top: 1px solid white; }
+    #footer li:hover {
+      border-top: 1px dashed #cad1d9; }
 
-Backtrace:
-/home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/main_navigation.sass:3
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/script/variable.rb:39:in `_perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/script/node.rb:61:in `perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/variable_node.rb:30:in `_perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `map'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:317:in `perform!'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/root_node.rb:59:in `perform!'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:305:in `_perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/root_node.rb:37:in `perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/root_node.rb:29:in `render'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:220:in `update_stylesheet'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:85:in `update_stylesheets'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:78:in `each'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:78:in `update_stylesheets'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:76:in `each'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:76:in `update_stylesheets'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:50:in `check_for_updates'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin/rack.rb:40:in `call'
-/usr/lib/ruby/gems/1.8/gems/warden-0.10.7/lib/warden/manager.rb:35:in `call'
-/usr/lib/ruby/gems/1.8/gems/warden-0.10.7/lib/warden/manager.rb:34:in `catch'
-/usr/lib/ruby/gems/1.8/gems/warden-0.10.7/lib/warden/manager.rb:34:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/head.rb:14:in `call'
-/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/flash.rb:182:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/cookies.rb:295:in `call'
-/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:32:in `call'
-/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
-/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:12:in `cache'
-/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:31:in `call'
-/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:353:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
-/usr/lib/ruby/gems/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
-/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/rack/logger.rb:13:in `call'
-/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
-/usr/lib/ruby/gems/1.8/gems/activesupport-3.0.3/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
-/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
-/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `synchronize'
-/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
-/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/static.rb:30:in `call'
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:168:in `call'
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:77:in `send'
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:77:in `method_missing'
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/rack/log_tailer.rb:14:in `call'
-/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
-/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/handler/webrick.rb:52:in `service'
-/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
-/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
-/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
-/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
-/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
-/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
-/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
-/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
-/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
-/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
-/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/handler/webrick.rb:13:in `run'
-/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/server.rb:213:in `start'
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/commands/server.rb:65:in `start'
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:30
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:27:in `tap'
-/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:27
-script/rails:6:in `require'
-script/rails:6
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$maincolor\".\A         on line 3 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/main_navigation.sass\A \A 1: $acolor: #000222\A 2: $current_color: #fff\A 3: $bgcolor: $maincolor\A 4: $border: 1px solid #555555\A 5: $border_navigation: 1px solid #fff555\A 6: \A 7: #navigation_tab\A 8:   border-bottom: 1px solid"; }
+#copyright {
+  color: #5d7189;
+  font-size: 12px;
+  text-align: center; }
+
+#user_nav {
+  text-align: right;
+  font-size: 12px;
+  margin: 0 auto 0 auto;
+  margin-top: 5px;
+  margin-bottom: 10px; }
+  #user_nav a {
+    color: #42668c; }
+    #user_nav a:hover {
+      color: #42668c; }
+    #user_nav a:visited {
+      color: #42668c; }

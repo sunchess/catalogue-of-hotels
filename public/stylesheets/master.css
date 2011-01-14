@@ -148,7 +148,7 @@ a.edit {
     text-decoration: none; }
 
 #navigation_tab {
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #42668c;
   margin: 0 -10px;
   padding: 0 10px;
   width: 800px; }
@@ -161,14 +161,13 @@ a.edit {
   #navigation_tab li {
     float: left;
     display: inline;
-    font-weight: bold;
     margin: 0 5px -1px 0;
-    background-color: #006699;
-    border: 1px solid #555555; }
+    background-color: #42668c;
+    border: 1px solid #42668c; }
     #navigation_tab li:hover {
       background-color: white;
       border-bottom-color: white;
-      border: 1px solid #555555; }
+      border: 1px solid #42668c; }
     #navigation_tab li a {
       color: #000222;
       padding: 0.3em 0.4em;
@@ -185,6 +184,54 @@ a.edit {
       color: black;
       background-color: white;
       border-bottom-color: white; }
+
+#footer {
+  text-align: center;
+  margin: 0 -10px;
+  padding: 0 10px;
+  width: 800px;
+  border-top: 1px solid #dae2e8; }
+  #footer .content {
+    margin: 0 -35px; }
+  #footer a {
+    color: #42668c;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 1px 5px 2px 7px; }
+    #footer a:hover {
+      color: #42668c; }
+    #footer a:visited {
+      color: #42668c; }
+  #footer ul {
+    text-align: center;
+    list-style: none;
+    display: block;
+    overflow: hidden; }
+  #footer li {
+    float: left;
+    display: inline;
+    margin: 0 10px 1px 0;
+    border-top: 1px solid white; }
+    #footer li:hover {
+      border-top: 1px dashed #cad1d9; }
+
+#copyright {
+  color: #5d7189;
+  font-size: 12px;
+  text-align: center; }
+
+#user_nav {
+  text-align: right;
+  font-size: 12px;
+  margin: 0 auto 0 auto;
+  margin-top: 5px;
+  margin-bottom: 10px; }
+  #user_nav a {
+    color: #42668c; }
+    #user_nav a:hover {
+      color: #42668c; }
+    #user_nav a:visited {
+      color: #42668c; }
 
 .notice {
   background-color: #edffb2;
@@ -224,11 +271,11 @@ a.edit {
   display: none; }
 
 #wizzard div {
-  border: 1px solid #777777;
+  border: 1px solid #d0d3d8;
   margin-top: 5px;
   padding-left: 5px; }
-#wizzard .current {
-  background-color: #dae2e8; }
+#wizzard .current a {
+  color: #40424b; }
 
 #room_area .current {
   color: #179b3f; }

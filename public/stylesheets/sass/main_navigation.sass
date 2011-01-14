@@ -1,11 +1,12 @@
 $acolor: #000222
 $current_color: #fff
-$bgcolor: $maincolor
-$border: 1px solid #555555
-$border_navigation: 1px solid #fff555
+$bgcolor: #6d8fb3
+$border: 1px solid #42668c
+$border_navigation: 1px solid #42668c
+$lite_color: #42668c
 
 #navigation_tab
-  border-bottom: 1px solid
+  border-bottom: 1px solid $lite_color
   margin: 0 -10px
   padding: 0 10px
   width: 800px
@@ -19,15 +20,14 @@ $border_navigation: 1px solid #fff555
   li
     float: left
     display: inline
-    font-weight: bold
+    //font-weight: bold
     margin: 0 5px -1px 0
-    background-color: $bgcolor
+    background-color: $lite_color
     border: $border
     &:hover
       background-color: $current_color
       border-bottom-color: $current_color
       border: $border
-
 
     a
       color: $acolor
@@ -49,4 +49,54 @@ $border_navigation: 1px solid #fff555
         border-bottom-color: $current_color
 
 
+#footer
+  text-align: center
+  margin: 0 -10px
+  padding: 0 10px
+  width: 800px
+  border-top: 1px solid #dae2e8 
+
+  .content
+    margin: 0 -35px
+    
+  a
+    color: $lite_color
+    text-decoration: none
+    font-size: 12px
+    display:block
+    padding: 1px 5px 2px 7px
+    &:hover
+      color: $lite_color
+    &:visited
+      color: $lite_color
+  ul
+    text-align: center
+    list-style: none
+    display: block
+    overflow: hidden
+  li
+    float: left
+    display: inline
+    margin: 0 10px 1px 0
+    border-top: 1px solid #fff
+    &:hover
+      border-top: 1px dashed #CAD1D9
+
+#copyright
+  color: #5d7189
+  font-size: 12px
+  text-align: center
+
+#user_nav 
+  text-align: right
+  font-size: 12px
+  margin: 0 auto 0 auto
+  margin-top: 5px
+  margin-bottom: 10px
+  a
+    color: $lite_color
+    &:hover
+      color: $lite_color
+    &:visited
+      color: $lite_color
 

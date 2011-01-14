@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
   before_filter :find_hotel
   add_breadcrumb I18n.t("rooms.navigation"), :hotel_room_path, :only=>"show"
-  add_breadcrumb I18n.t("rooms.new.title"), :hotel_room_path, :only=>%w{new create}
+  add_breadcrumb I18n.t("rooms.new.title"), :new_hotel_room_path, :only=>%w{new create}
   add_breadcrumb I18n.t("rooms.edit.title"), :edit_hotel_room_path, :only=>%w{edit update}
 
   before_filter :authorize_hotel, :except=>[:index, :show]
