@@ -3,7 +3,7 @@ module HotelsHelper
     capture_haml do
       haml_tag :div, {:id=>"wizzard"} do 
         haml_tag :div, link_to(t('hotels.add.hotel'), ( @hotel and !@hotel.new_record? ) ? edit_hotel_path(@hotel) : new_hotel_path ), {:class=>has_current("hotels") }
-        if @hotel and can?(:update, @hotel)
+        if !@hotel.new_record? and can?(:update, @hotel)
           haml_tag :div, link_to(t('hotels.add.images'), new_hotel_image_path(@hotel)), {:class=>has_current("hotels/images")}
           haml_tag :div, link_to(t('hotels.add.map') , new_hotel_map_path(@hotel)), {:class=>has_current("hotels/maps")}
           haml_tag :div, link_to(t('hotels.add.rooms'), hotel_rooms_path(@hotel)), {:class=>has_current("rooms")}

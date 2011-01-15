@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20101222101120
+# Schema version: 20110114173256
 #
 # Table name: rooms
 #
@@ -22,6 +22,7 @@ class Room < ActiveRecord::Base
   has_many :fields_dynamic_fields, :as=>:dynamic, :dependent => :destroy
   has_many :images, :as=>:imageable, :dependent => :destroy
   has_many :prices, :order=>"id", :dependent => :destroy
+  has_many :reserves
 
 
   attr_accessible :places, :room_number, :shower, :toilet, :fridge, :tv, :prices_attributes, :images, :dynamic_fields, :fields_dynamic_fields

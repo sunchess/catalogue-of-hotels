@@ -1,11 +1,11 @@
 # == Schema Information
-# Schema version: 20101222101120
+# Schema version: 20110114173256
 #
 # Table name: prices
 #
 #  id         :integer         not null, primary key
 #  room_id    :integer
-#  month      :string(255)
+#  month      :integer
 #  cost       :integer
 #  created_at :datetime
 #  updated_at :datetime

@@ -5,9 +5,7 @@
   = t(".title") 
   = "\"#{@hotel.name}\""
 #main_content
-  .item
-    = @hotel_map.div(:width => 538, :height => 400, :align=>"center").html_safe
-
+  = render :partial => "map"
   %br
   = render :partial => "form"
 #navigation

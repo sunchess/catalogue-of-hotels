@@ -9,7 +9,7 @@
     .error
       = t('.not_found_place')
   .item.padding_3
-    = @place_map.div(:width => 538, :height => 400).html_safe
+    = @place_map.div(:width => 572, :height => 400).html_safe
   - if can?(:edit, Place)
     = render :partial => "places/maps/form"
     %br
@@ -57,7 +57,6 @@
 
 
 #navigation
-  = link_to t('back'), places_path
   - if can?(:edit, Place)
     %br
     = link_to t('edit'), edit_place_path(@place)

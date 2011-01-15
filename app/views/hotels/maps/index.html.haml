@@ -5,8 +5,6 @@
   = t(".title") 
   = "\"#{@hotel.name}\""
 #main_content
-  .item.padding_3
-    = @hotel_map.div(:width => 538, :height => 400).html_safe
-
+  = render :partial => "map"
 #navigation
   = hotel_items
