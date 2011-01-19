@@ -9,8 +9,6 @@ Syntax error: Undefined variable: "$color_grey".
 49:   .title
 50:     color: $color_grey
 51:     font-size: 13px
-52:   div
-53:     font-size: 12px
 
 Backtrace:
 /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass:50
@@ -106,4 +104,4 @@ script/rails:6
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$color_grey\".\A         on line 50 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass\A \A 45:   td\A 46:     font-size: 12px\A 47: \A 48: #place_children\A 49:   .title\A 50:     color: $color_grey\A 51:     font-size: 13px\A 52:   div\A 53:     font-size: 12px"; }
+  content: "Syntax error: Undefined variable: \"$color_grey\".\A         on line 50 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass\A \A 45:   td\A 46:     font-size: 12px\A 47: \A 48: #place_children\A 49:   .title\A 50:     color: $color_grey\A 51:     font-size: 13px"; }
