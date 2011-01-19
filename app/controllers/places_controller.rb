@@ -7,7 +7,8 @@ class PlacesController < ApplicationController
   add_breadcrumb Proc.new{|c| c.t("places.new.title")}, :new_place_path, :only=>%w{new create}
   add_breadcrumb Proc.new{|c| c.t("places.edit.title")}, :edit_place_path, :only=>%w{edit update}
 
-  caches_action :index, :show, :layout=>false, :cache_path => :index_cache_path.to_proc
+  caches_action :index, :layout=>false, :cache_path => :index_cache_path.to_proc
+  caches_action :show, :layout=>false, :cache_path => :show_cache_path.to_proc
   
   after_filter :delete_cache, :only=>[:update, :create, :destroy]
   before_filter :find_parents_and_fields, :only=>[:new, :edit, :create, :update]
@@ -104,7 +105,10 @@ private
   end
 
   def delete_cache
-    expire_action :action=>[ :index, :show ]
+   expire_fragment(/admin\/places\/*/) 
+   expire_fragment(/public\/places\/*/) 
+   expire_fragment(/admin\/places\/show\/*/) 
+   expire_fragment(/public\/places\/show\/*/) 
   end
 
   def find_place
@@ -116,6 +120,15 @@ private
       'admin/places'
     else
       'public/places'
+    end
+  end
+
+
+  def show_cache_path
+    if admin?
+      'admin/places/show'
+    else
+      'public/places/show'
     end
   end
 
