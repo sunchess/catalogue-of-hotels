@@ -45,7 +45,7 @@ class DynamicModelsController < ApplicationController
 
   private
   def delete_cache
-    expire_action :index
+    expire_action :action=>:index
   end
 
 
