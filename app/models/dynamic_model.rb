@@ -20,7 +20,7 @@ class DynamicModel < ActiveRecord::Base
   private
   def must_be_record_name
     return true if Rails.env == "development"  #developmint mode is not caching records names
-    records_list = get_models_list
+    records_list = get_records_list
     errors.add(:title, I18n.t("activerecord.errors.not_record_name")) unless models_list.include? title.to_s
   end
 
