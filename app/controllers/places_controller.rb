@@ -3,9 +3,9 @@ include Geokit::Geocoders
 class PlacesController < ApplicationController
   before_filter :find_place, :only=>[:edit, :update, :destroy, :show]
   authorize_resource
-  add_breadcrumb I18n.t("places.navigation"), :places_path#, :only=>%w{show new edit create update}
-  add_breadcrumb I18n.t("places.new.title"), :new_place_path, :only=>%w{new create}
-  add_breadcrumb I18n.t("places.edit.title"), :edit_place_path, :only=>%w{edit update}
+  add_breadcrumb Proc.new{|c| c.t("places.navigation")}, :places_path#, :only=>%w{show new edit create update}
+  add_breadcrumb Proc.new{|c| c.t("places.new.title")}, :new_place_path, :only=>%w{new create}
+  add_breadcrumb Proc.new{|c| c.t("places.edit.title")}, :edit_place_path, :only=>%w{edit update}
 
   #caches_action :index, :show, :layout=>false :unless=>proc do |c|
    # c.can?(:manage, Place)

@@ -7,6 +7,7 @@ class Ability
     if user.role? :admin
       can :manage, :all
     else
+      can :read, [Place, Image, Hotel, Room, Price]
       if user.confirmed_at #is real user
         can :create, Place
         can :create, Image
@@ -29,7 +30,6 @@ class Ability
         end
 
       else
-        can :read, [Place, Image, Hotel, Room, Price]
         cannot :read, DynamicField
         cannot :read, DynamicModel
       end

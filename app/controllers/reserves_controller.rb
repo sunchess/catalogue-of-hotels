@@ -2,7 +2,7 @@ class ReservesController < ApplicationController
   before_filter :find_reserve, :only=>[:show, :edit, :update, :destroy]
   authorize_resource :reserf
   before_filter :find_hotel_and_room, :only=>%w{ new create edit update }
-  add_breadcrumb I18n.t("reserves.new.title"), :new_reserf_path, :only=>%w{new create}
+  add_breadcrumb Proc.new{|c| c.t("reserves.new.title")}, :new_reserf_path, :only=>%w{new create}
 
   def index
     @reserves=current_user.reserves.paginate(:page=>params[:page])

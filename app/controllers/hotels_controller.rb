@@ -1,11 +1,11 @@
 include Geokit::Geocoders
 
 class HotelsController < ApplicationController
-  add_breadcrumb I18n.t("hotels.navigation"), :hotels_path
+  add_breadcrumb Proc.new{|c| c.t("hotels.navigation")}, :hotels_path
 
   before_filter :find_hotel, :only=>[:show, :edit, :update, :destroy]
-  add_breadcrumb I18n.t("hotels.edit.title"), :edit_hotel_path, :only=>%w{edit update}
-  add_breadcrumb I18n.t("hotels.new.title"), :new_hotel_path, :only=>%w{new create}
+  add_breadcrumb Proc.new{|c| c.t("hotels.edit.title")}, :edit_hotel_path, :only=>%w{edit update}
+  add_breadcrumb Proc.new{|c| c.t("hotels.new.title")}, :new_hotel_path, :only=>%w{new create}
 
   #caches_action :index, :layout=>false
   after_filter  :delete_cache, :only=>[:create, :update]
