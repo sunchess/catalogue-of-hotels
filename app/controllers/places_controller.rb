@@ -113,9 +113,9 @@ private
 
   def index_cache_path
     if admin?
-      '/admin/places'
+      'admin/places'
     else
-      '/public/places'
+      'public/places'
     end
   end
 
