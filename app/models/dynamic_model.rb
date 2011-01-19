@@ -12,19 +12,19 @@ class DynamicModel < ActiveRecord::Base
   has_many :dynamic_fields, :dependent => :destroy, :order=>"position", :conditions=>{:draft=>false}
 
   validates :title, :length=>{:minimum=>3}, :uniqueness=>true
-  validate :must_be_record_name
+  validate :must_be_models_name
 
 
   attr_accessible :title
 
   private
-  def must_be_record_name
+  def must_be_models_name
     return true if Rails.env == "development"  #developmint mode is not caching records names
-    records_list = get_records_list
+    models_list = get_models_list
     errors.add(:title, I18n.t("activerecord.errors.not_record_name")) unless models_list.include? title.to_s
   end
 
-  def get_records_list
+  def get_models_list
     found = []
     ObjectSpace.each_object(Class) do |klass|
       found << klass.to_s if klass.ancestors.include?(ActiveRecord::Base)
