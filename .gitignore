@@ -3,8 +3,11 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 config/database.yml
+config/deploy.rb
 run.sh
 .idea
 *.swp
 *.swo
 public/system/images*
+config/initializers/secret_token.rb
+

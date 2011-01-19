@@ -1,7 +1,0 @@
-# Be sure to restart your server when you modify this file.
-
-# Your secret key for verifying the integrity of signed cookies.
-# If you change this key, all old signed cookies will become invalid!
-# Make sure the secret is at least 30 characters and all random,
-# no regular words or you'll be exposed to dictionary attacks.
-CatalogueOfHotels::Application.config.secret_token = '69fa3b16f829a34225676d0c19e68aa759aef13ba3b4609cfc3abc51373caec9d8568b12011d194a349aca5ae618c076fb6971003ee41f146b16cabc4bcb9009'
