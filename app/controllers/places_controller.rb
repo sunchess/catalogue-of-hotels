@@ -104,7 +104,7 @@ private
   end
 
   def delete_cache
-    expire_action :action=>:index
+    expire_action :action=>[ :index, :show ]
   end
 
   def find_place
