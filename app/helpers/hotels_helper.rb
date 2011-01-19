@@ -15,7 +15,6 @@ module HotelsHelper
 
   def hotel_items
     capture_haml do
-      haml_tag :a, t("hotels.list"), :href=>hotels_path
       haml_tag :div, :id=>"wizzard" do
         haml_tag :div, link_to(t("hotels.show.hotel"), hotel_path(@hotel)), :class=>has_current("hotels")
         haml_tag :div, link_to(t("hotels.show.images"), hotel_images_path(@hotel)), :class=>has_current("hotels/images")

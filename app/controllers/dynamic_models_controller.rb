@@ -1,7 +1,7 @@
 class DynamicModelsController < ApplicationController
   
   load_and_authorize_resource
-  caches_action :index
+  caches_action :index, :layout=>false
   before_filter :delete_cache, :only=>[:create, :update, :destroy]
 
 

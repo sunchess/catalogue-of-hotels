@@ -1,6 +1,9 @@
 CatalogueOfHotels::Application.routes.draw do
-
-  get "hotels/index"
+  resources :reserves do
+    member do
+      get 'publish'
+    end
+  end
 
   #get "home/index"
   resources :dynamic_models do

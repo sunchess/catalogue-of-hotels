@@ -70,20 +70,26 @@ h1
 .line
   display: inline
 
-ul.form_fields li label
-  display: block
-
-
 .form_column
   width: 50%
 
-ul.form_fields
 
 ul.form_fields li
   list-style: none
+  margin-left: -10px
+
+ul.form_fields  li label
+  display: block
+
+ul.inline li label 
+  display: inline
+
+ul.inline input
+  display: block
 
 ul.form_params li
   list-style: none
+  margin-left: -10px
 
 li.title
   font-weight: bold
@@ -110,6 +116,8 @@ li.info
     &:hover
       @include tr-hover
 
+.fields
+  padding-left: 30px
 
 .reset
   clear: both

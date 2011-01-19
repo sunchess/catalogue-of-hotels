@@ -1,7 +1,7 @@
 class DynamicFieldsController < ApplicationController
   load_and_authorize_resource
   before_filter :find_model
-  caches_action :index, :edit_order
+  caches_action :index, :edit_order, :layout=>false
   before_filter :delete_cache, :only=>[:create, :update, :destroy]
   before_filter :delete_cache_order, :only => [:update_order]
   

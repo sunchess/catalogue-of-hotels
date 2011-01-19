@@ -113,13 +113,14 @@ ActiveRecord::Schema.define(:version => 20110114173256) do
   create_table "reserves", :force => true do |t|
     t.integer  "room_id"
     t.integer  "user_id"
-    t.integer  "status"
+    t.integer  "status",       :default => 0, :null => false
     t.string   "name"
     t.string   "address"
-    t.string   "telephon"
+    t.string   "telephone"
     t.text     "list_turists"
-    t.date     "coming"
-    t.date     "outing"
+    t.date     "coming_on"
+    t.date     "outing_on"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

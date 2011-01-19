@@ -1,0 +1,38 @@
+%h1= t(".title")
+#main_content
+  = render :partial => "reserve", :collection=>@reserves
+#navigation
+  #wizzard
+    %div
+      = link_to t("reserves.status.draft"), reserves_path(:status=>1)
+    %div
+      = link_to t("reserves.status.sent"), reserves_path(:status=>2)
+    %div
+      = link_to t("reserves.status.adopted"), reserves_path(:status=>3)
+    %div
+      = link_to t("reserves.status.confirmed"), reserves_path(:status=>4)
+    %div
+      = link_to t("reserves.status.paid"), reserves_path(:status=>5)
+  .info
+    .header
+      = t(".info")
+    .text
+      %span.bold
+        = t("reserves.status.draft")
+      = t(".info_draft")
+    .text
+      %span.bold
+        = t("reserves.status.sent")
+      = t(".info_sent")
+    .text
+      %span.bold
+        = t("reserves.status.adopted")
+      = t(".info_adopted")
+    .text
+      %span.bold
+        = t("reserves.status.confirmed")
+      = t(".info_confirmed")
+    .text
+      %span.bold
+        = t("reserves.status.paid")
+      = t(".info_paid")

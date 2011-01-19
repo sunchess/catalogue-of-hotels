@@ -1,5 +1,6 @@
 ru:
   hotels:
+    hotel: "Гостиница \"%{name}\""
     successfully_create: "Гостиница добавлена." 
     successfully_update: "Гостиница отредактирована"
     successfully_destroy: "Гостиница удалена"

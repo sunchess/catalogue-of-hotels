@@ -19,7 +19,7 @@
   .right.padding_5{:style=>"width: 100px"}
     = link_to t("further"), hotel_room_path(room.hotel.id, room.id)
     %br
-    = link_to t(".reserve")
+    = link_to t(".reserve"), new_reserf_path(:room=>room.id)
     - if can?(:update, room)
       = link_to t("edit"), edit_hotel_room_path(room.hotel.id, room.id), :class=>"edit"
 .reset

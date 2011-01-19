@@ -13,7 +13,12 @@ class Ability
         can :create, Hotel
         can :create, Room
         can :create, Price
+        can :create, Reserf
         
+        can :read, Reserf, :user_id=>user.id
+        can [:update, :destroy], Reserf do |reserve|
+          reserve.try(:user) == user and reserve.status < 2
+        end
 
         can :update, Hotel do |hotel|
           hotel.try(:user) == user
@@ -23,9 +28,12 @@ class Ability
           room.try(:hotel).try(:user) == user
         end
 
+      else
+        can :read, [Place, Image, Hotel, Room, Price]
+        cannot :read, DynamicField
+        cannot :read, DynamicModel
       end
 
-      can :read, :all
       #can :create, Comment
       #can :update, Comment do |comment|
       #  comment.try(:user) == user || user.role?(:moderator)

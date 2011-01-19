@@ -53,6 +53,18 @@
 .pagination {
   text-align: center; }
 
+.info {
+  padding-top: 15px; }
+  .info .text {
+    padding-top: 5px;
+    font-size: 10px; }
+  .info .header {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center; }
+  .info .bold {
+    font-weight: bold; }
+
 body {
   margin: 0;
   padding: 0;
@@ -104,17 +116,25 @@ h1 {
 .line {
   display: inline; }
 
-ul.form_fields li label {
-  display: block; }
-
 .form_column {
   width: 50%; }
 
 ul.form_fields li {
-  list-style: none; }
+  list-style: none;
+  margin-left: -10px; }
+
+ul.form_fields li label {
+  display: block; }
+
+ul.inline li label {
+  display: inline; }
+
+ul.inline input, ul.inline select, ul.inline textarea {
+  display: block; }
 
 ul.form_params li {
-  list-style: none; }
+  list-style: none;
+  margin-left: -10px; }
 
 li.title {
   font-weight: bold; }
@@ -136,6 +156,9 @@ li.info {
   background-color: #f7f7ff; }
   .double .odd:hover {
     background-color: #d6e9ff; }
+
+.fields {
+  padding-left: 30px; }
 
 .reset {
   clear: both; }

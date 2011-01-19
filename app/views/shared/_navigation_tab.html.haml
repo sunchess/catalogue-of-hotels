@@ -11,6 +11,9 @@
       - if current_user.hotels.any?
         %li{:class=>set_current_style("my/hotels")}
           = link_to t("my.hotels.navigation"), my_hotels_path
+      - if current_user.reserves.any?
+        %li{:class=>set_current_style("reserves")}
+          = link_to t("reserves.navigation"), reserves_path
       -if current_user.admin?
         %li{:class=>set_current_style("dynamic_models", "dynamic_fields")}
           = link_to t("dynamic_fields.navigation"), dynamic_models_path 

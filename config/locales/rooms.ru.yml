@@ -59,7 +59,6 @@ ru:
 
 
   activerecord:
-    models:
     attributes:
       room:
         places: "Мест в номере"
