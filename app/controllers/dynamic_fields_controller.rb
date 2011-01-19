@@ -67,11 +67,11 @@ class DynamicFieldsController < ApplicationController
   end
 
   def delete_cache
-    expire_action :index
+    expire_action :action=>:index
   end
 
   def delete_cache_order
-    expire_action :edit_order
+    expire_action :action=>:edit_order
   end
 
 end
