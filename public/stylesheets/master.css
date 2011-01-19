@@ -274,6 +274,9 @@ a.edit {
 
 #places a.title {
   font-weight: bold; }
+#places a.title_header {
+  font-weight: bold;
+  color: #506a70; }
 #places li.child {
   display: block;
   margin: 3px -4px 0px -30px;
@@ -303,6 +306,12 @@ a.edit {
 #room_area .current {
   color: #179b3f; }
 #room_area td {
+  font-size: 12px; }
+
+#place_children .title {
+  color: gray;
+  font-size: 13px; }
+#place_children div {
   font-size: 12px; }
 
 .text1 {

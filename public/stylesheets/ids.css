@@ -1,32 +1,109 @@
-#places a.title {
-  font-weight: bold; }
-#places li.child {
-  display: block;
-  margin: 3px -4px 0px -30px;
-  padding: 0;
-  overflow: hidden; }
-#places .draft a {
-  color: red; }
+/*
+Syntax error: Undefined variable: "$color_grey".
+        on line 50 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass
 
-#images_area img {
-  border: 1px solid #555555;
-  padding: 3px 3px 3px 3px; }
-  #images_area img:hover {
-    border: 1px solid #777777; }
-#images_area .draft {
-  border: 1px solid red; }
+45:   td
+46:     font-size: 12px
+47: 
+48: #place_children
+49:   .title
+50:     color: $color_grey
+51:     font-size: 13px
+52:   div
+53:     font-size: 12px
 
-#hide_ele {
-  display: none; }
-
-#wizzard div {
-  border: 1px solid #d0d3d8;
-  margin-top: 5px;
-  padding-left: 5px; }
-#wizzard .current a {
-  color: #40424b; }
-
-#room_area .current {
-  color: #179b3f; }
-#room_area td {
-  font-size: 12px; }
+Backtrace:
+/home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass:50
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/script/variable.rb:39:in `_perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/script/node.rb:61:in `perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/prop_node.rb:132:in `perform!'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:305:in `_perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `map'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:317:in `perform!'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/rule_node.rb:191:in `perform!'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:305:in `_perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `map'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:317:in `perform!'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/rule_node.rb:191:in `perform!'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:305:in `_perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `map'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:317:in `perform!'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/root_node.rb:59:in `perform!'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:305:in `_perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/root_node.rb:37:in `perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/root_node.rb:29:in `render'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:220:in `update_stylesheet'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:85:in `update_stylesheets'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:78:in `each'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:78:in `update_stylesheets'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:76:in `each'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:76:in `update_stylesheets'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:50:in `check_for_updates'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin/rack.rb:40:in `call'
+/usr/lib/ruby/gems/1.8/gems/warden-0.10.7/lib/warden/manager.rb:35:in `call'
+/usr/lib/ruby/gems/1.8/gems/warden-0.10.7/lib/warden/manager.rb:34:in `catch'
+/usr/lib/ruby/gems/1.8/gems/warden-0.10.7/lib/warden/manager.rb:34:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/head.rb:14:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/flash.rb:182:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/cookies.rb:295:in `call'
+/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:32:in `call'
+/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:12:in `cache'
+/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/query_cache.rb:31:in `call'
+/usr/lib/ruby/gems/1.8/gems/activerecord-3.0.3/lib/active_record/connection_adapters/abstract/connection_pool.rb:353:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+/usr/lib/ruby/gems/1.8/gems/activesupport-3.0.3/lib/active_support/callbacks.rb:415:in `_run_call_callbacks'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/show_exceptions.rb:46:in `call'
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/rack/logger.rb:13:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
+/usr/lib/ruby/gems/1.8/gems/activesupport-3.0.3/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `synchronize'
+/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/static.rb:30:in `call'
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:168:in `call'
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:77:in `send'
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/application.rb:77:in `method_missing'
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/rack/log_tailer.rb:14:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/content_length.rb:13:in `call'
+/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/handler/webrick.rb:52:in `service'
+/usr/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+/usr/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+/usr/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+/usr/lib/ruby/1.8/webrick/server.rb:162:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+/usr/lib/ruby/1.8/webrick/server.rb:95:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:92:in `each'
+/usr/lib/ruby/1.8/webrick/server.rb:92:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:23:in `start'
+/usr/lib/ruby/1.8/webrick/server.rb:82:in `start'
+/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/handler/webrick.rb:13:in `run'
+/usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/server.rb:213:in `start'
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/commands/server.rb:65:in `start'
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:30
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:27:in `tap'
+/usr/lib/ruby/gems/1.8/gems/railties-3.0.3/lib/rails/commands.rb:27
+script/rails:6:in `require'
+script/rails:6
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined variable: \"$color_grey\".\A         on line 50 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass\A \A 45:   td\A 46:     font-size: 12px\A 47: \A 48: #place_children\A 49:   .title\A 50:     color: $color_grey\A 51:     font-size: 13px\A 52:   div\A 53:     font-size: 12px"; }

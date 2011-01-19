@@ -34,9 +34,23 @@ class Place < ActiveRecord::Base
     Place.public.each do |p|
       select << [p.title, p.id]
       p.children.each do |c|
-        select << ["--#{ c.title }", c.id]
+        select << ["-#{ c.title }", c.id]
+        c.children.each do |cc|
+          select << ["--#{ cc.title }", cc.id]
+        end
       end
     end
     select
+  end
+
+  def save_dynamic_fields(fields)
+    if fields
+      self.dynamic_fields.clear
+      fields.each do |field|
+        self.dynamic_fields << DynamicField.find_by_permalink(field)
+      end 
+    else
+      self.dynamic_fields.clear
+    end 
   end
 end

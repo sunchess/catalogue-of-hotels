@@ -4,7 +4,7 @@
   .field
     = f.label :parent_id
     %br
-    = f.select(:parent_id, @parents.collect{|p| [ p.title, p.id ] }, {:include_blank => '---'})
+    = f.select(:parent_id, Place.for_select, {:include_blank => '---'})
   .field
     = f.label :title
     %br

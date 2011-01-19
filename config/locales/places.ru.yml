@@ -5,6 +5,9 @@ ru:
     successfully_destroy: "Место удалено"
     navigation: "Места"
 
+    children:
+      title: "Входят места:"
+
     index:
       title: "Места"
       new_place: "Новое место"

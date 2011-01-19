@@ -1,34 +1,38 @@
 %h1= t('.title')
 
 #places
-  -@places.in_groups_of(3, false) do |group|
-    %div
-      -group.each do |place|
-        %ul{:style=>"float:left"}
-          %li{:class=>draft_record?(place), :title=>place.draft ? t('.draft') : nil}
-            = link_to place.title, place_path(place), :class=>"title"
-            %br
-            -if can?(:edit, Place)
-              = link_to t('edit'), edit_place_path(place)
+  - @places.each do |place| 
+    .place_title
+      = link_to place.title, place_path(place), :class=>"title_header"
 
-            -if can?(:delete, Place)
-              = link_to t('destroy'), place, :confirm => t('confirm'), :method => :delete
-            -if place.children
-              %ul
-                - place.children.each do |child|
-                  - if can?(:manage, Place)
-                    %li{:class=>"child #{draft_record?(child)}", :title=>child.draft ? t('.draft') : nil}
-                      = link_to child.title, place_path(child)
-                      %br
-                      -if can?(:edit, Place)
-                        = link_to t('edit'), edit_place_path(child)
+    - place.children.in_groups_of(3, false) do |group|
+      %div
+        -group.each do |place|
+          %ul{:style=>"float:left"}
+            %li{:class=>draft_record?(place), :title=>place.draft ? t('.draft') : nil}
+              = link_to place.title, place_path(place), :class=>"title"
+              %br
+              -if can?(:edit, Place)
+                = link_to t('edit'), edit_place_path(place)
 
-                      -if can?(:delete, Place)
-                        = link_to t('destroy'), child, :confirm => t('confirm'), :method => :delete
-                  - elsif not child.draft?
-                    %li{:class=>"child"}
-                      = link_to child.title, place_path(child)
-    .reset
+              -if can?(:delete, Place)
+                = link_to t('destroy'), place, :confirm => t('confirm'), :method => :delete
+              -if place.children
+                %ul
+                  - place.children.each do |child|
+                    - if can?(:manage, Place)
+                      %li{:class=>"child #{draft_record?(child)}", :title=>child.draft ? t('.draft') : nil}
+                        = link_to child.title, place_path(child)
+                        %br
+                        -if can?(:edit, Place)
+                          = link_to t('edit'), edit_place_path(child)
+
+                        -if can?(:delete, Place)
+                          = link_to t('destroy'), child, :confirm => t('confirm'), :method => :delete
+                    - elsif not child.draft?
+                      %li{:class=>"child"}
+                        = link_to child.title, place_path(child)
+      .reset
 
 
 

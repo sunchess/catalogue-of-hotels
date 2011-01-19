@@ -7,11 +7,9 @@ class PlacesController < ApplicationController
   add_breadcrumb Proc.new{|c| c.t("places.new.title")}, :new_place_path, :only=>%w{new create}
   add_breadcrumb Proc.new{|c| c.t("places.edit.title")}, :edit_place_path, :only=>%w{edit update}
 
-  #caches_action :index, :show, :layout=>false :unless=>proc do |c|
-   # c.can?(:manage, Place)
-  #end
+  caches_action :index, :show, :layout=>false, :cache_path => :index_cache_path.to_proc
   
-  #after_filter :delete_cache, :only=>[:update, :create, :destroy]
+  after_filter :delete_cache, :only=>[:update, :create, :destroy]
   before_filter :find_parents_and_fields, :only=>[:new, :edit, :create, :update]
 
   def index
@@ -76,11 +74,7 @@ class PlacesController < ApplicationController
     @place.draft = true
 
     if @place.save
-      #TODO add it to model
-      params[:fields].each do |field|
-        @place.dynamic_fields << DynamicField.find_by_permalink(field)
-      end if params[:fields]
-
+      @place.save_dynamic_fields( params[:fields] )
       redirect_to places_path, :notice=>t('places.successfully_create')
     else
       render :action => "new"
@@ -90,15 +84,7 @@ class PlacesController < ApplicationController
   def update
     @place.accessible = [ :draft, :paid_placement ] if admin?
     if @place.update_attributes(params[:place])
-      #TODO: add it to model
-      if params[:fields]
-        @place.dynamic_fields.clear
-        params[:fields].each do |field|
-          @place.dynamic_fields << DynamicField.find_by_permalink(field)
-        end 
-      else
-        @place.dynamic_fields.clear
-      end 
+      @place.save_dynamic_fields( params[:fields] )
       redirect_to(@place, :notice => t('places.successfully_update'))
     else
       render :action => "edit"
@@ -118,12 +104,19 @@ private
   end
 
   def delete_cache
-    expire_action :index
-    expire_action :show
+    expire_action :action=>:index
   end
 
   def find_place
     @place = Place.find(params[:id]) 
+  end
+
+  def index_cache_path
+    if admin?
+      '/admin/places'
+    else
+      '/public/places'
+    end
   end
 
 end
