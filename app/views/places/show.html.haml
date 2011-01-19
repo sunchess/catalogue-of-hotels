@@ -57,11 +57,11 @@
 
 
 #navigation
+  = children_places_for(@place)
   - if can?(:edit, Place)
     %br
     = link_to t('edit'), edit_place_path(@place)
 
-  = children_places_for(@place)
 -#%script
   //<![CDATA[
   $("a[rel=img_group]").fancybox({
