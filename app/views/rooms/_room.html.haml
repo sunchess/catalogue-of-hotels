@@ -1,4 +1,12 @@
 .item
+  - unless @hotel
+    .left
+      = link_to room.hotel.name, hotel_path(room.hotel.id) 
+      = "(#{  link_to( room.hotel.place.title, place_path(room.hotel.place), :class=>"edit" )})".html_safe
+    .right{:style=>"width: 200px"}
+      .title
+        = "#{ t("activerecord.attributes.hotel.distance") } #{ Hotel.distance_options.select{|k,v| v==room.hotel.distance }.first.first } "
+    .reset.padding_3
   .left
     = room_thumb(room)
   .left.padding_5
