@@ -14,8 +14,23 @@
       = show_hotel_thumb( @hotel )
       .title= t("activerecord.attributes.hotel.description")
       = simple_format @hotel.description
-  .title= t("rooms.navigation")
-  = render :partial => "rooms/room", :collection=>@hotel.rooms
+  .item
+    .left.padding_5  
+      .title= t(".address")
+      .title= t(".telephone")
+      - if @hotel.fax
+        .title= t(".fax")
+
+    .left.padding_5  
+      = "#{@hotel.place.title}, #{@hotel.street}, #{t("activerecord.attributes.hotel.house_number")} #{@hotel.house_number}"
+      %br
+      = @hotel.telephone.split("\n").join(", ")
+      %br
+      - if @hotel.fax
+        = @hotel.fax
+  #room_area
+    .title= t("rooms.navigation")
+    = render :partial => "rooms/room", :collection=>@hotel.rooms
   .item
     .reset
       -if @images.any?
@@ -23,11 +38,12 @@
         = render :partial => "shared/images_area"
       -else
         .title=t('no_images')
-    .reset
-      .title
-        = t("add_params")
-      - @hotel.dynamic_fields.each do |field|
-        = field.title
-        %br
+
+  .title
+    = t("add_params")
+  .item
+    - @hotel.dynamic_fields.each do |field|
+      = field.title
+      %br
 #navigation
   = hotel_items

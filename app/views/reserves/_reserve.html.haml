@@ -1,7 +1,20 @@
 .item
-
+  .right
+    = t(".coast")
+    = number_to_currency reserve.coast
+  .left.padding_3
+    = link_to reserve.room.hotel.name, hotel_path(reserve.room.hotel.id) 
+    = "(#{  link_to( reserve.room.hotel.place.title, place_path(reserve.room.hotel.place), :class=>"edit" )})".html_safe
+  .left.padding_3
+    = link_to human_room_data(reserve.room.places, Room.places), hotel_room_path(reserve.room.hotel.id, reserve.room.id)
+  .reset
+  .right
+    = t(".status")
+    = reserve.h_status
   .left
     = room_thumb(reserve.room)
-  .left
-    = 
+  .left.padding_3
+    .title= t("activerecord.attributes.reserf.list_tourists")
+    = simple_format(reserve.list_tourists)
+     
   

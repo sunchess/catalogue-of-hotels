@@ -139,7 +139,11 @@ ul.form_params li {
 li.title {
   font-weight: bold; }
 
-li.info {
+ul.info {
+  font-style: italic;
+  font-size: 10px; }
+
+span.info {
   font-style: italic;
   font-size: 10px; }
 

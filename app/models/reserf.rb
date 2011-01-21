@@ -20,9 +20,9 @@
 class Reserf< ActiveRecord::Base
   belongs_to :user
   belongs_to :room
-  attr_accessible :name, :address, :telephone, :list_turists, :coming_on, :outing_on, :description
+  attr_accessible :name, :address, :telephone, :list_tourists, :coming_on, :outing_on, :description
 
-  validates_presence_of :name, :address, :telephone, :list_turists, :coming_on, :outing_on
+  validates_presence_of :name, :address, :telephone, :list_tourists, :coming_on, :outing_on
 
   validate :validate_dates
 
@@ -33,15 +33,15 @@ class Reserf< ActiveRecord::Base
 
   def h_status
     case self.status
-      when 1
+      when 0
         I18n.t("reserves.status.draft")
-      when 2
+      when 1
         I18n.t("reserves.status.sent")
-      when 3
+      when 2
         I18n.t("reserves.status.adopted")
-      when 4
+      when 3
         I18n.t("reserves.status.confirmed")
-      when 5
+      when 4
         I18n.t("reserves.status.paid")
     end
   end

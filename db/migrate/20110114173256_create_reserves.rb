@@ -7,9 +7,11 @@ class CreateReserves < ActiveRecord::Migration
       t.string  :name     
       t.string  :address
       t.string  :telephone
-      t.text    :list_turists
+      t.text    :list_tourists
       t.date    :coming_on
       t.date    :outing_on
+      t.float   :coast, :null=>false, :default=>0
+      t.integer :discount, :null=>false, :default=>0
       t.string  :description #пожелания
       t.timestamps
     end

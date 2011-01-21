@@ -15,9 +15,11 @@
       = mark_required(@reserf, :telephone)
       = f.text_field :telephone
     %li
-      = f.label :list_turists
-      = mark_required(@reserf, :list_turists)
-      = f.text_area :list_turists, :size=>"40x10"
+      = f.label :list_tourists
+      %span.info
+        = t(".list_tuorists_notice")
+      = mark_required(@reserf, :list_tourists)
+      = f.text_area :list_tourists, :size=>"40x10"
   .fields
     = f.label :coming_on
     = mark_required(@reserf, :coming_on)

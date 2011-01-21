@@ -22,7 +22,7 @@ module RoomsHelper
     if price == 0
       price = t("rooms.hotel_closed") 
     else
-      price = "#{ price.to_s }  #{ t("rur") }"
+      price = number_to_currency( price )
     end
     price
   end

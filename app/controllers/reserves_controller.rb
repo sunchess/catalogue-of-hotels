@@ -16,7 +16,7 @@ class ReservesController < ApplicationController
     @reserf= Reserf.new(params[:reserf]) 
     @reserf.room = @room
     if current_user.reserves <<  @reserf
-      redirect_to reserves_path, :notice=>t("successfully_create")
+      redirect_to reserves_path, :notice=>t("reserves.successfully_create")
     else
       render :action=>:new
     end
