@@ -1,7 +1,7 @@
 class ReservesController < ApplicationController
   before_filter :find_reserve, :only=>[:show, :edit, :update, :destroy]
   authorize_resource :reserf
-  before_filter :find_hotel_and_room, :only=>%w{ new create edit update }
+  before_filter :find_hotel_and_room, :only=>%w{ new create edit update publish }
   add_breadcrumb Proc.new{|c| c.t("reserves.new.title")}, :new_reserf_path, :only=>%w{new create}
 
   def index
@@ -34,10 +34,24 @@ class ReservesController < ApplicationController
     
   end
 
+  def publish
+    authorize! :update, @reserf
+    if @reserf.status < 1
+      @reserf.change_status
+    end
+    redirect_to reserves_path
+  end
+
+  def change_status
+    authorize! :manage, @reserf
+    @reserf.change_status
+    redirect_to reserves_path
+  end
+
 
   private
   def find_reserve
-    @reserve = Reserf.find(params[:id])
+    @reserf= Reserf.find(params[:id])
   end
 
   def find_hotel_and_room

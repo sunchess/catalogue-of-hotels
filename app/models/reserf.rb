@@ -45,4 +45,17 @@ class Reserf< ActiveRecord::Base
         I18n.t("reserves.status.paid")
     end
   end
+
+  def change_status
+    case self.status
+      when 0
+        self.update_attribute(:status, 1)
+      when 1
+        self.update_attribute(:status, 2)
+      when 2
+        self.update_attribute(:status, 3)
+      when 3
+        self.update_attribute(:status, 4)
+    end
+  end
 end

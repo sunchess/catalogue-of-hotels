@@ -2,6 +2,7 @@ CatalogueOfHotels::Application.routes.draw do
   resources :reserves do
     member do
       get 'publish'
+      get 'change_status'
     end
   end
 

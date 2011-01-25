@@ -26,4 +26,7 @@ module ApplicationHelper
     false
   end
    
+  def _date(date)
+    Russian::strftime(date, "%d %B %Y")
+  end
 end
