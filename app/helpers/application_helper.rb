@@ -29,4 +29,10 @@ module ApplicationHelper
   def _date(date)
     Russian::strftime(date, "%d %B %Y")
   end
+
+  def remote_submit_tag(name, url)
+    capture_haml do
+      haml_tag(:input, {:name=>name, :type=>"button", :onclick=>"$.ajax({ type: 'POST', url: '#{url}',  data: $(form).serialize()}); return false;", :value=>name })
+    end
+  end
 end

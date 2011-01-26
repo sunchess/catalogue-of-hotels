@@ -1,10 +1,4 @@
 CatalogueOfHotels::Application.routes.draw do
-  resources :reserves do
-    member do
-      get 'publish'
-      get 'change_status'
-    end
-  end
 
   #get "home/index"
   resources :dynamic_models do
@@ -24,6 +18,7 @@ CatalogueOfHotels::Application.routes.draw do
     end
 
     resources :maps, :controller=>"hotels/maps", :only=>[:new, :index, :create]
+
     resources :rooms do
       member do
         delete 'delete_image'
@@ -33,7 +28,21 @@ CatalogueOfHotels::Application.routes.draw do
     resource :confirm, :controller=>"hotels/confirms", :only=>[:edit, :update]
   end
 
-  resources :rooms, :only=>[:index]
+  resources :reserves, :only=>[:index]  
+  resources :rooms, :only=>[:index] do
+    resources :reserves do
+
+      member do
+        get 'publish'
+        get 'change_status'
+      end
+
+      collection do
+        post 'calculate'
+      end
+
+    end
+  end
 
   resources :places, :shallow => true do
     resources :maps, :controller=>"places/maps", :only=>[:create]

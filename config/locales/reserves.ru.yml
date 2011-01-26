@@ -25,6 +25,8 @@ ru:
       select_month: "Выберите месяц"
       select_year: "Выберите год"
       list_tuorists_notice: "( Ф.И.О полностью, каждый с новой строки )"
+      calculate: "Подсчитать стоимость"
+      sum: "Стоимость:"
     errors:
       mast_be_greater_now: "должно быть больше чем сейсас хотя бы на 1 день"
       mast_be_greater_coming_on: "должно быть больше чем дата заселения хотя бы на 1 день"

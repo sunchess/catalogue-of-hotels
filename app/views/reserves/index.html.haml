@@ -1,6 +1,7 @@
 %h1= t(".title")
 #main_content
   = render :partial => "reserve", :collection=>@reserves
+  = t_will_paginate(@reserves)
 #navigation
   #wizzard
     %div

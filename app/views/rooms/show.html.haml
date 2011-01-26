@@ -29,7 +29,7 @@
         = @room.max_price
         = t("rur")
         .space
-        = link_to t("rooms.room.reserve"), new_reserf_path(:room=>@room.id)
+        = link_to t("rooms.room.reserve"), new_room_reserf_path(@room.id)
 
       .reset
 

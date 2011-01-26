@@ -38,4 +38,10 @@
 
   %ul.form_params
     %li.inline
+      = t(".sum")
+      %span#reserve_sum
+      = @reserf.coast || 0
+    %li.inline
       = f.submit
+      |
+      = remote_submit_tag(t(".calculate"), calculate_room_reserves_path(@room.id))

@@ -18,6 +18,7 @@
 #
 
 class Reserf< ActiveRecord::Base
+  #TODO: Валидация если в месяц вселения или выселения не работает гостиница
   belongs_to :user
   belongs_to :room
   attr_accessible :name, :address, :telephone, :list_tourists, :coming_on, :outing_on, :description
@@ -30,6 +31,8 @@ class Reserf< ActiveRecord::Base
     errors.add(:coming_on, I18n.t("reserves.errors.mast_be_greater_now")) if !coming_on.blank? and coming_on.to_time < 1.day.from_now 
     errors.add(:outing_on, I18n.t("reserves.errors.mast_be_greater_coming_on")) if !outing_on.blank? and outing_on.to_time < coming_on + 1.day 
   end
+
+  scope :ordered, order("id DESC")
 
   def h_status
     case self.status
@@ -57,5 +60,22 @@ class Reserf< ActiveRecord::Base
       when 3
         self.update_attribute(:status, 4)
     end
+  end
+
+  def calculate(room)
+    # Если дата вселения больше чем дата выселения или в эти месяцы не работает гостиница
+    return nil if coming_on > outing_on or room.prices.find_by_month(coming_on.mon).cost == 0 or room.prices.find_by_month(outing_on.mon).cost == 0 
+    coming_on = self.coming_on
+    outing_on = self.outing_on
+    if coming_on.mon == outing_on.mon
+      ( coming_on - outing_on ) * room.prices.find_by_month(coming_on.mon).cost
+    else
+      #TODO: вычесление прайса на даты если месяцы не совпадают
+    end
+  end
+
+  private
+  def get_num_days(date)
+    date
   end
 end
