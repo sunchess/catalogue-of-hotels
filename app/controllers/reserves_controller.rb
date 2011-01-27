@@ -55,7 +55,9 @@ class ReservesController < ApplicationController
   def calculate
     authorize! :create, Reserf
     @reserf= Reserf.new(params[:reserf]) 
-    @sum = @reserf.calculate(room)
+    unless @sum = @reserf.calculate(@room)
+      @sum = 0
+    end
   end
 
 

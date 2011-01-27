@@ -17,9 +17,9 @@
     = reserve_links(reserve)
     %br
     - if can?(:update, reserve) and reserve.status == 0
-      = link_to t("edit"), edit_reserf_path(reserve), :class=>"edit"
+      = link_to t("edit"), edit_room_reserf_path(reserve.room, reserve), :class=>"edit"
       %br
-      = link_to t("destroy"), reserf_path(reserve), :class=>"edit", :method=>:delete
+      = link_to t("destroy"), room_reserf_path(reserve.room, reserve), :class=>"edit", :method=>:delete
   .left
     = room_thumb(reserve.room)
   .left.padding_5

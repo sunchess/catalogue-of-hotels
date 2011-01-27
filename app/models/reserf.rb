@@ -64,13 +64,18 @@ class Reserf< ActiveRecord::Base
 
   def calculate(room)
     # Если дата вселения больше чем дата выселения или в эти месяцы не работает гостиница
-    return nil if coming_on > outing_on or room.prices.find_by_month(coming_on.mon).cost == 0 or room.prices.find_by_month(outing_on.mon).cost == 0 
+    return nil if ( !coming_on or !outing_on ) or coming_on > outing_on or room.prices.find_by_month(coming_on.mon).cost == 0 or room.prices.find_by_month(outing_on.mon).cost == 0 
     coming_on = self.coming_on
     outing_on = self.outing_on
     if coming_on.mon == outing_on.mon
-      ( coming_on - outing_on ) * room.prices.find_by_month(coming_on.mon).cost
+      ( outing_on - coming_on ) * room.prices.find_by_month(coming_on.mon).cost
     else
       #TODO: вычесление прайса на даты если месяцы не совпадают
+      current_month = coming_on.mon
+      current_cost = room.prices.find_by_month(current_month).cost
+      day = coming_on
+      cost = current_cost
+      #if day = day.next
     end
   end
 
