@@ -67,6 +67,7 @@ class Reserf< ActiveRecord::Base
     return nil if ( !coming_on or !outing_on ) or coming_on > outing_on or room.prices.find_by_month(coming_on.mon).cost == 0 or room.prices.find_by_month(outing_on.mon).cost == 0 
     coming_on = self.coming_on
     outing_on = self.outing_on
+    p coming_on 
     if coming_on.mon == outing_on.mon
       ( outing_on - coming_on ) * room.prices.find_by_month(coming_on.mon).cost
     else
@@ -74,8 +75,21 @@ class Reserf< ActiveRecord::Base
       current_month = coming_on.mon
       current_cost = room.prices.find_by_month(current_month).cost
       day = coming_on
-      cost = current_cost
+      cost = 0
       #if day = day.next
+      p coming_on 
+      p '###########################333'
+      ( outing_on - coming_on ).to_i.times do |time| 
+        day = coming_on.next
+        if day.mon == current_month
+          cost += current_cost 
+        else
+          current_month = day.mon
+          current_cost = room.prices.find_by_month(current_month).cost 
+          cost += current_cost 
+        end
+      end
+      cost
     end
   end
 

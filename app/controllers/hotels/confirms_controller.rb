@@ -1,7 +1,7 @@
 class Hotels::ConfirmsController < ApplicationController
-  add_breadcrumb I18n.t("hotels.navigation"), :hotels_path
+  add_breadcrumb Proc.new{|c| c.t("hotels.navigation")}, :hotels_path
   before_filter :find_hotel
-  add_breadcrumb I18n.t("hotels.confirms.edit.title"), :edit_hotel_confirm_path, :only=>%w{edit update}
+  add_breadcrumb Proc.new{|c| c.t("hotels.confirms.edit.title")}, :edit_hotel_confirm_path, :only=>%w{edit update}
 
   before_filter :authorize_hotel
 

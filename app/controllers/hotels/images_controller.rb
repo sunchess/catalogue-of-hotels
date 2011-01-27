@@ -1,9 +1,9 @@
 class Hotels::ImagesController < ApplicationController
-  add_breadcrumb I18n.t("hotels.navigation"), :hotels_path
+  add_breadcrumb Proc.new{|c| c.t("hotels.navigation")}, :hotels_path
 
   before_filter :find_hotel
-  add_breadcrumb I18n.t("hotels.add.images"), :hotel_images_path
-  add_breadcrumb I18n.t("hotels.images.new.title"), :new_hotel_image_path, :only=>%w{new create}
+  add_breadcrumb Proc.new{|c| c.t("hotels.add.images")}, :hotel_images_path
+  add_breadcrumb Proc.new{|c| c.t("hotels.images.new.title")}, :new_hotel_image_path, :only=>%w{new create}
 
   before_filter :authorize_hotel, :except=>[:index]
   before_filter :check_count_images, :only=>:create
