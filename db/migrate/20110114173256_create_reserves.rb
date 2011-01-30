@@ -10,7 +10,7 @@ class CreateReserves < ActiveRecord::Migration
       t.text    :list_tourists
       t.date    :coming_on
       t.date    :outing_on
-      t.float   :coast, :null=>false, :default=>0
+      t.float   :cost, :null=>false, :default=>0
       t.integer :discount, :null=>false, :default=>0
       t.string  :description #пожелания
       t.timestamps

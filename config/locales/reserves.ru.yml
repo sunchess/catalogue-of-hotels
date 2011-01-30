@@ -6,9 +6,13 @@ ru:
     navigation: "Резервирование"
     reserve:
       status: "Статус:"
-      coast: "Стоимость: "
+      cost: "Стоимость: "
       discount: "Скидка:"
       edit: "Редактировать"
+      discount: "Скидка:"
+      discount_sum: "Сум. скидки:"
+      sum_with_discount: "Стоимость со ск.:"
+      min_prepayment: "Мин. предопл.:"
       links_0: "Отправить менеджеру"
     index:
       title: "Резервированное мной"
@@ -27,6 +31,12 @@ ru:
       list_tuorists_notice: "( Ф.И.О полностью, каждый с новой строки )"
       calculate: "Подсчитать стоимость"
       sum: "Стоимость:"
+    calculate:
+      discount: "Ваша скидка:"
+      discount_sum: "Сумма скидки:"
+      sum_with_discount: "Стоимость со скидкой:"
+      min_prepayment: "Минимальная предоплата:"
+      check_date: "Проверьте правильность данных"
     errors:
       mast_be_greater_now: "должно быть больше чем сейсас хотя бы на 1 день"
       mast_be_greater_coming_on: "должно быть больше чем дата заселения хотя бы на 1 день"

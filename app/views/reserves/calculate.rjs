@@ -1,1 +1,9 @@
-page << "$('#reserve_sum').html('#{number_to_currency( @sum )}')"
+if @calculate
+  page << "$('#reserve_sum').html('#{number_to_currency( @calculate[:sum] )}')"
+  page << "$('#discount').html('#{t('.discount')} #{@reserf.discount}%')"
+  page << "$('#discount_sum').html('#{t('.discount_sum')} #{number_to_currency( @calculate[:discount_sum] )}')"
+  page << "$('#sum_with_discount').html('#{t('.sum_with_discount')} #{number_to_currency( @calculate[:sum_with_discount] )}')"
+  page << "$('#min_prepayment').html('#{t('.min_prepayment')} #{number_to_currency( @calculate[:min_prepayment] )}')"
+else
+  page << "$('#discount').html('#{t('.check_date')}')"
+end

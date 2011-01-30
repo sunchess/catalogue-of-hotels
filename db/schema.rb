@@ -113,15 +113,15 @@ ActiveRecord::Schema.define(:version => 20110114173256) do
   create_table "reserves", :force => true do |t|
     t.integer  "room_id"
     t.integer  "user_id"
-    t.integer  "status",        :default => 0, :null => false
+    t.integer  "status",        :default => 0,   :null => false
     t.string   "name"
     t.string   "address"
     t.string   "telephone"
     t.text     "list_tourists"
     t.date     "coming_on"
     t.date     "outing_on"
-    t.float    "coast"
-    t.integer  "discount",      :default => 0, :null => false
+    t.float    "cost",          :default => 0.0, :null => false
+    t.integer  "discount",      :default => 0,   :null => false
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"

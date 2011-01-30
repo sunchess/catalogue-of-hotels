@@ -1,4 +1,4 @@
-= form_for @reserf, :html=>{:multipart=>true} do |f|
+= form_for @reserf, :as=>:reserf, :url=>room_reserves_path(@room), :html=>{:multipart=>true} do |f|
   = render( :partial=>"layouts/errors_messages", :locals => { :target=>@reserf})
   = hidden_field_tag :room, @room.id
   %ul.form_fields.inline
@@ -40,7 +40,12 @@
     %li.inline
       = t(".sum")
       %span#reserve_sum
-        = @reserf.coast || 0
+        = @reserf.cost || 0
+      #discount
+      #discount_sum
+      #sum_with_discount
+      #min_prepayment
+      %br
     %li.inline
       = f.submit
       |

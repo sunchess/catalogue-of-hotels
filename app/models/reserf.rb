@@ -19,6 +19,9 @@
 
 class Reserf< ActiveRecord::Base
   #TODO: Валидация если в месяц вселения или выселения не работает гостиница
+  after_initialize :default_values
+  
+  PREPAYMENT_PERCENT = 20
   belongs_to :user
   belongs_to :room
   attr_accessible :name, :address, :telephone, :list_tourists, :coming_on, :outing_on, :description
@@ -26,6 +29,12 @@ class Reserf< ActiveRecord::Base
   validates_presence_of :name, :address, :telephone, :list_tourists, :coming_on, :outing_on
 
   validate :validate_dates
+
+  before_save :save_cost
+
+  def save_cost
+    write_attribute(:cost, calculate(self.room)[:sum])   
+  end
 
   def validate_dates
     errors.add(:coming_on, I18n.t("reserves.errors.mast_be_greater_now")) if !coming_on.blank? and coming_on.to_time < 1.day.from_now 
@@ -62,25 +71,18 @@ class Reserf< ActiveRecord::Base
     end
   end
 
-  def calculate(room)
+  def calculate
     # Если дата вселения больше чем дата выселения или в эти месяцы не работает гостиница
     return nil if ( !coming_on or !outing_on ) or coming_on > outing_on or room.prices.find_by_month(coming_on.mon).cost == 0 or room.prices.find_by_month(outing_on.mon).cost == 0 
-    coming_on = self.coming_on
-    outing_on = self.outing_on
-    p coming_on 
     if coming_on.mon == outing_on.mon
-      ( outing_on - coming_on ) * room.prices.find_by_month(coming_on.mon).cost
-    else
-      #TODO: вычесление прайса на даты если месяцы не совпадают
+     cost = ( ( outing_on - coming_on ).to_i + 1 ) * room.prices.find_by_month(coming_on.mon).cost
+    else#считаем каждый день
       current_month = coming_on.mon
       current_cost = room.prices.find_by_month(current_month).cost
       day = coming_on
+      cost = current_cost
       cost = 0
-      #if day = day.next
-      p coming_on 
-      p '###########################333'
       ( outing_on - coming_on ).to_i.times do |time| 
-        day = coming_on.next
         if day.mon == current_month
           cost += current_cost 
         else
@@ -88,13 +90,23 @@ class Reserf< ActiveRecord::Base
           current_cost = room.prices.find_by_month(current_month).cost 
           cost += current_cost 
         end
+        day = day.next
       end
       cost
     end
+
+    #если больше 50т.р.
+    if cost > 50000
+      self.discount = 7
+    end
+
+    discount_sum = ( cost.to_f * ( self.discount.to_f / 100 ) )
+    {:sum => cost, :discount_sum => discount_sum, :sum_with_discount => cost.to_f - discount_sum, :min_prepayment => ( (cost.to_f * ( PREPAYMENT_PERCENT.to_f / 100) ) - discount_sum )}
   end
 
   private
-  def get_num_days(date)
-    date
+  def default_values
+    write_attribute(:discount, 5)
   end
+
 end

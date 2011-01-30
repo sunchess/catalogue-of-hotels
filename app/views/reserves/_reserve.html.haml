@@ -1,15 +1,15 @@
+- calculate = reserve.calculate
 .item
-  .right
-    = t(".coast")
-    = number_to_currency reserve.coast
+  .right{:style=>"width: 180px; "}
+    = "#{ t(".cost") } #{ number_to_currency calculate[:sum_with_discount] }(#{reserve.discount}%)"
   .left.padding_3
     = link_to reserve.room.hotel.name, hotel_path(reserve.room.hotel.id) 
     = "(#{  link_to( reserve.room.hotel.place.title, place_path(reserve.room.hotel.place), :class=>"edit" )})".html_safe
     = "/"
-  .left.padding_3
+  .left{:style=>"margin: 0"}
     = link_to human_room_data(reserve.room.places, Room.places), hotel_room_path(reserve.room.hotel.id, reserve.room.id)
   .reset
-  .right
+  .right{:style=>"width: 180px;"}
     %span.title
       = t(".status")
     = reserve.h_status
@@ -20,6 +20,10 @@
       = link_to t("edit"), edit_room_reserf_path(reserve.room, reserve), :class=>"edit"
       %br
       = link_to t("destroy"), room_reserf_path(reserve.room, reserve), :class=>"edit", :method=>:delete
+    %br
+    = "#{ t('.min_prepayment') } #{number_to_currency( calculate[:min_prepayment] )}"
+    %br
+    = "#{t('.discount_sum')} #{number_to_currency( calculate[:discount_sum] )}"
   .left
     = room_thumb(reserve.room)
   .left.padding_5

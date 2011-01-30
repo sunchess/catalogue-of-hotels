@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   include BreadcrumbsOnRails::ControllerMixin
   protect_from_forgery
   helper NavigationHelper
+  helper_method :current_discount
 
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -35,4 +36,5 @@ private
       return false
     end
   end
+
 end
