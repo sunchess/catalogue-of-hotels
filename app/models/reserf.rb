@@ -22,6 +22,7 @@ class Reserf< ActiveRecord::Base
   after_initialize :default_values
   
   PREPAYMENT_PERCENT = 20
+  DISCOUNT = 5
   belongs_to :user
   belongs_to :room
   attr_accessible :name, :address, :telephone, :list_tourists, :coming_on, :outing_on, :description
@@ -32,16 +33,32 @@ class Reserf< ActiveRecord::Base
 
   before_save :save_cost
 
+  scope :ordered, order("id DESC")
+  scope :draft, where(:status=>0)
+  scope :sent, where(:status=>1)
+  scope :adopted, where(:status=>2)
+  scope :confirmed, where(:status=>3)
+  scope :paid, where(:status=>4)
+  scope :statused, lambda{|s|
+    if [0, 1, 2, 3, 4].include? s.to_i
+      where(:status=>s)
+    else
+      where(:status=>0)
+    end
+  }
+
   def save_cost
-    write_attribute(:cost, calculate(self.room)[:sum])   
+    calculate_res = calculate()
+    write_attribute(:cost, calculate_res[:sum])   
+    write_attribute(:discount_sum, calculate_res[:discount_sum])
+    write_attribute(:min_prepayment, calculate_res[:min_prepayment])
+    write_attribute(:sum_with_discount, calculate_res[:sum_with_discount])
   end
 
   def validate_dates
     errors.add(:coming_on, I18n.t("reserves.errors.mast_be_greater_now")) if !coming_on.blank? and coming_on.to_time < 1.day.from_now 
     errors.add(:outing_on, I18n.t("reserves.errors.mast_be_greater_coming_on")) if !outing_on.blank? and outing_on.to_time < coming_on + 1.day 
   end
-
-  scope :ordered, order("id DESC")
 
   def h_status
     case self.status
@@ -106,7 +123,7 @@ class Reserf< ActiveRecord::Base
 
   private
   def default_values
-    write_attribute(:discount, 5)
+    write_attribute(:discount, DISCOUNT)
   end
 
 end

@@ -39,6 +39,7 @@ CatalogueOfHotels::Application.routes.draw do
 
       collection do
         post 'calculate'
+        put 'calculate'
       end
 
     end

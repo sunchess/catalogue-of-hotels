@@ -1,2 +1,7 @@
-%h1 Reserves#edit
-%p Find me in app/views/reserves/edit.html.haml
+%h1= t('.title') 
+#main_content
+  .item
+    = render :partial => "form"
+#navigation
+  #room_area.item{:style=>"margin-top: 5px;"}
+    = reserve_show_prices(@room)

@@ -1,5 +1,14 @@
+<p>Здравствуйте, <%= @resource.email %>!</p>
+<p>Вы или кто-то зарегистрировался на сайте www.coastsun.ru под этим email.</p>
+<p>Если вы этого не делали, просто проигнорируйте это письмо.</p>
+<p>Подтвердить аккаунт вы можете кликнув на ссылку ниже:</p>
+
+<p><%= link_to 'Ссылка для подтверждения', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<br/>
 <p>Welcome <%= @resource.email %>!</p>
 
 <p>You can confirm your account through the link below:</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+--
+CoastSun.Ru

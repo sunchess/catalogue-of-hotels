@@ -1,19 +1,22 @@
 %h1= t(".title")
 #main_content
-  = render :partial => "reserve", :collection=>@reserves
-  = t_will_paginate(@reserves)
+  - if @reserves.any?
+    = render :partial => "reserve", :collection=>@reserves
+    = t_will_paginate(@reserves)
+  - else
+    = t('no_records')
 #navigation
   #wizzard
-    %div
-      = link_to t("reserves.status.draft"), reserves_path(:status=>1)
-    %div
-      = link_to t("reserves.status.sent"), reserves_path(:status=>2)
-    %div
-      = link_to t("reserves.status.adopted"), reserves_path(:status=>3)
-    %div
-      = link_to t("reserves.status.confirmed"), reserves_path(:status=>4)
-    %div
-      = link_to t("reserves.status.paid"), reserves_path(:status=>5)
+    %div{:class => params[:status].to_i == 0 || !params[:status] ? "current" : ""}
+      = link_to t("reserves.status.draft"), reserves_path(:status=>0) 
+    %div{:class => params[:status].to_i == 1 ? "current" : ""}
+      = link_to t("reserves.status.sent"), reserves_path(:status=>1) 
+    %div{:class => params[:status].to_i == 2 ? "current" : ""}
+      = link_to t("reserves.status.adopted"), reserves_path(:status=>2)
+    %div{:class => params[:status].to_i == 3 ? "current" : ""}
+      = link_to t("reserves.status.confirmed"), reserves_path(:status=>3)
+    %div{:class => params[:status].to_i == 4 ? "current" : ""}
+      = link_to t("reserves.status.paid"), reserves_path(:status=>4)
   .info
     .header
       = t(".info")

@@ -1,0 +1,39 @@
+Было получено новое резирвирование.
+%p
+  = link_to @reserve.room.hotel.name, hotel_path(@reserve.room.hotel.id) 
+  = "(#{  link_to( @reserve.room.hotel.place.title, place_path(@reserve.room.hotel.place), :class=>"edit" )})".html_safe
+  /
+  = link_to human_room_data(@reserve.room.places, Room.places), hotel_room_path(@reserve.room.hotel.id, @reserve.room.id)
+%p
+  Стоимость:
+  = number_to_currency @reserve.cost
+  %br
+  Скидка:
+  = @reserve.discount
+  %br
+  Стоимость со скидкой: 
+  = number_to_currency @reserve.sum_with_discount
+  %br
+  Сумма скидки:
+  = number_to_currency( @reserve.discount_sum )
+  %br
+  Минимальная сумма предоплаты:
+  = number_to_currency( @reserve.min_prepayment )
+
+%p
+  Дата вселения:
+  = _date @reserve.coming_on
+  Дата выселения:
+  = _date @reserve.outing_on
+%p
+  Имя заказчика:
+  @reserve.name
+%p
+  Телефон:
+  = @reserve.telephone
+%p
+  \--
+  CoastSun.Ru
+
+
+  

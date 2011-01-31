@@ -12,6 +12,9 @@ class CreateReserves < ActiveRecord::Migration
       t.date    :outing_on
       t.float   :cost, :null=>false, :default=>0
       t.integer :discount, :null=>false, :default=>0
+      t.float   :discount_sum, :null=>false, :default=>0
+      t.float   :min_prepayment, :null=>false, :default=>0
+      t.float   :sum_with_discount, :null=>false, :default=>0
       t.string  :description #пожелания
       t.timestamps
     end

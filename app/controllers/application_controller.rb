@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper NavigationHelper
   helper_method :current_discount
+  helper_method "admin?"
 
 
   rescue_from CanCan::AccessDenied do |exception|

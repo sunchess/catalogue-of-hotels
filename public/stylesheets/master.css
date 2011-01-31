@@ -65,6 +65,13 @@
   .info .bold {
     font-weight: bold; }
 
+.handle {
+  cursor: help;
+  border-bottom: 1px dashed #cad1d9; }
+
+.advert {
+  color: #c60f0f; }
+
 body {
   margin: 0;
   padding: 0;

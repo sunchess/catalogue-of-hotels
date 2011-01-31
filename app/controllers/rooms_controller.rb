@@ -14,7 +14,8 @@ class RoomsController < ApplicationController
       @rooms = @hotel.rooms.paginate(:page=>params[:page])
       add_breadcrumb I18n.t("rooms.navigation"), :hotel_rooms_path
     else
-      @rooms = Room.joins("LEFT JOIN hotels ON hotels.id = rooms.hotel_id").where("hotels.draft"=>false).paginate(:page=>params[:page], :per_page=>15)
+      @rooms = Room.joins(:hotel).where("hotels.draft"=>false).paginate(:page=>params[:page], :per_page=>15)
+      add_breadcrumb I18n.t("rooms.navigation"), :rooms_path
     end
   end
 

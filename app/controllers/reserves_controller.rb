@@ -1,11 +1,12 @@
 class ReservesController < ApplicationController
-  before_filter :find_reserve, :only=>[:show, :edit, :update, :destroy]
+  before_filter :find_reserve, :only=>[:publish, :edit, :update, :destroy]
   authorize_resource :reserf, :except=>%w{ publish change_status calculate }
   before_filter :find_hotel_and_room, :only=>%w{ new create edit update publish calculate }
   add_breadcrumb Proc.new{|c| c.t("reserves.new.title")}, :new_room_reserf_path, :only=>%w{new create}
+  add_breadcrumb Proc.new{|c| c.t("reserves.index.title")}, :reserves_path, :only=>%w{index}
 
   def index
-    @reserves=current_user.reserves.ordered.paginate(:page=>params[:page])
+    @reserves = current_user.reserves.statused(params[:status] || 0).ordered.paginate(:page=>params[:page])
   end
 
   def new
@@ -41,9 +42,11 @@ class ReservesController < ApplicationController
   def publish
     authorize! :update, @reserf
     if @reserf.status < 1
-      @reserf.change_status
+      if @reserf.change_status
+        AppMailer.new_reserve(@reserf).deliver 
+      end
     end
-    redirect_to reserves_path
+    redirect_to reserves_path, :notice=>t('reserves.successfully_sent_to_manager')
   end
 
   def change_status
@@ -71,4 +74,5 @@ class ReservesController < ApplicationController
     add_breadcrumb @hotel.name, hotel_path(@hotel)
     add_breadcrumb Room.places[ @room.places ].first, hotel_room_path(@hotel, @room)
   end
+
 end
