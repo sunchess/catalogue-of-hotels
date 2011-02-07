@@ -46,7 +46,7 @@ class ReservesController < ApplicationController
         AppMailer.new_reserve(@reserf).deliver 
       end
     end
-    redirect_to reserves_path, :notice=>t('reserves.successfully_sent_to_manager')
+    redirect_to reserves_path(:status=>1), :notice=>t('reserves.successfully_sent_to_manager')
   end
 
   def change_status

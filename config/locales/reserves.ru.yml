@@ -1,4 +1,11 @@
 ru:
+  admin:
+    reserves:
+      index: 
+        title: "Резервирование"
+
+
+
   reserves:
     successfully_create: "Резервирование создано" 
     successfully_update: "Резервирование  отредактировано"
@@ -6,6 +13,15 @@ ru:
     successfully_sent_to_manager: "Резервирование отослано менеджеру, мы свяжемся с вами в ближайшее время"
     navigation: "Резервирование"
     discount_info: "Если вы зарезервируете сейчас номер, то получите скидку в %{number}%."
+
+    manager:
+      title: "Резервирование"
+      sent: "Ожидает менеджера"
+      adopted: "Принято"
+      confirmed: "Подтверждено"
+      paid: "Оплачено"
+      archive: "Архив"
+
     reserve:
       discount_notice: "Ваша скидка"
       status: "Статус:"

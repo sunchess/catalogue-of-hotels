@@ -1,6 +1,4 @@
 CatalogueOfHotels::Application.routes.draw do
-
-  #get "home/index"
   resources :dynamic_models do
     resources :dynamic_fields do
        collection do
@@ -57,6 +55,7 @@ CatalogueOfHotels::Application.routes.draw do
   namespace :admin do
     resources :hotels, :only=>[:index]
     resource  :dashboard, :only=>[:show]
+    resources :reserves
   end
 
   namespace :my do

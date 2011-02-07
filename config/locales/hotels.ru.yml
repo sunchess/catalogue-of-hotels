@@ -13,6 +13,9 @@ ru:
     map: "Карта"
     list: "Список гостиниц"
 
+    manager: 
+      title: "Гостиницы"
+      wait_moderators: "Ожидает модерации"
     index:
       title: "Список гостиниц"
       new_hotel: "Добавить гостиницу"

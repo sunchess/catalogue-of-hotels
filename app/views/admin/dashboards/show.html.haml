@@ -1,6 +1,6 @@
 %h1 Admin::Dashboard
-#main_navigation
+#main_content
 
 #navigation
-  = link_to t("hotels.navigation"), admin_hotels_path
-  = "(#{Hotel.draft})"
+  = render :partial => "admin/menu"
+  

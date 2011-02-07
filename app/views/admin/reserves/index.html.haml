@@ -1,0 +1,9 @@
+%h1= t(".title")
+#main_content
+  - if @reserves.any?
+    = render :partial => "reserves/reserve", :collection=>@reserves
+    = t_will_paginate(@reserves)
+  - else
+    = t('no_records')
+#navigation
+  = render :partial => "admin/menu"

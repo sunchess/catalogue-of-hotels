@@ -18,7 +18,7 @@
     - elsif admin?
       = reserve_links(reserve)
     %br
-    - if can?(:update, reserve) and reserve.status == 0
+    - if can?(:update, reserve) and (reserve.status == 0 or [:admin, :managre].include? current_user.role)
       = link_to t("edit"), edit_room_reserf_path(reserve.room, reserve), :class=>"edit"
       %br
       = link_to t("destroy"), room_reserf_path(reserve.room, reserve), :class=>"edit", :method=>:delete, :confirm=>t('confirm')

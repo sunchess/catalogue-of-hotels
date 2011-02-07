@@ -1,0 +1,20 @@
+#wizzard
+  %br
+  = t("hotels.manager.title")
+  %div 
+    = link_to t("hotels.manager.wait_moderators"), admin_hotels_path
+    = "(#{Hotel.draft})"
+  %br
+  = t("reserves.manager.title")
+  %div
+    = link_to t("reserves.manager.sent"), admin_reserves_path(:status => 1)
+    ="(#{Reserf.sent.count})"
+  %div
+    = link_to t("reserves.manager.adopted"), admin_reserves_path(:status => 2)
+    ="(#{Reserf.adopted.count})"
+  %div
+    = link_to t("reserves.manager.confirmed"), admin_reserves_path(:status => 3)
+    ="(#{Reserf.confirmed.count})"
+  %div
+    = link_to t("reserves.manager.paid"), admin_reserves_path(:status => 4)
+    ="(#{Reserf.paid.count})"
