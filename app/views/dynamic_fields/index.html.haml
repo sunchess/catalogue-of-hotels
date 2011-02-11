@@ -21,6 +21,7 @@
               \|
               = link_to t("destroy"), dynamic_model_dynamic_field_path(@model, field), :confirm => t("confirm"), :method=>:delete
 
+    = t_will_paginate(@dynamic_fields)
   -else
     %p= t("no_records")
 
