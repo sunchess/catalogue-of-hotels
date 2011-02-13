@@ -21,6 +21,7 @@ ru:
       confirmed: "Подтверждено"
       paid: "Оплачено"
       archive: "Архив"
+      canceled: "Отменено"
 
     reserve:
       discount_notice: "Ваша скидка"
@@ -33,6 +34,10 @@ ru:
       sum_with_discount: "Стоимость со ск.:"
       min_prepayment: "Мин. предопл.:"
       links_0: "Отправить менеджеру"
+      links_1: "Принять"
+      links_2: "Подтвердить"
+      links_3: "Оплачено"
+      links_4: "В архив"
     index:
       title: "Зарезервированное мной"
       info: "Подсказка по статусам"
@@ -43,6 +48,8 @@ ru:
       info_paid: " -- предоплата внесена. Можно скачать путевку." 
     new:
       title: "Бронирование номера"
+    edit:
+      title: "Редактирование бронирования"
     form:
       select_day: "Выберите день"
       select_month: "Выберите месяц"
@@ -65,6 +72,8 @@ ru:
      adopted: "Принято менеджером"
      confirmed: "Подтверждено"
      paid: "Оплачено"
+     archive: "В архивe"
+     canceled: "Отменено"
 
   activerecord:
     attributes:

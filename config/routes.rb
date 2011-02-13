@@ -55,7 +55,7 @@ CatalogueOfHotels::Application.routes.draw do
   namespace :admin do
     resources :hotels, :only=>[:index]
     resource  :dashboard, :only=>[:show]
-    resources :reserves
+    resources :reserves 
   end
 
   namespace :my do

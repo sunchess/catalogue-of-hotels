@@ -16,12 +16,15 @@
     -if reserve.status == 0
       = reserve_links(reserve)
     - elsif admin?
-      = reserve_links(reserve)
+      = admin_reserve_link(reserve)
     %br
     - if can?(:update, reserve) and (reserve.status == 0 or [:admin, :managre].include? current_user.role)
       = link_to t("edit"), edit_room_reserf_path(reserve.room, reserve), :class=>"edit"
       %br
       = link_to t("destroy"), room_reserf_path(reserve.room, reserve), :class=>"edit", :method=>:delete, :confirm=>t('confirm')
+    - if admin?
+      %br
+      = link_to t("cancel"), admin_reserf_path(reserve), :class => "edit", :method => :delete, :confirm=>t('confirm')
   .left
     = room_thumb(reserve.room)
   .left.padding_5{:style=>"width: 180px;"}

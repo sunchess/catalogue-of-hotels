@@ -18,3 +18,9 @@
   %div
     = link_to t("reserves.manager.paid"), admin_reserves_path(:status => 4)
     ="(#{Reserf.paid.count})"
+  %div
+    = link_to t("reserves.manager.archive"), admin_reserves_path(:status => 5)
+    ="(#{Reserf.archive.count})"
+  %div
+    = link_to t("reserves.manager.canceled"), admin_reserves_path(:status => 6)
+    ="(#{Reserf.canceled.count})"

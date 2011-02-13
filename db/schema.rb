@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110114173256) do
+ActiveRecord::Schema.define(:version => 20110213135928) do
 
   create_table "dynamic_fields", :force => true do |t|
     t.integer "dynamic_model_id"
@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(:version => 20110114173256) do
     t.integer  "images_count"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title"
   end
 
   add_index "rooms", ["hotel_id"], :name => "index_rooms_on_hotel_id"

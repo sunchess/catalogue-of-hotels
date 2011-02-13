@@ -10,4 +10,5 @@ run.sh
 *.swo
 public/system/images*
 config/initializers/secret_token.rb
+tmp*
 

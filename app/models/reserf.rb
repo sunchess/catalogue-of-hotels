@@ -39,12 +39,19 @@ class Reserf< ActiveRecord::Base
   scope :adopted, where(:status=>2)
   scope :confirmed, where(:status=>3)
   scope :paid, where(:status=>4)
+  scope :archive, where(:status=>5) 
+  scope :canceled, where(:status=>6) 
+
   scope :statused, lambda{|s|
-    if [0, 1, 2, 3, 4].include? s.to_i
+    if [0, 1, 2, 3, 4, 5, 6].include? s.to_i
       where(:status=>s)
     else
       where(:status=>0)
     end
+  }
+
+  scope :status_in, lambda{|s_array|
+    where(:status=>s_array)
   }
 
   def save_cost
@@ -72,6 +79,10 @@ class Reserf< ActiveRecord::Base
         I18n.t("reserves.status.confirmed")
       when 4
         I18n.t("reserves.status.paid")
+      when 5
+        I18n.t("reserves.status.archive")
+      when 6
+        I18n.t("reserves.status.canceled")
     end
   end
 

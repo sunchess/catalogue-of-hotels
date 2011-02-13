@@ -6,7 +6,7 @@ class ReservesController < ApplicationController
   add_breadcrumb Proc.new{|c| c.t("reserves.index.title")}, :reserves_path, :only=>%w{index}
 
   def index
-    @reserves = current_user.reserves.statused(params[:status] || 0).ordered.paginate(:page=>params[:page])
+    @reserves = current_user.reserves.status_in(( 0..5 ).to_a).ordered.paginate(:page=>params[:page])
   end
 
   def new

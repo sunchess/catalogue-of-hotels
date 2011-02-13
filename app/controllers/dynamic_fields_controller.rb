@@ -2,8 +2,8 @@ class DynamicFieldsController < ApplicationController
   load_and_authorize_resource
   before_filter :find_model
   #caches_action :index, :edit_order, :layout=>false #path with pagenate not work
-  before_filter :delete_cache, :only=>[:create, :update, :destroy]
-  before_filter :delete_cache_order, :only => [:update_order]
+  #before_filter :delete_cache, :only=>[:create, :update, :destroy]
+  #before_filter :delete_cache_order, :only => [:update_order]
   
   def index
     @dynamic_fields = DynamicField.where({:dynamic_model_id=>@model.id}).order("position").paginate(:page=>params[:page])

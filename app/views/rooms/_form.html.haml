@@ -2,6 +2,9 @@
   = render( :partial=>"layouts/errors_messages", :locals => { :target=>@room})
   %ul.form_fields 
     %li
+      = f.label :title
+      = f.text_field :title
+    %li
       = f.label :places
       = f.select :places, Room.places
     %li

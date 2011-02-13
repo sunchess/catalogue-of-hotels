@@ -6,18 +6,7 @@
   - else
     = t('no_records')
 #navigation
-  #wizzard
-    %div{:class => params[:status].to_i == 0 || !params[:status] ? "current" : ""}
-      = link_to t("reserves.status.draft"), reserves_path(:status=>0) 
-    %div{:class => params[:status].to_i == 1 ? "current" : ""}
-      = link_to t("reserves.status.sent"), reserves_path(:status=>1) 
-    %div{:class => params[:status].to_i == 2 ? "current" : ""}
-      = link_to t("reserves.status.adopted"), reserves_path(:status=>2)
-    %div{:class => params[:status].to_i == 3 ? "current" : ""}
-      = link_to t("reserves.status.confirmed"), reserves_path(:status=>3)
-    %div{:class => params[:status].to_i == 4 ? "current" : ""}
-      = link_to t("reserves.status.paid"), reserves_path(:status=>4)
-  .info
+  .info{:style=>"padding-top: 5px;"}
     .header
       = t(".info")
     .text

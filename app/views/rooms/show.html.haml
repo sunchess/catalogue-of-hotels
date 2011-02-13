@@ -1,4 +1,4 @@
-%h1= human_room_data @room.places, Room.places
+%h1= @room.title
 
 #main_content
   #room_area
@@ -8,6 +8,7 @@
       .left.padding_5
         %span.title= t("rooms.room.options")
         %br
+        = human_room_data(@room.places, Room.places)
         = human_room_data(@room.room_number, Room.rooms)
         = human_room_data(@room.shower, Room.shower)
         = human_room_data(@room.toilet, Room.toilet)
