@@ -26,7 +26,7 @@ class Room < ActiveRecord::Base
 
 
   attr_accessible :places, :room_number, :shower, :toilet, :fridge, :tv, :prices_attributes, :images, :dynamic_fields, :fields_dynamic_fields, :title
-  validates_presence_of :places
+  validates_presence_of :places, :title, :room_number, :shower, :toilet
   accepts_nested_attributes_for :prices, :reject_if => :all_blank, :limit=>12
 
   validate :must_have_one_price

@@ -1,4 +1,7 @@
 .item
+  .left{:style=>"padding-bottom: 3px;"}
+    = room.title
+  .reset
   - unless @hotel
     .left
       = link_to room.hotel.name, hotel_path(room.hotel.id) 

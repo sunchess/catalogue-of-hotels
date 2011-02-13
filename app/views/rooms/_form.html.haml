@@ -1,26 +1,36 @@
 = form_for [@hotel, @room], :html=>{:multipart=>true} do |f|
   = render( :partial=>"layouts/errors_messages", :locals => { :target=>@room})
-  %ul.form_fields 
+  %ul.form_fields.inline
     %li
       = f.label :title
+      = mark_required(@room, :title)
+      %br
+      %span.info
+        = t(".title_info")
       = f.text_field :title
     %li
       = f.label :places
+      = mark_required(@room, :places)
       = f.select :places, Room.places
     %li
       = f.label :room_number
+      = mark_required(@room, :room_number)
       = f.select :room_number, Room.rooms, { :include_blank => true }
     %li
       = f.label :shower
+      = mark_required(@room, :shower)
       = f.select :shower, Room.shower, { :include_blank => true }
     %li
       = f.label :toilet
+      = mark_required(@room, :toilet)
       = f.select :toilet, Room.toilet, { :include_blank => true }
     %li
       = f.label :fridge
+      = mark_required(@room, :fridge)
       = f.select :fridge, Room.fridge, { :include_blank => true }
     %li
       = f.label :tv
+      = mark_required(@room, :tv)
       = f.select :tv, Room.tv, { :include_blank => true }
   %ul.form_params
     %li

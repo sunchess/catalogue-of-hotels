@@ -29,8 +29,9 @@
       - if @hotel.fax
         = @hotel.fax
   #room_area
-    .title= t("rooms.navigation")
-    = render :partial => "rooms/room", :collection=>@hotel.rooms
+    - if @hotel.rooms.any?
+      .title= t("rooms.navigation")
+      = render :partial => "rooms/room", :collection=>@hotel.rooms
   .item
     .reset
       -if @images.any?
