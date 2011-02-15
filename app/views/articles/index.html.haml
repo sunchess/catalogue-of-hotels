@@ -1,0 +1,6 @@
+%h1= t('.title')
+#main_content
+  = render :partial => "article", :collection=>@articles
+
+  = t_will_paginate @articles
+#navigation

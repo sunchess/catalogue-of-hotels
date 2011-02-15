@@ -1,26 +1,42 @@
 %h1= t('.title')
 
 #places
-  - @places.each do |place| 
-    .place_title
-      = link_to place.title, place_path(place), :class=>"title_header"
+  - @places.each do |place_root| 
+    - if can?(:edit, Place)
+      .place_title
+        = link_to place_root.title, place_path(place_root), :class=>"title_header"
+        %br
+        -if can?(:edit, Place)
+          = link_to t('edit'), edit_place_path(place_root)
 
-    - place.children.in_groups_of(3, false) do |group|
+        -if can?(:delete, Place)
+          = link_to t('destroy'), place_root, :confirm => t('confirm'), :method => :delete
+    - elsif not place_root.draft?
+      .place_title
+        = link_to place_root.title, place_path(place_root), :class=>"title_header"
+
+    - place_root.children.in_groups_of(3, false) do |group|
       %div
         -group.each do |place|
           %ul{:style=>"float:left"}
-            %li{:class=>draft_record?(place), :title=>place.draft ? t('.draft') : nil}
-              = link_to place.title, place_path(place), :class=>"title"
-              %br
+            -if can?(:edit, Place)
+              %li{:class=>draft_record?(place), :title=>place.draft ? t('.draft') : nil}
+                = link_to place.title, place_path(place), :class=>"title"
+                %br
               -if can?(:edit, Place)
                 = link_to t('edit'), edit_place_path(place)
 
               -if can?(:delete, Place)
                 = link_to t('destroy'), place, :confirm => t('confirm'), :method => :delete
+            - elsif not place.draft?
+              %li{:class=>draft_record?(place), :title=>place.draft ? t('.draft') : nil}
+                = link_to place.title, place_path(place), :class=>"title"
+                %br
+
               -if place.children
                 %ul
                   - place.children.each do |child|
-                    - if can?(:manage, Place)
+                    - if can?(:edit, Place)
                       %li{:class=>"child #{draft_record?(child)}", :title=>child.draft ? t('.draft') : nil}
                         = link_to child.title, place_path(child)
                         %br

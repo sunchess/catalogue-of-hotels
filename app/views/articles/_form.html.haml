@@ -1,0 +1,32 @@
+-content_for :javascript do
+  %script{:src=>"/javascripts/editor/editor.js", :type=>"text/javascript" }
+-content_for :stylesheets do
+  = stylesheet_link_tag "/javascripts/editor/css/editor.css"
+
+= form_for([@place || @hotel, @article]) do |f|
+  = render( :partial=>"layouts/errors_messages", :locals => { :target=>@article})
+  = hidden_field_tag :place, @place.id if @place
+  = hidden_field_tag :place, @hotel.id if @hotel
+  %ul.form_fields.inline
+    %li
+      = f.label :title
+      = mark_required(@article, :title)
+      = f.text_field :title
+    %li
+      = f.label :body
+      = mark_required(@article, :body)
+      = f.text_area :body, :style=>"width: 100%; height: 320px;"
+  %ul.form_params
+    %li.inline
+      = f.submit
+
+
+:javascript
+  $(document).ready(
+    function()
+      {
+        $('#article_body').editor({ focus: true });
+      }
+  );
+
+

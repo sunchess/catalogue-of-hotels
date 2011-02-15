@@ -47,7 +47,7 @@
   %ul.form_params
     %li.title
       = t('.photos')
-    - ( 5 - @room.images.count).times do |time|
+    - ( 15 - @room.images.count).times do |time|
       %li
         = file_field_tag "images[]"
     %li

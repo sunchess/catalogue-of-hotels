@@ -6,3 +6,5 @@
   = link_to t('back'), places_path
   %br
   = link_to t('show'), @place
+  %br
+  = link_to t("articles.new.title"), new_place_article_path(@place)

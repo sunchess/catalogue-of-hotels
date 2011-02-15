@@ -50,6 +50,7 @@ CatalogueOfHotels::Application.routes.draw do
         put "update"
       end
     end
+    resources :articles
   end
 
   namespace :admin do

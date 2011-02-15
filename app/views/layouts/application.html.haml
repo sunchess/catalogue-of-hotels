@@ -6,10 +6,12 @@
       = ":: #{render_breadcrumbs(:no_html=>true, :separator => ' / ', :full=>true).html_safe}" if render_breadcrumbs(:full=>true).present?
     = stylesheet_link_tag "application", "master", "jquery-ui-1.8.5.custom", "tipTip"
     = stylesheet_link_tag "/fancybox/jquery.fancybox-1.3.3.css"
+    = yield :stylesheets
     = javascript_include_tag :defaults
     = javascript_include_tag "jquery.tipTip.minified.js"
     = javascript_include_tag "/fancybox/jquery.fancybox-1.3.3.pack.js"
     = javascript_include_tag "/fancybox/jquery.easing-1.3.pack.js"
+    = yield :javascript
     = csrf_meta_tag
     = yield :maps
   %body

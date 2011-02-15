@@ -113,7 +113,7 @@ private
   end
 
   def index_cache_path
-    if admin?
+    if can?(:manage, Place)
       'admin/places'
     else
       'public/places'
