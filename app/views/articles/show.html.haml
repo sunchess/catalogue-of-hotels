@@ -1,0 +1,9 @@
+%h1= @article.title
+#main_content
+  = @article.body.html_safe
+
+#navigation
+  %div= link_to t("back"), :back
+  - if can?(:edit, @article)
+    %div= link_to t("edit"), edit_article_path(@article), :class => "edit"
+    %div= link_to t("destroy"), article_path(@article), :method => :delete, :confirm => t("confirm"), :class => "edit"

@@ -20,6 +20,8 @@ ru:
     edit:
       title: "Редактировать место"
     show:
+      articles: "Статьи для места"
+      new_article: "Добавить статью"
       title: "Место:"
       not_found_place: "Место не найдено"
       images: "Фотографии места:"

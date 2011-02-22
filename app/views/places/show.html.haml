@@ -58,9 +58,12 @@
 
 #navigation
   = children_places_for(@place)
+  = link_to t(".articles"), place_articles_path(@place)
   - if can?(:edit, Place)
     %br
-    = link_to t('edit'), edit_place_path(@place)
+    = link_to t(".new_article"), new_place_article_path(@place), :class => "edit"
+    %br
+    = link_to t('edit'), edit_place_path(@place), :class => "edit"
 
 -#%script
   //<![CDATA[

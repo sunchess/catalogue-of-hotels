@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.4'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -37,7 +37,7 @@ gem "paperclip", ">=2.3.6", :git=>'git://github.com/thoughtbot/paperclip.git'
 # and rake tasks are available in development mode:
 group :development, :test do
   gem 'jquery-rails'
-  
+  gem 'forgery'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'steak', '>= 1.0.0.rc.1'

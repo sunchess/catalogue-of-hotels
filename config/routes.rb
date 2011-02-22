@@ -1,4 +1,6 @@
 CatalogueOfHotels::Application.routes.draw do
+  match "articles/images", :to => "articles/images#create", :via => [:post]
+
   resources :dynamic_models do
     resources :dynamic_fields do
        collection do
@@ -43,6 +45,8 @@ CatalogueOfHotels::Application.routes.draw do
     end
   end
 
+  resources :articles
+
   resources :places, :shallow => true do
     resources :maps, :controller=>"places/maps", :only=>[:create]
     resources :images, :controller=>"places/images", :only=>[:create, :destroy, :index, :update] do
@@ -53,6 +57,7 @@ CatalogueOfHotels::Application.routes.draw do
     resources :articles
   end
 
+  
   namespace :admin do
     resources :hotels, :only=>[:index]
     resource  :dashboard, :only=>[:show]

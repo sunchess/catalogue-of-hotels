@@ -24,6 +24,7 @@ class Place < ActiveRecord::Base
   has_many :fields_dynamic_fields, :as=>:dynamic, :dependent => :destroy
   has_many :dynamic_fields, :through=>:fields_dynamic_fields
   has_one  :coordinate, :as=>:mapable, :class_name=>"Map"
+  has_many :articles, :as => :articleable, :dependent => :destroy
   validates_uniqueness_of :title, :scope => :parent_id
   validates_presence_of :title
 

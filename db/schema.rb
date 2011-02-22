@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110214172530) do
+ActiveRecord::Schema.define(:version => 20110219122045) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -106,7 +106,8 @@ ActiveRecord::Schema.define(:version => 20110214172530) do
     t.datetime "updated_at"
     t.integer  "parent_id"
     t.integer  "position"
-    t.integer  "images_count", :default => 0, :null => false
+    t.integer  "images_count",   :default => 0, :null => false
+    t.integer  "articles_count", :default => 0, :null => false
   end
 
   add_index "places", ["parent_id"], :name => "index_places_on_parent_id"
