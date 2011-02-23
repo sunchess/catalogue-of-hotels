@@ -9,6 +9,8 @@ class Places::ImagesController < ApplicationController
               else
                 @place.images.not_draft
               end
+    add_breadcrumb @place.title, place_path(@place)
+    add_breadcrumb t("places.images.index.title"), place_images_path(@place)
   end
 
   def create

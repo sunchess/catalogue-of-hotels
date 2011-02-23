@@ -1,5 +1,6 @@
 
 = render :partial => "places/images/image", :collection => @images
+.reset
 
 -if @place.images_count > 6 or can?(:manage, Image)
   %div

@@ -1,5 +1,6 @@
 ru:
   articles:
+    navigation: "Статьи"
     successfully_create: "Статья добавлена"
     successfully_update: "Статья отредактирована"
     successfully_destroy: "Статья удалeна"

@@ -6,6 +6,8 @@
       = link_to t("hotels.navigation"), hotels_path
     %li{:class=>set_current_style("rooms")}
       = link_to t("rooms.navigation"), rooms_path
+    %li{:class=>set_current_style("articles", "places/articles", "hotels/articles")}
+      = link_to t("articles.navigation"), articles_path
 
     -if current_user
       - if current_user.hotels.any?

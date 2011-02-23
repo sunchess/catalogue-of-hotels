@@ -36,11 +36,7 @@
       = render :partial => "places/images/form"
 
 
-  -#if @images.any?
-    .text1
-      =t('.images')
-      = @place.title
-
+  -if @images.any?
     %p
       %b
         =t('.total_images')
@@ -49,24 +45,24 @@
 
     #images_area
       = render :partial => "places/images/image_area"
-  -#else
-    %p
-      =t('.no_images')
+  -else
+    - if can?(:manage, Place)
+      #create_images
+        = link_to t('places.images.form.image'), place_images_path(@place)
 
 
 
 
 #navigation
   = children_places_for(@place)
-  = link_to t(".articles"), place_articles_path(@place)
+  = articles_for(@place)
   - if can?(:edit, Place)
     %br
     = link_to t(".new_article"), new_place_article_path(@place), :class => "edit"
     %br
     = link_to t('edit'), edit_place_path(@place), :class => "edit"
 
--#%script
-  //<![CDATA[
+:javascript
   $("a[rel=img_group]").fancybox({
   'transitionIn'	:	'elastic',
   'transitionOut'	:	'elastic',
@@ -74,6 +70,4 @@
   'speedOut'		:	200,
   'overlayShow'	:	false
   });
-
-  //]]>
 

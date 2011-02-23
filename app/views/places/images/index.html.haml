@@ -1,16 +1,9 @@
 %h1
-  = t('.title')
+  =t('places.show.images')
+  = @place.title
 #main_content
-  %p
-    .text1
-      =t('places.show.images')
-      = @place.title
-
-
-  -if can? :create, Image
+  -if can? :manage, Image
     %div
-      %span.ele_notice
-        = t('places.images.form.notice')
       = render :partial => "places/images/form"
 
 
@@ -27,6 +20,7 @@
         %p= t('.update_draft')
         = form_tag(place_images_path(@place), :method=>:put) do
           = render :partial => "places/images/image", :collection => @images
+          .reset
           %p
             .actions
               = submit_tag(t('helpers.submit.publish'), :name=>"publish", :confirm => t('confirm'))
@@ -35,6 +29,7 @@
 
       -else
         = render :partial => "places/images/image", :collection => @images
+        .reset
 
   -else
     %p

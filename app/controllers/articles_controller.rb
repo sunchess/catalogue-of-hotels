@@ -1,10 +1,11 @@
 class ArticlesController < ApplicationController
   before_filter :find_association
   before_filter :find_article, :only => %w{show edit update destroy}
-  before_filter :add_association_bread_crambs, :only => %w[show edit update]
+  before_filter :add_association_bread_crambs, :only => %w[show edit update create destroy]
   before_filter :article_breadcrumb, :only => %w[show edit update]
   authorize_resource :article
   caches_action :index, :layout => false, :cache_path => :index_cache_path.to_proc
+  after_filter :delete_cache, :only => [:create, :update, :destroy]
 
   def index
     if @place
@@ -81,28 +82,38 @@ class ArticlesController < ApplicationController
   end
 
   def delete_cache
-  
+    association = @article.articleable
+    if association.is_a? Place
+      expire_fragment %r{admin\/places\/#{association.id}\/articles/*}
+      expire_fragment %r{public\/places\/#{association.id}\/articles\/*}
+    elsif association.is_a? Hotel
+      expire_fragment %r{admin\/hotels\/#{association.id}\/articles\/*}
+       expire_fragment %r{public\/hotels\/#{association.id}\/articles\/*}
+    else
+      expire_fragment %r{admin\/articles\/*}
+      expire_fragment %r{public\/articles\/*}
+    end
   end
 
   def index_cache_path
     if can?(:manage, Article)
       if @place
         if params[:page]
-          "admin/public/places/#{@place.id}/articles/#{params[:page]}"
+          "admin/places/#{@place.id}/articles/#{params[:page]}"
         else
-          "admin/public/places/#{@place.id}/articles/1"
+          "admin/places/#{@place.id}/articles/1"
         end
       elsif @hotel
         if params[:page]
-          "admin/public/hotels/#{@hotel.id}/articles/#{params[:page]}"
+          "admin/hotels/#{@hotel.id}/articles/#{params[:page]}"
         else
-          "admin/public/hotels/#{@hotel.id}/articles/1"
+          "admin/hotels/#{@hotel.id}/articles/1"
         end
       else
         if params[:page]
-          "admin/public/articles/#{params[:page]}"
+          "admin/articles/#{params[:page]}"
         else
-          "admin/public/articles/1"
+          "admin/articles/1"
         end
       end
     else
