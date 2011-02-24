@@ -18,8 +18,8 @@
     - place_root.children.in_groups_of(3, false) do |group|
       %div
         -group.each do |place|
-          %ul{:style=>"float:left"}
-            -if can?(:edit, Place)
+          -if can?(:edit, Place)
+            %ul{:style=>"float:left"}
               %li{:class=>draft_record?(place), :title=>place.draft ? t('.draft') : nil}
                 = link_to place.title, place_path(place), :class=>"title"
                 %br
@@ -28,7 +28,8 @@
 
               -if can?(:delete, Place)
                 = link_to t('destroy'), place, :confirm => t('confirm'), :method => :delete
-            - elsif not place.draft?
+          - elsif not place.draft?
+            %ul{:style=>"float:left"}
               %li{:class=>draft_record?(place), :title=>place.draft ? t('.draft') : nil}
                 = link_to place.title, place_path(place), :class=>"title"
                 %br
