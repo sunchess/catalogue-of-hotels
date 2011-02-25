@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_filter :find_association
   before_filter :find_article, :only => %w{show edit update destroy}
-  before_filter :add_association_bread_crambs, :only => %w[show edit update create destroy]
+  before_filter :add_association_bread_crambs, :only => %w[show edit update destroy]
   before_filter :article_breadcrumb, :only => %w[show edit update]
   authorize_resource :article
   caches_action :index, :layout => false, :cache_path => :index_cache_path.to_proc
