@@ -29,7 +29,8 @@ class Image < ActiveRecord::Base
     :styles => {
     :thumb=> "100x100#",
     :small  => "150x150#",
-    :large =>   "500x500>" }
+    :large =>   "500x500>" }, 
+    :convert_options => { :all => "-strip -quality 60"} 
 
   validates_attachment_presence :image
   validates_attachment_size :image, :less_than => 5.megabytes
