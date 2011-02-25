@@ -29,7 +29,6 @@ class Image < ActiveRecord::Base
     :styles => {
     :thumb=> "100x100#",
     :small  => "150x150#",
-    :medium => "300x300#",
     :large =>   "500x500>" }
 
   validates_attachment_presence :image
