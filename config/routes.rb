@@ -59,7 +59,12 @@ CatalogueOfHotels::Application.routes.draw do
 
   
   namespace :admin do
-    resources :hotels, :only=>[:index]
+    resources :hotels, :only=>[:index, :order] do
+      collection do
+        get :order
+        post :update_order
+      end
+    end
     resource  :dashboard, :only=>[:show]
     resources :reserves 
   end

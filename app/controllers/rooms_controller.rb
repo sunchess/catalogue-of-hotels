@@ -8,6 +8,7 @@ class RoomsController < ApplicationController
   before_filter :check_new, :only=>:index
   before_filter :find_dynamic_fields, :only=>[:new, :edit, :create, :update]
   before_filter :find_room, :only=>[:edit, :update, :delete_image, :destroy]
+  before_filter :set_images_fields, :only => %w{edit update}
   
   def index
     if @hotel
@@ -23,6 +24,7 @@ class RoomsController < ApplicationController
   def new
     @room = Room.new
     @room.build_prices_months
+    set_images_fields
   end
   
   def create
@@ -35,6 +37,7 @@ class RoomsController < ApplicationController
       ( 12 - @room.prices.size ).times do 
         @room.prices.build
       end
+      set_images_fields
       render :action=>"new"
     end
   end
@@ -101,6 +104,14 @@ class RoomsController < ApplicationController
 
   def find_room
     @room = Room.find(params[:id])
+  end
+
+  def set_images_fields
+    @images_fields = if @room.images.count < 5 
+                      5 
+                    else
+                      15 - @room.images.count
+                    end
   end
 end
 

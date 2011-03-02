@@ -1,9 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.4'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails', '3.0.5'
 
 gem 'pg'
 gem "cancan", "1.3.4"
@@ -14,8 +11,7 @@ gem 'will_paginate', '3.0.pre2'
 gem "acts_as_list"
 gem "acts_as_tree"
 gem "geokit"
-gem "paperclip", ">=2.3.6", :git=>'git://github.com/thoughtbot/paperclip.git'
-
+gem "paperclip"
 
 # Use unicorn as the web server
 # gem 'unicorn'

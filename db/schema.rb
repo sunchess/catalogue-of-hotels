@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110219122045) do
+ActiveRecord::Schema.define(:version => 20110302064853) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -68,6 +68,9 @@ ActiveRecord::Schema.define(:version => 20110219122045) do
     t.string   "contract_file_name"
     t.string   "contract_content_type"
     t.integer  "contract_file_size"
+    t.string   "site"
+    t.string   "email"
+    t.integer  "position"
   end
 
   add_index "hotels", ["place_id"], :name => "index_hotels_on_place_id"
@@ -158,6 +161,7 @@ ActiveRecord::Schema.define(:version => 20110219122045) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
+    t.text     "description"
   end
 
   add_index "rooms", ["hotel_id"], :name => "index_rooms_on_hotel_id"

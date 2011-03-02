@@ -32,6 +32,10 @@
       = f.label :tv
       = mark_required(@room, :tv)
       = f.select :tv, Room.tv, { :include_blank => true }
+    %li
+      = f.label :description
+      = mark_required(@room, :description)
+      = f.text_area :description, :size => "50x8"
   %ul.form_params
     %li
       %br
@@ -47,7 +51,7 @@
   %ul.form_params
     %li.title
       = t('.photos')
-    - ( 15 - @room.images.count).times do |time|
+    - @images_fields.times do |time|
       %li
         = file_field_tag "images[]"
     %li
@@ -57,7 +61,7 @@
   %ul.form_fields
     %li.title
       = t(".price")
-    %li.info
+    %li.info.ele_notice
       = t(".price_info").html_safe
       - i=1
       = f.fields_for :prices  do |price|

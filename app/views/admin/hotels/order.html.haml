@@ -1,0 +1,7 @@
+%h1= t(".title")
+#main_content
+  = form_tag(update_order_admin_hotels_path) do
+    = render :partial => "hotels/hotel", :collection => @hotels
+    = submit_tag 
+#navigation
+

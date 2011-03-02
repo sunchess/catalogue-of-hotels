@@ -6,6 +6,9 @@
     .left
       = link_to @hotel.name, hotel_path(@hotel.id) 
       = "(#{  link_to( @hotel.place.title, place_path(@hotel.place), :class=>"edit" )})".html_safe
+      - if can?(:update, @hotel)
+        &nbsp;
+        = link_to t("edit"), edit_hotel_path(@hotel), :class => "edit"
     .right{:style=>"width: 200px"}
       .title
         = "#{ t("activerecord.attributes.hotel.distance") } #{ Hotel.distance_options.select{|k,v| v==@hotel.distance }.first.first } "
@@ -18,27 +21,34 @@
     .left.padding_5  
       .title= t(".address")
       .title= t(".telephone")
-      - if @hotel.fax
-        .title= t(".fax")
+      .title= t(".fax") if @hotel.fax.present?
+      .title= t(".email") if @hotel.email.present?
+      .title= t(".site") if @hotel.site.present?
+      
 
     .left.padding_5  
       = "#{@hotel.place.title}, #{@hotel.street}, #{t("activerecord.attributes.hotel.house_number")} #{@hotel.house_number}"
       %br
       = @hotel.telephone.split("\n").join(", ")
       %br
-      - if @hotel.fax
-        = @hotel.fax
+      = @hotel.fax if @hotel.fax.present?
+      %br
+      = mail_to( @hotel.email, @hotel.email, :encode => "javascript" ) if @hotel.email.present?
+      %br
+      = link_to @hotel.site, @hotel.site if @hotel.site.present?
+
+  .item
+    .reset
+      -if @images.any?
+        .center
+          = render :partial => "shared/images_area"
+        = link_to t("hotels.images.all"), hotel_images_path(@hotel)
+      -else
+        .title=t('no_images')
   #room_area
     - if @hotel.rooms.any?
       .title= t("rooms.navigation")
       = render :partial => "rooms/room", :collection=>@hotel.rooms
-  .item
-    .reset
-      -if @images.any?
-        .title= t(".photos")
-        = render :partial => "shared/images_area"
-      -else
-        .title=t('no_images')
 
   .title
     = t("add_params")

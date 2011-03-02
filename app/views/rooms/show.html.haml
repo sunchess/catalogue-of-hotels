@@ -15,7 +15,7 @@
         = human_room_data(@room.fridge, Room.fridge)
         = human_room_data(@room.tv, Room.tv)
       - if @room.dynamic_fields.any?
-        .left.padding_5
+        .left.padding_5{:style => "width: 170px;"}
           %span.title= t("rooms.room.add_options")
           %br
           - @room.dynamic_fields.each do |field|
@@ -55,6 +55,11 @@
             %td
               = show_price(price.cost) 
 
+      - if @room.description.present?
+        %br
+        .title= t(".description")
+        .padding_5
+          = @room.description
       %br
       -if @images.any?
         .title= t(".photos")

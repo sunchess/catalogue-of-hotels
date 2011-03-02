@@ -14,6 +14,8 @@
     = link_to t("hotels.map"), hotel_maps_path(hotel)
     %br
     = link_to t("further"), hotel_path(hotel)
+    - if can?(:manage, Hotel) and params[:controller] == "admin/hotels"
+      = text_field_tag "hotels[#{hotel.id}]", hotel.position, :size => 3
   .left
     = hotel_thumb( hotel )
   .left{:style=>"width: 335px; padding-left: 10px;"}

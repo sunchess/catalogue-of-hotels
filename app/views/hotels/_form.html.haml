@@ -51,6 +51,16 @@
     %br
     = f.text_field :fax
   .field
+    = f.label :email
+    = mark_required(@hotel, :email)
+    %br
+    = f.text_field :email
+  .field
+    = f.label :site
+    = mark_required(@hotel, :site)
+    %br
+    = f.text_field :site
+  .field
     = f.label :banking_details
     = mark_required(@hotel, :banking_details)
     %br

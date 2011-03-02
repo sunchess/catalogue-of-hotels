@@ -14,6 +14,7 @@
 #  updated_at         :datetime
 #
 
+#require 'lib/sharpen_image'
 class Image < ActiveRecord::Base
   belongs_to :imageable, :polymorphic => true, :counter_cache => true
 
@@ -26,11 +27,12 @@ class Image < ActiveRecord::Base
 
   # Paperclip
   has_attached_file :image,
+    #:processors => [:sharpen_image], 
     :styles => {
     :thumb=> "100x100#",
     :small  => "150x150#",
     :large =>   "500x500>" }, 
-    :convert_options => { :all => "-strip -quality 60"} 
+    :convert_options => { :all => "-strip -quality 80 -depth 8"} 
 
   validates_attachment_presence :image
   validates_attachment_size :image, :less_than => 5.megabytes

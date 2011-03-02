@@ -25,8 +25,9 @@ class Room < ActiveRecord::Base
   has_many :reserves#, :class_name=>Reserve
 
 
-  attr_accessible :places, :room_number, :shower, :toilet, :fridge, :tv, :prices_attributes, :images, :dynamic_fields, :fields_dynamic_fields, :title
+  attr_accessible :places, :room_number, :shower, :toilet, :fridge, :tv, :prices_attributes, :images, :dynamic_fields, :fields_dynamic_fields, :title, :description
   validates_presence_of :places, :title, :room_number, :shower, :toilet
+  validates_length_of :description, :within => 100..1000, :allow_blank => true
   accepts_nested_attributes_for :prices, :reject_if => :all_blank, :limit=>12
 
   validate :must_have_one_price

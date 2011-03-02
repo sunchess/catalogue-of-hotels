@@ -3,5 +3,9 @@ ru:
     dashboard:
       navigation: "Администраторская"
     hotels:
+      successfully_order: "Порядок изменен"
       index:
         title: "Администратормкая::Гостиницы"
+      
+      order: 
+        title: "Порядок гостиниц в каталоге"

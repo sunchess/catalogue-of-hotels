@@ -4,6 +4,8 @@
   %div 
     = link_to t("hotels.manager.wait_moderators"), admin_hotels_path
     = "(#{Hotel.draft})"
+  %div 
+    = link_to t("hotels.manager.order"), order_admin_hotels_path
   %br
   = t("reserves.manager.title")
   %div

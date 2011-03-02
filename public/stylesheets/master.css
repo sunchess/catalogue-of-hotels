@@ -75,6 +75,9 @@
 .advert {
   color: #c60f0f; }
 
+.center {
+  text-align: center; }
+
 body {
   margin: 0;
   padding: 0;

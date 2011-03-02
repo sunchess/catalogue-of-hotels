@@ -26,14 +26,18 @@
 #
 
 class Hotel < ActiveRecord::Base
+  acts_as_list 
+
   scope :confirmed, where(:draft=>true, :confirmed=>true).order("id")
-  scope :public_items, where(:draft=>false, :confirmed=>true).order("id")
+  scope :public_items, where(:draft=>false, :confirmed=>true).order("position")
 
   belongs_to :user
   belongs_to :place
-  attr_accessible :name, :description, :distance, :place_id, :street, :house_number, :telephone, :fax, :banking_details, :contract, :confirmed
+  attr_accessible :name, :description, :distance, :place_id, :street, :house_number, :telephone, :fax, :banking_details, :contract, :confirmed, :site, :email
 
   validates_presence_of :name, :description, :distance, :street, :house_number, :telephone, :place_id
+  validates_format_of :email, :with => Devise.email_regexp, :allow_blank => true
+  validates_format_of :site, :with => /^http:\/\//, :allow_blank => true, :message => I18n.t("hotels.errors.site")
 
   has_many :images, :as=>:imageable, :dependent => :destroy, :order=>"id"
   has_many :fields_dynamic_fields, :as=>:dynamic, :dependent => :destroy
