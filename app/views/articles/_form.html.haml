@@ -21,6 +21,9 @@
       = f.submit
 
 
+- unless @article.new_record?
+  = render :partial => "articles/images/frame"
+
 :javascript
   $(document).ready(
     function()

@@ -1,0 +1,23 @@
+#article_images
+  %p
+    =form_tag(article_images_path(@article), :multipart=>true) do
+      = render( :partial=>"layouts/errors_messages", :locals => { :target=>@image })
+      %label{:for=>"image"}
+        = t('places.images.form.image')
+      - 5.times do |time|
+        %br
+        = file_field_tag 'images[]'
+
+      %p
+        .actions
+          = submit_tag(t('helpers.submit.submit'))
+
+  #images
+    - if @images.any? 
+      = form_tag article_images_path(@article), :method=>:delete do
+        = t('articles.images.exist_images')
+        %p= render :partial => "shared/images_area"
+        %br
+        = submit_tag t('articles.images.delete')
+    -else
+      = t('articles.images.no_exist')

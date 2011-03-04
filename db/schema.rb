@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110302064853) do
+ActiveRecord::Schema.define(:version => 20110303200406) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20110302064853) do
     t.string   "articleable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "images_count",     :default => 0, :null => false
   end
 
   add_index "articles", ["articleable_id"], :name => "index_articles_on_articleable_id"

@@ -1,5 +1,5 @@
 CatalogueOfHotels::Application.routes.draw do
-  match "articles/images", :to => "articles/images#create", :via => [:post]
+  match "articles/images", :to => "articles/images#create_image", :via => [:post, :get]
 
   resources :dynamic_models do
     resources :dynamic_fields do
@@ -45,7 +45,13 @@ CatalogueOfHotels::Application.routes.draw do
     end
   end
 
-  resources :articles
+  resources :articles, :shallow => true do
+    resources :images, :controller=>"articles/images", :only => [:create, :destroy, :create_image] do
+      collection do
+        delete 'destroy'
+      end
+    end
+  end
 
   resources :places, :shallow => true do
     resources :maps, :controller=>"places/maps", :only=>[:create]

@@ -17,6 +17,7 @@ ru:
   upload: "Загрузить"
   add_params: "Доп. услуги"
   cancel: "Отменить"
+  delete: "Удалить"
   
   paginate:
     previous: "← Предыдущая"

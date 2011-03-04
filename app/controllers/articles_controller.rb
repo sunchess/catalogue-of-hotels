@@ -17,7 +17,9 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @images = @article.images
+  end
 
   def new
     @article = Article.new
@@ -28,13 +30,17 @@ class ArticlesController < ApplicationController
     @article = Article.new(params[:article])
     @article.articleable = @place || @hotel
     if @article.save
-      redirect_to @article, :notice => t("articles.successfully_create")
+      redirect_to edit_article_path(@article), :notice => t("articles.successfully_create")
     else
       render :action => :new
     end
   end
 
-  def edit; end
+  def edit
+    @image = Image.new
+    @images = @article.images
+    @editable_flag = true #app helper method editable?
+  end
 
   def update
     if @article.update_attributes(params[:article])
