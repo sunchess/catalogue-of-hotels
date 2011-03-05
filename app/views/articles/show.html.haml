@@ -2,8 +2,8 @@
 #main_content
   = @article.body.html_safe
 
-  #images
-    - if @images.any? 
+  - if @images.any? 
+    #images
       .item
         %p= t(".images")
         %p= render :partial => "shared/images_area"

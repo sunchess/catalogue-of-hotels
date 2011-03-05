@@ -94,11 +94,10 @@ class ArticlesController < ApplicationController
       expire_fragment %r{public\/places\/#{association.id}\/articles\/*}
     elsif association.is_a? Hotel
       expire_fragment %r{admin\/hotels\/#{association.id}\/articles\/*}
-       expire_fragment %r{public\/hotels\/#{association.id}\/articles\/*}
-    else
-      expire_fragment %r{admin\/articles\/*}
-      expire_fragment %r{public\/articles\/*}
+      expire_fragment %r{public\/hotels\/#{association.id}\/articles\/*}
     end
+    expire_fragment %r{admin\/articles\/*}
+    expire_fragment %r{public\/articles\/*}
   end
 
   def index_cache_path
