@@ -1,0 +1,10 @@
+%h1= t(".title", :name=>@offer_agent.name) 
+#main_content
+  .item
+    = simple_format @offer_agent.details
+    .edit
+      = link_to t("edit"), edit_admin_offer_agent_path(@offer_agent), :class => "edit" 
+      |
+      = link_to t("destroy"), admin_offer_agent_path(@offer_agent), :method=>:delete, :class => "edit", :confirm => t("confirm")
+#navigation
+  = link_to t("back"), :back

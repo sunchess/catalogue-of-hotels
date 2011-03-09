@@ -3,15 +3,16 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.5'
 
 gem 'pg'
-gem "cancan", "1.3.4"
+gem "cancan"
 gem "devise"
 gem "hpricot"
-gem "haml", "3.0.21"
-gem 'will_paginate', '3.0.pre2'
+gem "haml"
+gem 'will_paginate'
 gem "acts_as_list"
 gem "acts_as_tree"
 gem "geokit"
 gem "paperclip"
+#gem "exception_notification"
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -37,7 +38,7 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'steak', '>= 1.0.0.rc.1'
-  gem 'rspec-rails', '2.0.0'
+  gem 'rspec-rails'
   gem 'spork'
   gem 'launchy'
   gem 'factory_girl_rails'

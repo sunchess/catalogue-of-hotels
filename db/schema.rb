@@ -10,7 +10,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110303200406) do
+ActiveRecord::Schema.define(:version => 20110309110953) do
+
+  create_table "accepts", :force => true do |t|
+    t.integer  "offer_id"
+    t.integer  "user_id"
+    t.integer  "status",            :default => 0,   :null => false
+    t.string   "name"
+    t.string   "address"
+    t.string   "telephone"
+    t.text     "list_tourists"
+    t.integer  "all_tourists"
+    t.date     "coming_on"
+    t.date     "outing_on"
+    t.float    "cost",              :default => 0.0, :null => false
+    t.integer  "discount",          :default => 0,   :null => false
+    t.float    "discount_sum",      :default => 0.0, :null => false
+    t.float    "min_prepayment",    :default => 0.0, :null => false
+    t.float    "sum_with_discount", :default => 0.0, :null => false
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "accepts", ["offer_id"], :name => "index_accepts_on_offer_id"
+  add_index "accepts", ["status"], :name => "index_accepts_on_status"
+  add_index "accepts", ["user_id"], :name => "index_accepts_on_user_id"
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -103,6 +128,30 @@ ActiveRecord::Schema.define(:version => 20110303200406) do
   add_index "maps", ["mapable_id"], :name => "index_maps_on_mapable_id"
   add_index "maps", ["mapable_type"], :name => "index_maps_on_mapable_type"
 
+  create_table "offer_agents", :force => true do |t|
+    t.string   "name"
+    t.text     "details"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "offers", :force => true do |t|
+    t.integer  "offer_agent_id"
+    t.string   "name"
+    t.text     "body"
+    t.float    "price",                             :null => false
+    t.integer  "fee",                               :null => false
+    t.integer  "discount"
+    t.integer  "images_count"
+    t.integer  "position"
+    t.boolean  "ad",             :default => false, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "offers", ["offer_agent_id"], :name => "index_offers_on_offer_agent_id"
+  add_index "offers", ["price"], :name => "index_offers_on_price"
+
   create_table "places", :force => true do |t|
     t.string   "title"
     t.boolean  "draft"
@@ -128,7 +177,6 @@ ActiveRecord::Schema.define(:version => 20110303200406) do
   add_index "prices", ["room_id"], :name => "index_prices_on_room_id"
 
   create_table "reserves", :force => true do |t|
-    t.integer  "room_id"
     t.integer  "user_id"
     t.integer  "status",            :default => 0,   :null => false
     t.string   "name"
@@ -145,9 +193,14 @@ ActiveRecord::Schema.define(:version => 20110303200406) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "orderable_id"
+    t.string   "orderable_type"
+    t.integer  "all_tourists"
   end
 
-  add_index "reserves", ["room_id"], :name => "index_reserves_on_room_id"
+  add_index "reserves", ["orderable_id"], :name => "index_reserves_on_orderable_id"
+  add_index "reserves", ["orderable_type"], :name => "index_reserves_on_orderable_type"
+  add_index "reserves", ["status"], :name => "index_reserves_on_status"
   add_index "reserves", ["user_id"], :name => "index_reserves_on_user_id"
 
   create_table "rooms", :force => true do |t|

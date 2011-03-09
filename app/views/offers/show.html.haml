@@ -1,0 +1,15 @@
+%h1= t(".title", :name=>@offer.name) 
+#main_content
+  .item
+    = @offer.body.html_safe
+
+  - if @images.any? 
+    #images
+      .item
+        %p= t(".images")
+        %p= render :partial => "shared/images_area"
+
+  = render :partial => "offer", :collection => @offer.others
+
+#navigation
+  = link_to t("offers.index.new_order"), new_offer_reserf_path(@offer)

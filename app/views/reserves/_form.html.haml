@@ -1,6 +1,6 @@
-= form_for [@room, @reserf],  :html=>{:multipart=>true} do |f|
+= form_for [@room || @offer, @reserf],  :html=>{:multipart=>true} do |f|
   = render( :partial=>"layouts/errors_messages", :locals => { :target=>@reserf})
-  = hidden_field_tag :room, @room.id
+  -# hidden_field_tag :orderable, @room.try(:id) : @offer.try(:id)
   %ul.form_fields.inline
     %li
       = f.label :name
@@ -20,6 +20,10 @@
         = t(".list_tuorists_notice")
       = mark_required(@reserf, :list_tourists)
       = f.text_area :list_tourists, :size=>"40x10"
+    %li
+      = f.label :all_tourists
+      = mark_required(@reserf, :all_tourists)
+      = f.text_field :all_tourists, :size => "5"
   .fields
     = f.label :coming_on
     = mark_required(@reserf, :coming_on)
@@ -49,4 +53,8 @@
     %li.inline
       = f.submit
       |
-      = remote_submit_tag(t(".calculate"), calculate_room_reserves_path(@room.id))
+      -if @room
+        = remote_submit_tag(t(".calculate"), calculate_room_reserves_path(@room.id))
+      -if @offer
+        = remote_submit_tag(t(".calculate"), calculate_offer_reserves_path(@offer.id))
+

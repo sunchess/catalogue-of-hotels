@@ -35,4 +35,8 @@ module ApplicationHelper
       haml_tag(:input, {:name=>name, :type=>"button", :onclick=>"$.ajax({ type: 'POST', url: '#{url}',  data: $(form).serialize()}); return false;", :value=>name })
     end
   end
+
+  def b2h(value)
+    value ? t("yep") : t("non")
+  end
 end

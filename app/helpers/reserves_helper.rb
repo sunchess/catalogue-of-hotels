@@ -1,6 +1,10 @@
 module ReservesHelper
   def reserve_links(reserve)
-    link_to(t(".links_#{reserve.status}"), publish_room_reserf_path(reserve.room, reserve), :confirm=>t("confirm")).html_safe
+    if reserve.room
+      link_to(t(".links_#{reserve.status}"), publish_room_reserf_path(reserve.room, reserve), :confirm=>t("confirm")).html_safe
+    elsif reserve.offer
+      link_to(t(".links_#{reserve.status}"), publish_offer_reserf_path(reserve.offer, reserve), :confirm=>t("confirm")).html_safe
+    end
   end
 
   def reserve_show_prices(room)

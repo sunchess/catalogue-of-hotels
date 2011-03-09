@@ -1,0 +1,13 @@
+%h1= t(".title") 
+#main_content
+  - @offer_agents.each do |agent|
+    .item
+      .title= link_to agent.name, admin_offer_agent_path(agent)
+      = simple_format agent.details
+      .edit
+        = link_to t("edit"), edit_admin_offer_agent_path(agent), :class => "edit" 
+        |
+        = link_to t("destroy"), admin_offer_agent_path(agent), :method=>:delete, :class => "edit", :confirm => t("confirm")
+
+#navigation
+  = link_to t(".new"), new_admin_offer_agent_path

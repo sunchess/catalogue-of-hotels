@@ -1,10 +1,18 @@
 #user_nav
   - if current_user
-    =# render :partial => "layouts/admin_section"
     = t("users.hello")
     , #{current_user.email}!
-    \#{link_to t('users.links.edit'), edit_user_registration_path(:current)} 
-    \|
+    - if admin?
+      = link_to t("admin.dashboard.navigation"), admin_dashboard_path, :class => "red"
+      |
+    - if current_user.hotels.any?
+      = link_to t("my.hotels.navigation"), my_hotels_path, :class => "red"
+      |
+    - if current_user.reserves.any?
+      = link_to t("reserves.navigation"), reserves_path, :class => "red"
+      |
+    = link_to t('users.links.edit'), edit_user_registration_path(:current)
+    |
     = link_to t('sessions.logout'), destroy_user_session_path
   - else
     = link_to t('users.links.new'), new_user_registration_path

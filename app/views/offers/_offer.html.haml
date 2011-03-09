@@ -1,0 +1,9 @@
+.item
+  .left
+    .title
+      = "#{ link_to offer.name, offer_path(offer) } (<span title='#{t('.discount_notice')}' class='tooltips tip_top handle'>#{ offer.discount }%)</span>".html_safe 
+  .right{:align=>"right", :style=>"padding-right: 10px;"}
+    = link_to t(".new_order"), new_offer_reserf_path(offer)
+
+  .reset
+    = offer.body.html_safe 

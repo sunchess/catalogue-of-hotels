@@ -22,7 +22,7 @@ class Room < ActiveRecord::Base
   has_many :fields_dynamic_fields, :as=>:dynamic, :dependent => :destroy
   has_many :images, :as=>:imageable, :dependent => :destroy
   has_many :prices, :order=>"id", :dependent => :destroy
-  has_many :reserves#, :class_name=>Reserve
+  has_many :reserves, :as => :orderable
 
 
   attr_accessible :places, :room_number, :shower, :toilet, :fridge, :tv, :prices_attributes, :images, :dynamic_fields, :fields_dynamic_fields, :title, :description

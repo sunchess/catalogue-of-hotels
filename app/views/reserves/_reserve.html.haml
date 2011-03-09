@@ -1,12 +1,17 @@
 .item
   .right{:style=>"width: 180px;"}
     = "#{ t(".cost") } #{ number_to_currency reserve.sum_with_discount }<span title='#{t('.discount_notice')}' class='tooltips tip_top handle'>(#{reserve.discount}%)</span>".html_safe
-  .left{:style=>"padding-left: 3px;"}
-    = link_to reserve.room.hotel.name, hotel_path(reserve.room.hotel.id) 
-    = "(#{  link_to( reserve.room.hotel.place.title, place_path(reserve.room.hotel.place), :class=>"edit" )})".html_safe
-    = "/"
-  .left{:style=>"margin: 0; padding-left: 3px;"}
-    = link_to human_room_data(reserve.room.places, Room.places), hotel_room_path(reserve.room.hotel.id, reserve.room.id)
+  - if reserve.room
+    .left{:style=>"padding-left: 3px;"}
+      = link_to reserve.room.hotel.name, hotel_path(reserve.room.hotel.id) 
+      = "(#{  link_to( reserve.room.hotel.place.title, place_path(reserve.room.hotel.place), :class=>"edit" )})".html_safe
+      = "/"
+    .left{:style=>"margin: 0; padding-left: 3px;"}
+      = link_to human_room_data(reserve.room.places, Room.places), hotel_room_path(reserve.room.hotel.id, reserve.room.id)
+  - if reserve.offer
+    .left{:style=>"padding-left: 3px;"}
+      = link_to reserve.offer.name, offer_path(reserve.offer)
+
   .reset
   .right{:style=>"width: 160px;"}
     .title
@@ -19,14 +24,23 @@
       = admin_reserve_link(reserve)
     %br
     - if can?(:update, reserve) and (reserve.status == 0 or [:admin, :managre].include? current_user.role)
-      = link_to t("edit"), edit_room_reserf_path(reserve.room, reserve), :class=>"edit"
-      %br
-      = link_to t("destroy"), room_reserf_path(reserve.room, reserve), :class=>"edit", :method=>:delete, :confirm=>t('confirm')
+      - if reserve.room
+        = link_to t("edit"), edit_room_reserf_path(reserve.room, reserve), :class=>"edit"
+        %br
+        = link_to t("destroy"), room_reserf_path(reserve.room, reserve), :class=>"edit", :method=>:delete, :confirm=>t('confirm')
+      - if reserve.offer
+        = link_to t("edit"), edit_offer_reserf_path(reserve.offer, reserve), :class=>"edit"
+        %br
+        = link_to t("destroy"), room_reserf_path(reserve.offer, reserve), :class=>"edit", :method=>:delete, :confirm=>t('confirm')
     - if admin?
       %br
       = link_to t("cancel"), admin_reserf_path(reserve), :class => "edit", :method => :delete, :confirm=>t('confirm')
-  .left
-    = room_thumb(reserve.room)
+  - if reserve.room
+    .left{:style=>"width: 100px;"}
+      = room_thumb(reserve.room)
+  - if reserve.offer
+    .left{:style=>"width: 100px; padding-top: 5px;"}
+      = offer_thumb(reserve.offer)
   .left.padding_5{:style=>"width: 180px;"}
     %span.title= t('.discount_sum')
     = number_to_currency( reserve.discount_sum )

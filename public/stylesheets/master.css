@@ -73,7 +73,7 @@
   border-bottom: 1px dashed #cad1d9; }
 
 .advert {
-  color: #c60f0f; }
+  color: #a90606; }
 
 .center {
   text-align: center; }
@@ -301,6 +301,15 @@ a.edit {
   overflow: hidden; }
 #places .draft a {
   color: red; }
+
+#user_nav {
+  text-align: right;
+  font-size: 12px;
+  margin: 0 auto 0 auto;
+  margin-top: 5px;
+  margin-bottom: 10px; }
+  #user_nav a.red {
+    color: #a90606; }
 
 #images_area img {
   border: 1px solid #555555;

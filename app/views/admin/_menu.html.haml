@@ -26,3 +26,12 @@
   %div
     = link_to t("reserves.manager.canceled"), admin_reserves_path(:status => 6)
     ="(#{Reserf.canceled.count})"
+  %br
+  = t("offers.manager.title")
+  %div
+    = link_to t("offers.agents.title"), admin_offer_agents_path
+  %div
+    = link_to t("offers.admin.menu.title"), admin_offers_path
+
+
+  

@@ -1,0 +1,58 @@
+-content_for :javascript do
+  %script{:src=>"/javascripts/editor/editor.js", :type=>"text/javascript" }
+-content_for :stylesheets do
+  = stylesheet_link_tag "/javascripts/editor/css/editor.css"
+
+= form_for [:admin, @offer] do |f|
+  = render( :partial=>"layouts/errors_messages", :locals => { :target=>@offer})
+  %ul.form_fields.inline
+    %li
+      = f.label :offer_agent_id
+      = mark_required(@offer, :offer_agent_id)
+      %br
+      = f.select :offer_agent_id, @offer_agents.map{|a| [a.name, a.id]}
+    %li
+      = f.label :price
+      = mark_required(@offer, :price)
+      %br
+      = f.text_field :price, :size => "4"
+    %li
+      = f.label :fee
+      = mark_required(@offer, :fee)
+      %br
+      = f.text_field :fee, :size => "4"
+    %li
+      = f.label :discount
+      = mark_required(@offer, :discount)
+      %br
+      = f.text_field :discount, :size => "4"
+    %li
+      = f.label :name
+      = mark_required(@offer, :name)
+      %br
+      = f.text_field :name
+    %li
+      = f.label :body
+      = mark_required(@offer, :body)
+      %br
+      = f.text_area :body, :size => "70x15"
+    %li
+      = f.label :ad
+      = mark_required(@offer, :ad)
+      %br
+      = f.check_box :ad
+
+  .reset
+
+  %ul.form_params
+    %li
+      = f.submit
+
+
+:javascript
+  $(document).ready(
+    function()
+      {
+        $('#offer_body').editor({ focus: true, image_upload: '/articles/images'  });
+      }
+  );

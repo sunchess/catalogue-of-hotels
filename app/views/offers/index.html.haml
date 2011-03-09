@@ -1,0 +1,9 @@
+%h1= t(".title")
+#main_content
+
+  = render :partial => "offer", :collection => @offers
+
+  .reset
+    = will_paginate @offers
+#navigation
+  = link_to t(".min_price", :price => @min_price.price), offer_path(@min_price.id)

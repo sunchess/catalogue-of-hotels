@@ -9,3 +9,36 @@ ru:
       
       order: 
         title: "Порядок гостиниц в каталоге"
+
+    offer_agents:
+      index:
+        title: "Агенты спец предложений"
+        new: "Добавить"
+      new:
+        title: "Новый агент"
+
+      show:
+        title: "Агент %{name}"
+
+      edit: 
+        title: "Редактировать агента"
+
+    offers:
+      index:
+        title: "Спецпредложения"
+        new: "Добавить предложение"
+      new:
+        title: "Добавить спецпредложение"
+      edit: 
+        title: "Редактировать спецпредложение"
+
+
+
+
+
+  activerecord:
+    attributes:
+      offer_agent:
+        name: "Имя агента"
+        details: "Реквизиты"
+

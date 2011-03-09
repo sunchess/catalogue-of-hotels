@@ -1,0 +1,19 @@
+= form_for [:admin, @offer_agent] do |f|
+  = render( :partial=>"layouts/errors_messages", :locals => { :target=>@offer_agent})
+  %ul.form_fields.inline
+    %li
+      = f.label :name
+      = mark_required(@offer_agent, :name)
+      %br
+      = f.text_field :name
+    %li
+      = f.label :details
+      = mark_required(@offer_agent, :details)
+      %br
+      = f.text_area :details, :size => "50x8"
+
+  .reset
+
+  %ul.form_params
+    %li
+      = f.submit

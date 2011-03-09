@@ -1,60 +1,60 @@
 /*
 Syntax error: Undefined variable: "$color_grey".
-        on line 50 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass
+        on line 61 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass
 
-45:   td
-46:     font-size: 12px
-47: 
-48: #place_children
-49:   .title
-50:     color: $color_grey
-51:     font-size: 13px
-52: 
-53: #article_images
-54:   width: 580px
-55:   height: 700px
+56:   td
+57:     font-size: 12px
+58: 
+59: #place_children
+60:   .title
+61:     color: $color_grey
+62:     font-size: 13px
+63: 
+64: #article_images
+65:   width: 580px
+66:   height: 700px
 
 Backtrace:
-/home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass:50
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/script/variable.rb:39:in `_perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/script/node.rb:61:in `perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/prop_node.rb:132:in `perform!'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:305:in `_perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `map'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:317:in `perform!'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/rule_node.rb:191:in `perform!'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:305:in `_perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `map'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:317:in `perform!'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/rule_node.rb:191:in `perform!'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:305:in `_perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `map'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:326:in `perform_children'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:317:in `perform!'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/root_node.rb:59:in `perform!'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:305:in `_perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/node.rb:213:in `perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/root_node.rb:37:in `perform'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/tree/root_node.rb:29:in `render'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:220:in `update_stylesheet'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:85:in `update_stylesheets'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:78:in `each'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:78:in `update_stylesheets'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:76:in `each'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:76:in `update_stylesheets'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin.rb:50:in `check_for_updates'
-/usr/lib/ruby/gems/1.8/gems/haml-3.0.21/lib/sass/plugin/rack.rb:40:in `call'
-/usr/lib/ruby/gems/1.8/gems/warden-0.10.7/lib/warden/manager.rb:35:in `call'
-/usr/lib/ruby/gems/1.8/gems/warden-0.10.7/lib/warden/manager.rb:34:in `catch'
-/usr/lib/ruby/gems/1.8/gems/warden-0.10.7/lib/warden/manager.rb:34:in `call'
+/home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass:61
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/script/variable.rb:39:in `_perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/script/node.rb:61:in `perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/prop_node.rb:132:in `perform!'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:305:in `_perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:213:in `perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `map'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:317:in `perform!'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/rule_node.rb:191:in `perform!'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:305:in `_perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:213:in `perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `map'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:317:in `perform!'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/rule_node.rb:191:in `perform!'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:305:in `_perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:213:in `perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `map'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:327:in `perform_children'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:317:in `perform!'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/root_node.rb:59:in `perform!'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:305:in `_perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/node.rb:213:in `perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/root_node.rb:37:in `perform'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/root_node.rb:29:in `render'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/plugin.rb:223:in `update_stylesheet'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/plugin.rb:88:in `update_stylesheets'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/plugin.rb:81:in `each'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/plugin.rb:81:in `update_stylesheets'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/plugin.rb:79:in `each'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/plugin.rb:79:in `update_stylesheets'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/plugin.rb:50:in `check_for_updates'
+/usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/plugin/rack.rb:40:in `call'
+/usr/lib/ruby/gems/1.8/gems/warden-1.0.3/lib/warden/manager.rb:35:in `call'
+/usr/lib/ruby/gems/1.8/gems/warden-1.0.3/lib/warden/manager.rb:34:in `catch'
+/usr/lib/ruby/gems/1.8/gems/warden-1.0.3/lib/warden/manager.rb:34:in `call'
 /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
 /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.5/lib/action_dispatch/middleware/head.rb:14:in `call'
 /usr/lib/ruby/gems/1.8/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
@@ -108,4 +108,4 @@ script/rails:6
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$color_grey\".\A         on line 50 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass\A \A 45:   td\A 46:     font-size: 12px\A 47: \A 48: #place_children\A 49:   .title\A 50:     color: $color_grey\A 51:     font-size: 13px\A 52: \A 53: #article_images\A 54:   width: 580px\A 55:   height: 700px"; }
+  content: "Syntax error: Undefined variable: \"$color_grey\".\A         on line 61 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass\A \A 56:   td\A 57:     font-size: 12px\A 58: \A 59: #place_children\A 60:   .title\A 61:     color: $color_grey\A 62:     font-size: 13px\A 63: \A 64: #article_images\A 65:   width: 580px\A 66:   height: 700px"; }

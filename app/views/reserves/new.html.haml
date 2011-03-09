@@ -4,9 +4,10 @@
     = render :partial => "form"
 #navigation
   #room_area.item{:style=>"margin-top: 5px;"}
-    = reserve_show_prices(@room)
+    = reserve_show_prices(@room) if @room
+    = "#{ t("offers.price") }: #{number_to_currency @offer.price }" if @offer
   
   .advert
-    = t('reserves.discount_info', { :number=>Reserf::DISCOUNT })
+    = t('reserves.discount_info', { :number=>@offer ? @offer.discount : Reserf::DISCOUNT })
 
 

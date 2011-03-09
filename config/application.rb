@@ -44,6 +44,14 @@ module CatalogueOfHotels
         g.test_framework :rspec
         g.template_engine :haml
     end
-    
+
+    config.after_initialize do
+      config.middleware.use ExceptionNotifier,
+        :email_prefix => "[CoastSun.Ru] ",
+        :sender_address => %{"notifier" <alexanderdmv@gmail.com>},
+        :exception_recipients => %w{alexanderdmv@gmail.com}
+    end
   end
 end
+
+

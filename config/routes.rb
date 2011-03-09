@@ -1,4 +1,5 @@
 CatalogueOfHotels::Application.routes.draw do
+
   match "articles/images", :to => "articles/images#create_image", :via => [:post, :get]
 
   resources :dynamic_models do
@@ -10,21 +11,31 @@ CatalogueOfHotels::Application.routes.draw do
     end
   end
 
+  resources :offers, :only => %w{index show} do
+    resources :reserves do
+      member do
+        get 'publish'
+        get 'change_status'
+      end
+      collection do
+        post 'calculate'
+        put 'calculate'
+      end
+    end
+  end
+
   resources :hotels  do
     resources :images, :controller=>"hotels/images", :only=>[:new, :create, :destroy, :index, :update] do
       collection do
         delete 'destroy'
       end
     end
-
     resources :maps, :controller=>"hotels/maps", :only=>[:new, :index, :create]
-
     resources :rooms do
       member do
         delete 'delete_image'
       end
     end
-
     resource :confirm, :controller=>"hotels/confirms", :only=>[:edit, :update]
   end
 
@@ -73,6 +84,15 @@ CatalogueOfHotels::Application.routes.draw do
     end
     resource  :dashboard, :only=>[:show]
     resources :reserves 
+    resources :offer_agents
+    resources :orders
+    resources :offers do
+      resources :images, :controller => "offers/images", :only => %w{create destroy} do
+        collection do
+          delete 'destroy'
+        end
+      end
+    end
   end
 
   namespace :my do

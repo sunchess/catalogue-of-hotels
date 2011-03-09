@@ -18,6 +18,9 @@ ru:
   add_params: "Доп. услуги"
   cancel: "Отменить"
   delete: "Удалить"
+  yep: "Да"
+  non: "Нет"
+
   
   paginate:
     previous: "← Предыдущая"

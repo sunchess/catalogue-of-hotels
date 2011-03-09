@@ -1,9 +1,12 @@
 Было получено новое резирвирование.
 %p
-  = link_to @reserve.room.hotel.name, hotel_path(@reserve.room.hotel.id) 
-  = "(#{  link_to( @reserve.room.hotel.place.title, place_path(@reserve.room.hotel.place), :class=>"edit" )})".html_safe
-  /
-  = link_to human_room_data(@reserve.room.places, Room.places), hotel_room_path(@reserve.room.hotel.id, @reserve.room.id)
+  - if @reserve.room
+    = link_to @reserve.room.hotel.name, hotel_path(@reserve.room.hotel.id) 
+    = "(#{  link_to( @reserve.room.hotel.place.title, place_path(@reserve.room.hotel.place) )})".html_safe
+    /
+    = link_to human_room_data(@reserve.room.places, Room.places), hotel_room_path(@reserve.room.hotel.id, @reserve.room.id)
+  -elsif @reserve.offer
+    = link_to @reserve.offer.name, offer_path(@reserve.offer)
 %p
   Стоимость:
   = number_to_currency @reserve.cost

@@ -61,14 +61,6 @@
   
 }
 
-#user_nav {
-  text-align: right;
-  font-size: 12px;
-  margin: 0 auto 0 auto;
-  margin-top: 5px;
-  margin-bottom: 10px;
-	
-}
 
 .right_line{
 	border-right: 1px solid  #7f7f7f;
@@ -80,6 +72,7 @@
 	
 	
 }
+
 .even:hover{
 	background-color: #d6e9ff;
 	

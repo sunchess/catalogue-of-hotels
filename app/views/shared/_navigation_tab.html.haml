@@ -6,18 +6,12 @@
       = link_to t("hotels.navigation"), hotels_path
     %li{:class=>set_current_style("rooms")}
       = link_to t("rooms.navigation"), rooms_path
+    %li{:class=>set_current_style("offers")}
+      = link_to t("offers.navigation"), offers_path
     %li{:class=>set_current_style("articles", "places/articles", "hotels/articles")}
       = link_to t("articles.navigation"), articles_path
 
     -if current_user
-      - if current_user.hotels.any?
-        %li{:class=>set_current_style("my/hotels")}
-          = link_to t("my.hotels.navigation"), my_hotels_path
-      - if current_user.reserves.any?
-        %li{:class=>set_current_style("reserves")}
-          = link_to t("reserves.navigation"), reserves_path
       -if current_user.admin?
         %li{:class=>set_current_style("dynamic_models", "dynamic_fields")}
           = link_to t("dynamic_fields.navigation"), dynamic_models_path 
-        %li{:class=>set_current_style("admin/dashboards", "admin/hotels")}
-          = link_to t("admin.dashboard.navigation"), admin_dashboard_path 

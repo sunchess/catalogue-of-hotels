@@ -1,0 +1,61 @@
+ru:
+  offers:
+    navigation: "Горячие предложения"
+    price: "Цена"
+    fee: "Наша комиссия"
+    discount: "Скидка"
+    ad: "На главной"
+
+    successfully_create: "Предложение добавлено"
+    successfully_update: "Предложение отредактировано"
+    successfully_destroy: "Предложение удалено"
+
+    error:
+      mast_be_agent: "Добавьте агента до того как добавлять спецпредложение"
+      
+
+    manager: 
+      title: "Спец предложения"
+    agents: 
+      title: "Агенты"
+      successfully_create: "Агент добавлен"
+      successfully_update: "Агетн отредактирован"
+      successfully_destroy: "Агент удален"
+    index:
+      title: "Горячие предложения"
+      new_order: "Заказать"
+      min_price: "Мин. цена %{price} руб."
+    offer:
+      new_order: "Заказать"
+      discount_notice: "Ваша скидка на заказа"
+    show:
+      title: "Предложение: %{name}"
+      images: "Доступные изображения"
+    admin:
+      menu:
+        title: "Просмотреть/Добавить"
+
+    images:
+      successfully_create: "Изображения загружены"     
+      form:
+        image: "Загрузить изображения"
+      exist_images: "Доступные изображения"
+      no_exist: "Изображения отсутствуют"
+      delete: "Удалить изображения"
+      successfully_create: "Изображения загружены"
+      successfully_destroy: "Изображения удалены"
+    
+
+
+
+  activerecord:
+    attributes:
+      offer:
+        name: "Название гостиницы/места"
+        body: "Текст"
+        offer_agent_id: "Агент"
+        price: "Цена"
+        fee: "Наша скидка в %"
+        ad: "На главной да/нет"
+        discount: "Можем предоставить скидку в %"
+
