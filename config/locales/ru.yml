@@ -20,6 +20,18 @@ ru:
   delete: "Удалить"
   yep: "Да"
   non: "Нет"
+  telephones: "Телефоны для связи:"
+
+  messages:
+    successfully_create: "Сообщение отправлено."
+    name: "Ваше имя"
+    content: "Ваш вопрос"
+    new:
+      name: "Ваше имя"
+      content: "Ваш вопрос"
+      email: "Ваш Email"
+      title: "Отправить зарос в службу поддержки"
+    submit: "Отослать сообщение"
 
   
   paginate:
@@ -74,4 +86,16 @@ ru:
     messages: 
       activerecord:
         title: "Допущены ошибки"
-      
+
+  activemodel:
+    errors:
+      models:
+        message:
+          attributes:
+            name:
+              blank: "не может быть пустым"
+            email:
+              blank: "не может быть пустым"
+              invalid: "не верный формат"
+            content:
+              blank: "не может быть пустым"

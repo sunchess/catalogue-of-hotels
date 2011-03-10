@@ -1,6 +1,9 @@
 CatalogueOfHotels::Application.routes.draw do
 
+  match 'about_as', :to => 'pages#about_us', :as => "about_as"
   match "articles/images", :to => "articles/images#create_image", :via => [:post, :get]
+
+  resources :messages, :only => %w{new create}
 
   resources :dynamic_models do
     resources :dynamic_fields do
