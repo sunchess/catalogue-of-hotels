@@ -17,7 +17,7 @@ module CatalogueOfHotels
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
-    # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
+     config.plugins = [ :exception_notification, :all ]
 
     # Activate observers that should always be running.
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
@@ -43,13 +43,6 @@ module CatalogueOfHotels
     config.generators do |g|
         g.test_framework :rspec
         g.template_engine :haml
-    end
-
-    config.after_initialize do
-      config.middleware.use ExceptionNotifier,
-        :email_prefix => "[CoastSun.Ru] ",
-        :sender_address => %{"notifier" <alexanderdmv@gmail.com>},
-        :exception_recipients => %w{alexanderdmv@gmail.com}
     end
   end
 end
