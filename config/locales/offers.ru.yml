@@ -15,7 +15,7 @@ ru:
       
 
     manager: 
-      title: "Спец предложения"
+      title: "Горячие предложения"
     agents: 
       title: "Агенты"
       successfully_create: "Агент добавлен"
@@ -33,7 +33,7 @@ ru:
       images: "Доступные изображения"
     admin:
       menu:
-        title: "Просмотреть/Добавить"
+        title: "Добавить/Порядок"
 
     images:
       successfully_create: "Изображения загружены"     

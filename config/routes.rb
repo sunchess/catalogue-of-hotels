@@ -87,6 +87,10 @@ CatalogueOfHotels::Application.routes.draw do
     resources :offer_agents
     resources :orders
     resources :offers do
+      collection do
+        post :update_order
+      end
+
       resources :images, :controller => "offers/images", :only => %w{create destroy} do
         collection do
           delete 'destroy'

@@ -1,24 +1,29 @@
 %h1= t(".title")
 #main_content
-  - @offers.each do |offer|
-    .item
-      .title
-        = link_to offer.name, admin_offer_path(offer) 
-      = offer.body.html_safe 
-      .reset
-        = "#{t "offers.price"}: #{ offer.price }"
-        |
-        = "#{t("offers.fee")}: #{ offer.fee }%"
-        |
-        = "#{t("offers.discount")}: #{ offer.discount }%"
-        |
-        = "#{t("offers.ad")}: #{b2h offer.ad?}"
+  = form_tag(:action => "update_order") do
+    - @offers.each do |offer|
+      .item
+        .title
+          = link_to offer.name, admin_offer_path(offer) 
+        = offer.body.html_safe 
+        .reset
+          = "#{t "offers.price"}: #{ offer.price }"
+          |
+          = "#{t("offers.fee")}: #{ offer.fee }%"
+          |
+          = "#{t("offers.discount")}: #{ offer.discount }%"
+          |
+          = "#{t("offers.ad")}: #{b2h offer.ad?}"
 
-      .reset
-        = link_to t("edit"), edit_admin_offer_path(offer), :class => "edit"
-        |
-        = link_to t("destroy"), admin_offer_path(offer), :method => :delete, :confirm => t("confirm"), :class => "edit"
+        .reset
+          .left
+            = link_to t("edit"), edit_admin_offer_path(offer), :class => "edit"
+            |
+            = link_to t("destroy"), admin_offer_path(offer), :method => :delete, :confirm => t("confirm"), :class => "edit"
+          .right
+            = text_field_tag "offer[#{offer.id}]", offer.position, :size => 3
 
+    = submit_tag 
   .reset
     = will_paginate @offers
 #navigation

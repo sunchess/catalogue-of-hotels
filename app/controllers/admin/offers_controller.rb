@@ -43,6 +43,16 @@ class Admin::OffersController < ApplicationController
     redirect_to admin_offers_path, :notice => t("offers.successfully_destroy")
   end
 
+  def update_order
+    params[:offer].each do |id, pos|
+      offer = Offer.find( id.to_i )
+      #if offer.position != pos.to_i
+        offer.insert_at( pos )
+      #end
+    end
+    redirect_to admin_offers_path, :notice => t("admin.offers.successfully_order")
+  end
+
   private
   def redirect_if_no_offer_agents
     @offer_agents = OfferAgent.all
