@@ -21,7 +21,11 @@ ru:
   yep: "Да"
   non: "Нет"
   telephones: "Телефоны для связи:"
-
+  
+  home:
+    index:
+      choice_of_users: "Выбор пользователей"
+      last_articles: "Последние статьи:"
   messages:
     successfully_create: "Сообщение отправлено."
     name: "Ваше имя"
@@ -88,6 +92,9 @@ ru:
         title: "Допущены ошибки"
 
   activemodel:
+    attributes:
+      room:
+        name: "Имя"
     errors:
       models:
         message:

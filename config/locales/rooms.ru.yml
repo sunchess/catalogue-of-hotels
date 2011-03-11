@@ -59,6 +59,7 @@ ru:
   activerecord:
     attributes:
       room:
+        ad: "На главной да/нет"
         title: "Название номера"
         places: "Мест в номере"
         room_number: "Количество комнат"

@@ -1,6 +1,10 @@
 = form_for [@hotel, @room], :html=>{:multipart=>true} do |f|
   = render( :partial=>"layouts/errors_messages", :locals => { :target=>@room})
   %ul.form_fields.inline
+    - if can? :manage, @room
+      %li
+        = f.label :ad
+        = f.check_box :ad
     %li
       = f.label :title
       = mark_required(@room, :title)

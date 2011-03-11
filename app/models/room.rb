@@ -32,6 +32,8 @@ class Room < ActiveRecord::Base
 
   validate :must_have_one_price
 
+  scope :ad, where(:ad => true).order("id")
+
   def prices_for_list(month = nil)
     # get month and delete 0 if is there?
     month = Time.now.get_month if month.nil?

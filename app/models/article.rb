@@ -7,4 +7,6 @@ class Article < ActiveRecord::Base
   validates_presence_of :title, :body
   validates :title, :length => { :minimum => 15 }
   validates :body, :length => { :minimum => 150 }
+
+  scope :lasts, order("id").limit(3)
 end

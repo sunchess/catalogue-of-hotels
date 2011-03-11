@@ -1,2 +1,14 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+%h1= t(".choice_of_users")
+#main_content
+  = "#{ t("rooms.navigation") }:"
+  = render :partial => "rooms/room", :collection => @rooms
+
+  .reset{:style => "padding-top: 10px;"}
+  = "#{t("offers.navigation")}:"
+  = render :partial => "offers/offer", :collection => @offers
+#navigation
+  %b
+    = t(".last_articles")
+  %br
+  = render :partial => "article", :collection => @articles
+

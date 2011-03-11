@@ -5,6 +5,9 @@
       .item
         .title
           = link_to offer.name, admin_offer_path(offer) 
+          |
+          = t(".ad")
+          = offer.ad? ? t("yep") : t("non")
         = offer.body.html_safe 
         .reset
           = "#{t "offers.price"}: #{ offer.price }"

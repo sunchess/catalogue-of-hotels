@@ -28,7 +28,9 @@ class RoomsController < ApplicationController
   end
   
   def create
-    @room = Room.new(params[:room])
+    @room = Room.new
+    @room.accessible = [:ad] if admin?
+    @room.attributes = params[:room]
     if @room.valid? and @hotel.rooms << @room
       @room.save_dynamic_fields(params[:fields])
       @room.save_photos(params[:images])
@@ -47,6 +49,7 @@ class RoomsController < ApplicationController
   end
 
   def update
+    @room.accessible = [:ad] if admin?
     if @room.update_attributes(params[:room])
       @room.save_dynamic_fields(params[:fields])
       @room.save_photos(params[:images])

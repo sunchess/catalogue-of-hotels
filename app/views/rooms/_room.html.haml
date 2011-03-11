@@ -1,6 +1,7 @@
 .item
-  .left{:style=>"padding-bottom: 3px;"}
-    = room.title
+  .left{:style=>"padding-bottom: 0px;"}
+    %b
+      = link_to room.title, hotel_room_path(room.hotel.id, room.id)
   .reset
   - unless @hotel
     .left
@@ -9,10 +10,10 @@
     .right{:style=>"width: 200px"}
       .title
         = "#{ t("activerecord.attributes.hotel.distance") } #{ Hotel.distance_options.select{|k,v| v==room.hotel.distance }.first.first } "
-    .reset.padding_3
-  .left
+    .reset
+  .left{:style => "padding-top: 5px;"}
     = room_thumb(room)
-  .left.padding_5
+  .left.padding_3
     %span.title= t(".options")
     %br
     = human_room_data(room.places, Room.places)
@@ -21,7 +22,7 @@
     = human_room_data(room.toilet, Room.toilet)
     = human_room_data(room.fridge, Room.fridge)
     = human_room_data(room.tv, Room.tv)
-  .left.padding_5
+  .left.padding_3
     %span.title{:style=>"padding-left: 2px; "}= t(".price")
     %table{:cellpadding=>"1", :cellspacing=>"1"}
       - room.prices_for_list.each do |price|

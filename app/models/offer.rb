@@ -1,6 +1,6 @@
 class Offer < ActiveRecord::Base
   acts_as_list 
-  attr_accessible :offer_agent_id, :name, :body, :price, :fee, :discount
+  attr_accessible :offer_agent_id, :name, :body, :price, :fee, :discount, :ad
 
   belongs_to :offer_agent
   has_many :images, :as => :imageable
@@ -11,6 +11,7 @@ class Offer < ActiveRecord::Base
 
   scope :ordered, order("position")
   scope :not_id, lambda{|id| where([ "id <> ?", id ])}
+  scope :ad, where(:ad => true).order("position")
 
   def self.min_price
     r = minimum('price')

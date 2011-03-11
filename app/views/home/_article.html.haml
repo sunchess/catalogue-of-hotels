@@ -1,0 +1,5 @@
+= link_to truncate( article.title, :length => 40 ), article_path(article)
+.item
+  = truncate(strip_tags(article.body), :length => 180).html_safe
+  %br
+  = link_to t("further"), article_path(article)

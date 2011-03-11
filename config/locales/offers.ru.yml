@@ -27,7 +27,7 @@ ru:
       min_price: "Мин. цена %{price} руб."
     offer:
       new_order: "Заказать"
-      discount_notice: "Ваша скидка на заказа"
+      discount_notice: "Ваша скидка при заказе"
     show:
       title: "Предложение: %{name}"
       images: "Доступные изображения"
