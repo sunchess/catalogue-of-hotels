@@ -3,34 +3,37 @@
 #main_content
   #room_area
     .item
-      .left.padding_5
-        = js_image_tumb(@images)
-      .left.padding_5
-        %span.title= t("rooms.room.options")
-        %br
-        = human_room_data(@room.places, Room.places)
-        = human_room_data(@room.room_number, Room.rooms)
-        = human_room_data(@room.shower, Room.shower)
-        = human_room_data(@room.toilet, Room.toilet)
-        = human_room_data(@room.fridge, Room.fridge)
-        = human_room_data(@room.tv, Room.tv)
-      - if @room.dynamic_fields.any?
-        .left.padding_5{:style => "width: 145px;"}
-          %span.title= t("rooms.room.add_options")
-          %br
-          - @room.dynamic_fields.each do |field|
-            = field.title
+      %table{:width=>"100%"}
+        %tr
+          %td{:width=>"20%"}
+            = js_image_tumb(@images)
+          %td{:width=>"25%"}
+            %span.title= t("rooms.room.options")
             %br
-      .right.padding_5{:style=>"width: 145"}
-        %span.title= t(".min")
-        = @room.min_price
-        = t("rur")
-        %br
-        %span.title= t(".max")
-        = @room.max_price
-        = t("rur")
-        .space
-        = link_to t("rooms.room.reserve"), new_room_reserf_path(@room.id)
+            = human_room_data(@room.places, Room.places)
+            = human_room_data(@room.room_number, Room.rooms)
+            = human_room_data(@room.shower, Room.shower)
+            = human_room_data(@room.toilet, Room.toilet)
+            = human_room_data(@room.fridge, Room.fridge)
+            = human_room_data(@room.tv, Room.tv)
+          %td{:width=>"25%"}
+            - if @room.dynamic_fields.any?
+            .left.padding_5{:style => "width: 145px;"}
+              %span.title= t("rooms.room.add_options")
+              %br
+              - @room.dynamic_fields.each do |field|
+                = field.title
+                %br
+          %td{:width=>"30%"}
+            %span.title= t(".min")
+            = @room.min_price
+            = t("rur")
+            %br
+            %span.title= t(".max")
+            = @room.max_price
+            = t("rur")
+            .space
+            = link_to t("rooms.room.reserve"), new_room_reserf_path(@room.id)
 
       .reset
 
