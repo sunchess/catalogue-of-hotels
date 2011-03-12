@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  protect_from_forgery :except => :delete_image
   before_filter :find_hotel
   add_breadcrumb Proc.new{|c| c.t("rooms.navigation")}, :hotel_room_path, :only=>"show"
   add_breadcrumb Proc.new{|c| c.t("rooms.new.title")}, :new_hotel_room_path, :only=>%w{new create}

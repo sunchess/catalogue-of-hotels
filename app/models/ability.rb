@@ -25,7 +25,7 @@ class Ability
           hotel.try(:user) == user
         end
 
-        can :update, Room do |room|
+        can [ :update, :destroy ], Room do |room|
           room.try(:hotel).try(:user) == user
         end
 

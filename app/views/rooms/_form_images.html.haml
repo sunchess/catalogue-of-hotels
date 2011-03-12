@@ -7,4 +7,4 @@
           .item
             = image_tag img.image.url(:thumb)
             %br
-            = link_to t("destroy"), delete_image_hotel_room_path(@hotel.id, @room.id, :image=>img.id), :method=>:delete, :remote=>true
+            = link_to t("destroy"), delete_image_hotel_room_path(@hotel.id, @room.id, :image=>img.id), :method=>:delete, :remote=>true, :confirm => t("confirm")
