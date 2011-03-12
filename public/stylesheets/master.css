@@ -78,6 +78,14 @@
 .center {
   text-align: center; }
 
+.article_home {
+  padding-top: 10px;
+  font-size: 11px; }
+  .article_home .title {
+    font-weight: bold; }
+  .article_home .body {
+    padding-top: 3px; }
+
 body {
   margin: 0;
   padding: 0;
@@ -344,6 +352,10 @@ a.edit {
   border: 1px solid #d0d3d8;
   margin-left: 30px;
   overflow: scroll; }
+
+#article_home {
+  padding-top: 17px;
+  padding-left: 10px; }
 
 .text1 {
   font-size: 14px;

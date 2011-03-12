@@ -1,5 +1,5 @@
-= link_to truncate( article.title, :length => 40 ), article_path(article)
-.item
-  = truncate(strip_tags(article.body), :length => 180).html_safe
-  %br
-  = link_to t("further"), article_path(article)
+.article_home
+  .title
+    = link_to truncate( article.title, :length => 30 ), article_path(article), :class => :edit
+  .body
+    = truncate(strip_tags(article.body), :length => 150).html_safe
