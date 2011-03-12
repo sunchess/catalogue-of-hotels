@@ -357,6 +357,9 @@ a.edit {
   padding-top: 17px;
   padding-left: 10px; }
 
+#room_images_id {
+  width: 500px; }
+
 .text1 {
   font-size: 14px;
   font-weight: bold; }

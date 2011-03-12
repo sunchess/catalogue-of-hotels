@@ -111,10 +111,12 @@ class RoomsController < ApplicationController
 
   def set_images_fields
     @images_fields = if @room.images.count < 5 
-                      5 
-                    else
-                      15 - @room.images.count
-                    end
+                       5 
+                     elsif @room.images.count >= 5 and  @room.images.count < 10
+                       5 
+                     else
+                       15 - @room.images.count
+                     end
   end
 end
 
