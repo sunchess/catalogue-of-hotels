@@ -15,13 +15,13 @@
         = human_room_data(@room.fridge, Room.fridge)
         = human_room_data(@room.tv, Room.tv)
       - if @room.dynamic_fields.any?
-        .left.padding_5{:style => "width: 165px;"}
+        .left.padding_5{:style => "width: 155px;"}
           %span.title= t("rooms.room.add_options")
           %br
           - @room.dynamic_fields.each do |field|
             = field.title
             %br
-      .right.padding_5{:style=>"width: 150px"}
+      .right.padding_5{:style=>"width: 125px"}
         %span.title= t(".min")
         = @room.min_price
         = t("rur")
