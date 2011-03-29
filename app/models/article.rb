@@ -8,5 +8,5 @@ class Article < ActiveRecord::Base
   validates :title, :length => { :minimum => 15 }
   validates :body, :length => { :minimum => 150 }
 
-  scope :lasts, order("id").limit(3)
+  scope :lasts, order("id DESC").limit(3)
 end
