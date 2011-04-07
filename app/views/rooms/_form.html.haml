@@ -77,6 +77,16 @@
             .second{:style=>"width: 70%"}
               = price.text_field :cost, :size=>10
               = t("rur")
+              - if admin?
+                %br
+                = t(".fee")
+                = price.text_field :fee, :size => 5
+                \%
+                %br
+                = t(".discount")
+                = price.text_field :discount, :size => 5
+                \%
+
               - i += 1
 
 

@@ -8,7 +8,7 @@ run.sh
 .idea
 *.swp
 *.swo
-public/system/images*
+public/system/*
 config/initializers/secret_token.rb
 tmp*
 

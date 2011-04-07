@@ -13,9 +13,9 @@
 
 class Price < ActiveRecord::Base
   belongs_to :room
-  attr_accessible :month, :cost
+  attr_accessible :month, :cost, :fee, :discount
   
-  validates_presence_of :month
+  validates_presence_of :month 
   validates_numericality_of :cost
 
   scope :not_zero, where("cost >  0")

@@ -72,6 +72,8 @@ ru:
      paid: "Оплачено"
      archive: "В архивe"
      canceled: "Отменено"
+    hotel:
+      discount_notice: "Ваша скидка при заказе за этот месяц"
 
   activerecord:
     attributes:

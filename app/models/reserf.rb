@@ -19,10 +19,7 @@
 
 class Reserf< ActiveRecord::Base
   #TODO: Валидация если в месяц вселения или выселения не работает гостиница
-  after_initialize :default_values
   
-  PREPAYMENT_PERCENT = 20
-  DISCOUNT = 5
   belongs_to :user
   belongs_to :orderable, :polymorphic => true
   attr_accessible :name, :address, :telephone, :list_tourists, :coming_on, :outing_on, :description, :all_tourists
@@ -119,36 +116,63 @@ class Reserf< ActiveRecord::Base
   def calculate
     return nil if ( !coming_on or !outing_on ) or coming_on > outing_on 
     if room
+      price_begin = room.prices.find_by_month(coming_on.mon)
+      price_end = room.prices.find_by_month(outing_on.mon)
       # Если дата вселения больше чем дата выселения или в эти месяцы не работает гостиница
-      return nil if room.prices.find_by_month(coming_on.mon).cost == 0 or room.prices.find_by_month(outing_on.mon).cost == 0 
+      return nil if price_begin.cost == 0 or price_end.cost == 0 
+      #в пределах одного мeсяца
       if coming_on.mon == outing_on.mon
-       cost = ( ( outing_on - coming_on ).to_i + 1 ) * room.prices.find_by_month(coming_on.mon).cost
+        cost = ( ( outing_on - coming_on ).to_i) * room.prices.find_by_month(coming_on.mon).cost
+
+        if price_begin.discount > 0
+          discount_sum = ( cost.to_f * ( price_begin.discount.to_f / 100 ) )
+          min_prepayment = ( (cost.to_f * ( price_begin.fee.to_f / 100) ) - discount_sum )
+        else
+          discount_sum = 0
+          min_prepayment = (cost.to_f * ( price_begin.fee.to_f / 100) )
+        end
+
+        write_attribute :discount, price_begin.discount
+
       else#считаем каждый день
         current_month = coming_on.mon
-        current_cost = room.prices.find_by_month(current_month).cost
+        current_price = room.prices.find_by_month(current_month)
+        current_cost = current_price.cost
+        current_sum_discount = 0
+        current_min_prepayment = 0
         day = coming_on
         cost = current_cost
         cost = 0
-        ( outing_on - coming_on ).to_i.times do |time| 
+        p  "eeeeeeee"
+
+        p ( outing_on - coming_on ).to_i
+        days = ( outing_on - coming_on ).to_i - 1
+        days.times do |time| 
           if day.mon == current_month
-            cost += current_cost 
+            cost += current_cost.to_f 
+            discount_sum_temp = ( current_cost.to_f * ( current_price.discount.to_f / 100 ) )
+            current_sum_discount += discount_sum_temp
+            current_min_prepayment += ( (current_cost.to_f * ( current_price.fee.to_f / 100) ) - discount_sum_temp )
           else
             current_month = day.mon
-            current_cost = room.prices.find_by_month(current_month).cost 
+            current_price = room.prices.find_by_month(current_month)
+            current_cost = current_price.cost 
             cost += current_cost 
+            discount_sum_temp = ( current_cost.to_f * ( current_price.discount.to_f / 100 ) )
+            current_sum_discount += discount_sum_temp
+            current_min_prepayment += ( (current_cost.to_f * ( current_price.fee.to_f / 100) ) - discount_sum_temp )
           end
+          p day.next
+          p "*****"
           day = day.next
         end
+        discount_sum = current_sum_discount
+        min_prepayment = current_min_prepayment
+        one_percent = cost.to_f / 100.0
+        write_attribute :discount, discount_sum / one_percent 
         cost
       end
 
-      #если больше 50т.р.
-      if cost > 50000
-        self.discount = 7
-      end
-
-      discount_sum = ( cost.to_f * ( self.discount.to_f / 100 ) )
-      min_prepayment =  ( (cost.to_f * ( PREPAYMENT_PERCENT.to_f / 100) ) - discount_sum )
     elsif offer
       return nil if !all_tourists or all_tourists.zero?
       self.discount = offer.discount
@@ -160,9 +184,5 @@ class Reserf< ActiveRecord::Base
     {:sum => cost, :discount_sum => discount_sum, :sum_with_discount => cost.to_f - discount_sum, :min_prepayment => min_prepayment}
   end
 
-  private
-  def default_values
-    write_attribute(:discount, DISCOUNT) if new_record?
-  end
 
 end

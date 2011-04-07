@@ -1,6 +1,9 @@
 .item
   .right{:style=>"width: 180px;"}
-    = "#{ t(".cost") } #{ number_to_currency reserve.sum_with_discount }<span title='#{t('.discount_notice')}' class='tooltips tip_top handle'>(#{reserve.discount}%)</span>".html_safe
+    - if reserve.discount > 0
+      = "#{ t(".cost") } #{ number_to_currency reserve.sum_with_discount }<span title='#{t('.discount_notice')}' class='tooltips tip_top handle'>(#{reserve.discount}%)</span>".html_safe
+    -else
+      = "#{ t(".cost") } #{ number_to_currency reserve.sum_with_discount }".html_safe
   - if reserve.room
     .left{:style=>"padding-left: 3px;"}
       = link_to reserve.room.hotel.name, hotel_path(reserve.room.hotel.id) 

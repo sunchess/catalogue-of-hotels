@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110311174132) do
+ActiveRecord::Schema.define(:version => 20110405163733) do
 
   create_table "accepts", :force => true do |t|
     t.integer  "offer_id"
@@ -172,6 +172,8 @@ ActiveRecord::Schema.define(:version => 20110311174132) do
     t.integer  "cost"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "fee",        :default => 20, :null => false
+    t.integer  "discount",   :default => 5,  :null => false
   end
 
   add_index "prices", ["room_id"], :name => "index_prices_on_room_id"
