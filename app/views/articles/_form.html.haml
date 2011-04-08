@@ -2,7 +2,8 @@
   %script{:src=>"/javascripts/editor/editor.js", :type=>"text/javascript" }
 -content_for :stylesheets do
   = stylesheet_link_tag "/javascripts/editor/css/editor.css"
-
+= link_to "noeditor", "?noeditor=true"
+%br
 = form_for([@place || @hotel, @article]) do |f|
   = render( :partial=>"layouts/errors_messages", :locals => { :target=>@article})
   = hidden_field_tag :place, @place.id if @place
