@@ -2,11 +2,12 @@
 %html
   %head
     %title 
-      CoastSun.Ru 
+      = yield(:page_title)
       - if render_breadcrumbs(:full=>true).present?
-        = ":: #{render_breadcrumbs(:no_html=>true, :separator => ' / ', :full=>true).html_safe}"
+        = "#{render_breadcrumbs(:no_html=>true, :separator => ' / ', :full=>true).html_safe}"
       -else
-        = ":: отдых на на черном море и юге России"
+        = "Отдых на на черном море и юге России"
+      \- CoastSun.Ru 
     %meta{:name=>'yandex-verification', :content=>'59ea291019ca2dfd'}
     = stylesheet_link_tag "application", "master", "jquery-ui-1.8.5.custom", "tipTip"
     = stylesheet_link_tag "/fancybox/jquery.fancybox-1.3.4.css"

@@ -1,24 +1,40 @@
 <%
- if can? :update, @hotel
-    @hotel_map.event_init(@hotel_map, :click, 'mouseclck')
+    if @hotel.coordinate
+      coordinates = [@hotel.coordinate.lat, @hotel.coordinate.lng]
+      @place_map.center_zoom_init(coordinates, @hotel.coordinate.zoom)
+      @place_map.enable_scroll_zoom
+      placemark = Placemark.new(coordinates)
+      #placemark.extras[:description] = @geo_place
+      placemark.extras[:name] = @hotel.name
+      placemark.extras[:icon_content] = image_tag( @hotel.images.first.image.url(:thumb) )
+      @place_map.add_overlay placemark
+    else
+      @place_map.center_zoom_init([44.465151,40.935547], 6)
+      @place_map.enable_scroll_zoom
+    end
+    @place_map.record_init_end "map.addControl(new YMaps.Zoom()); "
+    @place_map.record_init_end "map.addControl(new YMaps.ToolBar());"
+    @place_map.record_init_end "map.addControl(new YMaps.TypeControl());"
 
-     @hotel_map.record_global_init("
-        function mouseclck(overlay,latlng){
-          var zm=0;
-          if (latlng!=null){
-              lt=latlng.lat();
-              lg=latlng.lng();
-              zm=map.getZoom();
-              $(\"#map_lat\").val(lt);
-              $(\"#map_lng\").val(lg);
-              $(\"#map_zoom\").val(zm);
-              map.clearOverlays();
-              map.addOverlay(addInfoWindowToMarker(new GMarker(new GLatLng(lt,lg),{title : \"#{@hotel.name}\"}),\"#{@hotel.name}\",{}));
-          }
-        }") 
+   if can? :update, Place
+     @place_map.record_init_end "var myEventListener = YMaps.Events.observe(map, map.Events.Click, function (map, mEvent) { 
+    var lng = mEvent.getGeoPoint().getX();
+    var lat = mEvent.getGeoPoint().getY();
+    var zoom = map.getZoom();
+    $(\"#map_lat\").val(lat);
+    $(\"#map_lng\").val(lng);
+    $(\"#map_zoom\").val(zoom);
+    var placemark = new YMaps.Placemark(mEvent.getGeoPoint());
+      map.removeAllOverlays();
+        map.addOverlay(placemark);
+    }, this); "
   end        
  %>
-       
-<%= GMap.header({:hl=>I18n.default_locale, :sensor => false}).html_safe %>
 
-<%= @hotel_map.to_html.html_safe %>
+ <% 
+     content_for :maps do
+       YandexMap.header.html_safe
+     end
+ %>
+
+<%= @place_map.to_html.html_safe %>       

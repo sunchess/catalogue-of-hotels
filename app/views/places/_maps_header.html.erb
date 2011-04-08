@@ -1,24 +1,38 @@
 <%
-   if can? :update, Place
-     @place_map.event_init(@place_map, :click, 'mouseclck')
+    if @place.coordinate or @gg_locate.success
+      if @place.coordinate
+        coordinates = [@place.coordinate.lat, @place.coordinate.lng]
+        @place_map.center_zoom_init(coordinates, @place.coordinate.zoom)
+      elsif @gg_locate.success
+        coordinates = [@gg_locate.lat, @gg_locate.lng]
+        @place_map.center_zoom_init(coordinates, 7)
+      end
+      @place_map.enable_scroll_zoom
+      placemark = Placemark.new(coordinates)
+      placemark.extras[:description] = @geo_place
+      placemark.extras[:name] = @geo_place
+      #placemark.extras[:icon_content] = 'Icon content'
+      @place_map.add_overlay placemark
+    else
+      @place_map.center_zoom_init([44.465151,40.935547], 6)
+      @place_map.enable_scroll_zoom
+    end
+    @place_map.record_init_end "map.addControl(new YMaps.Zoom()); "
+    @place_map.record_init_end "map.addControl(new YMaps.ToolBar());"
+    @place_map.record_init_end "map.addControl(new YMaps.TypeControl());"
 
-     @place_map.record_global_init("
-        function mouseclck(overlay,latlng){
-          var zm=0;
-          if (latlng!=null){
-              lt=latlng.lat();
-              lg=latlng.lng();
-              zm=map.getZoom();
-              $(\"#map_lat\").val(lt);
-              $(\"#map_lng\").val(lg);
-              $(\"#map_zoom\").val(zm);
-              map.clearOverlays();
-              map.addOverlay(addInfoWindowToMarker(new GMarker(new GLatLng(lt,lg),{title : \"#{@place.title}\"}),\"#{@place.title}\",{}));
-          }
-        }") 
+   if can? :update, Place
+     @place_map.record_init_end "var myEventListener = YMaps.Events.observe(map, map.Events.Click, function (map, mEvent) { 
+    var lng = mEvent.getGeoPoint().getX();
+    var lat = mEvent.getGeoPoint().getY();
+    var zoom = map.getZoom();
+    $(\"#map_lat\").val(lat);
+    $(\"#map_lng\").val(lng);
+    $(\"#map_zoom\").val(zoom);
+    var placemark = new YMaps.Placemark(mEvent.getGeoPoint());
+      map.removeAllOverlays();
+        map.addOverlay(placemark);
+    }, this); "
   end        
  %>
        
-<%= GMap.header({:hl=>I18n.default_locale, :sensor => false}).html_safe %>
-
-<%= @place_map.to_html.html_safe %>

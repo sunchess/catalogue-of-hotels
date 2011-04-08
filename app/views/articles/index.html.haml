@@ -1,4 +1,7 @@
-%h1= t('.title')
+- if @place
+  %h1= t('.title_place', :name => @place.title)
+- else
+  %h1= t('.title')
 #main_content
   = render :partial => "article", :collection=>@articles
 

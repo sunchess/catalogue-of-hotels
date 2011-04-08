@@ -12,6 +12,7 @@ ru:
       delete: "Удалить изображения"
     index:
       title: "Статьи"
+      title_place: "Статьи %{name}"
     new:
       title: "Новая статья"
     edit:

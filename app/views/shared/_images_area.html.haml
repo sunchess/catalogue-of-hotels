@@ -1,5 +1,8 @@
 #images_area
-  = render :partial=>"shared/image", :collection=>@images
+  - if images
+    = render :partial=>"shared/image", :collection=>images
+  - else
+    = render :partial=>"shared/image", :collection=>@images
 
 :javascript
   $("a[rel=img_group]").fancybox({

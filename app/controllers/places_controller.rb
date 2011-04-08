@@ -3,7 +3,7 @@ include Geokit::Geocoders
 class PlacesController < ApplicationController
   before_filter :find_place, :only=>[:edit, :update, :destroy, :show]
   authorize_resource
-  add_breadcrumb Proc.new{|c| c.t("places.navigation")}, :places_path#, :only=>%w{show new edit create update}
+  add_breadcrumb Proc.new{|c| c.t("places.index.title")}, :places_path#, :only=>%w{show new edit create update}
   add_breadcrumb Proc.new{|c| c.t("places.new.title")}, :new_place_path, :only=>%w{new create}
   add_breadcrumb Proc.new{|c| c.t("places.edit.title")}, :edit_place_path, :only=>%w{edit update}
 
@@ -22,30 +22,18 @@ class PlacesController < ApplicationController
 
   def show
     if @place.parent
-      geo_place = "#{@place.title}, #{@place.parent.title}"
+      @geo_place = "#{@place.title}, #{@place.parent.title}"
       add_breadcrumb @place.parent.title, place_path(@place.parent)
       add_breadcrumb @place.title, place_path(@place)
     else
-      geo_place = @place.title
+      @geo_place = @place.title
       add_breadcrumb @place.title, place_path(@place)
     end
 
-    @gg_locate = GoogleGeocoder.geocode(geo_place)
-    @place_map = GMap.new("map")
-    @place_map.control_init(:large_map => true, :map_type => true)
+    @gg_locate = GoogleGeocoder.geocode(@geo_place)
+    @place_map =  YandexMap.new
     @map = Map.new
 
-    if @place.coordinate
-      coordinates = [@place.coordinate.lat, @place.coordinate.lng]
-      @place_map.center_zoom_init(coordinates, @place.coordinate.zoom)
-      @place_map.overlay_init(GMarker.new(coordinates, :title => geo_place, :info_window => geo_place))
-    elsif @gg_locate.success
-      coordinates = [@gg_locate.lat, @gg_locate.lng]
-      @place_map.center_zoom_init(coordinates, 7)
-      @place_map.overlay_init(GMarker.new(coordinates, :title => geo_place, :info_window => geo_place))
-    else
-      @place_map.center_zoom_init([44.465151,40.935547], 6)
-    end
     #for form
     @image = Image.new
 

@@ -10,17 +10,8 @@ class Hotels::MapsController < ApplicationController
   before_filter :authorize_hotel, :except=>[:index]
 
   def new
-    @hotel_map = GMap.new("map")
-    @hotel_map.control_init(:large_map => true, :map_type => true)
+    @place_map = YandexMap.new
     @map = Map.new
-
-    if @hotel.coordinate
-      coordinates = [@hotel.coordinate.lat, @hotel.coordinate.lng]
-      @hotel_map.center_zoom_init(coordinates, @hotel.coordinate.zoom)
-      @hotel_map.overlay_init(GMarker.new(coordinates, :title => @hotel.name, :info_window => @hotel.name))
-    else
-      @hotel_map.center_zoom_init([44.465151,40.935547], 6)
-    end
   end
 
   def create
@@ -32,17 +23,7 @@ class Hotels::MapsController < ApplicationController
   end
 
   def index
-    @hotel_map = GMap.new("map")
-    @hotel_map.control_init(:large_map => true, :map_type => true)
-    @map = Map.new
-
-    if @hotel.coordinate
-      coordinates = [@hotel.coordinate.lat, @hotel.coordinate.lng]
-      @hotel_map.center_zoom_init(coordinates, @hotel.coordinate.zoom)
-      @hotel_map.overlay_init(GMarker.new(coordinates, :title => @hotel.name, :info_window => @hotel.name))
-    else
-      @hotel_map.center_zoom_init([44.465151,40.935547], 6)
-    end
+    @place_map = YandexMap.new
   end
 
 private

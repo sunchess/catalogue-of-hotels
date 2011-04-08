@@ -1,7 +1,12 @@
 - content_for :maps do
   = render :partial => "maps_header"
+
+- content_for :maps do
+  = YandexMap.header.html_safe
+
+= @place_map.to_html.html_safe
+
 %h1
-  = t '.title'
   = @place.title
 
 #main_content
@@ -13,16 +18,20 @@
   - if can?(:edit, Place)
     = render :partial => "places/maps/form"
     %br
+
+  - if @place.articles.any?
+    .title
+      = t(".articles", :name => @place.title)
+    = render :partial => "places/article", :collection=>@place.articles.limit(3)
   - if @place.hotels.public_items.any?
     .title
-      = t("hotels.navigation")
+      = "#{ t("hotels.navigation") } #{@place.title}"
     = render :partial => "hotels/hotel", :collection=>@place.hotels.public_items
 
   %br
-  -#статьи итп
   - if @place.dynamic_fields.any?
     .title
-      = t("add_params")
+      =  t(".add_params", :name => @place.title)
     .item.padding_5
       - @place.dynamic_fields.each do |field|
         = field.title
@@ -39,7 +48,7 @@
   -if @images.any?
     %p
       %b
-        =t('.total_images')
+        =t('.total_images', :name => @place.title)
       = @place.images_count
 
 

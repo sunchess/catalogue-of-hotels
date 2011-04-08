@@ -1,0 +1,10 @@
+%h1= article.title
+#main_content
+  = article.body.html_safe
+
+  - if article.images.any?
+    #images
+      .item
+        %p= t(".images", :name => @place.title, :article => article.title)
+        %p= render :partial => "shared/images_area", :locals => {:images => article.images}
+

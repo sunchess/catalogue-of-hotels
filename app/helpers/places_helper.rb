@@ -26,7 +26,7 @@ module PlacesHelper
 
   def articles_for(place)
     if place.articles.any?
-      link_to t(".articles"), place_articles_path(@place)
+      link_to t(".all_articles", :name => place.title), place_articles_path(@place)
     end
   end
 

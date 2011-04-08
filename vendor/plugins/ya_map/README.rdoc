@@ -1,0 +1,87 @@
+= Yandex Map plugin for Rails
+== Install
+  script/plugin install git://github.com/PavelTyk/ya_map.git
+== Example
+Generate YML config file and JS
+  script/generate ya_map
+Get API keys at yandex website[http://api.yandex.ru/maps/form.xml] and copy it to config/ya-map-api-key.yml
+Initialize YaMap::Map object in controller
+  def index
+    @map = Map.new
+    @map.center_zoom_init([53.903499, 27.561741])
+  end
+Display map in your view
+  <html>
+  <head>
+    <%= Map.header %>
+    <%= @map.to_html %>
+  </head>
+  <body>
+    <%= @map.div %>
+  </body>
+  </html>
+== More about Map
+Set map center and Zoom
+  @map.center_zoom_init([53.903499, 27.561741], 15)
+Enable scroll zoom
+  # Pass an option to initialize method
+  @map = Map.new nil, :enable_scroll_zoom => true
+  # Or call a method on a map instance
+  @map.enable_scroll_zoom
+Add Zoom Control to the Map
+  @map.control_init :zoom => true
+Change the position of Zoom Control (with 10px offsets) and set min_zoom and max_zoom values
+  zoom_control_position = ControlPosition.new ControlPosition::TOP_LEFT, :x => 10, :y => 10
+  @map.control_init :zoom => zoom_control_position
+  @map.set_min_zoom 10
+  @map.set_max_zoom 15
+You can insert JS code in different places of YMap initialization process, using _record_init_global_, _record_init_start_ and _record_init_end_
+  @map.record_init_global "alert('Record init global');"
+If JS is rather big, I would prefer to do it the view next way:
+  @map.record_init_global File.read("#{RAILS_ROOT}/public/javascripts/file-name.js")
+== More about Placemark
+Add placemark on the map
+  @map.add_overlay Placemark.new([53.903499, 27.561741])
+Add description, name and icon content to the placemark
+  placemark = Placemark.new([53.903499, 27.561741])
+  placemark.extras[:description] = 'Placemark description'
+  placemark.extras[:name] = 'Placemark name'
+  placemark.extras[:icon_content] = 'Icon content'
+Make placemark draggable
+  placemark.options[:draggable] = true
+== Binding variables to JS
+Let's create an observer for a placemark. It's all about JS, but we need a reference for our placemark in JS. Here is the simplest approach:
+
+In a view:
+  @map.record_init_end "createPlacemarkObserver(#{@placemark.binding_variable});"
+In application.js (for example) define a function 'createPlacemarkObserver':
+  function createPlacemarkObserver(placemark) {
+    YMaps.Events.observe(placemark, placemark.Events.DragEnd, function(){
+      alert('lat=' + placemark.getGeoPoint().getY() + '; lng='+ placemark.getGeoPoint().getX() + ';');
+    });
+  }
+That's it!
+== Note
+This plugin was written mainly to support the needs of my project flat-on-map.ru[http://flat-on-map.ru]
+== License
+
+Copyright (c) 2010 [PavelTyk]
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
