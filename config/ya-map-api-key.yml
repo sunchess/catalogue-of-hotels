@@ -1,7 +1,8 @@
 production:
-  first-domain.com: APIKeyForFirstDomain==
-  second-domain.ru: APIKeyForTheSekondDomain==
-  localhost: APIKeyForLocalHostTesting==
+  coastsun.ru: "AKaGj00BAAAAz2OPKAIA608dLocZlaNxLvYZYsVUM57Ip9MAAAAAAAAAAAAN3VjKAA2y2tQtrqARB1EU80UO3w=="
+  www.coastsun.ru: "AKaGj00BAAAAz2OPKAIA608dLocZlaNxLvYZYsVUM57Ip9MAAAAAAAAAAAAN3VjKAA2y2tQtrqARB1EU80UO3w=="
+  localhost: "AKaGj00BAAAAz2OPKAIA608dLocZlaNxLvYZYsVUM57Ip9MAAAAAAAAAAAAN3VjKAA2y2tQtrqARB1EU80UO3w=="
+ 
   # If you have a single domain just, paste API Key. No YML key required.
 development:
   "AKaGj00BAAAAz2OPKAIA608dLocZlaNxLvYZYsVUM57Ip9MAAAAAAAAAAAAN3VjKAA2y2tQtrqARB1EU80UO3w=="
