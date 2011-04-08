@@ -24,12 +24,13 @@
 - unless @article.new_record?
   = render :partial => "articles/images/frame"
 
-:javascript
-  $(document).ready(
-    function()
-      {
-        $('#article_body').editor({ focus: true, image_upload: '/articles/images'  });
-      }
-  );
+- unless params[:noeditor]
+  :javascript
+    $(document).ready(
+      function()
+        {
+          $('#article_body').editor({ focus: true, image_upload: '/articles/images'  });
+        }
+    );
 
 
