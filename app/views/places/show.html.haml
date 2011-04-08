@@ -22,7 +22,7 @@
   - if @place.articles.any?
     .title
       = t(".articles", :name => @place.title)
-    = render :partial => "places/article", :collection=>@place.articles.limit(3)
+    = render :partial => "places/article", :collection=>@place.articles.order("id").limit(3)
   - if @place.hotels.public_items.any?
     .title
       = "#{ t("hotels.navigation") } #{@place.title}"
