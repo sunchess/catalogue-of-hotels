@@ -7,7 +7,7 @@
     #images
       .item
         %p= t(".images")
-        %p= render :partial => "shared/images_area"
+        %p= render :partial => "shared/images_area", :locals => {:images => @images}
 
   = render :partial => "offer", :collection => @offer.others
 

@@ -18,11 +18,11 @@
         %p
           - if can? :update, @hotel
             = form_tag hotel_images_path(@hotel), :method=>:delete do
-              = render :partial => "shared/images_area"
+              = render :partial => "shared/images_area", :locals => {:images => @images}
               %br
               = submit_tag t('.delete')
           - else
-            = render :partial => "shared/images_area"
+            = render :partial => "shared/images_area", :locals => {:images => @images}
         
 #navigation
   %p= link_to t('back'), :back

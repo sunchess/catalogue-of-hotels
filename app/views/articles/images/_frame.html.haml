@@ -16,7 +16,7 @@
     - if @images.any? 
       = form_tag article_images_path(@article), :method=>:delete do
         = t('articles.images.exist_images')
-        %p= render :partial => "shared/images_area"
+        %p= render :partial => "shared/images_area", :locals => {:images => @images}
         %br
         = submit_tag t('articles.images.delete')
     -else

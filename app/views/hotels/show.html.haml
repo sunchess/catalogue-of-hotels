@@ -41,7 +41,7 @@
     .reset
       -if @images.any?
         .center
-          = render :partial => "shared/images_area"
+          = render :partial => "shared/images_area", :locals => {:images => @images}
         = link_to t("hotels.images.all"), hotel_images_path(@hotel)
       -else
         .title=t('no_images')
