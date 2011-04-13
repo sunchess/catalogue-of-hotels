@@ -31,7 +31,7 @@ class HotelsController < ApplicationController
 
   def create
     @hotel = Hotel.new
-    @hotel.accessible = [ :draft, :paid_placement ] if admin?
+    @hotel.accessible = [ :draft, :paid_placement  ] if admin?
     @hotel.attributes = params[:hotel]
     if current_user.hotels << @hotel
       @hotel.save_dynamic_fields( params[:fields] )

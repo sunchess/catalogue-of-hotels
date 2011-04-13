@@ -29,7 +29,7 @@ class Hotel < ActiveRecord::Base
   acts_as_list 
 
   scope :confirmed, where(:draft=>true, :confirmed=>true).order("id")
-  scope :public_items, where(:draft=>false, :confirmed=>true).order("position")
+  scope :public_items, where(["draft=? and (confirmed=? OR paid_placement=?)", false, true, false]).order("position")
 
   belongs_to :user
   belongs_to :place

@@ -21,7 +21,7 @@
     @place_map.record_init_end "map.addControl(new YMaps.ToolBar());"
     @place_map.record_init_end "map.addControl(new YMaps.TypeControl());"
 
-   if can? :update, Place
+   if can? :update, @place
      @place_map.record_init_end "var myEventListener = YMaps.Events.observe(map, map.Events.Click, function (map, mEvent) { 
     var lng = mEvent.getGeoPoint().getX();
     var lat = mEvent.getGeoPoint().getY();

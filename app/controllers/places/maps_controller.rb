@@ -1,5 +1,5 @@
 class Places::MapsController < ApplicationController
-  authorize_resource
+  authorize_resource :place
   before_filter :find_place
 
   def create
