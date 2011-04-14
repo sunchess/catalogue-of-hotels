@@ -89,7 +89,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: white; }
+  background-color: white;
+  background: url(/images/bg-clouds2.jpg) repeat-x center top white; }
 
 table, body {
   font-family: Arial;
@@ -197,8 +198,6 @@ a.edit {
 
 #navigation_tab {
   border-bottom: 1px solid #42668c;
-  margin: 0 -10px;
-  padding: 0 10px;
   width: 800px; }
   #navigation_tab ul {
     list-style: none;
@@ -269,17 +268,28 @@ a.edit {
   text-align: center; }
 
 #user_nav {
+  width: 800px;
   text-align: right;
   font-size: 12px;
   margin: 0 auto 0 auto;
   margin-top: 5px;
-  margin-bottom: 10px; }
+  margin-bottom: 5px;
+  padding-top: 3px;
+  color: #e8ecde; }
   #user_nav a {
-    color: #42668c; }
+    color: #d4e0ed; }
     #user_nav a:hover {
-      color: #42668c; }
-    #user_nav a:visited {
-      color: #42668c; }
+      color: #f8e380; }
+  #user_nav a.red {
+    color: #fdd1b1; }
+    #user_nav a.red:hover {
+      color: #d03d3d; }
+
+#bgnavigation_tab {
+  background-color: #142a37;
+  width: 100%;
+  margin-top: -5px;
+  height: 20px; }
 
 .notice {
   background-color: #edffb2;
@@ -309,15 +319,6 @@ a.edit {
   overflow: hidden; }
 #places .draft a {
   color: red; }
-
-#user_nav {
-  text-align: right;
-  font-size: 12px;
-  margin: 0 auto 0 auto;
-  margin-top: 5px;
-  margin-bottom: 10px; }
-  #user_nav a.red {
-    color: #a90606; }
 
 #images_area img {
   border: 1px solid #dae2e8;

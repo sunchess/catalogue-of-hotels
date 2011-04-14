@@ -1,21 +1,21 @@
 /*
 Syntax error: Undefined variable: "$color_grey".
-        on line 61 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass
+        on line 51 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass
 
-56:   td
-57:     font-size: 12px
-58: 
-59: #place_children
-60:   .title
-61:     color: $color_grey
-62:     font-size: 13px
-63: 
-64: #article_images
-65:   width: 580px
-66:   height: 700px
+46:   td
+47:     font-size: 12px
+48: 
+49: #place_children
+50:   .title
+51:     color: $color_grey
+52:     font-size: 13px
+53: 
+54: #article_images
+55:   width: 580px
+56:   height: 700px
 
 Backtrace:
-/home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass:61
+/home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass:51
 /usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/script/variable.rb:39:in `_perform'
 /usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/script/node.rb:61:in `perform'
 /usr/lib/ruby/gems/1.8/gems/haml-3.0.25/lib/sass/tree/prop_node.rb:132:in `perform!'
@@ -108,4 +108,4 @@ script/rails:6
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$color_grey\".\A         on line 61 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass\A \A 56:   td\A 57:     font-size: 12px\A 58: \A 59: #place_children\A 60:   .title\A 61:     color: $color_grey\A 62:     font-size: 13px\A 63: \A 64: #article_images\A 65:   width: 580px\A 66:   height: 700px"; }
+  content: "Syntax error: Undefined variable: \"$color_grey\".\A         on line 51 of /home/sun/rails/myprojects/catalogue-of-hotels/git/public/stylesheets/sass/ids.sass\A \A 46:   td\A 47:     font-size: 12px\A 48: \A 49: #place_children\A 50:   .title\A 51:     color: $color_grey\A 52:     font-size: 13px\A 53: \A 54: #article_images\A 55:   width: 580px\A 56:   height: 700px"; }

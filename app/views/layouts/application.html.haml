@@ -21,10 +21,10 @@
     = csrf_meta_tag
     = yield :maps
   %body
+    = render :partial=>"layouts/users_login_register"
     #body
-      = render :partial=>"layouts/users_login_register"
       #logo  
-        = image_tag("logo.png", :alt=>"CoastSun.Ru")
+        = link_to image_tag("logo.png", :alt=>"CoastSun.Ru"), "/"
       = render :partial=>"shared/navigation_tab"
       #content
         #breadcrambs

@@ -10,7 +10,7 @@ class HotelsController < ApplicationController
   #caches_action :index, :layout=>false
   after_filter  :delete_cache, :only=>[:create, :update]
   before_filter :find_dynamic_fields, :only=>[:new, :create, :edit, :update]
-  authorize_resource
+  authorize_resource :hotel
 
   def index
     @hotels = Hotel.public_items.paginate(:page=>params[:page], :per_page=>10)
