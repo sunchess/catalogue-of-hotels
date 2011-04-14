@@ -5,6 +5,12 @@
 
 = @place_map.to_html.html_safe
 
+- content_for :page_title do
+  = t(".key_words", :name => @place.title)
+
+- content_for :page_description do
+  = t(".page_description", :name => @place.title)
+
 %h1
   = @place.title
 

@@ -12,6 +12,12 @@
     :plain
       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
       <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+    - if yield :page_description
+      :erb
+        <meta name="Description" content="<%= yield(:page_description)%>"/>
+    - if yield(:page_title)
+      :erb
+        <meta name="Keywords" content="<%= yield(:page_title) %>"/>
 
     = stylesheet_link_tag "application", "master", "jquery-ui-1.8.5.custom", "tipTip"
     = stylesheet_link_tag "/fancybox/jquery.fancybox-1.3.4.css"
