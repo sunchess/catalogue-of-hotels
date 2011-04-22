@@ -19,6 +19,7 @@ ru:
       title: "Гостиницы"
       wait_moderators: "Ожидает модерации"
       order: "Порядок отображения"
+      not_confirmed: "Не подтвержденные"
     index:
       title: "Список гостиниц"
       new_hotel: "Добавить гостиницу"

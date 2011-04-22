@@ -30,6 +30,7 @@ class Hotel < ActiveRecord::Base
 
   scope :confirmed, where(:draft=>true, :confirmed=>true).order("id")
   scope :public_items, where(["draft=? and (confirmed=? OR paid_placement=?)", false, true, false]).order("position")
+  scope :not_confirmed, where(["draft=? and confirmed=?", true, false ]).order("position")
 
   belongs_to :user
   belongs_to :place
@@ -65,6 +66,10 @@ class Hotel < ActiveRecord::Base
 
   def self.draft
     count("id", :conditions=>{:draft=>true, :confirmed=>true})  
+  end
+
+  def self.count_not_confirmed
+    count("id", :conditions=>{:draft=>true, :confirmed=>false})  
   end
 
   def rooms_exept(room)

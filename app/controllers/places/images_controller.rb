@@ -1,6 +1,6 @@
 class Places::ImagesController < ApplicationController
-  load_and_authorize_resource
   before_filter :find_place
+  before_filter :authorize_place
 
   def index
     @image = Image.new
@@ -38,4 +38,9 @@ class Places::ImagesController < ApplicationController
   def find_place
     @place = Place.find(params[:place_id])
   end
+  
+  def authorize_place
+    authorize! :update, @place
+  end
+
 end

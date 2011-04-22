@@ -2,6 +2,9 @@
   %br
   = t("hotels.manager.title")
   %div 
+    = link_to t("hotels.manager.not_confirmed"), not_confirmed_admin_hotels_path
+    = "(#{Hotel.count_not_confirmed})"
+  %div 
     = link_to t("hotels.manager.wait_moderators"), admin_hotels_path
     = "(#{Hotel.draft})"
   %div 

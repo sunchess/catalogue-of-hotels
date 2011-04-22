@@ -83,6 +83,7 @@ CatalogueOfHotels::Application.routes.draw do
       collection do
         get :order
         post :update_order
+        get :not_confirmed
       end
     end
     resource  :dashboard, :only=>[:show]

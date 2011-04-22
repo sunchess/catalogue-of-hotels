@@ -5,6 +5,11 @@ class Admin::HotelsController < ApplicationController
     @hotels = Hotel.confirmed
   end
 
+  def not_confirmed
+    @hotels = Hotel.not_confirmed
+    render :action => :index
+  end
+
   def order
     @hotels = Hotel.public_items.paginate(:page => params[:page])
   end
