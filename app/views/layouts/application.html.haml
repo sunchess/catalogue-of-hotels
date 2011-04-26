@@ -33,8 +33,15 @@
   %body
     = render :partial=>"layouts/users_login_register"
     #body
-      #logo  
+      #logo.left  
         = link_to image_tag("logo.png", :alt=>"CoastSun.Ru"), "/"
+      .right.ellow{:style => "width: 250px; padding-top: 25px;"}
+        = t("telephones")
+        %br
+        +7903-433-95-88
+        %br
+        +7928-226-27-83
+      .reset
       = render :partial=>"shared/navigation_tab"
       #content
         #breadcrambs

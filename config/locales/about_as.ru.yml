@@ -6,3 +6,7 @@ ru:
       navigation: "Поддержка"
     home:
       navigation: "На главную"
+    to_owners:
+      navigation: "Владелец гостиницы?"
+    requisites:
+      navigation: "Реквизиты"

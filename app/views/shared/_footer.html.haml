@@ -37,15 +37,13 @@
   .content
     %ul
       %li
-        = link_to t("places.navigation"), places_path
-      %li
-        = link_to t("hotels.navigation"), hotels_path
-      %li
-        = link_to t("rooms.navigation"), rooms_path
-      %li
         = link_to t("info.about_as.navigation"), about_as_path
       %li
+        = link_to t("info.to_owners.navigation"), to_owners_path
+      %li
         = link_to t("info.support.navigation"), new_message_path
+      %li
+        = link_to t("info.requisites.navigation"), requisites_path 
       %li
         = link_to t("info.home.navigation"), "/"
 

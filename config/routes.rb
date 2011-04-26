@@ -1,6 +1,9 @@
 CatalogueOfHotels::Application.routes.draw do
 
   match 'about_as', :to => 'pages#about_us', :as => "about_as"
+  match 'to_owners', :to => 'pages#to_owners', :as => "to_owners"
+  match 'requisites', :to => 'pages#requisites', :as => "requisites"
+
   match "articles/images", :to => "articles/images#create_image", :via => [:post, :get]
 
   resources :messages, :only => %w{new create}
