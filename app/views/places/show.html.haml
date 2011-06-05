@@ -64,6 +64,18 @@
       #create_images
         = link_to t('places.images.form.image'), place_images_path(@place)
 
+  .title
+    = t("comments.navigation")
+  .item
+    - if user_signed_in?
+      = render :partial => "comment_form"
+    - else
+      = t("comments.you_mast_logged_in")
+
+    %p
+      %br
+    %p 
+      = render :partial => "comments/comment", :collection => @place.comments
 
 
 

@@ -12,6 +12,7 @@ gem "acts_as_list"
 gem "acts_as_tree"
 gem "geokit"
 gem "paperclip"
+gem 'inherited_resources',        '~> 1.2.2'
 #gem "exception_notification"
 
 # Use unicorn as the web server

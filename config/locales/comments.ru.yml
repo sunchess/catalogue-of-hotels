@@ -1,0 +1,23 @@
+ru:
+  comments:
+    navigation: "Комментарии"
+    you_mast_logged_in: "Вы должны войти или зарегистрироваться для комментирования"
+    successfully_create: "Комментарий создан"
+    all: "Все"
+    index:
+      title: "Комментарии"
+    edit:
+      title: "Редактировать комментарий"
+    new:
+      title: "Новый комментарий"
+
+
+
+
+
+
+  activerecord:
+    attributes:
+      comment:
+        user_name: "Ваше имя"
+        comment: "Комментарий"

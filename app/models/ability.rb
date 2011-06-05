@@ -7,7 +7,7 @@ class Ability
     if user.role? :admin
       can :manage, :all
     else
-      can :read, [Place, Image, Hotel, Room, Price, Article]
+      can :read, [Place, Image, Hotel, Room, Price, Article, Comment]
       if user.confirmed_at #is real user
         can :create, Place
         can :create, Image
@@ -15,6 +15,7 @@ class Ability
         can :create, Room
         can :create, Price
         can :create, Reserf
+        can :create, Comment
         
         can :read, Reserf, :user_id=>user.id
         can [:update, :destroy], Reserf do |reserve|

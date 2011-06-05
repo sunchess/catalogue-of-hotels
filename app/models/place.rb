@@ -17,6 +17,9 @@ class Place < ActiveRecord::Base
   acts_as_tree
   acts_as_list
 
+  acts_as_commentable
+
+
   scope :public, where(:draft=>false, :parent_id=>nil).includes([ :children ])
 
   has_many :images, :as=>:imageable, :dependent => :destroy

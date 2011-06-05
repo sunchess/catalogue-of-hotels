@@ -1,0 +1,12 @@
+.user_name
+  %b
+    = @comment.user_name
+.comment_comment
+  = simple_format @comment.comment
+
+- if can? :update, @comment
+  = link_to t("edit"), edit_comment_path(@comment)
+- if can? :destroy, @comment
+  = link_to t("destroy"), @comment, :method => :delete, :confirm => t("confirm")
+
+= link_to t("comments.all"), comments_path

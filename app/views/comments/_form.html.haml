@@ -1,0 +1,14 @@
+= form_for [ parent, resource ] do |f|
+  %p
+    = f.label :user_name
+    %br
+    = f.text_field :user_name
+  %p
+    = f.label :comment
+    %br
+    = f.text_area :comment, :size => "60x8"
+  %p
+  = f.submit
+
+
+  

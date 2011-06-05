@@ -1,0 +1,15 @@
+:ruby
+  @comment = Comment.new
+  @comment.user_name = cookies[:comment_user_name] unless @comment.user_name
+
+= form_for [ @place, @comment] do |f|
+  %p
+    = f.label :user_name
+    %br
+    = f.text_field :user_name
+  %p
+    = f.label :comment
+    %br
+    = f.text_area :comment, :size => "60x8"
+  %p
+  = f.submit

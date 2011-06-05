@@ -89,6 +89,9 @@
 .ellow {
   color: #c85a09; }
 
+.comment {
+  border-bottom: 1px dashed #cad1d9; }
+
 body {
   margin: 0;
   padding: 0;

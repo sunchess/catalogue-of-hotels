@@ -80,6 +80,11 @@ CatalogueOfHotels::Application.routes.draw do
     resources :articles
   end
 
+  resources :places do
+    resources :comments
+  end
+  resources :comments
+
   
   namespace :admin do
     resources :hotels, :only=>[:index, :order] do
