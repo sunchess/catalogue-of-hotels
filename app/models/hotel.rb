@@ -28,6 +28,8 @@
 class Hotel < ActiveRecord::Base
   acts_as_list 
 
+  acts_as_commentable
+
   scope :confirmed, where(:draft=>true, :confirmed=>true).order("id")
   scope :public_items, where(["draft=? and (confirmed=? OR paid_placement=?)", false, true, false]).order("position")
   scope :not_confirmed, where(["draft=? and confirmed=?", true, false ]).order("position")

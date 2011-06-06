@@ -56,5 +56,19 @@
     - @hotel.dynamic_fields.each do |field|
       = field.title
       %br
+
+
+  .title
+    = t("comments.navigation")
+  .item
+    - if user_signed_in?
+      = render :partial => "comment_form"
+    - else
+      = t("comments.you_mast_logged_in")
+
+    %p
+      %br
+    %p 
+      = render :partial => "comments/comment", :collection => @hotel.comments
 #navigation
   = hotel_items

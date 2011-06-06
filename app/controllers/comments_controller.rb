@@ -1,6 +1,6 @@
 class CommentsController < InheritedResources::Base
-  belongs_to :place, :polymorphic => true, :optional => true
-  load_and_authorize_resource :comment, :through => [:place]
+  belongs_to :place, :hotel, :polymorphic => true, :optional => true
+  load_and_authorize_resource :comment, :through => [:place, :hotel]
 
   before_filter :set_cookie_user_name, :only => :create
 

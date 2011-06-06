@@ -31,6 +31,7 @@ CatalogueOfHotels::Application.routes.draw do
   end
 
   resources :hotels  do
+    resources :comments
     resources :images, :controller=>"hotels/images", :only=>[:new, :create, :destroy, :index, :update] do
       collection do
         delete 'destroy'
