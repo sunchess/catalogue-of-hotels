@@ -6,7 +6,7 @@
       = "#{ t(".cost") } #{ number_to_currency reserve.sum_with_discount }".html_safe
   - if reserve.room
     .left{:style=>"padding-left: 3px;"}
-      = link_to reserve.romm.hotel.name, hotel_path(reserve.room.hotel.id) 
+      = link_to reserve.room.hotel.name, hotel_path(reserve.room.hotel.id) 
       = "(#{  link_to( reserve.room.hotel.place.title, place_path(reserve.room.hotel.place), :class=>"edit" )})".html_safe
       = "/"
     .left{:style=>"margin: 0; padding-left: 3px;"}
@@ -70,6 +70,3 @@
   .reset
     .title Email
     = reserve.user.email
-
-     
-  
