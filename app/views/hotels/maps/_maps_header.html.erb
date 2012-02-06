@@ -17,7 +17,7 @@
     @place_map.record_init_end "map.addControl(new YMaps.TypeControl());"
 
    if can? :update, Place
-     @place_map.record_init_end "var myEventListener = YMaps.Events.observe(map, map.Events.Click, function (map, mEvent) { 
+     @place_map.record_init_end "var myEventListener = YMaps.Events.observe(map, map.Events.Click, function (map, mEvent) {
     var lng = mEvent.getGeoPoint().getX();
     var lat = mEvent.getGeoPoint().getY();
     var zoom = map.getZoom();
@@ -28,13 +28,31 @@
       map.removeAllOverlays();
         map.addOverlay(placemark);
     }, this); "
-  end        
+  end
+
  %>
 
- <% 
+ <%
+     if @hotel and can?(:update, @hotel)
+       @place_map.record_init_end "var myEventListener = YMaps.Events.observe(map, map.Events.Click, function (map, mEvent) {
+      var lng = mEvent.getGeoPoint().getX();
+      var lat = mEvent.getGeoPoint().getY();
+      var zoom = map.getZoom();
+      $(\"#map_lat\").val(lat);
+      $(\"#map_lng\").val(lng);
+      $(\"#map_zoom\").val(zoom);
+      var placemark = new YMaps.Placemark(mEvent.getGeoPoint());
+        map.removeAllOverlays();
+          map.addOverlay(placemark);
+      }, this); "
+   end
+
+ %>
+
+ <%
      content_for :maps do
        YandexMap.header.html_safe
      end
  %>
 
-<%= @place_map.to_html.html_safe %>       
+<%= @place_map.to_html.html_safe %>
