@@ -8,7 +8,7 @@ class Hotels::ConfirmsController < ApplicationController
   def edit
     unless @hotel.has_all_params
       render :action=> "error"
-    end 
+    end
   end
 
   def update
@@ -18,20 +18,21 @@ class Hotels::ConfirmsController < ApplicationController
         @hotel.update_attribute(:confirmed, true)
         redirect_to edit_hotel_confirm_path(@hotel), :notice=>t("hotels.confirms.upload_succesfull")
       end
-      
+
     else
+      @hotel.update_attribute(:confirmed, true)
       flash[:alert] = t("hotels.confirms.check_upload_file")
       redirect_to edit_hotel_confirm_path(@hotel)
     end
   end
 
   def error
-    
+
   end
 
   private
   def find_hotel
-    @hotel = Hotel.find(params[:hotel_id]) 
+    @hotel = Hotel.find(params[:hotel_id])
     add_breadcrumb @hotel.name, hotel_path(@hotel)
   end
 
