@@ -17,7 +17,7 @@
       = form_tag(hotel_confirm_path(@hotel), :method=>:put, :multipart=>true) do
         .left
           = file_field_tag :contract
-        .right
+        .right{:stule => "width: 35%"}
           = submit_tag t(".confirm")
     .reset
 
