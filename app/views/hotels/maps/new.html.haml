@@ -2,10 +2,13 @@
   = render :partial => "maps_header"
 
 %h1
-  = t(".title") 
+  = t(".title")
   = "\"#{@hotel.name}\""
 #main_content
   = render :partial => "map"
+  %br
+  %i
+    = t(".click_for_mark")
   %br
   = render :partial => "form"
 #navigation
