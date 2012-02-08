@@ -4,5 +4,7 @@
 # User-Agent: *
 # Disallow: /
 
-host: coastsun.ru
+Host: coastsun.ru
+User-Agent: *
+
 
