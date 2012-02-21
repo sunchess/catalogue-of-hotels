@@ -1,6 +1,6 @@
 class Time
   def get_month
-    self.strftime("%m").to_s.delete("0").to_i 
+    self.strftime("%m").to_s.delete("0").to_i
   end
 end
 
@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_discount
   helper_method "admin?"
 
+  before_filter :domain_redirect
+
 
   rescue_from CanCan::AccessDenied do |exception|
     if user_signed_in?
@@ -19,6 +21,10 @@ class ApplicationController < ActionController::Base
     else
       authenticate_user!
     end
+  end
+
+  def domain_redirect
+    redirect_to 'http://coastsun.ru' if ['gdedk.ru', 'www.gdedk.ru', 'www.coastsun.ru'].include?(request.env["HTTP_HOST"])
   end
 
 private
