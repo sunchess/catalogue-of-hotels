@@ -6,7 +6,7 @@
       placemark = Placemark.new(coordinates)
       #placemark.extras[:description] = @geo_place
       placemark.extras[:name] = @hotel.name
-      placemark.extras[:icon_content] = image_tag( @hotel.images.first.image.url(:thumb) )
+      placemark.extras[:icon_content] = image_tag( @hotel.images.first.image.url(:thumb) ) if @hotel.images.any?
       @place_map.add_overlay placemark
     else
       @place_map.center_zoom_init([44.465151,40.935547], 6)
