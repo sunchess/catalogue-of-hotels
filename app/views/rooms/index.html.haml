@@ -1,10 +1,20 @@
+- unless @hotel
+  = form_tag(rooms_path, :method => :get) do
+    = select :search, :city, Place.for_select
+    = select :search, :month, month_for_select, {:prompt => t("select_month")}
+    = t(".from")
+    = text_field :search, :from, { :size => 6 }
+    = t(".to")
+    = text_field :search, :to, { :size => 6 }
+    = submit_tag t("search")
+
 %h1
   = t(".title")
   = "\"#{@hotel.name}\"" if @hotel
 #main_content
   - if @hotel and can?(:update, @hotel)
     .right_side
-      = link_to t(".new"), new_hotel_room_path(@hotel) 
+      = link_to t(".new"), new_hotel_room_path(@hotel)
       |
       = link_to t("next"), edit_hotel_confirm_path(@hotel)
       %br
@@ -18,8 +28,8 @@
 #navigation
   - if @hotel
     - if can?(:update, @hotel)
-      = wizzard_steps 
+      = wizzard_steps
     - else
       = hotel_items
   - else
-    
+

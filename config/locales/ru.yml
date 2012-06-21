@@ -21,7 +21,9 @@ ru:
   yep: "Да"
   non: "Нет"
   telephones: "Телефоны для связи:"
-  
+  search: "Искать"
+  select_month: "Выбирите месяц"
+
   home:
     index:
       choice_of_users: "Выбор пользователей"
@@ -37,7 +39,7 @@ ru:
       title: "Отправить зарос в службу поддержки"
     submit: "Отослать сообщение"
 
-  
+
   paginate:
     previous: "← Предыдущая"
     next: "Следующая →"
@@ -49,22 +51,22 @@ ru:
     leave_blank: "оставьте пустым если не хотите менять"
     password_to_confirm: "введите текущий пароль для подтверждения"
     links:
-      new: "Регистрация" 
+      new: "Регистрация"
       edit: "Изменить"
       sign_up: 'Зарегистрироваться'
       forgot_your_password: "Забыли пароль?"
       didnt_receive_confirmation_instructions: "Не получили письмо с подтверждением?"
     titles:
-      edit: 'Редактировать данные пользователя'      
+      edit: 'Редактировать данные пользователя'
       sign_up: "Регистрация пользователей"
       confirmation: "Не пришло письмо с подтверждением?"
-  
+
   sessions:
     login: 'Войти'
     logout: 'Выйти'
     sign_in: "Вход для пользователей"
-        
-        
+
+
   activerecord:
     attributes:
       user:
@@ -73,7 +75,7 @@ ru:
         password_confirmation: "Пароль еще раз"
         current_password: "Текущий пароль"
         remember_me: "Запомнить меня"
-        
+
   helpers:
     label:
       #post:
@@ -85,9 +87,9 @@ ru:
       destroy: "Удалить"
       publish: "Опубликовать"
       next: "Далее"
-  
-  errors:      
-    messages: 
+
+  errors:
+    messages:
       activerecord:
         title: "Допущены ошибки"
 

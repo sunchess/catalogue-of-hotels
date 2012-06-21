@@ -10,14 +10,15 @@ class RoomsController < ApplicationController
   before_filter :find_dynamic_fields, :only=>[:new, :edit, :create, :update]
   before_filter :find_room, :only=>[:edit, :update, :delete_image, :destroy]
   before_filter :set_images_fields, :only => %w{edit update}
-  
+  before_filter :init_search
+
   def index
     if @hotel
       @rooms = @hotel.rooms.paginate(:page=>params[:page])
       add_breadcrumb I18n.t("rooms.navigation"), :hotel_rooms_path
     else
-      @rooms = Room.joins(:hotel).where("hotels.draft"=>false, 
-                                       "hotels.confirmed" => true).paginate(:page=>params[:page], :per_page=>15)
+      @search = Search.new(params[:search])
+      @rooms = Room.joins(:hotel).where("hotels.draft"=>false).paginate(:page=>params[:page], :per_page=>15)
       add_breadcrumb I18n.t("rooms.navigation"), :rooms_path
     end
   end
@@ -27,7 +28,7 @@ class RoomsController < ApplicationController
     @room.build_prices_months
     set_images_fields
   end
-  
+
   def create
     @room = Room.new
     @room.accessible = [:ad] if admin?
@@ -37,7 +38,7 @@ class RoomsController < ApplicationController
       @room.save_photos(params[:images])
       redirect_to new_hotel_room_path(@hotel), :notice=>t("rooms.successfully_create")
     else
-      ( 12 - @room.prices.size ).times do 
+      ( 12 - @room.prices.size ).times do
         @room.prices.build
       end
       set_images_fields
@@ -59,7 +60,7 @@ class RoomsController < ApplicationController
       render :action=>:edit
     end
   end
-  
+
   def show
     @room = Room.find(params[:id])
     @images = @room.images
@@ -71,7 +72,7 @@ class RoomsController < ApplicationController
       @image.destroy
       respond_to do |format|
         format.html {redirect_to edit_hotel_room_path(@hotel, @room)}
-        format.js 
+        format.js
       end
     else
       render :nothing=>true
@@ -84,9 +85,13 @@ class RoomsController < ApplicationController
   end
 
   private
+  def init_search
+    params[:search] = {} unless params[:search]
+  end
+
   def find_hotel
     if params[:hotel_id]
-      @hotel = Hotel.find(params[:hotel_id]) 
+      @hotel = Hotel.find(params[:hotel_id])
       add_breadcrumb I18n.t("hotels.navigation"), hotels_path
       add_breadcrumb @hotel.name, hotel_path(@hotel)
     end
@@ -111,10 +116,10 @@ class RoomsController < ApplicationController
   end
 
   def set_images_fields
-    @images_fields = if @room.images.count < 5 
-                       5 
+    @images_fields = if @room.images.count < 5
+                       5
                      elsif @room.images.count >= 5 and  @room.images.count < 10
-                       5 
+                       5
                      else
                        15 - @room.images.count
                      end

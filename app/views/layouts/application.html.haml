@@ -1,13 +1,13 @@
 !!! Strict
 %html
   %head
-    %title 
+    %title
       = yield(:page_title)
       - if render_breadcrumbs(:full=>true).present?
         = "#{render_breadcrumbs(:no_html=>true, :separator => ' / ', :full=>true).html_safe}"
       -else
         = "Отдых на на черном море и юге России"
-      \- CoastSun.Ru 
+      \- CoastSun.Ru
     %meta{:name=>'yandex-verification', :content=>'59ea291019ca2dfd'}/
     :plain
       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
@@ -33,12 +33,10 @@
   %body
     = render :partial=>"layouts/users_login_register"
     #body
-      #logo.left  
+      #logo.left
         = link_to image_tag("logo.png", :alt=>"CoastSun.Ru"), "/"
       .right.ellow{:style => "width: 250px; padding-top: 25px;"}
         = t("telephones")
-        %br
-        +7903-433-95-88
         %br
         +7928-226-27-83
       .reset

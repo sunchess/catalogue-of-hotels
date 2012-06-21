@@ -11,4 +11,5 @@ run.sh
 public/system/*
 config/initializers/secret_token.rb
 tmp*
+dump.sql
 

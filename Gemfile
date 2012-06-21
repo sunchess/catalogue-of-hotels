@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+gem 'rails', '3.0.15'
 
 gem 'pg'
 gem "cancan"
@@ -19,7 +19,7 @@ gem 'inherited_resources',        '~> 1.2.2'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+ gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug'
