@@ -24,6 +24,7 @@ ru:
   search: "Искать"
   select_month: "Выбирите месяц"
   go_to: "Перейти"
+  quick_search: "Быстрый поиск"
 
   home:
     index:

@@ -1,5 +1,6 @@
 %h1= t('.title')
 
+= t("quick_search")
 = form_tag quick_search_places_path, :method => :get  do
   = autocomplete_field 'title', '', autocomplete_place_title_places_path
   = submit_tag(t("go_to"))
