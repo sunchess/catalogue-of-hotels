@@ -1,7 +1,11 @@
 %h1= t('.title')
 
+= form_tag quick_search_places_path, :method => :get  do
+  = autocomplete_field 'title', '', autocomplete_place_title_places_path
+  = submit_tag(t("go_to"))
+
 #places
-  - @places.each do |place_root| 
+  - @places.each do |place_root|
     - if can?(:edit, Place)
       .place_title
         = link_to place_root.title, place_path(place_root), :class=>"title_header"

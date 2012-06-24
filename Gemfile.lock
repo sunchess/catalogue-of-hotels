@@ -118,6 +118,8 @@ GEM
       activesupport (= 3.0.15)
       bundler (~> 1.0)
       railties (= 3.0.15)
+    rails3-jquery-autocomplete (1.0.7)
+      rails (~> 3.0)
     railties (3.0.15)
       actionpack (= 3.0.15)
       activesupport (= 3.0.15)
@@ -183,6 +185,7 @@ DEPENDENCIES
   paperclip
   pg
   rails (= 3.0.15)
+  rails3-jquery-autocomplete
   rspec-rails
   spork
   steak (>= 1.0.0.rc.1)

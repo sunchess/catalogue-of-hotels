@@ -23,6 +23,7 @@ ru:
   telephones: "Телефоны для связи:"
   search: "Искать"
   select_month: "Выбирите месяц"
+  go_to: "Перейти"
 
   home:
     index:

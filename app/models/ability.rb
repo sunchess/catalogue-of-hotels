@@ -8,6 +8,8 @@ class Ability
       can :manage, :all
     else
       can :read, [Place, Image, Hotel, Room, Price, Article, Comment]
+      can :autocomplete_place_title, Place
+      can :quick_search, Place
       if user.confirmed_at #is real user
         can :create, Place
         can :create, Image
@@ -16,7 +18,7 @@ class Ability
         can :create, Price
         can :create, Reserf
         can :create, Comment
-        
+
         can :read, Reserf, :user_id=>user.id
         can [:update, :destroy], Reserf do |reserve|
           reserve.try(:user) == user and reserve.status < 2

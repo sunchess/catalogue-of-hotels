@@ -1,6 +1,8 @@
 include Geokit::Geocoders
 
 class PlacesController < ApplicationController
+  autocomplete :place, :title
+
   before_filter :find_place, :only=>[:edit, :update, :destroy, :show]
   authorize_resource
   add_breadcrumb Proc.new{|c| c.t("places.index.title")}, :places_path#, :only=>%w{show new edit create update}
@@ -8,7 +10,7 @@ class PlacesController < ApplicationController
   add_breadcrumb Proc.new{|c| c.t("places.edit.title")}, :edit_place_path, :only=>%w{edit update}
 
   caches_action :index, :layout=>false, :cache_path => :index_cache_path.to_proc
-  
+
   after_filter :delete_cache, :only=>[:update, :create, :destroy]
   before_filter :find_parents_and_fields, :only=>[:new, :edit, :create, :update]
 
@@ -18,6 +20,7 @@ class PlacesController < ApplicationController
     else
       @places = Place.where(:parent_id=>nil, :draft=>false).includes([:children]).order(:position)
     end
+    @place = Place.new
   end
 
   def show
@@ -85,6 +88,11 @@ class PlacesController < ApplicationController
     redirect_to(places_url, :notice => t('places.successfully_destroy'))
   end
 
+  def quick_search
+    @place = Place.where(:title => params[:title]).first
+    redirect_to place_path(@place)
+  end
+
 private
   def find_parents_and_fields
     @parents = Place.where({:draft=>false, :parent_id=>nil}).order("parent_id, position").all
@@ -92,12 +100,12 @@ private
   end
 
   def delete_cache
-   expire_fragment(/admin\/places\/*/) 
-   expire_fragment(/public\/places\/*/) 
+   expire_fragment(/admin\/places\/*/)
+   expire_fragment(/public\/places\/*/)
   end
 
   def find_place
-    @place = Place.find(params[:id]) 
+    @place = Place.find(params[:id])
   end
 
   def index_cache_path

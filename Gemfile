@@ -34,6 +34,8 @@ gem 'inherited_resources',        '~> 1.2.2'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 gem 'forgery'
+gem 'rails3-jquery-autocomplete'
+
 group :development, :test do
   gem 'jquery-rails'
   gem 'forgery'

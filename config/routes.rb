@@ -46,7 +46,7 @@ CatalogueOfHotels::Application.routes.draw do
     resource :confirm, :controller=>"hotels/confirms", :only=>[:edit, :update]
   end
 
-  resources :reserves, :only=>[:index]  
+  resources :reserves, :only=>[:index]
   resources :rooms, :only=>[:index] do
     resources :reserves do
 
@@ -72,6 +72,11 @@ CatalogueOfHotels::Application.routes.draw do
   end
 
   resources :places, :shallow => true do
+    collection do
+      get "autocomplete_place_title"
+      get "quick_search"
+    end
+
     resources :maps, :controller=>"places/maps", :only=>[:create]
     resources :images, :controller=>"places/images", :only=>[:create, :destroy, :index, :update] do
       collection do
@@ -86,7 +91,7 @@ CatalogueOfHotels::Application.routes.draw do
   end
   resources :comments
 
-  
+
   namespace :admin do
     resources :hotels, :only=>[:index, :order] do
       collection do
@@ -96,7 +101,7 @@ CatalogueOfHotels::Application.routes.draw do
       end
     end
     resource  :dashboard, :only=>[:show]
-    resources :reserves 
+    resources :reserves
     resources :offer_agents
     resources :orders
     resources :offers do
