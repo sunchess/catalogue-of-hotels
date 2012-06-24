@@ -9,7 +9,7 @@ class PlacesController < ApplicationController
   add_breadcrumb Proc.new{|c| c.t("places.new.title")}, :new_place_path, :only=>%w{new create}
   add_breadcrumb Proc.new{|c| c.t("places.edit.title")}, :edit_place_path, :only=>%w{edit update}
 
-  caches_action :index, :layout=>false, :cache_path => :index_cache_path.to_proc
+  #caches_action :index, :layout=>false, :cache_path => :index_cache_path.to_proc
 
   after_filter :delete_cache, :only=>[:update, :create, :destroy]
   before_filter :find_parents_and_fields, :only=>[:new, :edit, :create, :update]
