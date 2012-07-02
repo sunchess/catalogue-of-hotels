@@ -4,6 +4,8 @@ class PlacesController < ApplicationController
   autocomplete :place, :title
 
   before_filter :find_place, :only=>[:edit, :update, :destroy, :show]
+  before_filter :transrorm_for_autocomplete, :only => :autocomplete_place_title
+
   authorize_resource
   add_breadcrumb Proc.new{|c| c.t("places.index.title")}, :places_path#, :only=>%w{show new edit create update}
   add_breadcrumb Proc.new{|c| c.t("places.new.title")}, :new_place_path, :only=>%w{new create}
@@ -114,6 +116,11 @@ private
     else
       'public/places'
     end
+  end
+
+  def transrorm_for_autocomplete
+    params[:term] = params[:term].mb_chars.capitalize.to_s
+    p params[:term]
   end
 
 end
