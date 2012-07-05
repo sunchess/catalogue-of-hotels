@@ -120,7 +120,6 @@ private
 
   def transrorm_for_autocomplete
     params[:term] = params[:term].mb_chars.capitalize.to_s
-    p params[:term]
   end
 
 end

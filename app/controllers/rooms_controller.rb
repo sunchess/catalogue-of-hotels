@@ -18,7 +18,11 @@ class RoomsController < ApplicationController
       add_breadcrumb I18n.t("rooms.navigation"), :hotel_rooms_path
     else
       @search = Search.new(params[:search])
-      @rooms = Room.joins(:hotel).where("hotels.draft"=>false).paginate(:page=>params[:page], :per_page=>15)
+      if params[:search].any?
+        @rooms = @search.rooms
+      else
+        @rooms = Room.joins(:hotel).where("hotels.draft"=>false).paginate(:page=>params[:page], :per_page=>15)
+      end
       add_breadcrumb I18n.t("rooms.navigation"), :rooms_path
     end
   end
