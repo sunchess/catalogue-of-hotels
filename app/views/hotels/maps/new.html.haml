@@ -1,6 +1,6 @@
 - content_for :maps do
   = render :partial => "maps_header"
-
+= debug @coordinates
 %h1
   = t(".title")
   = "\"#{@hotel.name}\""

@@ -9,8 +9,19 @@
       placemark.extras[:icon_content] = image_tag( @hotel.images.first.image.url(:thumb) ) if @hotel.images.any?
       @place_map.add_overlay placemark
     else
-      @place_map.center_zoom_init([44.465151,40.935547], 6)
-      @place_map.enable_scroll_zoom
+      if @coordinates
+        coordinates = [@coordinates.last, @coordinates.first ]
+        @place_map.center_zoom_init( coordinates, 14)
+        @place_map.enable_scroll_zoom
+        placemark = Placemark.new(coordinates)
+        #placemark.extras[:description] = @geo_place
+        placemark.extras[:name] = @hotel.name
+        placemark.extras[:icon_content] = image_tag( @hotel.images.first.image.url(:thumb) ) if @hotel.images.any?
+        @place_map.add_overlay placemark
+      else
+        @place_map.center_zoom_init([44.465151,40.935547], 6)
+        @place_map.enable_scroll_zoom
+      end
     end
     @place_map.record_init_end "map.addControl(new YMaps.Zoom()); "
     @place_map.record_init_end "map.addControl(new YMaps.ToolBar());"

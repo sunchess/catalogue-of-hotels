@@ -35,6 +35,8 @@ gem 'inherited_resources',        '~> 1.2.2'
 # and rake tasks are available in development mode:
 gem 'forgery'
 gem 'rails3-jquery-autocomplete'
+gem 'rest-client', '~> 1.6.6'
+gem 'json'
 
 group :development, :test do
   gem 'jquery-rails'
