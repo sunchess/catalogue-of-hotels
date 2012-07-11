@@ -4,7 +4,7 @@
 #main_content
   .item
     .left
-      = link_to @hotel.name, hotel_path(@hotel.id) 
+      = link_to @hotel.name, hotel_path(@hotel.id)
       = "(#{  link_to( @hotel.place.title, place_path(@hotel.place), :class=>"edit" )})".html_safe
       - if can?(:update, @hotel)
         &nbsp;
@@ -18,24 +18,32 @@
       .title= t("activerecord.attributes.hotel.description")
       = simple_format @hotel.description
   .item
-    .left.padding_5  
-      .title= t(".address")
-      .title= t(".telephone")
-      .title= t(".fax") if @hotel.fax.present?
-      .title= t(".email") if @hotel.email.present?
-      .title= t(".site") if @hotel.site.present?
-      
-
-    .left.padding_5  
-      = "#{@hotel.place.title}, #{@hotel.street}, #{t("activerecord.attributes.hotel.house_number")} #{@hotel.house_number}"
-      %br
-      = @hotel.telephone.split("\n").join(", ")
-      %br
-      = @hotel.fax if @hotel.fax.present?
-      %br
-      = mail_to( @hotel.email, @hotel.email, :encode => "javascript" ) if @hotel.email.present?
-      %br
-      = link_to @hotel.site, @hotel.site if @hotel.site.present?
+    %table
+      %tr
+        %td
+          .title= t(".address")
+        %td
+          = "#{@hotel.place.title}, #{@hotel.street}, #{t("activerecord.attributes.hotel.house_number")} #{@hotel.house_number}"
+      %tr
+        %td
+          .title= t(".telephone")
+        %td
+          = @hotel.telephone.split("\n").join(", ")
+      %tr
+        %td
+          .title= t(".fax") if @hotel.fax.present?
+        %td
+          = @hotel.fax if @hotel.fax.present?
+      %tr
+        %td
+          .title= t(".email") if @hotel.email.present?
+        %td
+          = mail_to( @hotel.email, @hotel.email, :encode => "javascript" ) if @hotel.email.present?
+      %tr
+        %td
+          .title= t(".site") if @hotel.site.present?
+        %td
+          = link_to @hotel.site, @hotel.site if @hotel.site.present?
 
   .item
     .reset
@@ -68,7 +76,7 @@
 
     %p
       %br
-    %p 
+    %p
       = render :partial => "comments/comment", :collection => @hotel.comments
 #navigation
   = hotel_items
