@@ -1,14 +1,22 @@
 - content_for :maps do
   = render :partial => "maps_header"
-= debug @coordinates
 %h1
   = t(".title")
   = "\"#{@hotel.name}\""
 #main_content
   = render :partial => "map"
   %br
-  %i
-    = t(".click_for_mark")
+  #address
+    #{@hotel.place.title}, #{ @hotel.street }, дом #{ @hotel.house_number }
+  - if can? :manage, @hotel
+    = link_to "Определить координаты", "?reset=true"
+  %br
+  - if @coordinates
+    %i
+      = t(".coordinates_for")
+  - else
+    %i
+      = t(".click_for_mark")
   %br
   = render :partial => "form"
 #navigation

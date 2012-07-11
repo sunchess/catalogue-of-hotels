@@ -21,4 +21,10 @@ class Map < ActiveRecord::Base
 
 
   belongs_to :mapable, :polymorphic => true
+
+  def set_coordinates(coordinates)
+    self.lat = coordinates.first
+    self.lng = coordinates.last
+    self.zoom = 14
+  end
 end

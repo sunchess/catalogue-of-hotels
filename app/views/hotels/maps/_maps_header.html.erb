@@ -1,5 +1,5 @@
 <%
-    if @hotel.coordinate
+    if @hotel.coordinate and !params[:reset]
       coordinates = [@hotel.coordinate.lat, @hotel.coordinate.lng]
       @place_map.center_zoom_init(coordinates, @hotel.coordinate.zoom)
       @place_map.enable_scroll_zoom
@@ -10,10 +10,9 @@
       @place_map.add_overlay placemark
     else
       if @coordinates
-        coordinates = [@coordinates.last, @coordinates.first ]
-        @place_map.center_zoom_init( coordinates, 14)
+        @place_map.center_zoom_init( @coordinates, 14)
         @place_map.enable_scroll_zoom
-        placemark = Placemark.new(coordinates)
+        placemark = Placemark.new(@coordinates)
         #placemark.extras[:description] = @geo_place
         placemark.extras[:name] = @hotel.name
         placemark.extras[:icon_content] = image_tag( @hotel.images.first.image.url(:thumb) ) if @hotel.images.any?

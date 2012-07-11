@@ -13,7 +13,7 @@ class Hotels::MapsController < ApplicationController
   def new
     @place_map = YandexMap.new
     @map = Map.new
-
+    @map.set_coordinates(@coordinates) if @coordinates
   end
 
   def create
@@ -38,7 +38,7 @@ private
   end
 
   def find_coordinates
-    unless @hotel.coordinate
+    if !@hotel.coordinate or params[:reset]
       if @hotel.street and @hotel.house_number
         geo = GeoYandex.new(:city => @hotel.place.title, :address => "#{ @hotel.street }, #{ @hotel.house_number }" )
         @coordinates = geo.position
@@ -47,4 +47,5 @@ private
       end
     end
   end
+
 end

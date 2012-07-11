@@ -34,15 +34,13 @@ class GeoYandex
   end
 
   def parse
-    p @resp.code
     if @resp.code == 200
       parser_result = JSON.parse( @resp.body )
-      #@result[:position], @result[:lower_corner], @result[:upper_corner] = parser_result[:]
       obj = parser_result["response"]["GeoObjectCollection"]["featureMember"].first #["Point"]#["pos"]
-      p obj["GeoObject"]["Point"]
-      @result[:position] = obj["GeoObject"]["Point"]["pos"].split.map(&:to_f)
-      @result[:lower_corner]
-      @result[:upper_corner]
+      @result[:position] = obj["GeoObject"]["Point"]["pos"].split.map(&:to_f).reverse
+      #{"GeoObject"=>{"boundedBy"=>{"Envelope"=>{"lowerCorner"=>"39.905527 43.463644", "upperCorner"=>"39.909624 43.466627"}
+      @result[:lower_corner] = obj["GeoObject"]["boundedBy"]["Envelope"]["lowerCorner"].split.map(&:to_f).reverse
+      @result[:upper_corner] = obj["GeoObject"]["boundedBy"]["Envelope"]["upperCorner"].split.map(&:to_f).reverse
     else
       @result[:position], @result[:lower_corner], @result[:upper_corner] = "", "", ""
     end
