@@ -2,6 +2,11 @@
   = render( :partial=>"layouts/errors_messages", :locals => { :target=>@hotel})
 
   - if can? :manage, Hotel
+    .user_data
+      - unless @hotel.new_record?
+        .user_data
+          Добавил:
+          = @hotel.user.email
     .field
       = f.check_box :draft
       = f.label :draft
