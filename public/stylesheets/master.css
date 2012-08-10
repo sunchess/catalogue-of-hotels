@@ -202,6 +202,13 @@ a.edit {
     color: #363636;
     text-decoration: none; }
 
+a.red {
+  text-decoration: underline;
+  color: #cc0000; }
+  a.red:hover {
+    color: #ff6666;
+    text-decoration: none; }
+
 #navigation_tab {
   border-bottom: 1px solid #42668c;
   width: 800px; }

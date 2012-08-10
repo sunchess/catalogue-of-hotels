@@ -19,6 +19,11 @@
     = link_to t("hotels.map"), hotel_maps_path(hotel)
     %br
     = link_to t("further"), hotel_path(hotel)
+
+    - if can?(:manage, Hotel)
+      %br
+      = link_to t("delete"), hotel_path(hotel), :method => :delete, :class => "red", :confirm => t("confirm")
+
   .left
     = hotel_thumb( hotel )
   .left{:style=>"width: 335px; padding-left: 10px;"}

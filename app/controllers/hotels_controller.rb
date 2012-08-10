@@ -51,6 +51,10 @@ class HotelsController < ApplicationController
     end
   end
 
+  def destroy
+    @hotel.destroy
+    redirect_to :back, :notice => t('hotels.successfully_destroy')
+  end
 
 private
   def find_hotel

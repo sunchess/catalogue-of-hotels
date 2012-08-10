@@ -45,11 +45,11 @@ class Hotel < ActiveRecord::Base
   has_many :images, :as=>:imageable, :dependent => :destroy, :order=>"id"
   has_many :fields_dynamic_fields, :as=>:dynamic, :dependent => :destroy
   has_many :dynamic_fields, :through=>:fields_dynamic_fields
-  has_one  :coordinate, :as=>:mapable, :class_name=>"Map"
-  has_many :rooms
+  has_one  :coordinate, :as=>:mapable, :class_name=>"Map", :dependent => :destroy 
+  has_many :rooms, :dependent => :destroy
 
   # Paperclip
-  has_attached_file :contract
+  has_attached_file :contract, :dependent => :destroy
 
   def save_dynamic_fields(fields)
     if fields
