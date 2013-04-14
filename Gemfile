@@ -13,30 +13,11 @@ gem "acts_as_tree"
 gem "geokit"
 gem "paperclip"
 gem 'inherited_resources',        '~> 1.2.2'
-#gem "exception_notification"
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
- gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug'
-
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
-
-# Bundle gems for the local environment. Make sure to
-# put test-only gems in this group so their generators
-# and rake tasks are available in development mode:
 gem 'forgery'
 gem 'rails3-jquery-autocomplete'
 gem 'rest-client', '~> 1.6.6'
 gem 'json'
+gem "unicorn", "~> 4.6.2"
 
 group :development, :test do
   gem 'jquery-rails'
@@ -48,4 +29,11 @@ group :development, :test do
   gem 'spork'
   gem 'launchy'
   gem 'factory_girl_rails'
+end
+
+group :development do
+  gem 'capistrano', '~> 2.11.2'
+  gem "capistrano_colors", "~> 0.5.5", :require => false
+  gem "capistrano-unicorn", "~> 0.1.6"
+  gem "rvm-capistrano"
 end
