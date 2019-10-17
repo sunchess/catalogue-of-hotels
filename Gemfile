@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.15'
+gem 'rails', '3.2.17'
 
 gem 'pg'
 gem "cancan"
