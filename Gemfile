@@ -15,7 +15,7 @@ gem "paperclip"
 gem 'inherited_resources',        '~> 1.2.2'
 gem 'forgery'
 gem 'rails3-jquery-autocomplete'
-gem 'rest-client', '~> 1.6.6'
+gem 'rest-client', '~> 1.8.0'
 gem 'json'
 gem "unicorn", "~> 4.6.2"
 
