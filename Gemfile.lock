@@ -55,6 +55,9 @@ GEM
     celerity (0.8.8)
     childprocess (0.1.7)
       ffi (~> 0.6.3)
+    climate_control (0.2.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     configuration (1.2.0)
     culerity (0.2.15)
     database_cleaner (0.6.4)
@@ -77,7 +80,7 @@ GEM
     has_scope (0.5.0)
     highline (1.6.15)
     hpricot (0.8.4)
-    i18n (0.5.0)
+    i18n (0.5.4)
     inherited_resources (1.2.2)
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
@@ -104,9 +107,11 @@ GEM
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     nokogiri (1.4.4)
-    paperclip (2.3.8)
-      activerecord
-      activesupport
+    paperclip (4.2.2)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     pg (0.10.1)
     polyglot (0.3.3)
     rack (1.2.5)
@@ -165,7 +170,7 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.33)
+    tzinfo (0.3.55)
     unicorn (4.6.2)
       kgio (~> 2.6)
       rack
